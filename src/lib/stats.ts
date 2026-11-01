@@ -281,6 +281,7 @@ export function emptyTeam(ownerId: string): Team {
     lineup: [],
     rotation: [],
     bullpen: [],
+    closers: [],
     bench: [],
     players: [],
     createdAt: new Date().toISOString(),

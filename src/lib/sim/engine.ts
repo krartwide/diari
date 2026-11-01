@@ -514,7 +514,12 @@ class Sim {
             ? awayStarter!
             : homeStarter!
           : team.rotation[0];
-      const others = [...team.bullpen, ...team.rotation.filter((id) => id !== starterId)];
+      const closerIds = new Set(team.closers ?? []);
+      const others = [
+        ...team.bullpen.filter((id) => !closerIds.has(id)),
+        ...team.rotation.filter((id) => id !== starterId),
+        ...(team.closers ?? []),
+      ];
       this.pool[side] = others
         .map((id) => team.players.find((p) => p.id === id))
         .filter((p): p is Player => Boolean(p && p.kind === "P"));
@@ -557,14 +562,24 @@ class Sim {
     return line;
   }
 
+  isListedCloser(side: Side, playerId: string) {
+    return (this.teams[side].closers ?? []).includes(playerId);
+  }
+
   openApp(player: Player, side: Side, role: "SP" | "RP", emergency: boolean) {
     const p = pitcherOf(player);
     const ipg = p.ip / Math.max(p.g, 1);
+    const listedCloser = this.isListedCloser(side, player.id);
     const limit =
       role === "SP"
         ? clamp(ipg * 16 + 18 + Math.max(0, p.swar), 78, 155)
-        : clamp(12 + ipg * 13 + Math.max(0, p.swar), 14, 58);
-    const closer = role === "RP" && p.sv >= 8 && p.sv === Math.max(...this.pool[side].map((arm) => pitcherOf(arm).sv), p.sv);
+        : listedCloser
+          ? clamp(18 + ipg * 10 + Math.max(0, p.swar), 16, 36)
+          : clamp(12 + ipg * 13 + Math.max(0, p.swar), 14, 58);
+    const closer =
+      role === "RP" &&
+      (listedCloser ||
+        (p.sv >= 8 && p.sv === Math.max(...this.pool[side].map((arm) => pitcherOf(arm).sv), p.sv) && !(this.teams[side].closers ?? []).length));
     const app: App = {
       playerId: player.id,
       name: player.name,
@@ -749,10 +764,16 @@ class Sim {
     const blowout = lead <= -4 || lead >= 5;
     const list = available.length ? available : this.emergencyArm(defense);
     if (!list.length) return null;
+    const closerIds = new Set(this.teams[defense].closers ?? []);
     const scoreArm = (arm: Player) => {
       const p = pitcherOf(arm);
       const era = p.era || 4.5;
-      if (saveSit && this.inning >= 9 && p.sv >= 5) return 1000 + p.sv * 5 - era;
+      const listed = closerIds.has(arm.id);
+      // Keep dedicated closers for real save spots; do not burn them in the 6th.
+      if (listed && saveSit && this.inning >= 9) return 5000 + p.sv * 5 - era;
+      if (listed && !saveSit && this.inning < 9) return -4000 - era;
+      if (listed && blowout) return -2000;
+      if (saveSit && this.inning >= 9 && (listed || p.sv >= 5)) return 1000 + p.sv * 5 - era;
       if (blowout) return -p.ip / Math.max(p.g, 1);
       if (lead > 0 && this.inning >= 7) return p.hld * 3 + p.sv - era;
       if (lead === 0 && this.inning >= 6) return p.swar * 4 - era + (p.hld > 0 ? 2 : 0);
@@ -875,7 +896,8 @@ class Sim {
 
   buildPitches(batter: Player, pitcher: Player, result: ResultCode): PitchEvent[] {
     const rep = repertoire(pitcher);
-    const fb = pitcherOf(pitcher).speed || 142;
+    // Player speed is peak FB. Typical heaters sit a few km/h under that; max is rare.
+    const maxFb = pitcherOf(pitcher).speed || 142;
     const pitches: PitchEvent[] = [];
     let balls = 0;
     let strikes = 0;
@@ -905,12 +927,15 @@ class Sim {
       if (call === "ball") balls += 1;
       else if (call === "called_strike" || call === "swinging_strike") strikes += 1;
       else if (call === "foul" && strikes < 2) strikes += 1;
+      const typicalFb = maxFb - (2.4 + this.rng() * 3.6);
+      let velo = typicalFb + (PITCH_OFF[code] ?? 0) + this.rng() * 2.2 - 0.8;
+      if (code === "ff" && this.rng() < 0.14) velo = maxFb - this.rng() * 1.1;
       const pitch: PitchEvent = {
         id: nid("pit"),
         number: pitches.length + 1,
         code,
         typeLabel: PITCH_NAME[code] ?? code,
-        velo: clamp(Math.round(fb + (PITCH_OFF[code] ?? 0) + this.rng() * 3 - 1.4), 98, 165),
+        velo: clamp(Math.round(velo), 98, maxFb),
         x: Math.round(spot.x * 100) / 100,
         y: Math.round(spot.y * 100) / 100,
         call,

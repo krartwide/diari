@@ -146,7 +146,7 @@ export function PlayerDialog({
               <CountField label="사구" value={pitcher.hbp} onChange={(hbp) => patchPitcher({ hbp })} />
               <CountField label="탈삼진" value={pitcher.so} onChange={(so) => patchPitcher({ so })} />
               <CountField label="자책" value={pitcher.er ?? 0} onChange={(er) => patchPitcher({ er })} />
-              <CountField label="구속 km/h" value={pitcher.speed} onChange={(speed) => patchPitcher({ speed })} />
+              <CountField label="최고구속 km/h" value={pitcher.speed} onChange={(speed) => patchPitcher({ speed })} />
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               <RateField key={`era-${pitcher.era}`} label="ERA" kind="rate" value={pitcher.era} onChange={(era) => patchPitcher({ era })} />
@@ -158,7 +158,7 @@ export function PlayerDialog({
 
         <p className="text-xs leading-5 text-muted-foreground">
           타율·출루율·장타율·OPS는 285를 넣으면 0.285가 됩니다. ERA·WHIP은 325가 3.25, sWAR는 635가 6.35입니다. 소수점을 직접 찍어도 됩니다.
-          이닝은 188.2 또는 188 2/3처럼 적어도 됩니다. 타자 속도는 주루 등급, 투수 속도는 직구 구속입니다.
+          이닝은 188.2 또는 188 2/3처럼 적어도 됩니다. 타자 속도는 주루 등급, 투수 구속은 최고 시속입니다. 시뮬은 평소 그보다 조금 낮게 던지고, 가끔만 최고에 닿습니다.
         </p>
         <DialogFooter>
           <Button type="button" variant="outline" onClick={fillFromCounting}>

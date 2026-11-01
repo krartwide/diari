@@ -92,6 +92,8 @@ export type Team = {
   lineup: LineupSlot[];
   rotation: string[];
   bullpen: string[];
+  /** Dedicated ninth-inning arms. Kept out of bullpen so mid-game hooks do not burn the closer. */
+  closers: string[];
   bench: string[];
   players: Player[];
   createdAt: string;

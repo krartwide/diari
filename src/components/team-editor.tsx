@@ -74,6 +74,7 @@ export function TeamEditor({ initial }: { initial: Team }) {
       bench: current.bench.filter((item) => item !== id),
       rotation: current.rotation.filter((item) => item !== id),
       bullpen: current.bullpen.filter((item) => item !== id),
+      closers: (current.closers ?? []).filter((item) => item !== id),
     }));
   }
 
@@ -91,9 +92,9 @@ export function TeamEditor({ initial }: { initial: Team }) {
     });
   }
 
-  function moveList(key: "bench" | "rotation" | "bullpen", index: number, dir: -1 | 1) {
+  function moveList(key: "bench" | "rotation" | "bullpen" | "closers", index: number, dir: -1 | 1) {
     setTeam((current) => {
-      const list = [...current[key]];
+      const list = [...(current[key] ?? [])];
       const next = index + dir;
       if (next < 0 || next >= list.length) return current;
       const a = list[index];
@@ -337,6 +338,7 @@ export function TeamEditor({ initial }: { initial: Team }) {
           setTeam((current) => ({
             ...current,
             rotation: current.rotation.filter((item) => item !== id),
+            closers: (current.closers ?? []).filter((item) => item !== id),
             bullpen: current.bullpen.includes(id) ? current.bullpen : [...current.bullpen, id],
           }))
         }
@@ -355,10 +357,29 @@ export function TeamEditor({ initial }: { initial: Team }) {
           setTeam((current) => ({
             ...current,
             bullpen: current.bullpen.filter((item) => item !== id),
-            rotation: current.rotation.includes(id) ? current.rotation : [...current.rotation, id],
+            rotation: current.rotation.filter((item) => item !== id),
+            closers: (current.closers ?? []).includes(id) ? current.closers : [...(current.closers ?? []), id],
           }))
         }
-        actionLabel="선발"
+        actionLabel="마무리"
+      />
+      <ListEditor
+        title="마무리"
+        ids={team.closers ?? []}
+        nameOf={nameOf}
+        onEdit={(id) => {
+          const player = playerById(team, id);
+          if (player) setDraft(player);
+        }}
+        onMove={(index, dir) => moveList("closers", index, dir)}
+        action={(id) =>
+          setTeam((current) => ({
+            ...current,
+            closers: (current.closers ?? []).filter((item) => item !== id),
+            bullpen: current.bullpen.includes(id) ? current.bullpen : [...current.bullpen, id],
+          }))
+        }
+        actionLabel="불펜"
       />
 
       <section>

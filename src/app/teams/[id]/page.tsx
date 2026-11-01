@@ -59,6 +59,7 @@ export default function TeamPage() {
   const bench = team.bench.map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
   const rotation = team.rotation.map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
   const bullpen = team.bullpen.map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
+  const closers = (team.closers ?? []).map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
 
   return (
     <main className="mx-auto grid w-full min-w-0 max-w-6xl gap-6 px-4 py-6">
@@ -73,7 +74,7 @@ export default function TeamPage() {
             <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">{team.blurb}</p>
             {team.canonical && (
               <p className="mt-2 max-w-2xl text-xs leading-5 text-muted-foreground">
-                이 구단의 엔트리는 그 시즌 가을야구 기준으로 맞춰 두었습니다. 능력치는 정규시즌 카운팅 기록입니다. wRC+와 sWAR는 KBO 기록실의 카운팅 기록으로 추정한 값입니다. 타율·출루율·장타율·OPS·ERA·WHIP은 그 기록에서 계산했습니다.
+                이 구단의 엔트리는 그 시즌 한국시리즈·가을야구 명단을 기준으로 맞춰 두었습니다. 능력치는 정규시즌 카운팅 기록입니다. 투수 구속은 최고 시속이며, 경기 중에는 평소 그보다 낮게 나갑니다. wRC+와 sWAR는 KBO 기록실의 카운팅 기록으로 추정한 값입니다.
               </p>
             )}
           </div>
@@ -152,6 +153,7 @@ export default function TeamPage() {
 
       <PitchTable title="선발" players={rotation} />
       <PitchTable title="불펜" players={bullpen} />
+      {closers.length > 0 && <PitchTable title="마무리" players={closers} />}
     </main>
   );
 }
@@ -163,7 +165,7 @@ function PitchTable({ title, players }: { title: string; players: Player[] }) {
       <table className="w-full min-w-[860px] text-left text-sm">
         <thead className="text-xs text-muted-foreground">
           <tr>
-            {["이름", "투구", "출장", "승", "패", "세", "홀", "이닝", "ERA", "피안타", "피홈런", "볼넷", "사구", "탈삼진", "WHIP", "sWAR", "구속"].map((head) => (
+            {["이름", "투구", "출장", "승", "패", "세", "홀", "이닝", "ERA", "피안타", "피홈런", "볼넷", "사구", "탈삼진", "WHIP", "sWAR", "최고"].map((head) => (
               <th key={head} className="px-2 py-1 font-medium whitespace-nowrap">
                 {head}
               </th>

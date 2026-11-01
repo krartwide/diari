@@ -103,6 +103,7 @@ function cleanPlayer(raw: unknown): Player | null {
       so: Math.max(0, Math.round(num(src.so))),
       whip: round(num(src.whip), 2),
       swar: round(num(src.swar), 2),
+      // Peak fastball (km/h). The pitch sim usually sits a few below this.
       speed: Math.round(Math.min(175, Math.max(90, num(src.speed, 145)))),
       er: src.er == null || src.er === "" ? undefined : Math.max(0, Math.round(num(src.er))),
       r: src.r == null || src.r === "" ? undefined : Math.max(0, Math.round(num(src.r))),
@@ -194,13 +195,17 @@ export function sanitizeTeam(raw: unknown, userId: string, existing?: Team): { t
     lineup: lineup.slice(0, 9),
     rotation: pickIds("rotation", "P").slice(0, 8),
     bullpen: [],
-    bench: pickIds("bench", "B").slice(0, 12),
+    closers: [],
+    bench: pickIds("bench", "B").slice(0, 14),
     players,
     createdAt: existing?.createdAt ?? new Date().toISOString(),
   };
-  team.bullpen = pickIds("bullpen", "P")
+  team.closers = pickIds("closers", "P")
     .filter((id) => !team.rotation.includes(id))
-    .slice(0, 12);
+    .slice(0, 3);
+  team.bullpen = pickIds("bullpen", "P")
+    .filter((id) => !team.rotation.includes(id) && !team.closers.includes(id))
+    .slice(0, 14);
   const issues = rosterIssues(team);
   if (issues.length) return { error: issues[0]! };
   return { team };
@@ -251,6 +256,7 @@ export async function duplicateTeam(userId: string, source: Team) {
     lineup: source.lineup.map((slot) => ({ ...slot, playerId: map.get(slot.playerId) ?? slot.playerId })),
     rotation: source.rotation.map((id) => map.get(id) ?? id),
     bullpen: source.bullpen.map((id) => map.get(id) ?? id),
+    closers: (source.closers ?? []).map((id) => map.get(id) ?? id),
     bench: source.bench.map((id) => map.get(id) ?? id),
     logo: source.logo,
     visibility: "private" satisfies Visibility,
