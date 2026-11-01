@@ -67,9 +67,14 @@ NEXTAUTH_URL=https://당신의-railway-도메인.up.railway.app
 
 이 저장소의 `Dockerfile`과 `railway.toml`을 그대로 씁니다.
 
-## 2. Render
+## 2. Render (GitHub 대시보드 로그인이 될 때만)
 
-1. [render.com](https://render.com) → **New → Blueprint** → GitHub 저장소 연결 → `render.yaml` 적용.
+Render Blueprint(`select-repo?type=blueprint`)는 **GitHub로 저장소를 연결**해야 합니다.  
+GitHub/Render 쪽 로그인이 안 되면 이 경로는 쓰지 말고 위의 **Railway CLI**를 쓰세요.
+
+가능하면:
+
+1. [render.com](https://render.com) → **New → Blueprint** → GitHub 저장소 `krartwide/diari` 연결 → `render.yaml` 적용.
 2. `AUTH_SITE_PASSWORD`, `AUTH_URL`, `NEXTAUTH_URL`을 배포 URL에 맞게 직접 입력합니다.
 3. 디스크 `/data`에 SQLite가 저장됩니다.
 
