@@ -4,7 +4,7 @@
 
 공개 역사 구단 21개는 조사한 한국시리즈·가을야구 엔트리와 정규시즌 카운팅 기록입니다. 불펜과 마무리는 따로 나뉘어 있고, 투수 구속은 최고 시속입니다(시뮬에서는 평소 그보다 낮게 나갑니다). 2014 키움 히어로즈는 당시 구단명 넥센 히어로즈의 시즌입니다. 2008 대한민국 국가대표는 베이징 올림픽 최종 24인 엔트리이며, 능력치는 그해 소속 리그 정규시즌(이승엽만 요미우리)입니다. wRC+와 sWAR는 공식 기본 기록에 없는 값이라 카운팅 기록으로 추정했습니다.
 
-경기는 Google 계정으로 로그인해야 시작할 수 있습니다. 이메일만 적는 개발 로그인은 없습니다. 한 번 로그인하면 같은 기기에서 세션이 유지되고, 팀·경기·업적은 계정마다 따로 저장됩니다.
+경기는 로그인이 필요합니다. Google Cloud가 없어도 `AUTH_SITE_PASSWORD`로 들어오거나, GitHub OAuth를 쓸 수 있습니다. Google 키가 있으면 Google 로그인도 함께 켜집니다. 한 번 로그인하면 같은 기기에서 세션이 유지되고, 팀·경기·업적은 계정마다 따로 저장됩니다.
 
 ## 실행
 
@@ -17,26 +17,25 @@ npm run dev
 
 브라우저에서 http://127.0.0.1:43123 을 엽니다.
 
-### Google 로그인 (필수)
+### 로그인
 
-로그인은 Google OAuth만 지원합니다. 키가 없으면 로그인 화면에 설정 안내만 보입니다.
+이메일만으로는 로그인되지 않습니다. 아래 중 하나를 쓰세요.
 
-1. [Google Cloud Console](https://console.cloud.google.com/apis/credentials)에서 OAuth 클라이언트를 만듭니다.
-2. 승인된 리디렉션 URI에 `http://127.0.0.1:43123/api/auth/callback/google` 와 배포 도메인의 `/api/auth/callback/google` 을 넣습니다.
-3. `.env`에 다음을 채웁니다.
+1. **사이트 비밀번호** (Google Cloud 불필요): `.env`에 `AUTH_SITE_PASSWORD`(8자 이상)를 넣고, 로그인 화면에서 이메일 + 그 비밀번호를 입력합니다. 운영자는 `kekekim75@gmail.com`으로 들어오면 공개 팀을 고칠 수 있습니다.
+2. **GitHub** (선택): GitHub → Settings → Developer settings → OAuth Apps에서 앱을 만들고 콜백 `http://127.0.0.1:43123/api/auth/callback/github` 을 넣은 뒤 `AUTH_GITHUB_ID` / `AUTH_GITHUB_SECRET`을 설정합니다.
+3. **Google** (선택): Google Cloud가 가능할 때 OAuth 클라이언트를 만들고 콜백 `http://127.0.0.1:43123/api/auth/callback/google` 과 `AUTH_GOOGLE_ID` / `AUTH_GOOGLE_SECRET`을 넣습니다.
 
 ```bash
 AUTH_SECRET=긴-무작위-문자열
-AUTH_GOOGLE_ID=...
-AUTH_GOOGLE_SECRET=...
+AUTH_SITE_PASSWORD=안전한-비밀번호
 AUTH_TRUST_HOST=true
-ADMIN_EMAILS=kellankim480@gmail.com
+ADMIN_EMAILS=kekekim75@gmail.com
 DATABASE_URL="file:../data/diari.db"
 AUTH_URL="http://127.0.0.1:43123"
 NEXTAUTH_URL="http://127.0.0.1:43123"
 ```
 
-`ADMIN_EMAILS`에 적은 Google 계정(쉼표로 여러 개 가능)은 사이트 운영자로, 공개 역사 구단을 직접 고칠 수 있습니다. 수정 내용은 DB에 덮어쓰기로 저장되며 모든 사용자에게 공개로 유지됩니다. 수정본을 지우면 기본 JSON 기록으로 돌아갑니다.
+`ADMIN_EMAILS`(기본에 `kekekim75@gmail.com` 포함)의 계정은 사이트 운영자로, 공개 역사 구단을 직접 고칠 수 있습니다. 수정 내용은 DB에 덮어쓰기로 저장되며 모든 사용자에게 공개로 유지됩니다.
 
 ### GitHub / Vercel에 올리기
 

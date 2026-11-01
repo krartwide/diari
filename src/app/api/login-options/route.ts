@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
-import { googleAuthEnabled } from "@/auth";
+import { githubAuthEnabled, googleAuthEnabled, localLoginEnabled } from "@/auth";
 
 export async function GET() {
   return NextResponse.json({
     google: googleAuthEnabled(),
+    github: githubAuthEnabled(),
+    local: localLoginEnabled(),
   });
 }
