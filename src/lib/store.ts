@@ -1,6 +1,6 @@
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import path from "node:path";
 import canonicalRaw from "@/data/canonical-teams.json";
+import { awardGameAchievements, awardPublicTeam } from "@/lib/achievements";
+import { prisma } from "@/lib/prisma";
 import { newId, outsFromInnings, recomputeBatterRates, rosterIssues } from "@/lib/stats";
 import type {
   Bats,
@@ -14,43 +14,31 @@ import type {
   Visibility,
 } from "@/lib/types";
 
-const FILE = path.join(process.cwd(), "data", "user-store.json");
 const POSITIONS = new Set<Position>(["C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH", "P"]);
-
-type StoreFile = { teams: Team[]; games: GameRecord[] };
 
 export const canonicalTeams = canonicalRaw as Team[];
 
-function readStore(): StoreFile {
-  try {
-    const parsed = JSON.parse(readFileSync(FILE, "utf8")) as Partial<StoreFile>;
-    return {
-      teams: Array.isArray(parsed.teams) ? parsed.teams : [],
-      games: Array.isArray(parsed.games) ? parsed.games : [],
-    };
-  } catch {
-    return { teams: [], games: [] };
-  }
+function parseTeam(payload: string): Team {
+  return JSON.parse(payload) as Team;
 }
 
-function writeStore(store: StoreFile) {
-  mkdirSync(path.dirname(FILE), { recursive: true });
-  writeFileSync(FILE, JSON.stringify(store));
+function parseGame(payload: string): GameRecord {
+  return JSON.parse(payload) as GameRecord;
 }
 
-export function userIdFrom(request: Request) {
-  const raw = request.headers.get("x-user-id")?.trim() ?? "";
-  if (!/^[a-zA-Z0-9-]{8,80}$/.test(raw)) return null;
-  return raw;
-}
-
-export function visibleTeams(userId: string) {
-  const mine = readStore().teams.filter((team) => team.visibility === "public" || team.ownerId === userId);
+export async function visibleTeams(userId: string) {
+  const rows = await prisma.storedTeam.findMany({
+    where: {
+      OR: [{ visibility: "public" }, { ownerId: userId }],
+    },
+  });
+  const mine = rows.map((row) => parseTeam(row.payload));
   return [...canonicalTeams, ...mine];
 }
 
-export function findTeam(userId: string, id: string) {
-  return visibleTeams(userId).find((team) => team.id === id) ?? null;
+export async function findTeam(userId: string, id: string) {
+  const teams = await visibleTeams(userId);
+  return teams.find((team) => team.id === id) ?? null;
 }
 
 export function canEdit(userId: string, team: Team) {
@@ -120,8 +108,8 @@ function cleanPlayer(raw: unknown): Player | null {
       r: src.r == null || src.r === "" ? undefined : Math.max(0, Math.round(num(src.r))),
     };
     if (line.whip === 0 && line.ip > 0) {
-      const ip = outsFromInnings(line.ip) / 3;
-      if (ip) line.whip = round((line.h + line.bb) / ip, 2);
+      const innings = outsFromInnings(line.ip) / 3;
+      if (innings) line.whip = round((line.h + line.bb) / innings, 2);
     }
     player.pitcher = line;
     player.positions = ["P"];
@@ -218,36 +206,42 @@ export function sanitizeTeam(raw: unknown, userId: string, existing?: Team): { t
   return { team };
 }
 
-export function saveTeam(userId: string, raw: unknown, id?: string) {
-  const store = readStore();
-  const existing = id ? store.teams.find((team) => team.id === id && team.ownerId === userId && !team.canonical) : undefined;
-  if (id && !existing) return { error: "고칠 수 있는 팀이 아닙니다." } as const;
+export async function saveTeam(userId: string, raw: unknown, id?: string) {
+  const existingRow = id
+    ? await prisma.storedTeam.findFirst({ where: { id, ownerId: userId } })
+    : null;
+  if (id && !existingRow) return { error: "고칠 수 있는 팀이 아닙니다." } as const;
+  const existing = existingRow ? parseTeam(existingRow.payload) : undefined;
   const cleaned = sanitizeTeam(raw, userId, existing);
   if ("error" in cleaned) return cleaned;
-  if (existing) {
-    store.teams = store.teams.map((team) => (team.id === existing.id ? cleaned.team : team));
-  } else {
-    store.teams.push(cleaned.team);
-  }
-  writeStore(store);
+  await prisma.storedTeam.upsert({
+    where: { id: cleaned.team.id },
+    create: {
+      id: cleaned.team.id,
+      ownerId: userId,
+      visibility: cleaned.team.visibility,
+      payload: JSON.stringify(cleaned.team),
+    },
+    update: {
+      visibility: cleaned.team.visibility,
+      payload: JSON.stringify(cleaned.team),
+    },
+  });
+  if (cleaned.team.visibility === "public") await awardPublicTeam(userId);
   return { team: cleaned.team };
 }
 
-export function removeTeam(userId: string, id: string) {
-  const store = readStore();
-  const existing = store.teams.find((team) => team.id === id && team.ownerId === userId && !team.canonical);
-  if (!existing) return false;
-  store.teams = store.teams.filter((team) => team.id !== id);
-  writeStore(store);
-  return true;
+export async function removeTeam(userId: string, id: string) {
+  const result = await prisma.storedTeam.deleteMany({ where: { id, ownerId: userId } });
+  return result.count > 0;
 }
 
-export function duplicateTeam(userId: string, source: Team) {
+export async function duplicateTeam(userId: string, source: Team) {
   const map = new Map<string, string>();
   const players = source.players.map((player) => {
-    const id = newId("pl");
-    map.set(player.id, id);
-    return { ...player, id, sourceId: player.sourceId ?? player.id };
+    const nextId = newId("pl");
+    map.set(player.id, nextId);
+    return { ...player, id: nextId, sourceId: player.sourceId ?? player.id };
   });
   const team: Team = {
     ...source,
@@ -264,28 +258,52 @@ export function duplicateTeam(userId: string, source: Team) {
     canonical: false,
     createdAt: new Date().toISOString(),
   };
-  const store = readStore();
-  store.teams.push(team);
-  writeStore(store);
+  await prisma.storedTeam.create({
+    data: {
+      id: team.id,
+      ownerId: userId,
+      visibility: team.visibility,
+      payload: JSON.stringify(team),
+    },
+  });
   return team;
 }
 
-export function listGames(userId: string) {
-  return readStore()
-    .games.filter((game) => game.ownerId === userId)
-    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1));
+export async function listGames(userId: string) {
+  const rows = await prisma.storedGame.findMany({
+    where: { ownerId: userId },
+    orderBy: { createdAt: "desc" },
+  });
+  return rows.map((row) => parseGame(row.payload));
 }
 
-export function findGame(userId: string, id: string) {
-  return listGames(userId).find((game) => game.id === id) ?? null;
+export async function findGame(userId: string, id: string) {
+  const row = await prisma.storedGame.findFirst({ where: { id, ownerId: userId } });
+  return row ? parseGame(row.payload) : null;
 }
 
-export function saveGame(game: GameRecord) {
-  const store = readStore();
-  store.games.push(game);
-  if (store.games.length > 80) {
-    store.games = store.games.slice(-80);
+export async function saveGame(game: GameRecord) {
+  await prisma.storedGame.create({
+    data: {
+      id: game.id,
+      ownerId: game.ownerId,
+      summary: game.summary.slice(0, 240),
+      payload: JSON.stringify(game),
+      createdAt: new Date(game.createdAt),
+    },
+  });
+  const count = await prisma.storedGame.count({ where: { ownerId: game.ownerId } });
+  if (count > 120) {
+    const old = await prisma.storedGame.findMany({
+      where: { ownerId: game.ownerId },
+      orderBy: { createdAt: "asc" },
+      take: count - 120,
+      select: { id: true },
+    });
+    if (old.length) {
+      await prisma.storedGame.deleteMany({ where: { id: { in: old.map((row) => row.id) } } });
+    }
   }
-  writeStore(store);
+  await awardGameAchievements(game.ownerId, game);
   return game;
 }

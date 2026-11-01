@@ -6,7 +6,7 @@ import { TeamMark } from "@/components/team-mark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { api, getUserId } from "@/lib/client";
+import { api } from "@/lib/client";
 import type { Team } from "@/lib/types";
 
 export default function TeamsPage() {
@@ -16,10 +16,11 @@ export default function TeamsPage() {
   const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    const id = getUserId();
-    queueMicrotask(() => setUserId(id));
-    api<{ teams: Team[] }>("/api/teams")
-      .then((data) => setTeams(data.teams))
+    api<{ teams: Team[]; userId: string | null }>("/api/teams")
+      .then((data) => {
+        setTeams(data.teams);
+        setUserId(data.userId ?? "");
+      })
       .catch((caught: Error) => setError(caught.message));
   }, []);
 

@@ -42,6 +42,8 @@ next-env.d.ts
 
 # local teams and games
 /data/user-store.json
+/data/*.db
+/data/*.db-journal
 
 # research dumps
 /agent-tools/

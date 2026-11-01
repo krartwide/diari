@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Black_Han_Sans, IBM_Plex_Sans_KR, Noto_Serif_KR } from "next/font/google";
+import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
 
@@ -36,8 +37,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ko" className={`dark ${sans.variable} ${serif.variable} ${display.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <SiteHeader />
-        <div className="flex-1">{children}</div>
+        <Providers>
+          <SiteHeader />
+          <div className="flex-1">{children}</div>
+        </Providers>
       </body>
     </html>
   );
