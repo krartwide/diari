@@ -73,7 +73,7 @@ export default function TeamPage() {
             <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">{team.blurb}</p>
             {team.canonical && (
               <p className="mt-2 max-w-2xl text-xs leading-5 text-muted-foreground">
-                이 구단의 엔트리는 그 시즌 리그(정규시즌) 기준이며, 가을야구 엔트리가 아닙니다. wRC+와 sWAR는 KBO 기록실의 카운팅 기록으로 추정한 값입니다. 타율·출루율·장타율·OPS·ERA·WHIP은 그 기록에서 계산했습니다.
+                이 구단의 엔트리는 그 시즌 가을야구 기준으로 맞춰 두었습니다. 능력치는 정규시즌 카운팅 기록입니다. wRC+와 sWAR는 KBO 기록실의 카운팅 기록으로 추정한 값입니다. 타율·출루율·장타율·OPS·ERA·WHIP은 그 기록에서 계산했습니다.
               </p>
             )}
           </div>

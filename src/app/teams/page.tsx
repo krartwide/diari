@@ -50,7 +50,7 @@ export default function TeamsPage() {
       {shared.length > 0 && <TeamSection title="다른 사람의 공개 팀" teams={shared} empty="" />}
       <TeamSection
         title="공개 역사 구단"
-        note="그 시즌 리그(정규시즌) 엔트리입니다. 가을야구 엔트리가 아닙니다."
+        note="그 시즌 가을야구에 올릴 수 있는 엔트리입니다. 능력치는 정규시즌 기록입니다."
         teams={canon}
         empty="조건에 맞는 구단이 없습니다."
       />

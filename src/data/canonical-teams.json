@@ -1762,7 +1762,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2017 정규시즌 87승 56패, 1위. 한국시리즈 우승. 양현종과 헥터가 20승씩 나란히 올렸고 최형우가 타선을 눌렀다. 엔트리는 정규시즌 리그 기준이다.",
+  "blurb": "2017 정규시즌 87승 56패, 1위. 한국시리즈 우승. 양현종과 헥터가 20승씩 나란히 올렸고 최형우가 타선을 눌렀다.",
   "lineup": [
    {
     "playerId": "canon-2017-ht:p76849",
@@ -3378,7 +3378,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2016 한국시리즈 우승팀. 니퍼트가 22승, 김재환이 37홈런. 상위 타선이 거의 빠지지 않고 한 시즌을 소화했다. 엔트리는 정규시즌 리그 기준이다.",
+  "blurb": "2016 한국시리즈 우승팀. 니퍼트가 22승, 김재환이 37홈런. 상위 타선이 거의 빠지지 않고 한 시즌을 소화했다.",
   "lineup": [
    {
     "playerId": "canon-2016-ob:p79215",
@@ -4251,7 +4251,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2022 정규시즌 1위, 한국시리즈 우승. 김광현이 평균자책 2.13, 폰트가 13승. 최정의 26홈런이 중앙을 맡았다. 엔트리는 정규시즌 리그 기준이다.",
+  "blurb": "2022 정규시즌 1위, 한국시리즈 우승. 김광현이 평균자책 2.13, 폰트가 13승. 최정의 26홈런이 중앙을 맡았다.",
   "lineup": [
    {
     "playerId": "canon-2022-sk:p51817",
@@ -5904,7 +5904,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2020 한국시리즈 우승팀. 양의지와 나성범이 30홈런, 루친스키가 19승. 구창모는 짧은 이닝을 1점대 평균자책으로 막았다. 엔트리는 정규시즌 리그 기준이다.",
+  "blurb": "2020 한국시리즈 우승팀. 양의지와 나성범이 30홈런, 루친스키가 19승. 구창모는 짧은 이닝을 1점대 평균자책으로 막았다.",
   "lineup": [
    {
     "playerId": "canon-2020-nc:p62907",
@@ -7170,7 +7170,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "LF"
+     "C"
     ],
     "batter": {
      "g": 59,
@@ -7189,7 +7189,7 @@
      "slg": 0.546,
      "ops": 0.891,
      "wrcPlus": 123,
-     "swar": 0.64,
+     "swar": 1.07,
      "speed": 44,
      "pa": 127,
      "hbp": 2,
@@ -8687,7 +8687,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "1B"
+     "DH"
     ],
     "batter": {
      "g": 81,
@@ -8706,7 +8706,7 @@
      "slg": 0.325,
      "ops": 0.68,
      "wrcPlus": 78,
-     "swar": -0.37,
+     "swar": -0.56,
      "speed": 40,
      "pa": 227,
      "hbp": 5,
@@ -10455,7 +10455,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2008 한국시리즈 우승팀. 김광현이 16승 평균자책 2.39. 정근우가 40도루, 최정이 3번 옆에서 시즌을 보냈다. 엔트리는 정규시즌 리그 기준이다.",
+  "blurb": "2008 한국시리즈 우승팀. 김광현이 16승 평균자책 2.39. 정근우가 40도루, 최정이 3번 옆에서 시즌을 보냈다.",
   "lineup": [
    {
     "playerId": "canon-2008-sk:p75808",
@@ -14969,6 +14969,885 @@
    }
   ],
   "createdAt": "2000-10-01T00:00:00.000Z"
+ },
+ {
+  "id": "canon-1996-sb",
+  "name": "1996 쌍방울 레이더스",
+  "shortName": "쌍방울",
+  "year": 1996,
+  "primary": "#C41E3A",
+  "secondary": "#F2F2F2",
+  "logo": null,
+  "visibility": "public",
+  "ownerId": null,
+  "canonical": true,
+  "blurb": "1996 정규시즌 2위, 창단 첫 가을야구. 김성근 감독 첫해. 성영재·조규제와 박경완·김기태·김광림이 중심이었고, 플레이오프에서 현대에 2승 뒤 3연패로 꺾였다.",
+  "lineup": [
+   {
+    "playerId": "canon-1996-sb:p84210",
+    "position": "CF"
+   },
+   {
+    "playerId": "canon-1996-sb:p94408",
+    "position": "RF"
+   },
+   {
+    "playerId": "canon-1996-sb:p91803",
+    "position": "1B"
+   },
+   {
+    "playerId": "canon-1996-sb:p95835",
+    "position": "LF"
+   },
+   {
+    "playerId": "canon-1996-sb:p92809",
+    "position": "C"
+   },
+   {
+    "playerId": "canon-1996-sb:p93807",
+    "position": "2B"
+   },
+   {
+    "playerId": "canon-1996-sb:p96806",
+    "position": "3B"
+   },
+   {
+    "playerId": "canon-1996-sb:p90025",
+    "position": "SS"
+   },
+   {
+    "playerId": "canon-1996-sb:p94836",
+    "position": "DH"
+   }
+  ],
+  "rotation": [
+   "canon-1996-sb:p93817",
+   "canon-1996-sb:p92403",
+   "canon-1996-sb:p91848",
+   "canon-1996-sb:p91831",
+   "canon-1996-sb:p91833"
+  ],
+  "bullpen": [
+   "canon-1996-sb:p91818",
+   "canon-1996-sb:p93453",
+   "canon-1996-sb:p96824",
+   "canon-1996-sb:p96847",
+   "canon-1996-sb:p91899"
+  ],
+  "bench": [
+   "canon-1996-sb:p86231",
+   "canon-1996-sb:p87630",
+   "canon-1996-sb:p93812",
+   "canon-1996-sb:p90768",
+   "canon-1996-sb:p87670"
+  ],
+  "players": [
+   {
+    "id": "canon-1996-sb:p84210",
+    "sourceId": "84210",
+    "name": "김광림",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 126,
+     "ab": 449,
+     "h": 136,
+     "doubles": 19,
+     "triples": 6,
+     "hr": 2,
+     "rbi": 49,
+     "r": 69,
+     "sb": 15,
+     "bb": 45,
+     "so": 63,
+     "avg": 0.303,
+     "obp": 0.368,
+     "slg": 0.385,
+     "ops": 0.753,
+     "wrcPlus": 94,
+     "swar": 1.65,
+     "speed": 58,
+     "pa": 509,
+     "hbp": 3,
+     "sf": 3,
+     "sac": 7,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-1996-sb:p94408",
+    "sourceId": "94408",
+    "name": "김실",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 124,
+     "ab": 419,
+     "h": 122,
+     "doubles": 19,
+     "triples": 6,
+     "hr": 0,
+     "rbi": 38,
+     "r": 53,
+     "sb": 6,
+     "bb": 46,
+     "so": 49,
+     "avg": 0.291,
+     "obp": 0.363,
+     "slg": 0.365,
+     "ops": 0.728,
+     "wrcPlus": 88,
+     "swar": 0.09,
+     "speed": 47,
+     "pa": 487,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 19,
+     "cs": 8
+    }
+   },
+   {
+    "id": "canon-1996-sb:p91803",
+    "sourceId": "91803",
+    "name": "김기태",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "1B"
+    ],
+    "batter": {
+     "g": 91,
+     "ab": 310,
+     "h": 92,
+     "doubles": 17,
+     "triples": 3,
+     "hr": 12,
+     "rbi": 53,
+     "r": 47,
+     "sb": 3,
+     "bb": 54,
+     "so": 48,
+     "avg": 0.297,
+     "obp": 0.399,
+     "slg": 0.487,
+     "ops": 0.886,
+     "wrcPlus": 129,
+     "swar": 1.54,
+     "speed": 44,
+     "pa": 366,
+     "hbp": 0,
+     "sf": 2,
+     "sac": 0,
+     "cs": 6
+    }
+   },
+   {
+    "id": "canon-1996-sb:p95835",
+    "sourceId": "95835",
+    "name": "심성보",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "LF"
+    ],
+    "batter": {
+     "g": 116,
+     "ab": 335,
+     "h": 92,
+     "doubles": 26,
+     "triples": 4,
+     "hr": 5,
+     "rbi": 51,
+     "r": 51,
+     "sb": 8,
+     "bb": 40,
+     "so": 55,
+     "avg": 0.275,
+     "obp": 0.344,
+     "slg": 0.421,
+     "ops": 0.765,
+     "wrcPlus": 91,
+     "swar": 0.45,
+     "speed": 52,
+     "pa": 391,
+     "hbp": 2,
+     "sf": 12,
+     "sac": 2,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1996-sb:p92809",
+    "sourceId": "92809",
+    "name": "박경완",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 126,
+     "ab": 367,
+     "h": 80,
+     "doubles": 19,
+     "triples": 2,
+     "hr": 15,
+     "rbi": 74,
+     "r": 58,
+     "sb": 2,
+     "bb": 60,
+     "so": 113,
+     "avg": 0.218,
+     "obp": 0.349,
+     "slg": 0.403,
+     "ops": 0.752,
+     "wrcPlus": 92,
+     "swar": 1.94,
+     "speed": 42,
+     "pa": 480,
+     "hbp": 19,
+     "sf": 10,
+     "sac": 24,
+     "cs": 5
+    }
+   },
+   {
+    "id": "canon-1996-sb:p93807",
+    "sourceId": "93807",
+    "name": "최태원",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "2B"
+    ],
+    "batter": {
+     "g": 126,
+     "ab": 449,
+     "h": 116,
+     "doubles": 22,
+     "triples": 3,
+     "hr": 1,
+     "rbi": 40,
+     "r": 57,
+     "sb": 5,
+     "bb": 32,
+     "so": 53,
+     "avg": 0.258,
+     "obp": 0.323,
+     "slg": 0.327,
+     "ops": 0.651,
+     "wrcPlus": 64,
+     "swar": -0.46,
+     "speed": 45,
+     "pa": 523,
+     "hbp": 13,
+     "sf": 4,
+     "sac": 20,
+     "cs": 6
+    }
+   },
+   {
+    "id": "canon-1996-sb:p96806",
+    "sourceId": "96806",
+    "name": "석수철",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 114,
+     "ab": 289,
+     "h": 77,
+     "doubles": 16,
+     "triples": 1,
+     "hr": 3,
+     "rbi": 32,
+     "r": 32,
+     "sb": 4,
+     "bb": 17,
+     "so": 45,
+     "avg": 0.266,
+     "obp": 0.319,
+     "slg": 0.36,
+     "ops": 0.679,
+     "wrcPlus": 69,
+     "swar": -0.02,
+     "speed": 47,
+     "pa": 337,
+     "hbp": 8,
+     "sf": 6,
+     "sac": 17,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1996-sb:p90025",
+    "sourceId": "90025",
+    "name": "김호",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "SS"
+    ],
+    "batter": {
+     "g": 126,
+     "ab": 389,
+     "h": 93,
+     "doubles": 14,
+     "triples": 6,
+     "hr": 1,
+     "rbi": 39,
+     "r": 42,
+     "sb": 22,
+     "bb": 33,
+     "so": 72,
+     "avg": 0.239,
+     "obp": 0.303,
+     "slg": 0.314,
+     "ops": 0.617,
+     "wrcPlus": 52,
+     "swar": -0.57,
+     "speed": 68,
+     "pa": 447,
+     "hbp": 4,
+     "sf": 3,
+     "sac": 18,
+     "cs": 11
+    }
+   },
+   {
+    "id": "canon-1996-sb:p94836",
+    "sourceId": "94836",
+    "name": "조원우",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 122,
+     "ab": 284,
+     "h": 76,
+     "doubles": 7,
+     "triples": 1,
+     "hr": 2,
+     "rbi": 29,
+     "r": 39,
+     "sb": 8,
+     "bb": 21,
+     "so": 28,
+     "avg": 0.268,
+     "obp": 0.328,
+     "slg": 0.32,
+     "ops": 0.648,
+     "wrcPlus": 64,
+     "swar": -1.39,
+     "speed": 53,
+     "pa": 336,
+     "hbp": 6,
+     "sf": 3,
+     "sac": 22,
+     "cs": 5
+    }
+   },
+   {
+    "id": "canon-1996-sb:p86231",
+    "sourceId": "86231",
+    "name": "박노준",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 52,
+     "ab": 139,
+     "h": 48,
+     "doubles": 7,
+     "triples": 1,
+     "hr": 4,
+     "rbi": 20,
+     "r": 15,
+     "sb": 1,
+     "bb": 9,
+     "so": 17,
+     "avg": 0.345,
+     "obp": 0.393,
+     "slg": 0.496,
+     "ops": 0.89,
+     "wrcPlus": 131,
+     "swar": 0.65,
+     "speed": 44,
+     "pa": 153,
+     "hbp": 2,
+     "sf": 0,
+     "sac": 3,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1996-sb:p87630",
+    "sourceId": "87630",
+    "name": "박철우",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 28,
+     "ab": 32,
+     "h": 6,
+     "doubles": 0,
+     "triples": 0,
+     "hr": 1,
+     "rbi": 2,
+     "r": 1,
+     "sb": 0,
+     "bb": 10,
+     "so": 7,
+     "avg": 0.188,
+     "obp": 0.395,
+     "slg": 0.281,
+     "ops": 0.677,
+     "wrcPlus": 89,
+     "swar": -0.04,
+     "speed": 40,
+     "pa": 43,
+     "hbp": 1,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1996-sb:p93812",
+    "sourceId": "93812",
+    "name": "김충민",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 24,
+     "ab": 39,
+     "h": 9,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 1,
+     "r": 4,
+     "sb": 2,
+     "bb": 3,
+     "so": 13,
+     "avg": 0.231,
+     "obp": 0.286,
+     "slg": 0.282,
+     "ops": 0.568,
+     "wrcPlus": 38,
+     "swar": -0.04,
+     "speed": 65,
+     "pa": 43,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 1,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1996-sb:p90768",
+    "sourceId": "90768",
+    "name": "진상봉",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 37,
+     "ab": 67,
+     "h": 17,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 2,
+     "rbi": 8,
+     "r": 4,
+     "sb": 0,
+     "bb": 13,
+     "so": 10,
+     "avg": 0.254,
+     "obp": 0.37,
+     "slg": 0.373,
+     "ops": 0.744,
+     "wrcPlus": 93,
+     "swar": 0.15,
+     "speed": 40,
+     "pa": 82,
+     "hbp": 0,
+     "sf": 1,
+     "sac": 1,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1996-sb:p87670",
+    "sourceId": "87670",
+    "name": "백인수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 49,
+     "ab": 125,
+     "h": 29,
+     "doubles": 5,
+     "triples": 0,
+     "hr": 2,
+     "rbi": 10,
+     "r": 14,
+     "sb": 1,
+     "bb": 16,
+     "so": 23,
+     "avg": 0.232,
+     "obp": 0.333,
+     "slg": 0.32,
+     "ops": 0.653,
+     "wrcPlus": 68,
+     "swar": -0.08,
+     "speed": 43,
+     "pa": 148,
+     "hbp": 3,
+     "sf": 0,
+     "sac": 4,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1996-sb:p93817",
+    "sourceId": "93817",
+    "name": "성영재",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 24,
+     "w": 10,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 148.0,
+     "era": 2.37,
+     "h": 122,
+     "hr": 10,
+     "bb": 38,
+     "hbp": 11,
+     "so": 92,
+     "whip": 1.08,
+     "swar": 4.49,
+     "speed": 140,
+     "er": 39,
+     "r": 43
+    }
+   },
+   {
+    "id": "canon-1996-sb:p92403",
+    "sourceId": "92403",
+    "name": "오봉옥",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 33,
+     "w": 9,
+     "l": 7,
+     "sv": 4,
+     "hld": 0,
+     "ip": 135.33,
+     "era": 3.06,
+     "h": 114,
+     "hr": 7,
+     "bb": 53,
+     "hbp": 9,
+     "so": 86,
+     "whip": 1.23,
+     "swar": 3.07,
+     "speed": 140,
+     "er": 46,
+     "r": 55
+    }
+   },
+   {
+    "id": "canon-1996-sb:p91848",
+    "sourceId": "91848",
+    "name": "김원형",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 26,
+     "w": 5,
+     "l": 8,
+     "sv": 0,
+     "hld": 0,
+     "ip": 126.67,
+     "era": 4.12,
+     "h": 133,
+     "hr": 10,
+     "bb": 51,
+     "hbp": 5,
+     "so": 69,
+     "whip": 1.45,
+     "swar": 1.38,
+     "speed": 139,
+     "er": 58,
+     "r": 71
+    }
+   },
+   {
+    "id": "canon-1996-sb:p91831",
+    "sourceId": "91831",
+    "name": "박성기",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 26,
+     "w": 5,
+     "l": 6,
+     "sv": 0,
+     "hld": 0,
+     "ip": 93.67,
+     "era": 3.84,
+     "h": 79,
+     "hr": 10,
+     "bb": 42,
+     "hbp": 12,
+     "so": 84,
+     "whip": 1.29,
+     "swar": 1.31,
+     "speed": 141,
+     "er": 40,
+     "r": 44
+    }
+   },
+   {
+    "id": "canon-1996-sb:p91833",
+    "sourceId": "91833",
+    "name": "김기덕",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 43,
+     "w": 9,
+     "l": 4,
+     "sv": 4,
+     "hld": 0,
+     "ip": 112.67,
+     "era": 2.4,
+     "h": 95,
+     "hr": 5,
+     "bb": 29,
+     "hbp": 14,
+     "so": 66,
+     "whip": 1.1,
+     "swar": 3.38,
+     "speed": 140,
+     "er": 30,
+     "r": 34
+    }
+   },
+   {
+    "id": "canon-1996-sb:p91818",
+    "sourceId": "91818",
+    "name": "조규제",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 48,
+     "w": 5,
+     "l": 5,
+     "sv": 20,
+     "hld": 0,
+     "ip": 59.67,
+     "era": 1.81,
+     "h": 41,
+     "hr": 3,
+     "bb": 24,
+     "hbp": 4,
+     "so": 74,
+     "whip": 1.09,
+     "swar": 2.73,
+     "speed": 145,
+     "er": 12,
+     "r": 12
+    }
+   },
+   {
+    "id": "canon-1996-sb:p93453",
+    "sourceId": "93453",
+    "name": "김현욱",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 49,
+     "w": 4,
+     "l": 1,
+     "sv": 3,
+     "hld": 0,
+     "ip": 99.33,
+     "era": 2.63,
+     "h": 96,
+     "hr": 1,
+     "bb": 33,
+     "hbp": 10,
+     "so": 74,
+     "whip": 1.3,
+     "swar": 2.73,
+     "speed": 140,
+     "er": 29,
+     "r": 31
+    }
+   },
+   {
+    "id": "canon-1996-sb:p96824",
+    "sourceId": "96824",
+    "name": "최정환",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 22,
+     "w": 6,
+     "l": 3,
+     "sv": 1,
+     "hld": 0,
+     "ip": 46.0,
+     "era": 1.57,
+     "h": 30,
+     "hr": 0,
+     "bb": 15,
+     "hbp": 2,
+     "so": 24,
+     "whip": 0.98,
+     "swar": 1.8,
+     "speed": 139,
+     "er": 8,
+     "r": 9
+    }
+   },
+   {
+    "id": "canon-1996-sb:p96847",
+    "sourceId": "96847",
+    "name": "박주언",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 41,
+     "w": 4,
+     "l": 2,
+     "sv": 1,
+     "hld": 0,
+     "ip": 66.67,
+     "era": 5.0,
+     "h": 68,
+     "hr": 3,
+     "bb": 32,
+     "hbp": 3,
+     "so": 37,
+     "whip": 1.5,
+     "swar": 0.07,
+     "speed": 139,
+     "er": 37,
+     "r": 39
+    }
+   },
+   {
+    "id": "canon-1996-sb:p91899",
+    "sourceId": "91899",
+    "name": "박진석",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 18,
+     "w": 3,
+     "l": 2,
+     "sv": 1,
+     "hld": 0,
+     "ip": 59.33,
+     "era": 3.49,
+     "h": 59,
+     "hr": 2,
+     "bb": 23,
+     "hbp": 7,
+     "so": 29,
+     "whip": 1.38,
+     "swar": 1.06,
+     "speed": 139,
+     "er": 23,
+     "r": 24
+    }
+   }
+  ],
+  "createdAt": "1996-10-01T00:00:00.000Z"
  },
  {
   "id": "canon-2008-kor",
