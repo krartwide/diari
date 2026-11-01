@@ -15,14 +15,16 @@ export default function TeamPage() {
   const router = useRouter();
   const [team, setTeam] = useState<Team | null>(null);
   const [editable, setEditable] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    api<{ team: Team; editable: boolean }>(`/api/teams/${params.id}`)
+    api<{ team: Team; editable: boolean; admin?: boolean }>(`/api/teams/${params.id}`)
       .then((data) => {
         setTeam(data.team);
         setEditable(data.editable);
+        setAdmin(Boolean(data.admin));
       })
       .catch((caught: Error) => setError(caught.message));
   }, [params.id]);
@@ -41,11 +43,14 @@ export default function TeamPage() {
 
   async function remove() {
     if (!team || !editable) return;
-    if (!window.confirm(`${team.name}을 지울까요?`)) return;
+    const message = team.canonical
+      ? `${team.name} 수정본을 지우고 기본 공개 기록으로 되돌릴까요?`
+      : `${team.name}을 지울까요?`;
+    if (!window.confirm(message)) return;
     setBusy(true);
     try {
       await api(`/api/teams/${team.id}`, { method: "DELETE" });
-      router.push("/teams");
+      router.push(team.canonical ? `/teams/${team.id}` : "/teams");
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "지우지 못했습니다.");
       setBusy(false);
@@ -92,7 +97,7 @@ export default function TeamPage() {
               내 팀으로 복제
             </Button>
           )}
-          {editable && (
+          {editable && !team.canonical && (
             <Button type="button" variant="ghost" onClick={remove} disabled={busy}>
               삭제
             </Button>

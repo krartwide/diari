@@ -10,6 +10,7 @@ export async function GET() {
       name: session.user.name ?? null,
       email: session.user.email ?? null,
       image: session.user.image ?? null,
+      admin: Boolean(session.user.admin),
     },
   });
 }

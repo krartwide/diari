@@ -36,13 +36,14 @@ async function resizeLogo(file: File) {
   }
 }
 
-export function TeamEditor({ initial }: { initial: Team }) {
+export function TeamEditor({ initial, admin = false }: { initial: Team; admin?: boolean }) {
   const router = useRouter();
   const [team, setTeam] = useState(initial);
   const [draft, setDraft] = useState<Player | null>(null);
   const [error, setError] = useState("");
   const [saving, setSaving] = useState(false);
   const creating = !initial.name;
+  const lockedPublic = Boolean(team.canonical);
 
   function nameOf(id: string) {
     return playerById(team, id)?.name ?? "이름 없음";
@@ -206,10 +207,18 @@ export function TeamEditor({ initial }: { initial: Team }) {
           </label>
           <div className="flex items-center justify-between gap-3 rounded-xl border border-border px-3 py-2 sm:col-span-2">
             <div>
-              <p className="text-sm">공개 팀</p>
-              <p className="text-xs text-muted-foreground">끄면 이 브라우저에서만 보입니다. 켜면 이 서버를 쓰는 누구나 경기에 넣을 수 있습니다. 공개 역사 구단은 여기서 고치지 않습니다.</p>
+              <p className="text-sm">{team.canonical ? "공개 기록 구단" : "공개 팀"}</p>
+              <p className="text-xs text-muted-foreground">
+                {team.canonical
+                  ? "관리자로 저장하면 모든 이용자에게 보이는 공개 기록 엔트리가 바뀝니다."
+                  : "끄면 본인 계정에만 보입니다. 켜면 이 서버를 쓰는 누구나 경기에 넣을 수 있습니다."}
+              </p>
             </div>
-            <Switch checked={team.visibility === "public"} onCheckedChange={(checked) => setTeam({ ...team, visibility: checked ? "public" : "private" })} />
+            {team.canonical ? (
+              <span className="text-xs text-muted-foreground">항상 공개</span>
+            ) : (
+              <Switch checked={team.visibility === "public"} onCheckedChange={(checked) => setTeam({ ...team, visibility: checked ? "public" : "private" })} />
+            )}
           </div>
         </div>
       </section>

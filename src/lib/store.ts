@@ -17,6 +17,7 @@ import type {
 const POSITIONS = new Set<Position>(["C", "1B", "2B", "3B", "SS", "LF", "CF", "RF", "DH", "P"]);
 
 export const canonicalTeams = canonicalRaw as Team[];
+const canonicalIds = new Set(canonicalTeams.map((team) => team.id));
 
 function parseTeam(payload: string): Team {
   return JSON.parse(payload) as Team;
@@ -26,14 +27,25 @@ function parseGame(payload: string): GameRecord {
   return JSON.parse(payload) as GameRecord;
 }
 
+function withCanonicalFlag(team: Team, id: string): Team {
+  if (!canonicalIds.has(id)) return team;
+  return { ...team, id, canonical: true, visibility: "public" };
+}
+
 export async function visibleTeams(userId: string) {
   const rows = await prisma.storedTeam.findMany({
     where: {
       OR: [{ visibility: "public" }, { ownerId: userId }],
     },
   });
-  const mine = rows.map((row) => parseTeam(row.payload));
-  return [...canonicalTeams, ...mine];
+  const stored = rows.map((row) => parseTeam(row.payload));
+  const byId = new Map(stored.map((team) => [team.id, team]));
+  const canon = canonicalTeams.map((team) => {
+    const override = byId.get(team.id);
+    return override ? withCanonicalFlag(override, team.id) : team;
+  });
+  const others = stored.filter((team) => !canonicalIds.has(team.id));
+  return [...canon, ...others];
 }
 
 export async function findTeam(userId: string, id: string) {
@@ -41,7 +53,8 @@ export async function findTeam(userId: string, id: string) {
   return teams.find((team) => team.id === id) ?? null;
 }
 
-export function canEdit(userId: string, team: Team) {
+export function canEdit(userId: string, team: Team, admin = false) {
+  if (admin) return true;
   return !team.canonical && team.ownerId === userId;
 }
 
@@ -151,7 +164,12 @@ function cleanPlayer(raw: unknown): Player | null {
   return player;
 }
 
-export function sanitizeTeam(raw: unknown, userId: string, existing?: Team): { team: Team } | { error: string } {
+export function sanitizeTeam(
+  raw: unknown,
+  userId: string,
+  existing?: Team,
+  options?: { keepCanonical?: boolean },
+): { team: Team } | { error: string } {
   if (!raw || typeof raw !== "object") return { error: "팀 정보가 비어 있습니다." };
   const row = raw as Record<string, unknown>;
   const players = Array.isArray(row.players) ? row.players.map(cleanPlayer).filter((p): p is Player => Boolean(p)) : [];
@@ -180,6 +198,7 @@ export function sanitizeTeam(raw: unknown, userId: string, existing?: Team): { t
     }
     return out;
   };
+  const keepCanonical = Boolean(options?.keepCanonical || existing?.canonical || (existing && canonicalIds.has(existing.id)));
   const team: Team = {
     id: existing?.id ?? newId("team"),
     name: String(row.name ?? "").trim().slice(0, 40),
@@ -188,9 +207,9 @@ export function sanitizeTeam(raw: unknown, userId: string, existing?: Team): { t
     primary: /^#[0-9a-fA-F]{6}$/.test(String(row.primary ?? "")) ? String(row.primary) : "#14352B",
     secondary: /^#[0-9a-fA-F]{6}$/.test(String(row.secondary ?? "")) ? String(row.secondary) : "#E4B15A",
     logo: cleanLogo(row.logo),
-    visibility: row.visibility === "public" ? "public" : "private",
-    ownerId: userId,
-    canonical: false,
+    visibility: keepCanonical ? "public" : row.visibility === "public" ? "public" : "private",
+    ownerId: keepCanonical ? existing?.ownerId ?? userId : userId,
+    canonical: keepCanonical,
     blurb: String(row.blurb ?? "").trim().slice(0, 400),
     lineup: lineup.slice(0, 9),
     rotation: pickIds("rotation", "P").slice(0, 8),
@@ -211,14 +230,32 @@ export function sanitizeTeam(raw: unknown, userId: string, existing?: Team): { t
   return { team };
 }
 
-export async function saveTeam(userId: string, raw: unknown, id?: string) {
-  const existingRow = id
-    ? await prisma.storedTeam.findFirst({ where: { id, ownerId: userId } })
-    : null;
-  if (id && !existingRow) return { error: "고칠 수 있는 팀이 아닙니다." } as const;
-  const existing = existingRow ? parseTeam(existingRow.payload) : undefined;
-  const cleaned = sanitizeTeam(raw, userId, existing);
+export async function saveTeam(userId: string, raw: unknown, id?: string, admin = false) {
+  const existingRow = id ? await prisma.storedTeam.findFirst({ where: { id } }) : null;
+  const baseCanon = id ? canonicalTeams.find((team) => team.id === id) : undefined;
+
+  if (id) {
+    const ownsRow = existingRow?.ownerId === userId;
+    const adminCanon = admin && Boolean(baseCanon || existingRow);
+    const adminAny = admin && Boolean(existingRow);
+    if (!ownsRow && !adminCanon && !adminAny) {
+      return { error: "고칠 수 있는 팀이 아닙니다." } as const;
+    }
+  }
+
+  const existing = existingRow
+    ? withCanonicalFlag(parseTeam(existingRow.payload), existingRow.id)
+    : baseCanon;
+  const keepCanonical = Boolean(baseCanon || existing?.canonical);
+  if (!admin && keepCanonical) return { error: "공개 기록 구단은 관리자만 고칠 수 있습니다." } as const;
+
+  const cleaned = sanitizeTeam(raw, userId, existing, { keepCanonical });
   if ("error" in cleaned) return cleaned;
+
+  // Admin edits of history clubs keep the stable public id.
+  if (keepCanonical && id) cleaned.team.id = id;
+  cleaned.team.ownerId = keepCanonical ? userId : cleaned.team.ownerId;
+
   await prisma.storedTeam.upsert({
     where: { id: cleaned.team.id },
     create: {
@@ -228,15 +265,27 @@ export async function saveTeam(userId: string, raw: unknown, id?: string) {
       payload: JSON.stringify(cleaned.team),
     },
     update: {
+      // Keep the editing admin as steward of the public override.
+      ownerId: admin && keepCanonical ? userId : undefined,
       visibility: cleaned.team.visibility,
       payload: JSON.stringify(cleaned.team),
     },
   });
-  if (cleaned.team.visibility === "public") await awardPublicTeam(userId);
+  if (cleaned.team.visibility === "public" && !cleaned.team.canonical) await awardPublicTeam(userId);
   return { team: cleaned.team };
 }
 
-export async function removeTeam(userId: string, id: string) {
+export async function removeTeam(userId: string, id: string, admin = false) {
+  if (canonicalIds.has(id)) {
+    if (!admin) return false;
+    // Clearing an admin override restores the bundled JSON roster.
+    const result = await prisma.storedTeam.deleteMany({ where: { id } });
+    return result.count > 0;
+  }
+  if (admin) {
+    const result = await prisma.storedTeam.deleteMany({ where: { id } });
+    return result.count > 0;
+  }
   const result = await prisma.storedTeam.deleteMany({ where: { id, ownerId: userId } });
   return result.count > 0;
 }
