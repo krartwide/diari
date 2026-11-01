@@ -207,14 +207,16 @@ export function TeamEditor({ initial, admin = false }: { initial: Team; admin?: 
           </label>
           <div className="flex items-center justify-between gap-3 rounded-xl border border-border px-3 py-2 sm:col-span-2">
             <div>
-              <p className="text-sm">{team.canonical ? "공개 기록 구단" : "공개 팀"}</p>
+              <p className="text-sm">{lockedPublic ? "공개 역사 구단" : "공개 팀"}</p>
               <p className="text-xs text-muted-foreground">
-                {team.canonical
-                  ? "관리자로 저장하면 모든 이용자에게 보이는 공개 기록 엔트리가 바뀝니다."
+                {lockedPublic
+                  ? admin
+                    ? "사이트 운영자가 고친 내용은 모든 사용자에게 공개로 유지됩니다. 비공개로 바꿀 수 없습니다."
+                    : "공개 역사 구단은 공개로 유지됩니다."
                   : "끄면 본인 계정에만 보입니다. 켜면 이 서버를 쓰는 누구나 경기에 넣을 수 있습니다."}
               </p>
             </div>
-            {team.canonical ? (
+            {lockedPublic ? (
               <span className="text-xs text-muted-foreground">항상 공개</span>
             ) : (
               <Switch checked={team.visibility === "public"} onCheckedChange={(checked) => setTeam({ ...team, visibility: checked ? "public" : "private" })} />

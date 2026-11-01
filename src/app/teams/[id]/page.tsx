@@ -88,18 +88,17 @@ export default function TeamPage() {
           <Button asChild className="h-10 px-4">
             <Link href={`/play?away=${team.id}`}>이 팀으로 경기</Link>
           </Button>
-          {editable ? (
+          {editable && (
             <Button asChild variant="secondary">
-              <Link href={`/teams/${team.id}/edit`}>고치기</Link>
-            </Button>
-          ) : (
-            <Button type="button" variant="secondary" onClick={duplicate} disabled={busy}>
-              내 팀으로 복제
+              <Link href={`/teams/${team.id}/edit`}>{team.canonical && admin ? "관리자 편집" : "고치기"}</Link>
             </Button>
           )}
-          {editable && !team.canonical && (
+          <Button type="button" variant="secondary" onClick={duplicate} disabled={busy}>
+            내 팀으로 복제
+          </Button>
+          {editable && (
             <Button type="button" variant="ghost" onClick={remove} disabled={busy}>
-              삭제
+              {team.canonical ? "수정본 되돌리기" : "삭제"}
             </Button>
           )}
         </div>

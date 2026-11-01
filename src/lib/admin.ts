@@ -1,13 +1,10 @@
 /** Comma/space-separated emails that can edit public history clubs. */
-const DEFAULT_ADMINS = ["kekekim75@gmail.com"];
-
 export function adminEmails(): string[] {
   const raw = process.env.ADMIN_EMAILS ?? "";
-  const fromEnv = raw
+  return raw
     .split(/[,;\s]+/)
     .map((item) => item.trim().toLowerCase())
     .filter(Boolean);
-  return [...new Set([...DEFAULT_ADMINS, ...fromEnv])];
 }
 
 export function isAdminEmail(email: string | null | undefined) {
