@@ -45,7 +45,7 @@ export default function HomePage() {
       <section className="mx-auto grid w-full min-w-0 max-w-6xl gap-4 px-4 pb-16">
         <div className="flex items-end justify-between gap-3">
           <h2 className="text-lg font-semibold">공개 역사 구단</h2>
-          <p className="text-xs text-muted-foreground">같은 선수, 같은 타순, 같은 기록</p>
+          <p className="text-xs text-muted-foreground">리그 엔트리 · 가을야구 아님</p>
         </div>
         {error && <p className="text-sm text-destructive">{error}</p>}
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">

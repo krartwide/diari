@@ -48,15 +48,23 @@ export default function TeamsPage() {
       {!teams && !error && <p className="text-sm text-muted-foreground">불러오는 중입니다.</p>}
       <TeamSection title="내 팀" teams={mine} empty="아직 만든 팀이 없습니다." />
       {shared.length > 0 && <TeamSection title="다른 사람의 공개 팀" teams={shared} empty="" />}
-      <TeamSection title="공개 역사 구단" teams={canon} empty="조건에 맞는 구단이 없습니다." />
+      <TeamSection
+        title="공개 역사 구단"
+        note="그 시즌 리그(정규시즌) 엔트리입니다. 가을야구 엔트리가 아닙니다."
+        teams={canon}
+        empty="조건에 맞는 구단이 없습니다."
+      />
     </main>
   );
 }
 
-function TeamSection({ title, teams, empty }: { title: string; teams: Team[]; empty: string }) {
+function TeamSection({ title, note, teams, empty }: { title: string; note?: string; teams: Team[]; empty: string }) {
   return (
     <section className="grid gap-3">
-      <h2 className="text-lg font-semibold">{title}</h2>
+      <div>
+        <h2 className="text-lg font-semibold">{title}</h2>
+        {note && <p className="mt-1 text-xs leading-5 text-muted-foreground">{note}</p>}
+      </div>
       {teams.length === 0 && empty && <p className="text-sm text-muted-foreground">{empty}</p>}
       <div className="grid gap-3 sm:grid-cols-2">
         {teams.map((team) => (
