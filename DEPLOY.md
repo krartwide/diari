@@ -1,104 +1,112 @@
-# 다이아리 상시 배포
+# 다이아리 상시 배포 (직접 따라하기)
 
-Cursor 클라우드 에이전트는 세션이 끝나면 VM과 함께 사이트가 꺼집니다.  
-항상 켜 두려면 Railway 또는 Render에 배포하세요.
+저장소: https://github.com/krartwide/diari  
 
-## GitHub 로그인이 안 될 때 (추천)
+Cursor 에이전트 VM은 세션이 끝나면 꺼집니다. 항상 켜 두려면 아래 중 하나로 배포하세요.
 
-GitHub 없이도 Railway CLI로 바로 올릴 수 있습니다.
+**중요:** GitHub 브라우저 로그인이 안 되면, 호스팅 사이트에서도 **GitHub 버튼은 누르지 마세요.**  
+Google 또는 이메일(인증 코드)로만 가입·로그인하세요.
 
-1. [railway.app](https://railway.app)에서 계정만 만듭니다. (Google/이메일 가입 가능, GitHub 불필요)
-2. 이 프로젝트에서:
+---
 
-```bash
-npx railway login --browserless
-```
+## A. Railway (추천 · GitHub 불필요)
 
-브라우저에서 나오는 링크·코드를 확인한 뒤 승인합니다.
+### 1) 계정
 
-3. 배포:
+1. https://railway.com 접속
+2. **Log in with Google** 또는 **Log in using email** 선택  
+   (GitHub 버튼 금지)
+3. 카드 등록이 나오면 Railway 유료 플랜 정책에 따라 진행
 
-```bash
-npx railway up --new --name diari -y
-npx railway volume add --mount /data
-```
+### 2) 프로젝트 만들기 (대시보드)
 
-4. Variables에 아래를 넣습니다 (`npx railway variables` 또는 대시보드).
+1. **New Project** → **Deploy from GitHub repo**  
+   - 여기서 GitHub 연결이 막히면 → 아래 **CLI 방식**으로
+2. 저장소 `krartwide/diari` 선택
+3. 서비스 Settings → **Volume** 추가 → Mount path: `/data`
+4. **Variables**에 아래 입력 후 재배포
 
 ```bash
 DATABASE_URL=file:/data/diari.db
-AUTH_SECRET=긴-무작위-문자열
-AUTH_SITE_PASSWORD=안전한-비밀번호
+AUTH_SECRET=여기에-긴-무작위-문자열
+AUTH_SITE_PASSWORD=로그인에-쓸-비밀번호-8자이상
 ADMIN_EMAILS=kekekim75@gmail.com
 AUTH_TRUST_HOST=true
-AUTH_URL=https://당신의-railway-도메인.up.railway.app
-NEXTAUTH_URL=https://당신의-railway-도메인.up.railway.app
+AUTH_URL=https://생성된-도메인.up.railway.app
+NEXTAUTH_URL=https://생성된-도메인.up.railway.app
 ```
 
-5. 공개 주소:
+5. Settings → Networking → **Generate Domain**  
+   도메인이 나오면 `AUTH_URL` / `NEXTAUTH_URL`을 그 주소로 맞춘 뒤 다시 Deploy
+
+### 3) GitHub 연결이 안 될 때 — CLI (로컬 PC)
+
+PC에 Node가 있다면 저장소를 clone한 뒤:
 
 ```bash
+git clone https://github.com/krartwide/diari.git
+cd diari
+npx railway login
+# 브라우저에서 Google 또는 이메일로 승인 (GitHub 금지)
+
+npx railway init
+npx railway up
+npx railway volume add --mount /data
 npx railway domain
 ```
 
-## 0. GitHub 저장소가 될 때 (선택)
-
-1. Cursor에서 **Create repo**로 GitHub 저장소를 만듭니다.
-2. 로컬/에이전트에서 `main`이 그 GitHub remote로 푸시되게 합니다.
-
-## 1. Railway + GitHub (선택)
-
-1. [railway.app](https://railway.app)에 로그인한 뒤 **New Project → Deploy from GitHub repo**로 이 저장소를 고릅니다.
-2. 볼륨을 추가하고 마운트 경로를 `/data`로 둡니다.
-3. Variables에 아래를 넣습니다.
+도메인을 확인한 뒤:
 
 ```bash
-DATABASE_URL=file:/data/diari.db
-AUTH_SECRET=긴-무작위-문자열
-AUTH_SITE_PASSWORD=안전한-비밀번호
-ADMIN_EMAILS=kekekim75@gmail.com
-AUTH_TRUST_HOST=true
-AUTH_URL=https://당신의-railway-도메인.up.railway.app
-NEXTAUTH_URL=https://당신의-railway-도메인.up.railway.app
+npx railway variables set \
+  DATABASE_URL="file:/data/diari.db" \
+  AUTH_SECRET="긴-무작위-문자열" \
+  AUTH_SITE_PASSWORD="안전한-비밀번호" \
+  ADMIN_EMAILS="kekekim75@gmail.com" \
+  AUTH_TRUST_HOST="true" \
+  AUTH_URL="https://당신의-도메인.up.railway.app" \
+  NEXTAUTH_URL="https://당신의-도메인.up.railway.app"
 ```
 
-4. 배포가 끝나면 공개 URL로 접속합니다. 로그인: `kekekim75@gmail.com` + `AUTH_SITE_PASSWORD`.
-5. 도메인이 확정되면 `AUTH_URL` / `NEXTAUTH_URL`을 그 주소로 맞춘 뒤 한 번 재배포합니다.
+그다음 `npx railway up`으로 한 번 더 배포합니다.
 
-이 저장소의 `Dockerfile`과 `railway.toml`을 그대로 씁니다.
+로그인: 이메일 `kekekim75@gmail.com` + `AUTH_SITE_PASSWORD`
 
-## 2. Render (GitHub 대시보드 로그인이 될 때만)
+---
 
-Render Blueprint(`select-repo?type=blueprint`)는 **GitHub로 저장소를 연결**해야 합니다.  
-GitHub/Render 쪽 로그인이 안 되면 이 경로는 쓰지 말고 위의 **Railway CLI**를 쓰세요.
+## B. Render (Blueprint는 GitHub 연결 필요 → 피하기)
 
-가능하면:
+`select-repo?type=blueprint` 화면은 GitHub OAuth가 필요합니다.  
+GitHub 로그인이 안 되면 **쓰지 마세요.**
 
-1. [render.com](https://render.com) → **New → Blueprint** → GitHub 저장소 `krartwide/diari` 연결 → `render.yaml` 적용.
-2. `AUTH_SITE_PASSWORD`, `AUTH_URL`, `NEXTAUTH_URL`을 배포 URL에 맞게 직접 입력합니다.
-3. 디스크 `/data`에 SQLite가 저장됩니다.
+대안:
 
-참고: Render 무료 웹 서비스는 한동안 접속이 없으면 잠들 수 있습니다. 항상 켜 두려면 Starter 이상 플랜을 쓰세요.
+1. Render에 **Google/이메일**로만 가입
+2. **New → Web Service** → Git 제공자 연결 대신  
+   - 저장소를 잠시 **Public**으로 바꾸거나  
+   - Docker 이미지 배포를 쓰는 방식
+3. Dockerfile 경로: `./Dockerfile`, 디스크 마운트 `/data`
+4. 환경 변수는 위 Railway와 동일 (`AUTH_URL`만 `onrender.com` 주소로)
 
-## 3. 환경 변수 요약
+무료 플랜은 유휴 시 잠들 수 있습니다. 상시 가동은 Starter 이상.
+
+---
+
+## C. 환경 변수 요약
 
 | 변수 | 필수 | 설명 |
 | --- | --- | --- |
-| `AUTH_SECRET` | 예 | 세션 서명 키 |
-| `AUTH_SITE_PASSWORD` | 예(로컬 로그인) | 8자 이상 사이트 비밀번호 |
+| `AUTH_SECRET` | 예 | 세션 서명 키 (긴 무작위) |
+| `AUTH_SITE_PASSWORD` | 예 | 사이트 비밀번호 (8자+) |
 | `ADMIN_EMAILS` | 권장 | `kekekim75@gmail.com` |
 | `AUTH_URL` / `NEXTAUTH_URL` | 예 | 배포된 https 주소 |
-| `DATABASE_URL` | 예 | 기본 `file:/data/diari.db` |
-| `AUTH_GITHUB_ID` / `SECRET` | 선택 | GitHub OAuth |
-| `AUTH_GOOGLE_ID` / `SECRET` | 선택 | Google OAuth |
+| `DATABASE_URL` | 예 | `file:/data/diari.db` |
+| `AUTH_TRUST_HOST` | 예 | `true` |
 
-OAuth를 쓸 경우 콜백에  
-`https://당신의도메인/api/auth/callback/github`  
-`https://당신의도메인/api/auth/callback/google`  
-을 등록하세요.
+---
 
-## 4. 배포 후 확인
+## D. 배포 후 확인
 
 - 홈이 열리는지
 - `/login`에서 사이트 비밀번호로 로그인되는지
-- 공개 팀을 관리자 계정으로 고칠 수 있는지
+- 관리자 계정으로 공개 팀을 수정할 수 있는지
