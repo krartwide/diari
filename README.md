@@ -37,15 +37,16 @@ NEXTAUTH_URL="http://127.0.0.1:43123"
 
 `ADMIN_EMAILS`(기본에 `kekekim75@gmail.com` 포함)의 계정은 사이트 운영자로, 공개 역사 구단을 직접 고칠 수 있습니다. 수정 내용은 DB에 덮어쓰기로 저장되며 모든 사용자에게 공개로 유지됩니다.
 
-### GitHub / Vercel에 올리기
+### 상시 배포 (Cursor를 꺼도 유지)
 
-이 저장소를 GitHub에 연결한 뒤 Vercel 등으로 배포하면, 이 클라우드 환경이 꺼져도 계정별 기록이 남습니다. SQLite는 로컬·단일 서버에 맞고, Vercel처럼 서버리스로 올릴 때는 `prisma/schema.prisma`의 `provider`를 `postgresql`로 바꾸고 `DATABASE_URL`에 Postgres 연결 문자열을 넣으면 됩니다.
+Cursor 클라우드 에이전트 안의 서버는 세션이 끝나면 함께 종료됩니다. 항상 켜 두려면 GitHub에 올린 뒤 **Railway** 또는 **Render**에 Docker로 배포하세요. 자세한 단계는 [DEPLOY.md](./DEPLOY.md)를 보면 됩니다.
 
 ```bash
-npx prisma migrate deploy
 npm run build
-npm run start
+npm run start:prod
 ```
+
+로컬·단일 서버는 SQLite(`DATABASE_URL=file:...`)를 씁니다. 배포 이미지 기본값은 `file:/data/diari.db`이며, 볼륨을 `/data`에 붙이면 재배포 후에도 기록이 남습니다.
 
 ## 기록 입력
 

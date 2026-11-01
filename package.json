@@ -6,6 +6,8 @@
     "dev": "next dev --hostname 0.0.0.0 --port 43123",
     "build": "prisma generate && next build",
     "start": "next start --hostname 0.0.0.0 --port 43123",
+    "start:prod": "bash scripts/start-production.sh",
+    "postinstall": "prisma generate",
     "lint": "eslint",
     "db:migrate": "prisma migrate deploy",
     "db:push": "prisma db push"

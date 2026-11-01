@@ -1,0 +1,31 @@
+# Render Blueprint — connect the GitHub repo, then Blueprint → New
+# Free web services may sleep when idle; use a paid instance for always-on.
+services:
+  - type: web
+    name: diari
+    runtime: docker
+    plan: starter
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /
+    disk:
+      name: diari-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        value: file:/data/diari.db
+      - key: AUTH_TRUST_HOST
+        value: "true"
+      - key: ADMIN_EMAILS
+        value: kekekim75@gmail.com
+      - key: AUTH_SECRET
+        generateValue: true
+      - key: AUTH_SITE_PASSWORD
+        sync: false
+      - key: AUTH_URL
+        sync: false
+      - key: NEXTAUTH_URL
+        sync: false
