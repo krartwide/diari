@@ -70,7 +70,7 @@ function LoginForm() {
         <p className="text-xs tracking-[0.18em] text-primary">계정</p>
         <h1 className="font-heading text-4xl">로그인</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          경기를 시작하려면 로그인이 필요합니다. Google Cloud가 없어도 GitHub 로그인이나 사이트 비밀번호로 들어올 수 있습니다. 운영자 이메일로 들어오면 공개 팀을 고칠 수 있습니다.
+          경기를 시작하려면 로그인이 필요합니다. 지금 서버는 사이트 비밀번호 로그인이 켜져 있습니다. GitHub·Google 버튼은 OAuth 키가 있을 때만 나타납니다. 운영자 이메일로 들어오면 공개 팀을 고칠 수 있습니다.
         </p>
       </div>
 
@@ -89,6 +89,11 @@ function LoginForm() {
               GitHub로 계속하기
             </Button>
           )}
+          {!google && !github && local && (
+            <p className="rounded-xl border border-border/80 bg-muted/40 px-3 py-2 text-xs leading-5 text-muted-foreground">
+              GitHub/Google 로그인은 아직 설정되지 않았습니다. 아래 사이트 비밀번호로 들어와 주세요. GitHub 브라우저 로그인이 막혀 있어도 이 방식으로 이용할 수 있습니다.
+            </p>
+          )}
         </div>
       )}
 
@@ -97,7 +102,7 @@ function LoginForm() {
           <div>
             <p className="text-sm font-medium">사이트 비밀번호로 로그인</p>
             <p className="mt-1 text-xs leading-5 text-muted-foreground">
-              이메일만으로는 안 됩니다. 서버 `.env`의 `AUTH_SITE_PASSWORD`가 필요합니다. 운영자는 `kekekim75@gmail.com`으로 들어오면 됩니다.
+              `.env`의 `AUTH_SITE_PASSWORD`를 입력합니다. 운영자는 `kekekim75@gmail.com`으로 들어오면 됩니다.
             </p>
           </div>
           <label className="grid gap-1 text-xs">
