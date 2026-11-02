@@ -37,12 +37,14 @@ DATABASE_URL="file:../data/diari.db"
 
 ### 상시 배포 (Cursor를 꺼도 유지)
 
-Cursor 클라우드 에이전트 안의 서버는 세션이 끝나면 함께 종료됩니다. 항상 켜 두려면 GitHub에 올린 뒤 **Railway** 또는 **Render**에 Docker로 배포하세요. 자세한 단계는 [DEPLOY.md](./DEPLOY.md)를 보면 됩니다.
+Cursor 안의 서버는 세션이 끝나면 꺼집니다. 이 저장소는 **Docker + Railway**로 상시 배포하도록 맞춰 두었습니다.
 
 ```bash
-npm run build
-npm run start:prod
+npx railway login   # Google/이메일 (GitHub 로그인 금지)
+bash scripts/deploy-railway.sh
 ```
+
+또는 `main`에 푸시되면 GHCR 이미지 `ghcr.io/krartwide/diari:latest`가 빌드됩니다. 자세한 단계는 [DEPLOY.md](./DEPLOY.md)를 보면 됩니다.
 
 로컬·단일 서버는 SQLite(`DATABASE_URL=file:...`)를 씁니다. 배포 이미지 기본값은 `file:/data/diari.db`이며, 볼륨을 `/data`에 붙이면 재배포 후에도 기록이 남습니다.
 
