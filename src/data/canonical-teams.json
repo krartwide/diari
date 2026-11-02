@@ -9085,8 +9085,8 @@
  },
  {
   "id": "canon-2014-wo",
-  "name": "2014 키움 히어로즈",
-  "shortName": "키움",
+  "name": "2014 넥센 히어로즈",
+  "shortName": "넥센",
   "year": 2014,
   "primary": "#570514",
   "secondary": "#C4A35A",
@@ -9094,7 +9094,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2014년 구단명은 넥센. 한국시리즈 엔트리 기준. 손승락이 마무리, 한현희·조상우가 앞에 섰다.",
+  "blurb": "2014 한국시리즈 진출 엔트리. 손승락이 마무리, 한현희·조상우가 앞에 섰다.",
   "lineup": [
    {
     "playerId": "canon-2014-wo:p78168",
@@ -10074,6 +10074,2040 @@
    }
   ],
   "createdAt": "2014-10-01T00:00:00.000Z"
+ },
+ {
+  "id": "canon-2008-wo",
+  "name": "2008 우리 히어로즈",
+  "shortName": "우리",
+  "year": 2008,
+  "primary": "#0B5EA8",
+  "secondary": "#E30613",
+  "logo": null,
+  "visibility": "public",
+  "ownerId": null,
+  "canonical": true,
+  "blurb": "현대 해체 뒤 첫 시즌. 정규 7위. 장원삼·마일영이 선발, 황두성·다카쓰가 마무리를 나눠 맡았다.",
+  "lineup": [
+   {
+    "playerId": "canon-2008-wo:p73342",
+    "position": "CF"
+   },
+   {
+    "playerId": "canon-2008-wo:p97300",
+    "position": "2B"
+   },
+   {
+    "playerId": "canon-2008-wo:p99606",
+    "position": "3B"
+   },
+   {
+    "playerId": "canon-2008-wo:p73324",
+    "position": "DH"
+   },
+   {
+    "playerId": "canon-2008-wo:p96761",
+    "position": "RF"
+   },
+   {
+    "playerId": "canon-2008-wo:p94310",
+    "position": "1B"
+   },
+   {
+    "playerId": "canon-2008-wo:p91511",
+    "position": "LF"
+   },
+   {
+    "playerId": "canon-2008-wo:p72312",
+    "position": "C"
+   },
+   {
+    "playerId": "canon-2008-wo:p76325",
+    "position": "SS"
+   }
+  ],
+  "rotation": [
+   "canon-2008-wo:p76355",
+   "canon-2008-wo:p70329",
+   "canon-2008-wo:p98330",
+   "canon-2008-wo:p77658"
+  ],
+  "bullpen": [
+   "canon-2008-wo:p76329",
+   "canon-2008-wo:p99314",
+   "canon-2008-wo:p76357",
+   "canon-2008-wo:p70349",
+   "canon-2008-wo:p73343",
+   "canon-2008-wo:p94364",
+   "canon-2008-wo:p78333"
+  ],
+  "closers": [
+   "canon-2008-wo:p97423"
+  ],
+  "bench": [
+   "canon-2008-wo:p76313",
+   "canon-2008-wo:p90419",
+   "canon-2008-wo:p72325",
+   "canon-2008-wo:p73363",
+   "canon-2008-wo:p97350",
+   "canon-2008-wo:p72313",
+   "canon-2008-wo:p76368"
+  ],
+  "players": [
+   {
+    "id": "canon-2008-wo:p73342",
+    "sourceId": "73342",
+    "name": "이택근",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 110,
+     "ab": 372,
+     "h": 118,
+     "doubles": 19,
+     "triples": 1,
+     "hr": 12,
+     "rbi": 58,
+     "r": 59,
+     "sb": 18,
+     "bb": 48,
+     "so": 44,
+     "avg": 0.317,
+     "obp": 0.398,
+     "slg": 0.47,
+     "ops": 0.869,
+     "wrcPlus": 127,
+     "swar": 3.06,
+     "speed": 64,
+     "pa": 428,
+     "hbp": 4,
+     "sf": 3,
+     "sac": 1,
+     "cs": 6
+    }
+   },
+   {
+    "id": "canon-2008-wo:p97300",
+    "sourceId": "97300",
+    "name": "김일경",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "2B"
+    ],
+    "batter": {
+     "g": 70,
+     "ab": 166,
+     "h": 45,
+     "doubles": 9,
+     "triples": 0,
+     "hr": 2,
+     "rbi": 13,
+     "r": 16,
+     "sb": 5,
+     "bb": 14,
+     "so": 34,
+     "avg": 0.271,
+     "obp": 0.331,
+     "slg": 0.361,
+     "ops": 0.693,
+     "wrcPlus": 77,
+     "swar": 0.14,
+     "speed": 54,
+     "pa": 187,
+     "hbp": 1,
+     "sf": 0,
+     "sac": 6,
+     "cs": 3
+    }
+   },
+   {
+    "id": "canon-2008-wo:p99606",
+    "sourceId": "99606",
+    "name": "정성훈",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 109,
+     "ab": 355,
+     "h": 96,
+     "doubles": 21,
+     "triples": 2,
+     "hr": 3,
+     "rbi": 34,
+     "r": 43,
+     "sb": 8,
+     "bb": 36,
+     "so": 41,
+     "avg": 0.27,
+     "obp": 0.345,
+     "slg": 0.366,
+     "ops": 0.711,
+     "wrcPlus": 83,
+     "swar": 0.67,
+     "speed": 51,
+     "pa": 399,
+     "hbp": 5,
+     "sf": 1,
+     "sac": 2,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-2008-wo:p73324",
+    "sourceId": "73324",
+    "name": "브룸바",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 102,
+     "ab": 358,
+     "h": 105,
+     "doubles": 17,
+     "triples": 0,
+     "hr": 13,
+     "rbi": 61,
+     "r": 39,
+     "sb": 1,
+     "bb": 56,
+     "so": 79,
+     "avg": 0.293,
+     "obp": 0.388,
+     "slg": 0.45,
+     "ops": 0.838,
+     "wrcPlus": 118,
+     "swar": 1.07,
+     "speed": 41,
+     "pa": 420,
+     "hbp": 2,
+     "sf": 4,
+     "sac": 0,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2008-wo:p96761",
+    "sourceId": "96761",
+    "name": "송지만",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 118,
+     "ab": 414,
+     "h": 116,
+     "doubles": 18,
+     "triples": 0,
+     "hr": 13,
+     "rbi": 62,
+     "r": 48,
+     "sb": 4,
+     "bb": 28,
+     "so": 82,
+     "avg": 0.28,
+     "obp": 0.33,
+     "slg": 0.418,
+     "ops": 0.748,
+     "wrcPlus": 89,
+     "swar": 0.19,
+     "speed": 45,
+     "pa": 451,
+     "hbp": 5,
+     "sf": 4,
+     "sac": 0,
+     "cs": 5
+    }
+   },
+   {
+    "id": "canon-2008-wo:p94310",
+    "sourceId": "94310",
+    "name": "이숭용",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "1B"
+    ],
+    "batter": {
+     "g": 109,
+     "ab": 333,
+     "h": 90,
+     "doubles": 10,
+     "triples": 0,
+     "hr": 3,
+     "rbi": 27,
+     "r": 37,
+     "sb": 1,
+     "bb": 39,
+     "so": 38,
+     "avg": 0.27,
+     "obp": 0.349,
+     "slg": 0.327,
+     "ops": 0.677,
+     "wrcPlus": 76,
+     "swar": -0.67,
+     "speed": 41,
+     "pa": 375,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 0,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2008-wo:p91511",
+    "sourceId": "91511",
+    "name": "전준호",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "LF"
+    ],
+    "batter": {
+     "g": 114,
+     "ab": 352,
+     "h": 109,
+     "doubles": 16,
+     "triples": 5,
+     "hr": 1,
+     "rbi": 24,
+     "r": 44,
+     "sb": 16,
+     "bb": 35,
+     "so": 41,
+     "avg": 0.31,
+     "obp": 0.372,
+     "slg": 0.392,
+     "ops": 0.764,
+     "wrcPlus": 99,
+     "swar": 0.57,
+     "speed": 63,
+     "pa": 391,
+     "hbp": 1,
+     "sf": 2,
+     "sac": 1,
+     "cs": 11
+    }
+   },
+   {
+    "id": "canon-2008-wo:p72312",
+    "sourceId": "72312",
+    "name": "강귀태",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 104,
+     "ab": 261,
+     "h": 65,
+     "doubles": 6,
+     "triples": 2,
+     "hr": 4,
+     "rbi": 22,
+     "r": 19,
+     "sb": 1,
+     "bb": 13,
+     "so": 28,
+     "avg": 0.249,
+     "obp": 0.282,
+     "slg": 0.333,
+     "ops": 0.615,
+     "wrcPlus": 48,
+     "swar": -0.25,
+     "speed": 42,
+     "pa": 286,
+     "hbp": 1,
+     "sf": 5,
+     "sac": 6,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2008-wo:p76325",
+    "sourceId": "76325",
+    "name": "강정호",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "SS"
+    ],
+    "batter": {
+     "g": 116,
+     "ab": 362,
+     "h": 98,
+     "doubles": 18,
+     "triples": 1,
+     "hr": 8,
+     "rbi": 47,
+     "r": 36,
+     "sb": 3,
+     "bb": 31,
+     "so": 65,
+     "avg": 0.271,
+     "obp": 0.334,
+     "slg": 0.392,
+     "ops": 0.726,
+     "wrcPlus": 84,
+     "swar": 1.12,
+     "speed": 44,
+     "pa": 408,
+     "hbp": 5,
+     "sf": 3,
+     "sac": 7,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2008-wo:p76313",
+    "sourceId": "76313",
+    "name": "황재균",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 117,
+     "ab": 306,
+     "h": 73,
+     "doubles": 10,
+     "triples": 1,
+     "hr": 1,
+     "rbi": 18,
+     "r": 27,
+     "sb": 10,
+     "bb": 16,
+     "so": 56,
+     "avg": 0.239,
+     "obp": 0.279,
+     "slg": 0.288,
+     "ops": 0.567,
+     "wrcPlus": 37,
+     "swar": -2.47,
+     "speed": 57,
+     "pa": 333,
+     "hbp": 2,
+     "sf": 2,
+     "sac": 7,
+     "cs": 7
+    }
+   },
+   {
+    "id": "canon-2008-wo:p90419",
+    "sourceId": "90419",
+    "name": "김동수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 94,
+     "ab": 159,
+     "h": 38,
+     "doubles": 7,
+     "triples": 2,
+     "hr": 1,
+     "rbi": 23,
+     "r": 15,
+     "sb": 0,
+     "bb": 15,
+     "so": 15,
+     "avg": 0.239,
+     "obp": 0.305,
+     "slg": 0.327,
+     "ops": 0.632,
+     "wrcPlus": 58,
+     "swar": -0.84,
+     "speed": 40,
+     "pa": 180,
+     "hbp": 1,
+     "sf": 2,
+     "sac": 3,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2008-wo:p72325",
+    "sourceId": "72325",
+    "name": "강병식",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 71,
+     "ab": 119,
+     "h": 32,
+     "doubles": 8,
+     "triples": 0,
+     "hr": 4,
+     "rbi": 17,
+     "r": 12,
+     "sb": 0,
+     "bb": 14,
+     "so": 18,
+     "avg": 0.269,
+     "obp": 0.355,
+     "slg": 0.437,
+     "ops": 0.792,
+     "wrcPlus": 103,
+     "swar": 0.02,
+     "speed": 40,
+     "pa": 141,
+     "hbp": 3,
+     "sf": 2,
+     "sac": 3,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2008-wo:p73363",
+    "sourceId": "73363",
+    "name": "권도영",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 84,
+     "ab": 136,
+     "h": 30,
+     "doubles": 6,
+     "triples": 1,
+     "hr": 1,
+     "rbi": 9,
+     "r": 18,
+     "sb": 0,
+     "bb": 10,
+     "so": 31,
+     "avg": 0.221,
+     "obp": 0.277,
+     "slg": 0.301,
+     "ops": 0.578,
+     "wrcPlus": 41,
+     "swar": -1.05,
+     "speed": 40,
+     "pa": 150,
+     "hbp": 1,
+     "sf": 1,
+     "sac": 2,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2008-wo:p97350",
+    "sourceId": "97350",
+    "name": "정수성",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 76,
+     "ab": 127,
+     "h": 32,
+     "doubles": 6,
+     "triples": 2,
+     "hr": 1,
+     "rbi": 14,
+     "r": 27,
+     "sb": 16,
+     "bb": 7,
+     "so": 32,
+     "avg": 0.252,
+     "obp": 0.287,
+     "slg": 0.354,
+     "ops": 0.641,
+     "wrcPlus": 55,
+     "swar": -0.65,
+     "speed": 99,
+     "pa": 139,
+     "hbp": 0,
+     "sf": 2,
+     "sac": 3,
+     "cs": 6
+    }
+   },
+   {
+    "id": "canon-2008-wo:p72313",
+    "sourceId": "72313",
+    "name": "조재호",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 49,
+     "ab": 94,
+     "h": 21,
+     "doubles": 5,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 8,
+     "r": 7,
+     "sb": 1,
+     "bb": 6,
+     "so": 9,
+     "avg": 0.223,
+     "obp": 0.275,
+     "slg": 0.277,
+     "ops": 0.551,
+     "wrcPlus": 34,
+     "swar": -0.84,
+     "speed": 45,
+     "pa": 103,
+     "hbp": 1,
+     "sf": 1,
+     "sac": 1,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2008-wo:p76368",
+    "sourceId": "76368",
+    "name": "유재신",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 54,
+     "ab": 93,
+     "h": 24,
+     "doubles": 2,
+     "triples": 1,
+     "hr": 0,
+     "rbi": 7,
+     "r": 19,
+     "sb": 7,
+     "bb": 1,
+     "so": 19,
+     "avg": 0.258,
+     "obp": 0.274,
+     "slg": 0.301,
+     "ops": 0.575,
+     "wrcPlus": 38,
+     "swar": -0.32,
+     "speed": 79,
+     "pa": 97,
+     "hbp": 1,
+     "sf": 0,
+     "sac": 2,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2008-wo:p76355",
+    "sourceId": "76355",
+    "name": "장원삼",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 27,
+     "w": 12,
+     "l": 8,
+     "sv": 0,
+     "hld": 0,
+     "ip": 167.33,
+     "era": 2.85,
+     "h": 145,
+     "hr": 9,
+     "bb": 57,
+     "hbp": 2,
+     "so": 126,
+     "whip": 1.21,
+     "swar": 4.37,
+     "speed": 142,
+     "er": 53,
+     "r": 54
+    }
+   },
+   {
+    "id": "canon-2008-wo:p70329",
+    "sourceId": "70329",
+    "name": "마일영",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 28,
+     "w": 11,
+     "l": 11,
+     "sv": 0,
+     "hld": 0,
+     "ip": 173.0,
+     "era": 3.49,
+     "h": 155,
+     "hr": 11,
+     "bb": 57,
+     "hbp": 12,
+     "so": 83,
+     "whip": 1.23,
+     "swar": 3.29,
+     "speed": 138,
+     "er": 67,
+     "r": 77
+    }
+   },
+   {
+    "id": "canon-2008-wo:p98330",
+    "sourceId": "98330",
+    "name": "김수경",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 26,
+     "w": 3,
+     "l": 6,
+     "sv": 0,
+     "hld": 0,
+     "ip": 106.67,
+     "era": 3.88,
+     "h": 110,
+     "hr": 7,
+     "bb": 42,
+     "hbp": 5,
+     "so": 63,
+     "whip": 1.43,
+     "swar": 1.56,
+     "speed": 145,
+     "er": 46,
+     "r": 54
+    }
+   },
+   {
+    "id": "canon-2008-wo:p77658",
+    "sourceId": "77658",
+    "name": "스코비",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 11,
+     "w": 2,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 55.67,
+     "era": 6.95,
+     "h": 81,
+     "hr": 6,
+     "bb": 24,
+     "hbp": 3,
+     "so": 25,
+     "whip": 1.89,
+     "swar": -1.08,
+     "speed": 147,
+     "er": 43,
+     "r": 47
+    }
+   },
+   {
+    "id": "canon-2008-wo:p76329",
+    "sourceId": "76329",
+    "name": "이현승",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 40,
+     "w": 6,
+     "l": 8,
+     "sv": 0,
+     "hld": 1,
+     "ip": 120.0,
+     "era": 4.58,
+     "h": 132,
+     "hr": 10,
+     "bb": 53,
+     "hbp": 5,
+     "so": 78,
+     "whip": 1.54,
+     "swar": 0.83,
+     "speed": 146,
+     "er": 61,
+     "r": 64
+    }
+   },
+   {
+    "id": "canon-2008-wo:p99314",
+    "sourceId": "99314",
+    "name": "송신영",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 53,
+     "w": 2,
+     "l": 8,
+     "sv": 4,
+     "hld": 9,
+     "ip": 72.33,
+     "era": 5.23,
+     "h": 82,
+     "hr": 6,
+     "bb": 34,
+     "hbp": 8,
+     "so": 63,
+     "whip": 1.6,
+     "swar": -0.03,
+     "speed": 144,
+     "er": 42,
+     "r": 47
+    }
+   },
+   {
+    "id": "canon-2008-wo:p76357",
+    "sourceId": "76357",
+    "name": "조용훈",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 52,
+     "w": 1,
+     "l": 6,
+     "sv": 1,
+     "hld": 6,
+     "ip": 56.0,
+     "era": 3.54,
+     "h": 55,
+     "hr": 2,
+     "bb": 20,
+     "hbp": 9,
+     "so": 34,
+     "whip": 1.34,
+     "swar": 1.03,
+     "speed": 143,
+     "er": 22,
+     "r": 29
+    }
+   },
+   {
+    "id": "canon-2008-wo:p70349",
+    "sourceId": "70349",
+    "name": "박승민",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 34,
+     "w": 0,
+     "l": 3,
+     "sv": 2,
+     "hld": 7,
+     "ip": 27.33,
+     "era": 3.62,
+     "h": 20,
+     "hr": 2,
+     "bb": 10,
+     "hbp": 3,
+     "so": 17,
+     "whip": 1.1,
+     "swar": 0.6,
+     "speed": 143,
+     "er": 11,
+     "r": 11
+    }
+   },
+   {
+    "id": "canon-2008-wo:p73343",
+    "sourceId": "73343",
+    "name": "노환수",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 51,
+     "w": 1,
+     "l": 3,
+     "sv": 1,
+     "hld": 8,
+     "ip": 26.67,
+     "era": 4.39,
+     "h": 30,
+     "hr": 2,
+     "bb": 9,
+     "hbp": 1,
+     "so": 17,
+     "whip": 1.46,
+     "swar": 0.3,
+     "speed": 143,
+     "er": 13,
+     "r": 16
+    }
+   },
+   {
+    "id": "canon-2008-wo:p94364",
+    "sourceId": "94364",
+    "name": "전준호",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 36,
+     "w": 2,
+     "l": 3,
+     "sv": 3,
+     "hld": 2,
+     "ip": 56.33,
+     "era": 6.39,
+     "h": 73,
+     "hr": 10,
+     "bb": 27,
+     "hbp": 2,
+     "so": 36,
+     "whip": 1.78,
+     "swar": -0.74,
+     "speed": 143,
+     "er": 40,
+     "r": 40
+    }
+   },
+   {
+    "id": "canon-2008-wo:p78333",
+    "sourceId": "78333",
+    "name": "다카쓰",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 18,
+     "w": 1,
+     "l": 0,
+     "sv": 8,
+     "hld": 0,
+     "ip": 21.0,
+     "era": 0.86,
+     "h": 16,
+     "hr": 1,
+     "bb": 5,
+     "hbp": 4,
+     "so": 18,
+     "whip": 1.0,
+     "swar": 1.27,
+     "speed": 148,
+     "er": 2,
+     "r": 2
+    }
+   },
+   {
+    "id": "canon-2008-wo:p97423",
+    "sourceId": "97423",
+    "name": "황두성",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 34,
+     "w": 6,
+     "l": 8,
+     "sv": 8,
+     "hld": 1,
+     "ip": 104.33,
+     "era": 4.05,
+     "h": 88,
+     "hr": 10,
+     "bb": 45,
+     "hbp": 2,
+     "so": 77,
+     "whip": 1.27,
+     "swar": 1.33,
+     "speed": 146,
+     "er": 47,
+     "r": 50
+    }
+   }
+  ],
+  "createdAt": "2008-10-01T00:00:00.000Z"
+ },
+ {
+  "id": "canon-2009-wo",
+  "name": "2009 서울 히어로즈",
+  "shortName": "서울",
+  "year": 2009,
+  "primary": "#570514",
+  "secondary": "#F2F2F2",
+  "logo": null,
+  "visibility": "public",
+  "ownerId": null,
+  "canonical": true,
+  "blurb": "스폰서 없이 서울 히어로즈로 치른 시즌. 정규 6위. 이택근 골든글러브, 황두성이 마무리.",
+  "lineup": [
+   {
+    "playerId": "canon-2009-wo:p73342",
+    "position": "CF"
+   },
+   {
+    "playerId": "canon-2009-wo:p97300",
+    "position": "2B"
+   },
+   {
+    "playerId": "canon-2009-wo:p76313",
+    "position": "3B"
+   },
+   {
+    "playerId": "canon-2009-wo:p73324",
+    "position": "DH"
+   },
+   {
+    "playerId": "canon-2009-wo:p78725",
+    "position": "LF"
+   },
+   {
+    "playerId": "canon-2009-wo:p96761",
+    "position": "RF"
+   },
+   {
+    "playerId": "canon-2009-wo:p94310",
+    "position": "1B"
+   },
+   {
+    "playerId": "canon-2009-wo:p72312",
+    "position": "C"
+   },
+   {
+    "playerId": "canon-2009-wo:p76325",
+    "position": "SS"
+   }
+  ],
+  "rotation": [
+   "canon-2009-wo:p76329",
+   "canon-2009-wo:p98330",
+   "canon-2009-wo:p70329",
+   "canon-2009-wo:p76355",
+   "canon-2009-wo:p79358"
+  ],
+  "bullpen": [
+   "canon-2009-wo:p75342",
+   "canon-2009-wo:p99314",
+   "canon-2009-wo:p70323",
+   "canon-2009-wo:p74359",
+   "canon-2009-wo:p72321",
+   "canon-2009-wo:p78353"
+  ],
+  "closers": [
+   "canon-2009-wo:p97423"
+  ],
+  "bench": [
+   "canon-2009-wo:p72303",
+   "canon-2009-wo:p97350",
+   "canon-2009-wo:p72325",
+   "canon-2009-wo:p75334",
+   "canon-2009-wo:p90419",
+   "canon-2009-wo:p75344",
+   "canon-2009-wo:p91511"
+  ],
+  "players": [
+   {
+    "id": "canon-2009-wo:p73342",
+    "sourceId": "73342",
+    "name": "이택근",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 123,
+     "ab": 456,
+     "h": 142,
+     "doubles": 26,
+     "triples": 0,
+     "hr": 15,
+     "rbi": 66,
+     "r": 84,
+     "sb": 43,
+     "bb": 64,
+     "so": 59,
+     "avg": 0.311,
+     "obp": 0.408,
+     "slg": 0.467,
+     "ops": 0.875,
+     "wrcPlus": 130,
+     "swar": 4.41,
+     "speed": 88,
+     "pa": 538,
+     "hbp": 13,
+     "sf": 4,
+     "sac": 1,
+     "cs": 8
+    }
+   },
+   {
+    "id": "canon-2009-wo:p97300",
+    "sourceId": "97300",
+    "name": "김일경",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "2B"
+    ],
+    "batter": {
+     "g": 107,
+     "ab": 265,
+     "h": 68,
+     "doubles": 14,
+     "triples": 1,
+     "hr": 2,
+     "rbi": 20,
+     "r": 44,
+     "sb": 30,
+     "bb": 27,
+     "so": 60,
+     "avg": 0.257,
+     "obp": 0.331,
+     "slg": 0.34,
+     "ops": 0.671,
+     "wrcPlus": 72,
+     "swar": 0.15,
+     "speed": 94,
+     "pa": 309,
+     "hbp": 3,
+     "sf": 1,
+     "sac": 13,
+     "cs": 12
+    }
+   },
+   {
+    "id": "canon-2009-wo:p76313",
+    "sourceId": "76313",
+    "name": "황재균",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 133,
+     "ab": 536,
+     "h": 152,
+     "doubles": 27,
+     "triples": 5,
+     "hr": 18,
+     "rbi": 63,
+     "r": 86,
+     "sb": 30,
+     "bb": 55,
+     "so": 100,
+     "avg": 0.284,
+     "obp": 0.349,
+     "slg": 0.453,
+     "ops": 0.802,
+     "wrcPlus": 103,
+     "swar": 2.43,
+     "speed": 69,
+     "pa": 608,
+     "hbp": 3,
+     "sf": 8,
+     "sac": 6,
+     "cs": 15
+    }
+   },
+   {
+    "id": "canon-2009-wo:p73324",
+    "sourceId": "73324",
+    "name": "브룸바",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 123,
+     "ab": 436,
+     "h": 107,
+     "doubles": 21,
+     "triples": 1,
+     "hr": 27,
+     "rbi": 86,
+     "r": 69,
+     "sb": 2,
+     "bb": 86,
+     "so": 111,
+     "avg": 0.245,
+     "obp": 0.371,
+     "slg": 0.484,
+     "ops": 0.855,
+     "wrcPlus": 120,
+     "swar": 1.41,
+     "speed": 42,
+     "pa": 526,
+     "hbp": 2,
+     "sf": 2,
+     "sac": 0,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2009-wo:p78725",
+    "sourceId": "78725",
+    "name": "클락",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "LF"
+    ],
+    "batter": {
+     "g": 125,
+     "ab": 486,
+     "h": 141,
+     "doubles": 24,
+     "triples": 4,
+     "hr": 24,
+     "rbi": 90,
+     "r": 85,
+     "sb": 23,
+     "bb": 65,
+     "so": 85,
+     "avg": 0.29,
+     "obp": 0.376,
+     "slg": 0.504,
+     "ops": 0.88,
+     "wrcPlus": 126,
+     "swar": 3.01,
+     "speed": 65,
+     "pa": 559,
+     "hbp": 3,
+     "sf": 2,
+     "sac": 0,
+     "cs": 8
+    }
+   },
+   {
+    "id": "canon-2009-wo:p96761",
+    "sourceId": "96761",
+    "name": "송지만",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 115,
+     "ab": 374,
+     "h": 108,
+     "doubles": 15,
+     "triples": 3,
+     "hr": 22,
+     "rbi": 67,
+     "r": 69,
+     "sb": 10,
+     "bb": 52,
+     "so": 122,
+     "avg": 0.289,
+     "obp": 0.384,
+     "slg": 0.521,
+     "ops": 0.905,
+     "wrcPlus": 132,
+     "swar": 2.68,
+     "speed": 53,
+     "pa": 439,
+     "hbp": 8,
+     "sf": 4,
+     "sac": 1,
+     "cs": 3
+    }
+   },
+   {
+    "id": "canon-2009-wo:p94310",
+    "sourceId": "94310",
+    "name": "이숭용",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "1B"
+    ],
+    "batter": {
+     "g": 114,
+     "ab": 362,
+     "h": 107,
+     "doubles": 20,
+     "triples": 3,
+     "hr": 4,
+     "rbi": 52,
+     "r": 47,
+     "sb": 8,
+     "bb": 48,
+     "so": 44,
+     "avg": 0.296,
+     "obp": 0.376,
+     "slg": 0.401,
+     "ops": 0.776,
+     "wrcPlus": 102,
+     "swar": 0.63,
+     "speed": 51,
+     "pa": 422,
+     "hbp": 2,
+     "sf": 6,
+     "sac": 4,
+     "cs": 3
+    }
+   },
+   {
+    "id": "canon-2009-wo:p72312",
+    "sourceId": "72312",
+    "name": "강귀태",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 114,
+     "ab": 281,
+     "h": 70,
+     "doubles": 12,
+     "triples": 0,
+     "hr": 3,
+     "rbi": 37,
+     "r": 28,
+     "sb": 3,
+     "bb": 28,
+     "so": 49,
+     "avg": 0.249,
+     "obp": 0.319,
+     "slg": 0.324,
+     "ops": 0.642,
+     "wrcPlus": 62,
+     "swar": 0.26,
+     "speed": 45,
+     "pa": 326,
+     "hbp": 3,
+     "sf": 5,
+     "sac": 9,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2009-wo:p76325",
+    "sourceId": "76325",
+    "name": "강정호",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "SS"
+    ],
+    "batter": {
+     "g": 133,
+     "ab": 476,
+     "h": 136,
+     "doubles": 33,
+     "triples": 2,
+     "hr": 23,
+     "rbi": 81,
+     "r": 73,
+     "sb": 3,
+     "bb": 45,
+     "so": 81,
+     "avg": 0.286,
+     "obp": 0.349,
+     "slg": 0.508,
+     "ops": 0.857,
+     "wrcPlus": 117,
+     "swar": 3.52,
+     "speed": 43,
+     "pa": 538,
+     "hbp": 4,
+     "sf": 5,
+     "sac": 8,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2009-wo:p72303",
+    "sourceId": "72303",
+    "name": "김민우",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 78,
+     "ab": 125,
+     "h": 33,
+     "doubles": 5,
+     "triples": 0,
+     "hr": 3,
+     "rbi": 10,
+     "r": 15,
+     "sb": 9,
+     "bb": 17,
+     "so": 36,
+     "avg": 0.264,
+     "obp": 0.359,
+     "slg": 0.376,
+     "ops": 0.735,
+     "wrcPlus": 91,
+     "swar": 0.06,
+     "speed": 73,
+     "pa": 151,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 6,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2009-wo:p97350",
+    "sourceId": "97350",
+    "name": "정수성",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 87,
+     "ab": 139,
+     "h": 32,
+     "doubles": 5,
+     "triples": 0,
+     "hr": 3,
+     "rbi": 9,
+     "r": 29,
+     "sb": 21,
+     "bb": 3,
+     "so": 32,
+     "avg": 0.23,
+     "obp": 0.264,
+     "slg": 0.331,
+     "ops": 0.594,
+     "wrcPlus": 42,
+     "swar": -0.88,
+     "speed": 99,
+     "pa": 153,
+     "hbp": 4,
+     "sf": 2,
+     "sac": 5,
+     "cs": 6
+    }
+   },
+   {
+    "id": "canon-2009-wo:p72325",
+    "sourceId": "72325",
+    "name": "강병식",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 54,
+     "ab": 76,
+     "h": 19,
+     "doubles": 4,
+     "triples": 0,
+     "hr": 2,
+     "rbi": 14,
+     "r": 9,
+     "sb": 2,
+     "bb": 13,
+     "so": 21,
+     "avg": 0.25,
+     "obp": 0.376,
+     "slg": 0.382,
+     "ops": 0.758,
+     "wrcPlus": 100,
+     "swar": -0.01,
+     "speed": 51,
+     "pa": 94,
+     "hbp": 3,
+     "sf": 1,
+     "sac": 1,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2009-wo:p75334",
+    "sourceId": "75334",
+    "name": "오재일",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 43,
+     "ab": 66,
+     "h": 13,
+     "doubles": 5,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 4,
+     "r": 4,
+     "sb": 0,
+     "bb": 6,
+     "so": 15,
+     "avg": 0.197,
+     "obp": 0.26,
+     "slg": 0.273,
+     "ops": 0.533,
+     "wrcPlus": 28,
+     "swar": -0.61,
+     "speed": 40,
+     "pa": 74,
+     "hbp": 0,
+     "sf": 1,
+     "sac": 1,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2009-wo:p90419",
+    "sourceId": "90419",
+    "name": "김동수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 29,
+     "ab": 57,
+     "h": 21,
+     "doubles": 6,
+     "triples": 0,
+     "hr": 2,
+     "rbi": 13,
+     "r": 14,
+     "sb": 0,
+     "bb": 9,
+     "so": 6,
+     "avg": 0.368,
+     "obp": 0.456,
+     "slg": 0.579,
+     "ops": 1.035,
+     "wrcPlus": 172,
+     "swar": 0.63,
+     "speed": 40,
+     "pa": 70,
+     "hbp": 1,
+     "sf": 1,
+     "sac": 2,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2009-wo:p75344",
+    "sourceId": "75344",
+    "name": "허준",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "SS"
+    ],
+    "batter": {
+     "g": 40,
+     "ab": 69,
+     "h": 17,
+     "doubles": 3,
+     "triples": 1,
+     "hr": 0,
+     "rbi": 10,
+     "r": 5,
+     "sb": 0,
+     "bb": 4,
+     "so": 24,
+     "avg": 0.246,
+     "obp": 0.299,
+     "slg": 0.319,
+     "ops": 0.618,
+     "wrcPlus": 52,
+     "swar": -0.09,
+     "speed": 40,
+     "pa": 79,
+     "hbp": 2,
+     "sf": 2,
+     "sac": 2,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2009-wo:p91511",
+    "sourceId": "91511",
+    "name": "전준호",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 21,
+     "ab": 33,
+     "h": 8,
+     "doubles": 1,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 4,
+     "r": 2,
+     "sb": 2,
+     "bb": 4,
+     "so": 5,
+     "avg": 0.242,
+     "obp": 0.324,
+     "slg": 0.273,
+     "ops": 0.597,
+     "wrcPlus": 54,
+     "swar": -0.32,
+     "speed": 68,
+     "pa": 37,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-2009-wo:p76329",
+    "sourceId": "76329",
+    "name": "이현승",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 30,
+     "w": 13,
+     "l": 10,
+     "sv": 0,
+     "hld": 0,
+     "ip": 170.0,
+     "era": 4.18,
+     "h": 161,
+     "hr": 25,
+     "bb": 66,
+     "hbp": 5,
+     "so": 120,
+     "whip": 1.34,
+     "swar": 1.93,
+     "speed": 146,
+     "er": 79,
+     "r": 84
+    }
+   },
+   {
+    "id": "canon-2009-wo:p98330",
+    "sourceId": "98330",
+    "name": "김수경",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 25,
+     "w": 6,
+     "l": 11,
+     "sv": 0,
+     "hld": 0,
+     "ip": 117.33,
+     "era": 6.67,
+     "h": 142,
+     "hr": 29,
+     "bb": 53,
+     "hbp": 5,
+     "so": 66,
+     "whip": 1.66,
+     "swar": -1.92,
+     "speed": 145,
+     "er": 87,
+     "r": 93
+    }
+   },
+   {
+    "id": "canon-2009-wo:p70329",
+    "sourceId": "70329",
+    "name": "마일영",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 27,
+     "w": 5,
+     "l": 8,
+     "sv": 0,
+     "hld": 1,
+     "ip": 97.33,
+     "era": 6.93,
+     "h": 127,
+     "hr": 17,
+     "bb": 48,
+     "hbp": 3,
+     "so": 51,
+     "whip": 1.8,
+     "swar": -1.87,
+     "speed": 138,
+     "er": 75,
+     "r": 76
+    }
+   },
+   {
+    "id": "canon-2009-wo:p76355",
+    "sourceId": "76355",
+    "name": "장원삼",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 19,
+     "w": 4,
+     "l": 8,
+     "sv": 0,
+     "hld": 0,
+     "ip": 91.0,
+     "era": 5.54,
+     "h": 108,
+     "hr": 17,
+     "bb": 31,
+     "hbp": 6,
+     "so": 60,
+     "whip": 1.53,
+     "swar": -0.34,
+     "speed": 142,
+     "er": 56,
+     "r": 57
+    }
+   },
+   {
+    "id": "canon-2009-wo:p79358",
+    "sourceId": "79358",
+    "name": "강윤구",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 45,
+     "w": 3,
+     "l": 2,
+     "sv": 1,
+     "hld": 2,
+     "ip": 80.0,
+     "era": 5.51,
+     "h": 64,
+     "hr": 12,
+     "bb": 70,
+     "hbp": 0,
+     "so": 79,
+     "whip": 1.68,
+     "swar": -0.28,
+     "speed": 148,
+     "er": 49,
+     "r": 52
+    }
+   },
+   {
+    "id": "canon-2009-wo:p75342",
+    "sourceId": "75342",
+    "name": "이보근",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 52,
+     "w": 7,
+     "l": 7,
+     "sv": 7,
+     "hld": 4,
+     "ip": 88.67,
+     "era": 4.26,
+     "h": 74,
+     "hr": 9,
+     "bb": 44,
+     "hbp": 6,
+     "so": 58,
+     "whip": 1.33,
+     "swar": 1.16,
+     "speed": 143,
+     "er": 42,
+     "r": 50
+    }
+   },
+   {
+    "id": "canon-2009-wo:p99314",
+    "sourceId": "99314",
+    "name": "송신영",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 58,
+     "w": 3,
+     "l": 3,
+     "sv": 4,
+     "hld": 6,
+     "ip": 75.67,
+     "era": 5.23,
+     "h": 84,
+     "hr": 13,
+     "bb": 30,
+     "hbp": 11,
+     "so": 68,
+     "whip": 1.51,
+     "swar": -0.03,
+     "speed": 144,
+     "er": 44,
+     "r": 50
+    }
+   },
+   {
+    "id": "canon-2009-wo:p70323",
+    "sourceId": "70323",
+    "name": "신철인",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 46,
+     "w": 2,
+     "l": 4,
+     "sv": 6,
+     "hld": 6,
+     "ip": 47.67,
+     "era": 6.42,
+     "h": 46,
+     "hr": 5,
+     "bb": 13,
+     "hbp": 3,
+     "so": 50,
+     "whip": 1.24,
+     "swar": -0.81,
+     "speed": 145,
+     "er": 34,
+     "r": 36
+    }
+   },
+   {
+    "id": "canon-2009-wo:p74359",
+    "sourceId": "74359",
+    "name": "오주원",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 52,
+     "w": 1,
+     "l": 2,
+     "sv": 0,
+     "hld": 5,
+     "ip": 39.67,
+     "era": 4.08,
+     "h": 39,
+     "hr": 3,
+     "bb": 17,
+     "hbp": 1,
+     "so": 25,
+     "whip": 1.41,
+     "swar": 0.49,
+     "speed": 143,
+     "er": 18,
+     "r": 18
+    }
+   },
+   {
+    "id": "canon-2009-wo:p72321",
+    "sourceId": "72321",
+    "name": "배힘찬",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 21,
+     "w": 1,
+     "l": 1,
+     "sv": 0,
+     "hld": 2,
+     "ip": 31.0,
+     "era": 4.35,
+     "h": 24,
+     "hr": 5,
+     "bb": 9,
+     "hbp": 2,
+     "so": 12,
+     "whip": 1.06,
+     "swar": 0.29,
+     "speed": 141,
+     "er": 15,
+     "r": 17
+    }
+   },
+   {
+    "id": "canon-2009-wo:p78353",
+    "sourceId": "78353",
+    "name": "김성현",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 27,
+     "w": 2,
+     "l": 4,
+     "sv": 0,
+     "hld": 0,
+     "ip": 65.67,
+     "era": 6.99,
+     "h": 72,
+     "hr": 10,
+     "bb": 43,
+     "hbp": 2,
+     "so": 48,
+     "whip": 1.75,
+     "swar": -1.31,
+     "speed": 143,
+     "er": 51,
+     "r": 53
+    }
+   },
+   {
+    "id": "canon-2009-wo:p97423",
+    "sourceId": "97423",
+    "name": "황두성",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 40,
+     "w": 8,
+     "l": 3,
+     "sv": 9,
+     "hld": 0,
+     "ip": 92.33,
+     "era": 3.51,
+     "h": 76,
+     "hr": 10,
+     "bb": 35,
+     "hbp": 2,
+     "so": 79,
+     "whip": 1.2,
+     "swar": 2.17,
+     "speed": 146,
+     "er": 36,
+     "r": 37
+    }
+   }
+  ],
+  "createdAt": "2009-10-01T00:00:00.000Z"
  },
  {
   "id": "canon-1993-ht",
@@ -17615,7 +19649,7 @@
      "so": 172,
      "whip": 1.32,
      "swar": 3.16,
-     "speed": 144,
+     "speed": 145,
      "er": 81,
      "r": 87
     }
@@ -17735,7 +19769,7 @@
      "so": 62,
      "whip": 1.51,
      "swar": 1.89,
-     "speed": 143,
+     "speed": 138,
      "er": 35,
      "r": 39
     }
