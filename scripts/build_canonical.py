@@ -341,26 +341,117 @@ def build_pitcher(p, year, hands):
     }
 
 
-LEE_2008 = {
-    "id": "mlee2008",
-    "name": "이승엽",
-    "g": 45,
-    "pa": 170,
-    "ab": 153,
-    "r": 21,
-    "h": 38,
-    "d": 4,
-    "t": 0,
-    "hr": 8,
-    "tb": 66,
-    "rbi": 27,
-    "sac": 0,
-    "sf": 0,
-    "sb": 1,
-    "cs": 0,
-    "bb": 11,
-    "hbp": 6,
-    "so": 37,
+def _pa(ab, bb=0, hbp=0, sf=0, sac=0):
+    return ab + bb + hbp + sf + sac
+
+
+def _hitter(pid, name, g, ab, r, h, d, t, hr, rbi, so, bb, sac=0, sf=0, hbp=0, sb=0, cs=0):
+    singles = h - d - t - hr
+    tb = singles + 2 * d + 3 * t + 4 * hr
+    return {
+        "id": pid,
+        "name": name,
+        "g": g,
+        "pa": _pa(ab, bb, hbp, sf, sac),
+        "ab": ab,
+        "r": r,
+        "h": h,
+        "d": d,
+        "t": t,
+        "hr": hr,
+        "tb": tb,
+        "rbi": rbi,
+        "sac": sac,
+        "sf": sf,
+        "sb": sb,
+        "cs": cs,
+        "bb": bb,
+        "hbp": hbp,
+        "so": so,
+    }
+
+
+def _pitcher(pid, name, g, w, l, sv, ipf, h, r, er, hr, bb, so, hbp=0, hld=0):
+    era = round(er / ipf * 9, 2) if ipf else 0
+    whip = round((h + bb) / ipf, 2) if ipf else 0
+    return {
+        "id": pid,
+        "name": name,
+        "era": f"{era:.2f}",
+        "g": g,
+        "w": w,
+        "l": l,
+        "sv": sv,
+        "hld": hld,
+        "ip": str(ipf),
+        "ipf": ipf,
+        "h": h,
+        "hr": hr,
+        "bb": bb,
+        "hbp": hbp,
+        "so": so,
+        "r": r,
+        "er": er,
+        "whip": f"{whip:.2f}",
+    }
+
+
+# 2008 Beijing Olympics — official cumulative stats (LA84 / IOC as of 23 Aug 2008).
+OLYMPIC_2008_HITTERS = {
+    "이용규": _hitter("o08-이용규", "이용규", 9, 27, 8, 13, 2, 0, 0, 4, 2, 4, sac=0, sf=1, sb=1, cs=1),
+    "정근우": _hitter("o08-정근우", "정근우", 8, 29, 5, 9, 1, 0, 1, 1, 2, 0, sac=1, sb=1, cs=1),
+    "김현수": _hitter("o08-김현수", "김현수", 8, 27, 3, 10, 2, 0, 0, 4, 5, 1, sb=2, cs=1),
+    "이대호": _hitter("o08-이대호", "이대호", 9, 25, 5, 9, 1, 0, 3, 10, 3, 7, sac=1, hbp=1),
+    "이승엽": _hitter("o08-이승엽", "이승엽", 8, 30, 4, 5, 1, 0, 2, 6, 9, 4),
+    "김동주": _hitter("o08-김동주", "김동주", 6, 17, 4, 5, 0, 0, 0, 0, 3, 4),
+    "이종욱": _hitter("o08-이종욱", "이종욱", 9, 34, 4, 10, 0, 0, 0, 3, 4, 3, sf=1, sb=2, cs=1),
+    "강민호": _hitter("o08-강민호", "강민호", 6, 22, 3, 6, 2, 0, 0, 4, 10, 1),
+    "박진만": _hitter("o08-박진만", "박진만", 7, 15, 1, 1, 0, 0, 0, 0, 1, 1),
+    "진갑용": _hitter("o08-진갑용", "진갑용", 6, 10, 1, 1, 0, 0, 0, 0, 0, 1),
+    "이진영": _hitter("o08-이진영", "이진영", 7, 18, 2, 6, 0, 0, 0, 4, 3, 2),
+    "이택근": _hitter("o08-이택근", "이택근", 5, 16, 3, 3, 0, 0, 1, 3, 3, 0, sf=1),
+    "고영민": _hitter("o08-고영민", "고영민", 8, 24, 6, 5, 0, 0, 1, 5, 9, 1, hbp=1, sb=1, cs=2),
+    "김민재": _hitter("o08-김민재", "김민재", 5, 11, 1, 0, 0, 0, 0, 0, 4, 1, hbp=1),
+}
+
+OLYMPIC_2008_PITCHERS = {
+    "류현진": _pitcher("o08-류현진", "류현진", 2, 2, 0, 0, 17 + 1 / 3, 10, 2, 2, 2, 5, 13),
+    "김광현": _pitcher("o08-김광현", "김광현", 3, 1, 0, 0, 14 + 1 / 3, 10, 3, 2, 0, 3, 12),
+    "봉중근": _pitcher("o08-봉중근", "봉중근", 2, 0, 0, 0, 8 + 2 / 3, 14, 9, 8, 0, 4, 6, hbp=1),
+    "송승준": _pitcher("o08-송승준", "송승준", 2, 1, 0, 0, 12 + 1 / 3, 7, 3, 3, 0, 5, 12),
+    "장원삼": _pitcher("o08-장원삼", "장원삼", 2, 1, 0, 0, 12 + 1 / 3, 6, 0, 0, 0, 0, 11),
+    "한기주": _pitcher("o08-한기주", "한기주", 3, 1, 0, 0, 2 + 1 / 3, 7, 6, 5, 1, 2, 3),
+    "윤석민": _pitcher("o08-윤석민", "윤석민", 5, 2, 0, 1, 7 + 2 / 3, 6, 2, 2, 1, 1, 6),
+    "권혁": _pitcher("o08-권혁", "권혁", 3, 0, 0, 0, 1 + 1 / 3, 0, 0, 0, 0, 1, 2),
+    "정대현": _pitcher("o08-정대현", "정대현", 3, 0, 0, 2, 4.0, 2, 1, 1, 1, 0, 7),
+    "오승환": _pitcher("o08-오승환", "오승환", 2, 1, 0, 1, 1 + 2 / 3, 0, 0, 0, 0, 0, 1),
+}
+
+OLYMPIC_2008_HANDS = {
+    "o08-이용규": {"bats": "L", "throws": "L", "ok": True},
+    "o08-정근우": {"bats": "R", "throws": "R", "ok": True},
+    "o08-김현수": {"bats": "L", "throws": "R", "ok": True},
+    "o08-이대호": {"bats": "R", "throws": "R", "ok": True},
+    "o08-이승엽": {"bats": "L", "throws": "L", "ok": True},
+    "o08-김동주": {"bats": "R", "throws": "R", "ok": True},
+    "o08-이종욱": {"bats": "L", "throws": "L", "ok": True},
+    "o08-강민호": {"bats": "R", "throws": "R", "ok": True},
+    "o08-박진만": {"bats": "R", "throws": "R", "ok": True},
+    "o08-진갑용": {"bats": "R", "throws": "R", "ok": True},
+    "o08-이진영": {"bats": "L", "throws": "L", "ok": True},
+    "o08-이택근": {"bats": "R", "throws": "R", "ok": True},
+    "o08-고영민": {"bats": "R", "throws": "R", "ok": True},
+    "o08-김민재": {"bats": "R", "throws": "R", "ok": True},
+    "o08-류현진": {"bats": "R", "throws": "L", "ok": True},
+    "o08-김광현": {"bats": "L", "throws": "L", "ok": True},
+    "o08-봉중근": {"bats": "L", "throws": "L", "ok": True},
+    "o08-송승준": {"bats": "R", "throws": "R", "ok": True},
+    "o08-장원삼": {"bats": "L", "throws": "L", "ok": True},
+    "o08-한기주": {"bats": "R", "throws": "R", "ok": True},
+    "o08-윤석민": {"bats": "R", "throws": "R", "ok": True},
+    "o08-권혁": {"bats": "L", "throws": "L", "ok": True},
+    "o08-정대현": {"bats": "R", "throws": "R", "ok": True},
+    "o08-오승환": {"bats": "R", "throws": "R", "ok": True},
 }
 
 
@@ -700,15 +791,16 @@ TEAMS = [
         "name": "2008 대한민국 국가대표",
         "shortName": "대표",
         "year": 2008,
-        "keys": ["2008-SK", "2008-OB", "2008-LT", "2008-SS", "2008-HH", "2008-HT", "2008-WO", "2008-LG"],
+        "keys": [],
         "primary": "#CD2E3A",
         "secondary": "#0A3161",
-        "blurb": "2008 베이징 올림픽 금메달 최종 엔트리. 능력치는 그해 소속 리그 정규시즌. 이승엽만 요미우리 45경기. 오승환이 마무리.",
+        "blurb": "2008 베이징 올림픽 금메달 최종 24인. 능력치는 올림픽 본선 9경기 공식 누적 기록. 류현진 2승·ERA 1.04, 이용규 타율 .481, 오승환 마무리.",
         "olympic": True,
-        "lineup": [("이용규", "LF"), ("정근우", "2B"), ("김현수", "RF"), ("이대호", "1B"), ("이승엽", "DH"), ("김동주", "3B"), ("이종욱", "CF"), ("강민호", "C"), ("박진만", "SS")],
-        "bench": ["진갑용", "이진영", "이택근", "고영민", "김민재"],
-        "rotation": ["류현진", "김광현", "봉중근", "송승준"],
-        "bullpen": ["한기주", "윤석민", "권혁", "정대현", "장원삼"],
+        # Typical Olympic batting order (gold-medal game core).
+        "lineup": [("이종욱", "CF"), ("이용규", "RF"), ("김현수", "LF"), ("이승엽", "1B"), ("김동주", "3B"), ("이대호", "DH"), ("고영민", "2B"), ("강민호", "C"), ("박진만", "SS")],
+        "bench": ["진갑용", "이진영", "이택근", "정근우", "김민재"],
+        "rotation": ["류현진", "김광현", "송승준", "봉중근", "장원삼"],
+        "bullpen": ["윤석민", "정대현", "한기주", "권혁"],
         "closers": ["오승환"],
     },
 ]
@@ -721,23 +813,32 @@ def main():
         keys = spec["keys"]
         hitters = []
         for name, pos in spec["lineup"] + [(n, "DH") for n in spec["bench"]]:
-            if spec.get("olympic") and name == "이승엽":
-                hitters.append(("manual", name, pos, LEE_2008))
+            if spec.get("olympic"):
+                if name not in OLYMPIC_2008_HITTERS:
+                    raise SystemExit(f"olympic hitter missing: {name}")
+                h = OLYMPIC_2008_HITTERS[name]
+                hitters.append(("olympic", name, pos, h))
+                needed.append(h["id"])
                 continue
             h = find_hitter(keys, name)
             hitters.append(("kbo", name, pos, h))
             needed.append(h["id"])
         pitchers = []
         staff = list(spec["rotation"]) + list(spec["bullpen"]) + list(spec.get("closers", []))
-        # Keep order but allow same display name twice (e.g. 전준호 batter + pitcher) via separate finds.
+        # Keep order but allow same display name twice (e.g. 전준호 OF/P) via separate finds.
         for name in staff:
-            p = find_pitcher(keys, name)
+            if spec.get("olympic"):
+                if name not in OLYMPIC_2008_PITCHERS:
+                    raise SystemExit(f"olympic pitcher missing: {name}")
+                p = OLYMPIC_2008_PITCHERS[name]
+            else:
+                p = find_pitcher(keys, name)
             pitchers.append(p)
             needed.append(p["id"])
         resolved.append((spec, hitters, pitchers))
 
-    hands = load_hands(sorted(set(needed)))
-    hands["mlee2008"] = {"bats": "L", "throws": "R", "ok": True}
+    hands = load_hands(sorted(i for i in set(needed) if not str(i).startswith("o08-")))
+    hands.update(OLYMPIC_2008_HANDS)
 
     failed = [pid for pid, h in hands.items() if pid in set(needed) and not h.get("ok")]
     print("hands unresolved", len(failed))
@@ -751,12 +852,7 @@ def main():
         by_name = {}
         for name, pos in spec["lineup"]:
             src = next(s for k, n, p, s in hitters if n == name)
-            if name == "이승엽" and spec.get("olympic"):
-                src = dict(LEE_2008)
-                src["id"] = "mlee2008"
-                player = build_batter(src, year, pos, {"mlee2008": {"bats": "L", "throws": "L"}})
-            else:
-                player = build_batter(src, year, pos, hands)
+            player = build_batter(src, year, pos, hands)
             player["positions"] = [pos]
             players.append(player)
             lineup.append({"playerId": player["id"], "position": pos})
