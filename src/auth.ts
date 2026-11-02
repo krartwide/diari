@@ -23,8 +23,12 @@ async function verifyPassword(password: string, passwordHash: string | null | un
   return false;
 }
 
+const useOauthAdapter = googleReady || githubReady;
+
 export const { handlers, auth, signIn, signOut } = NextAuth({
-  adapter: PrismaAdapter(prisma),
+  // Prisma adapter is only needed for OAuth account linking. Credentials + JWT
+  // stays adapter-free so sign-in cannot bounce on DB session writes.
+  adapter: useOauthAdapter ? PrismaAdapter(prisma) : undefined,
   trustHost: true,
   session: {
     strategy: "jwt",

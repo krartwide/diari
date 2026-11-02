@@ -4,18 +4,28 @@ import { getToken } from "next-auth/jwt";
 
 const PROTECTED = ["/play", "/games", "/teams/new", "/achievements"];
 
+function sessionSalt(request: NextRequest) {
+  const secure = request.nextUrl.protocol === "https:";
+  return secure ? "__Secure-authjs.session-token" : "authjs.session-token";
+}
+
 export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const needsAuth =
     PROTECTED.some((path) => pathname === path || pathname.startsWith(`${path}/`)) ||
-    pathname.startsWith("/teams/") && pathname.endsWith("/edit");
+    (pathname.startsWith("/teams/") && pathname.endsWith("/edit"));
 
   if (!needsAuth) return NextResponse.next();
 
-  const token = await getToken({
-    req: request,
-    secret: process.env.AUTH_SECRET,
-  });
+  const secret = process.env.AUTH_SECRET;
+  const token = secret
+    ? await getToken({
+        req: request,
+        secret,
+        salt: sessionSalt(request),
+        secureCookie: request.nextUrl.protocol === "https:",
+      })
+    : null;
 
   if (token?.sub) return NextResponse.next();
 

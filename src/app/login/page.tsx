@@ -1,14 +1,28 @@
 "use client";
 
 import { useEffect, useState, Suspense } from "react";
-import { signIn } from "next-auth/react";
+import { getCsrfToken, signIn } from "next-auth/react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+function safeNextPath(raw: string | null | undefined) {
+  if (!raw) return "/play";
+  if (raw.startsWith("/") && !raw.startsWith("//")) return raw;
+  try {
+    const url = new URL(raw, window.location.origin);
+    if (url.origin === window.location.origin) {
+      return `${url.pathname}${url.search}${url.hash}` || "/play";
+    }
+  } catch {
+    // ignore
+  }
+  return "/play";
+}
+
 function LoginForm() {
   const params = useSearchParams();
-  const callbackUrl = params.get("callbackUrl") || "/play";
+  const callbackUrl = safeNextPath(params.get("callbackUrl") || "/play");
   const [google, setGoogle] = useState(false);
   const [github, setGithub] = useState(false);
   const [mode, setMode] = useState<"login" | "register">("login");
@@ -19,6 +33,19 @@ function LoginForm() {
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [info, setInfo] = useState("");
+
+  useEffect(() => {
+    const authError = params.get("error");
+    if (authError) {
+      setError(
+        authError === "CredentialsSignin"
+          ? "이메일 또는 비밀번호가 올바르지 않습니다."
+          : authError === "MissingCSRF"
+            ? "로그인 보안 토큰이 만료되었습니다. 다시 시도해 주세요."
+            : `로그인에 실패했습니다 (${authError}).`,
+      );
+    }
+  }, [params]);
 
   useEffect(() => {
     fetch("/api/login-options")
@@ -38,24 +65,63 @@ function LoginForm() {
   }
 
   async function finishSignIn() {
-    const result = await signIn("site-login", {
-      email: email.trim(),
-      password,
-      name: name.trim(),
-      redirect: false,
-      callbackUrl,
+    const csrfToken = await getCsrfToken();
+    if (!csrfToken) {
+      setError("로그인 준비에 실패했습니다. 페이지를 새로고침한 뒤 다시 시도해 주세요.");
+      setBusy(false);
+      return;
+    }
+
+    // Auth.js credentials must hit /callback/:id (not /signin/:id).
+    // Posting here keeps the session cookie on the same host the user is viewing.
+    const response = await fetch("/api/auth/callback/site-login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "X-Auth-Return-Redirect": "1",
+      },
+      body: new URLSearchParams({
+        csrfToken,
+        email: email.trim(),
+        password,
+        name: name.trim(),
+        callbackUrl,
+      }),
     });
-    if (!result || result.error) {
+
+    const data = (await response.json().catch(() => ({}))) as { url?: string };
+    const returnedUrl = data.url || "";
+    let authError = "";
+    try {
+      authError = new URL(returnedUrl, window.location.origin).searchParams.get("error") || "";
+    } catch {
+      authError = "";
+    }
+
+    if (!response.ok || authError) {
       setError(
         mode === "register"
           ? "가입은 됐지만 자동 로그인에 실패했습니다. 같은 비밀번호로 다시 로그인해 주세요."
-          : "이메일 또는 비밀번호가 올바르지 않습니다.",
+          : authError === "CredentialsSignin"
+            ? "이메일 또는 비밀번호가 올바르지 않습니다."
+            : "로그인하지 못했습니다. 잠시 후 다시 시도해 주세요.",
       );
       setBusy(false);
       return;
     }
-    const next = callbackUrl.startsWith("/") && !callbackUrl.startsWith("//") ? callbackUrl : "/play";
-    window.location.assign(next);
+
+    const me = await fetch("/api/me", { cache: "no-store" })
+      .then((res) => res.json())
+      .catch(() => ({ user: null }));
+    if (!me?.user?.id) {
+      setError(
+        "로그인은 됐지만 세션 쿠키가 유지되지 않았습니다. 주소창 호스트를 바꾸지 말고(예: 127.0.0.1만 사용) 다시 시도해 주세요.",
+      );
+      setBusy(false);
+      return;
+    }
+
+    window.location.assign(callbackUrl);
   }
 
   async function onSubmit(event: React.FormEvent) {
@@ -115,7 +181,13 @@ function LoginForm() {
             </Button>
           )}
           {github && (
-            <Button type="button" variant={google ? "secondary" : "default"} className="h-11" onClick={() => oauthSignIn("github")} disabled={busy}>
+            <Button
+              type="button"
+              variant={google ? "secondary" : "default"}
+              className="h-11"
+              onClick={() => oauthSignIn("github")}
+              disabled={busy}
+            >
               GitHub로 계속하기
             </Button>
           )}
@@ -186,7 +258,8 @@ function LoginForm() {
             {busy ? "처리 중" : mode === "register" ? "가입하고 시작" : "로그인"}
           </Button>
           <p className="text-xs leading-5 text-muted-foreground">
-            이미 `.env`의 `AUTH_SITE_PASSWORD`로 쓰던 계정이면 그 비밀번호로도 로그인됩니다. 새로 가입하면 본인 비밀번호가 저장됩니다.
+            접속 주소는 하나만 쓰세요. `127.0.0.1`과 `localhost`를 섞으면 로그인이 풀릴 수 있습니다. 예전에 `.env`의
+            `AUTH_SITE_PASSWORD`를 썼다면 그 비밀번호로도 들어올 수 있습니다.
           </p>
         </form>
       )}

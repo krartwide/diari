@@ -29,9 +29,9 @@ AUTH_SITE_PASSWORD=안전한-비밀번호
 AUTH_TRUST_HOST=true
 ADMIN_EMAILS=kekekim75@gmail.com
 DATABASE_URL="file:../data/diari.db"
-AUTH_URL="http://127.0.0.1:43123"
-NEXTAUTH_URL="http://127.0.0.1:43123"
 ```
+
+브라우저는 **`http://127.0.0.1:43123`만** 쓰는 것을 권장합니다. `localhost`와 섞어 열면 세션 쿠키가 호스트마다 달라져 로그인 직후 `/play`에서 다시 로그인 화면으로 튕길 수 있습니다.
 
 `ADMIN_EMAILS`(기본에 `kekekim75@gmail.com` 포함)의 계정은 사이트 운영자로, 공개 역사 구단을 직접 고칠 수 있습니다. 수정 내용은 DB에 덮어쓰기로 저장되며 모든 사용자에게 공개로 유지됩니다.
 
