@@ -1,24 +1,30 @@
-import { auth } from "@/auth";
+import { ensureSoloUser } from "@/lib/solo";
 
 export async function requireUserId() {
-  const session = await auth();
-  const id = session?.user?.id;
-  if (!id) return null;
-  return id;
+  const user = await ensureSoloUser();
+  return user.id;
 }
 
 export async function currentSession() {
-  return auth();
+  const user = await ensureSoloUser();
+  return {
+    user: {
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      image: user.image,
+      admin: true,
+    },
+  };
 }
 
 export async function requireUser() {
-  const session = await auth();
-  if (!session?.user?.id) return null;
+  const user = await ensureSoloUser();
   return {
-    id: session.user.id,
-    email: session.user.email ?? null,
-    name: session.user.name ?? null,
-    image: session.user.image ?? null,
-    admin: Boolean(session.user.admin),
+    id: user.id,
+    email: user.email ?? null,
+    name: user.name ?? null,
+    image: user.image ?? null,
+    admin: true,
   };
 }

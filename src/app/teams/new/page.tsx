@@ -12,7 +12,7 @@ export default function NewTeamPage() {
   useEffect(() => {
     fetch("/api/me", { credentials: "same-origin" })
       .then(async (response) => {
-        if (!response.ok) throw new Error("로그인이 필요합니다.");
+        if (!response.ok) throw new Error("계정을 준비하지 못했습니다.");
         const data = (await response.json()) as { user: { id: string } };
         queueMicrotask(() => setTeam(emptyTeam(data.user.id)));
       })

@@ -11,7 +11,6 @@ if ! npx --yes @railway/cli@latest whoami >/dev/null 2>&1; then
 fi
 
 AUTH_SECRET_VALUE="${AUTH_SECRET:-$(openssl rand -base64 32)}"
-AUTH_SITE_PASSWORD_VALUE="${AUTH_SITE_PASSWORD:-dREL7zCR4H5cN6aG7RTm}"
 
 if [[ ! -f railway.toml ]]; then
   echo "railway.toml 이 필요합니다."
@@ -40,8 +39,6 @@ fi
 npx --yes @railway/cli@latest variables set \
   DATABASE_URL="file:/data/diari.db" \
   AUTH_SECRET="${AUTH_SECRET_VALUE}" \
-  AUTH_SITE_PASSWORD="${AUTH_SITE_PASSWORD_VALUE}" \
-  ADMIN_EMAILS="kekekim75@gmail.com" \
   AUTH_TRUST_HOST="true" \
   NODE_ENV="production"
 

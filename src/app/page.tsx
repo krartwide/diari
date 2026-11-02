@@ -27,7 +27,7 @@ export default function HomePage() {
           글로 남는 야구
         </h1>
         <p className="max-w-xl text-base leading-7 text-muted-foreground">
-          팀 색깔과 사진을 정하고 선수의 시즌 기록을 넣으면, 그 팀으로 경기를 치를 수 있습니다. 구종, 구속, 스트라이크 판정, 타구 방향과 비거리가 기록지에 남습니다. 경기는 로그인 후 계정마다 따로 저장됩니다.
+          팀 색깔과 사진을 정하고 선수의 시즌 기록을 넣으면, 그 팀으로 경기를 치를 수 있습니다. 구종, 구속, 스트라이크 판정, 타구 방향과 비거리가 기록지에 남습니다. 로그인 없이 바로 쓰고, 기록은 이 브라우저가 연결된 서버에 남습니다.
         </p>
         <div className="flex flex-wrap gap-2">
           <Button asChild className="h-10 px-4">
