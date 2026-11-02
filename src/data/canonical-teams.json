@@ -1114,7 +1114,7 @@
     "position": "LF"
    },
    {
-    "playerId": "canon-2014-ss:p95436",
+    "playerId": "canon-2014-ss:p77463",
     "position": "1B"
    },
    {
@@ -1122,7 +1122,7 @@
     "position": "3B"
    },
    {
-    "playerId": "canon-2014-ss:p77463",
+    "playerId": "canon-2014-ss:p95436",
     "position": "DH"
    },
    {
@@ -1306,9 +1306,9 @@
     }
    },
    {
-    "id": "canon-2014-ss:p95436",
-    "sourceId": "95436",
-    "name": "이승엽",
+    "id": "canon-2014-ss:p77463",
+    "sourceId": "77463",
+    "name": "채태인",
     "kind": "B",
     "bats": "L",
     "throws": "L",
@@ -1316,29 +1316,29 @@
      "1B"
     ],
     "batter": {
-     "g": 127,
-     "ab": 506,
+     "g": 124,
+     "ab": 492,
      "h": 156,
-     "doubles": 30,
-     "triples": 0,
-     "hr": 32,
-     "rbi": 101,
-     "r": 83,
-     "sb": 5,
-     "bb": 40,
-     "so": 77,
-     "avg": 0.308,
-     "obp": 0.358,
-     "slg": 0.557,
-     "ops": 0.915,
-     "wrcPlus": 128,
-     "swar": 2.55,
-     "speed": 46,
-     "pa": 548,
-     "hbp": 0,
-     "sf": 2,
+     "doubles": 38,
+     "triples": 1,
+     "hr": 14,
+     "rbi": 99,
+     "r": 69,
+     "sb": 1,
+     "bb": 41,
+     "so": 91,
+     "avg": 0.317,
+     "obp": 0.368,
+     "slg": 0.484,
+     "ops": 0.852,
+     "wrcPlus": 113,
+     "swar": 1.54,
+     "speed": 41,
+     "pa": 541,
+     "hbp": 2,
+     "sf": 6,
      "sac": 0,
-     "cs": 1
+     "cs": 0
     }
    },
    {
@@ -1378,9 +1378,9 @@
     }
    },
    {
-    "id": "canon-2014-ss:p77463",
-    "sourceId": "77463",
-    "name": "채태인",
+    "id": "canon-2014-ss:p95436",
+    "sourceId": "95436",
+    "name": "이승엽",
     "kind": "B",
     "bats": "L",
     "throws": "L",
@@ -1388,29 +1388,29 @@
      "DH"
     ],
     "batter": {
-     "g": 124,
-     "ab": 492,
+     "g": 127,
+     "ab": 506,
      "h": 156,
-     "doubles": 38,
-     "triples": 1,
-     "hr": 14,
-     "rbi": 99,
-     "r": 69,
-     "sb": 1,
-     "bb": 41,
-     "so": 91,
-     "avg": 0.317,
-     "obp": 0.368,
-     "slg": 0.484,
-     "ops": 0.852,
-     "wrcPlus": 113,
-     "swar": 1.09,
-     "speed": 41,
-     "pa": 541,
-     "hbp": 2,
-     "sf": 6,
+     "doubles": 30,
+     "triples": 0,
+     "hr": 32,
+     "rbi": 101,
+     "r": 83,
+     "sb": 5,
+     "bb": 40,
+     "so": 77,
+     "avg": 0.308,
+     "obp": 0.358,
+     "slg": 0.557,
+     "ops": 0.915,
+     "wrcPlus": 128,
+     "swar": 2.09,
+     "speed": 46,
+     "pa": 548,
+     "hbp": 0,
+     "sf": 2,
      "sac": 0,
-     "cs": 0
+     "cs": 1
     }
    },
    {
@@ -3166,42 +3166,42 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1994 한국시리즈 우승 전력. 이상훈·김태원 원투에 김용수가 마무리를 지켰다. 공개된 당시 엔트리 규모에 맞춰 보강했다.",
+  "blurb": "1994 한국시리즈 우승 엔트리. 이상훈·김태원·정삼흠 선발, 김용수 마무리·시리즈 MVP.",
   "lineup": [
    {
     "playerId": "canon-1994-lg:p94106",
     "position": "SS"
    },
    {
-    "playerId": "canon-1994-lg:p89331",
-    "position": "CF"
-   },
-   {
     "playerId": "canon-1994-lg:p94107",
-    "position": "RF"
+    "position": "LF"
    },
    {
     "playerId": "canon-1994-lg:p94162",
-    "position": "DH"
+    "position": "1B"
    },
    {
     "playerId": "canon-1994-lg:p83270",
-    "position": "1B"
+    "position": "3B"
+   },
+   {
+    "playerId": "canon-1994-lg:p89175",
+    "position": "CF"
+   },
+   {
+    "playerId": "canon-1994-lg:p87110",
+    "position": "DH"
    },
    {
     "playerId": "canon-1994-lg:p90419",
     "position": "C"
    },
    {
+    "playerId": "canon-1994-lg:p89331",
+    "position": "RF"
+   },
+   {
     "playerId": "canon-1994-lg:p92906",
-    "position": "3B"
-   },
-   {
-    "playerId": "canon-1994-lg:p89175",
-    "position": "LF"
-   },
-   {
-    "playerId": "canon-1994-lg:p91015",
     "position": "2B"
    }
   ],
@@ -3214,10 +3214,8 @@
   ],
   "bullpen": [
    "canon-1994-lg:p86670",
-   "canon-1994-lg:p91314",
    "canon-1994-lg:p93121",
    "canon-1994-lg:p92901",
-   "canon-1994-lg:p94161",
    "canon-1994-lg:p92915"
   ],
   "closers": [
@@ -3225,10 +3223,12 @@
   ],
   "bench": [
    "canon-1994-lg:p89142",
-   "canon-1994-lg:p87110",
+   "canon-1994-lg:p91015",
    "canon-1994-lg:p90415",
    "canon-1994-lg:p93112",
-   "canon-1994-lg:p94145"
+   "canon-1994-lg:p94145",
+   "canon-1994-lg:p86171",
+   "canon-1994-lg:p80080"
   ],
   "players": [
    {
@@ -3268,42 +3268,6 @@
     }
    },
    {
-    "id": "canon-1994-lg:p89331",
-    "sourceId": "89331",
-    "name": "박준태",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "CF"
-    ],
-    "batter": {
-     "g": 114,
-     "ab": 292,
-     "h": 80,
-     "doubles": 20,
-     "triples": 2,
-     "hr": 1,
-     "rbi": 39,
-     "r": 46,
-     "sb": 11,
-     "bb": 29,
-     "so": 46,
-     "avg": 0.274,
-     "obp": 0.343,
-     "slg": 0.366,
-     "ops": 0.709,
-     "wrcPlus": 80,
-     "swar": 0.32,
-     "speed": 58,
-     "pa": 339,
-     "hbp": 3,
-     "sf": 3,
-     "sac": 12,
-     "cs": 8
-    }
-   },
-   {
     "id": "canon-1994-lg:p94107",
     "sourceId": "94107",
     "name": "김재현",
@@ -3311,7 +3275,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "RF"
+     "LF"
     ],
     "batter": {
      "g": 125,
@@ -3347,7 +3311,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "DH"
+     "1B"
     ],
     "batter": {
      "g": 126,
@@ -3366,7 +3330,7 @@
      "slg": 0.42,
      "ops": 0.791,
      "wrcPlus": 103,
-     "swar": 0.44,
+     "swar": 0.89,
      "speed": 47,
      "pa": 543,
      "hbp": 5,
@@ -3383,7 +3347,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "1B"
+     "3B"
     ],
     "batter": {
      "g": 106,
@@ -3402,11 +3366,83 @@
      "slg": 0.429,
      "ops": 0.813,
      "wrcPlus": 111,
-     "swar": 1.05,
+     "swar": 2.09,
      "speed": 44,
      "pa": 414,
      "hbp": 5,
      "sf": 4,
+     "sac": 0,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-1994-lg:p89175",
+    "sourceId": "89175",
+    "name": "노찬엽",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 107,
+     "ab": 340,
+     "h": 95,
+     "doubles": 13,
+     "triples": 6,
+     "hr": 10,
+     "rbi": 59,
+     "r": 53,
+     "sb": 7,
+     "bb": 41,
+     "so": 24,
+     "avg": 0.279,
+     "obp": 0.357,
+     "slg": 0.441,
+     "ops": 0.798,
+     "wrcPlus": 102,
+     "swar": 1.47,
+     "speed": 50,
+     "pa": 393,
+     "hbp": 4,
+     "sf": 7,
+     "sac": 1,
+     "cs": 5
+    }
+   },
+   {
+    "id": "canon-1994-lg:p87110",
+    "sourceId": "87110",
+    "name": "김영직",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 89,
+     "ab": 181,
+     "h": 53,
+     "doubles": 10,
+     "triples": 2,
+     "hr": 4,
+     "rbi": 40,
+     "r": 16,
+     "sb": 2,
+     "bb": 14,
+     "so": 13,
+     "avg": 0.293,
+     "obp": 0.348,
+     "slg": 0.436,
+     "ops": 0.785,
+     "wrcPlus": 99,
+     "swar": 0.05,
+     "speed": 45,
+     "pa": 198,
+     "hbp": 2,
+     "sf": 1,
      "sac": 0,
      "cs": 1
     }
@@ -3448,6 +3484,42 @@
     }
    },
    {
+    "id": "canon-1994-lg:p89331",
+    "sourceId": "89331",
+    "name": "박준태",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 114,
+     "ab": 292,
+     "h": 80,
+     "doubles": 20,
+     "triples": 2,
+     "hr": 1,
+     "rbi": 39,
+     "r": 46,
+     "sb": 11,
+     "bb": 29,
+     "so": 46,
+     "avg": 0.274,
+     "obp": 0.343,
+     "slg": 0.366,
+     "ops": 0.709,
+     "wrcPlus": 80,
+     "swar": -0.24,
+     "speed": 58,
+     "pa": 339,
+     "hbp": 3,
+     "sf": 3,
+     "sac": 12,
+     "cs": 8
+    }
+   },
+   {
     "id": "canon-1994-lg:p92906",
     "sourceId": "92906",
     "name": "박종호",
@@ -3455,7 +3527,7 @@
     "bats": "S",
     "throws": "R",
     "positions": [
-     "3B"
+     "2B"
     ],
     "batter": {
      "g": 107,
@@ -3481,78 +3553,6 @@
      "sf": 3,
      "sac": 4,
      "cs": 10
-    }
-   },
-   {
-    "id": "canon-1994-lg:p89175",
-    "sourceId": "89175",
-    "name": "노찬엽",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "LF"
-    ],
-    "batter": {
-     "g": 107,
-     "ab": 340,
-     "h": 95,
-     "doubles": 13,
-     "triples": 6,
-     "hr": 10,
-     "rbi": 59,
-     "r": 53,
-     "sb": 7,
-     "bb": 41,
-     "so": 24,
-     "avg": 0.279,
-     "obp": 0.357,
-     "slg": 0.441,
-     "ops": 0.798,
-     "wrcPlus": 102,
-     "swar": 0.82,
-     "speed": 50,
-     "pa": 393,
-     "hbp": 4,
-     "sf": 7,
-     "sac": 1,
-     "cs": 5
-    }
-   },
-   {
-    "id": "canon-1994-lg:p91015",
-    "sourceId": "91015",
-    "name": "이종열",
-    "kind": "B",
-    "bats": "S",
-    "throws": "R",
-    "positions": [
-     "2B"
-    ],
-    "batter": {
-     "g": 118,
-     "ab": 284,
-     "h": 60,
-     "doubles": 8,
-     "triples": 1,
-     "hr": 1,
-     "rbi": 25,
-     "r": 33,
-     "sb": 11,
-     "bb": 22,
-     "so": 35,
-     "avg": 0.211,
-     "obp": 0.267,
-     "slg": 0.257,
-     "ops": 0.524,
-     "wrcPlus": 25,
-     "swar": -1.84,
-     "speed": 59,
-     "pa": 316,
-     "hbp": 0,
-     "sf": 1,
-     "sac": 9,
-     "cs": 9
     }
    },
    {
@@ -3592,39 +3592,39 @@
     }
    },
    {
-    "id": "canon-1994-lg:p87110",
-    "sourceId": "87110",
-    "name": "김영직",
+    "id": "canon-1994-lg:p91015",
+    "sourceId": "91015",
+    "name": "이종열",
     "kind": "B",
-    "bats": "L",
-    "throws": "L",
+    "bats": "S",
+    "throws": "R",
     "positions": [
-     "LF"
+     "DH"
     ],
     "batter": {
-     "g": 89,
-     "ab": 181,
-     "h": 53,
-     "doubles": 10,
-     "triples": 2,
-     "hr": 4,
-     "rbi": 40,
-     "r": 16,
-     "sb": 2,
-     "bb": 14,
-     "so": 13,
-     "avg": 0.293,
-     "obp": 0.348,
-     "slg": 0.436,
-     "ops": 0.785,
-     "wrcPlus": 99,
-     "swar": 0.38,
-     "speed": 45,
-     "pa": 198,
-     "hbp": 2,
+     "g": 118,
+     "ab": 284,
+     "h": 60,
+     "doubles": 8,
+     "triples": 1,
+     "hr": 1,
+     "rbi": 25,
+     "r": 33,
+     "sb": 11,
+     "bb": 22,
+     "so": 35,
+     "avg": 0.211,
+     "obp": 0.267,
+     "slg": 0.257,
+     "ops": 0.524,
+     "wrcPlus": 25,
+     "swar": -2.89,
+     "speed": 59,
+     "pa": 316,
+     "hbp": 0,
      "sf": 1,
-     "sac": 0,
-     "cs": 1
+     "sac": 9,
+     "cs": 9
     }
    },
    {
@@ -3732,6 +3732,78 @@
      "hbp": 2,
      "sf": 0,
      "sac": 1,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1994-lg:p86171",
+    "sourceId": "86171",
+    "name": "서효인",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 22,
+     "ab": 17,
+     "h": 3,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 4,
+     "r": 0,
+     "sb": 0,
+     "bb": 1,
+     "so": 5,
+     "avg": 0.176,
+     "obp": 0.286,
+     "slg": 0.294,
+     "ops": 0.58,
+     "wrcPlus": 43,
+     "swar": -0.13,
+     "speed": 40,
+     "pa": 21,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1994-lg:p80080",
+    "sourceId": "80080",
+    "name": "윤찬",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 54,
+     "ab": 37,
+     "h": 7,
+     "doubles": 1,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 4,
+     "r": 7,
+     "sb": 1,
+     "bb": 3,
+     "so": 7,
+     "avg": 0.189,
+     "obp": 0.244,
+     "slg": 0.216,
+     "ops": 0.46,
+     "wrcPlus": 5,
+     "swar": -0.45,
+     "speed": 52,
+     "pa": 43,
+     "hbp": 0,
+     "sf": 1,
+     "sac": 2,
      "cs": 0
     }
    },
@@ -3916,36 +3988,6 @@
     }
    },
    {
-    "id": "canon-1994-lg:p91314",
-    "sourceId": "91314",
-    "name": "전일수",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 30,
-     "w": 3,
-     "l": 0,
-     "sv": 0,
-     "hld": 0,
-     "ip": 45.0,
-     "era": 3.4,
-     "h": 48,
-     "hr": 4,
-     "bb": 22,
-     "hbp": 4,
-     "so": 25,
-     "whip": 1.56,
-     "swar": 0.65,
-     "speed": 139,
-     "er": 17,
-     "r": 20
-    }
-   },
-   {
     "id": "canon-1994-lg:p93121",
     "sourceId": "93121",
     "name": "강봉수",
@@ -4003,36 +4045,6 @@
      "speed": 138,
      "er": 29,
      "r": 32
-    }
-   },
-   {
-    "id": "canon-1994-lg:p94161",
-    "sourceId": "94161",
-    "name": "박철홍",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 18,
-     "w": 3,
-     "l": 1,
-     "sv": 1,
-     "hld": 0,
-     "ip": 39.0,
-     "era": 3.69,
-     "h": 32,
-     "hr": 0,
-     "bb": 20,
-     "hbp": 3,
-     "so": 17,
-     "whip": 1.33,
-     "swar": 0.44,
-     "speed": 139,
-     "er": 16,
-     "r": 20
     }
    },
    {
@@ -5126,7 +5138,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2022 한국시리즈 우승 30인 엔트리. 김광현·폰트 원투, 서진용이 마무리. 김택형은 셋업.",
+  "blurb": "2022 한국시리즈 우승 30인 엔트리. 김광현·폰트 원투, 서진용이 마무리. 김택형은 셋업·세이브를 나눠 맡았다.",
   "lineup": [
    {
     "playerId": "canon-2022-sk:p51817",
@@ -6211,43 +6223,43 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1992 한국시리즈 우승 전력. 염종석·윤학길이 선발을 먹었고 이상번·가득염이 뒤를 이었다. 당시 규모에 맞춰 보강했다.",
+  "blurb": "1992 한국시리즈 우승 엔트리. 염종석·윤학길이 선발, 박동희가 시리즈 MVP. 김선일이 안방, 박계원이 유격.",
   "lineup": [
    {
     "playerId": "canon-1992-lt:p91511",
     "position": "CF"
    },
    {
+    "playerId": "canon-1992-lt:p84574",
+    "position": "DH"
+   },
+   {
     "playerId": "canon-1992-lt:p88510",
-    "position": "SS"
+    "position": "LF"
+   },
+   {
+    "playerId": "canon-1992-lt:p84510",
+    "position": "1B"
    },
    {
     "playerId": "canon-1992-lt:p91514",
     "position": "2B"
    },
    {
-    "playerId": "canon-1992-lt:p84510",
-    "position": "DH"
-   },
-   {
     "playerId": "canon-1992-lt:p89522",
-    "position": "LF"
-   },
-   {
-    "playerId": "canon-1992-lt:p85571",
-    "position": "1B"
-   },
-   {
-    "playerId": "canon-1992-lt:p92510",
     "position": "RF"
-   },
-   {
-    "playerId": "canon-1992-lt:p84574",
-    "position": "C"
    },
    {
     "playerId": "canon-1992-lt:p90581",
     "position": "3B"
+   },
+   {
+    "playerId": "canon-1992-lt:p92510",
+    "position": "SS"
+   },
+   {
+    "playerId": "canon-1992-lt:p89512",
+    "position": "C"
    }
   ],
   "rotation": [
@@ -6260,17 +6272,19 @@
   ],
   "bullpen": [
    "canon-1992-lt:p89520",
-   "canon-1992-lt:p92501",
-   "canon-1992-lt:p89511",
-   "canon-1992-lt:p87510"
+   "canon-1992-lt:p87510",
+   "canon-1992-lt:p85531"
   ],
   "closers": [],
   "bench": [
    "canon-1992-lt:p83460",
-   "canon-1992-lt:p89512",
+   "canon-1992-lt:p85571",
    "canon-1992-lt:p92509",
    "canon-1992-lt:p91523",
-   "canon-1992-lt:p86540"
+   "canon-1992-lt:p86540",
+   "canon-1992-lt:p83530",
+   "canon-1992-lt:p90514",
+   "canon-1992-lt:p88571"
   ],
   "players": [
    {
@@ -6310,6 +6324,42 @@
     }
    },
    {
+    "id": "canon-1992-lt:p84574",
+    "sourceId": "84574",
+    "name": "조성옥",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 105,
+     "ab": 243,
+     "h": 67,
+     "doubles": 7,
+     "triples": 4,
+     "hr": 1,
+     "rbi": 39,
+     "r": 22,
+     "sb": 4,
+     "bb": 23,
+     "so": 23,
+     "avg": 0.276,
+     "obp": 0.35,
+     "slg": 0.35,
+     "ops": 0.7,
+     "wrcPlus": 79,
+     "swar": -0.61,
+     "speed": 48,
+     "pa": 286,
+     "hbp": 7,
+     "sf": 4,
+     "sac": 8,
+     "cs": 2
+    }
+   },
+   {
     "id": "canon-1992-lt:p88510",
     "sourceId": "88510",
     "name": "김응국",
@@ -6317,7 +6367,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "SS"
+     "LF"
     ],
     "batter": {
      "g": 119,
@@ -6336,13 +6386,49 @@
      "slg": 0.504,
      "ops": 0.902,
      "wrcPlus": 129,
-     "swar": 4.13,
+     "swar": 2.92,
      "speed": 75,
      "pa": 486,
      "hbp": 5,
      "sf": 15,
      "sac": 7,
      "cs": 8
+    }
+   },
+   {
+    "id": "canon-1992-lt:p84510",
+    "sourceId": "84510",
+    "name": "김민호",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "1B"
+    ],
+    "batter": {
+     "g": 118,
+     "ab": 413,
+     "h": 133,
+     "doubles": 28,
+     "triples": 4,
+     "hr": 16,
+     "rbi": 88,
+     "r": 69,
+     "sb": 5,
+     "bb": 68,
+     "so": 76,
+     "avg": 0.322,
+     "obp": 0.418,
+     "slg": 0.525,
+     "ops": 0.944,
+     "wrcPlus": 144,
+     "swar": 3.18,
+     "speed": 46,
+     "pa": 495,
+     "hbp": 6,
+     "sf": 8,
+     "sac": 0,
+     "cs": 3
     }
    },
    {
@@ -6382,42 +6468,6 @@
     }
    },
    {
-    "id": "canon-1992-lt:p84510",
-    "sourceId": "84510",
-    "name": "김민호",
-    "kind": "B",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "DH"
-    ],
-    "batter": {
-     "g": 118,
-     "ab": 413,
-     "h": 133,
-     "doubles": 28,
-     "triples": 4,
-     "hr": 16,
-     "rbi": 88,
-     "r": 69,
-     "sb": 5,
-     "bb": 68,
-     "so": 76,
-     "avg": 0.322,
-     "obp": 0.418,
-     "slg": 0.525,
-     "ops": 0.944,
-     "wrcPlus": 144,
-     "swar": 2.77,
-     "speed": 46,
-     "pa": 495,
-     "hbp": 6,
-     "sf": 8,
-     "sac": 0,
-     "cs": 3
-    }
-   },
-   {
     "id": "canon-1992-lt:p89522",
     "sourceId": "89522",
     "name": "이종운",
@@ -6425,7 +6475,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "LF"
+     "RF"
     ],
     "batter": {
      "g": 108,
@@ -6451,114 +6501,6 @@
      "sf": 2,
      "sac": 15,
      "cs": 8
-    }
-   },
-   {
-    "id": "canon-1992-lt:p85571",
-    "sourceId": "85571",
-    "name": "한영준",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "1B"
-    ],
-    "batter": {
-     "g": 105,
-     "ab": 217,
-     "h": 59,
-     "doubles": 12,
-     "triples": 1,
-     "hr": 3,
-     "rbi": 29,
-     "r": 37,
-     "sb": 9,
-     "bb": 48,
-     "so": 22,
-     "avg": 0.272,
-     "obp": 0.407,
-     "slg": 0.378,
-     "ops": 0.785,
-     "wrcPlus": 110,
-     "swar": 0.62,
-     "speed": 58,
-     "pa": 279,
-     "hbp": 2,
-     "sf": 1,
-     "sac": 11,
-     "cs": 5
-    }
-   },
-   {
-    "id": "canon-1992-lt:p92510",
-    "sourceId": "92510",
-    "name": "박계원",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "RF"
-    ],
-    "batter": {
-     "g": 121,
-     "ab": 338,
-     "h": 82,
-     "doubles": 15,
-     "triples": 5,
-     "hr": 6,
-     "rbi": 47,
-     "r": 48,
-     "sb": 6,
-     "bb": 36,
-     "so": 44,
-     "avg": 0.243,
-     "obp": 0.321,
-     "slg": 0.37,
-     "ops": 0.691,
-     "wrcPlus": 73,
-     "swar": -0.44,
-     "speed": 49,
-     "pa": 393,
-     "hbp": 5,
-     "sf": 4,
-     "sac": 10,
-     "cs": 2
-    }
-   },
-   {
-    "id": "canon-1992-lt:p84574",
-    "sourceId": "84574",
-    "name": "조성옥",
-    "kind": "B",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "C"
-    ],
-    "batter": {
-     "g": 105,
-     "ab": 243,
-     "h": 67,
-     "doubles": 7,
-     "triples": 4,
-     "hr": 1,
-     "rbi": 39,
-     "r": 22,
-     "sb": 4,
-     "bb": 23,
-     "so": 23,
-     "avg": 0.276,
-     "obp": 0.35,
-     "slg": 0.35,
-     "ops": 0.7,
-     "wrcPlus": 79,
-     "swar": 0.82,
-     "speed": 48,
-     "pa": 286,
-     "hbp": 7,
-     "sf": 4,
-     "sac": 8,
-     "cs": 2
     }
    },
    {
@@ -6594,6 +6536,78 @@
      "hbp": 8,
      "sf": 3,
      "sac": 9,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-1992-lt:p92510",
+    "sourceId": "92510",
+    "name": "박계원",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "SS"
+    ],
+    "batter": {
+     "g": 121,
+     "ab": 338,
+     "h": 82,
+     "doubles": 15,
+     "triples": 5,
+     "hr": 6,
+     "rbi": 47,
+     "r": 48,
+     "sb": 6,
+     "bb": 36,
+     "so": 44,
+     "avg": 0.243,
+     "obp": 0.321,
+     "slg": 0.37,
+     "ops": 0.691,
+     "wrcPlus": 73,
+     "swar": 0.54,
+     "speed": 49,
+     "pa": 393,
+     "hbp": 5,
+     "sf": 4,
+     "sac": 10,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1992-lt:p89512",
+    "sourceId": "89512",
+    "name": "김선일",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 95,
+     "ab": 203,
+     "h": 50,
+     "doubles": 8,
+     "triples": 2,
+     "hr": 0,
+     "rbi": 22,
+     "r": 26,
+     "sb": 6,
+     "bb": 7,
+     "so": 20,
+     "avg": 0.246,
+     "obp": 0.277,
+     "slg": 0.305,
+     "ops": 0.582,
+     "wrcPlus": 39,
+     "swar": -0.49,
+     "speed": 54,
+     "pa": 229,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 16,
      "cs": 4
     }
    },
@@ -6634,39 +6648,39 @@
     }
    },
    {
-    "id": "canon-1992-lt:p89512",
-    "sourceId": "89512",
-    "name": "김선일",
+    "id": "canon-1992-lt:p85571",
+    "sourceId": "85571",
+    "name": "한영준",
     "kind": "B",
     "bats": "R",
     "throws": "R",
     "positions": [
-     "C"
+     "DH"
     ],
     "batter": {
-     "g": 95,
-     "ab": 203,
-     "h": 50,
-     "doubles": 8,
-     "triples": 2,
-     "hr": 0,
-     "rbi": 22,
-     "r": 26,
-     "sb": 6,
-     "bb": 7,
-     "so": 20,
-     "avg": 0.246,
-     "obp": 0.277,
-     "slg": 0.305,
-     "ops": 0.582,
-     "wrcPlus": 39,
-     "swar": -0.49,
-     "speed": 54,
-     "pa": 229,
+     "g": 105,
+     "ab": 217,
+     "h": 59,
+     "doubles": 12,
+     "triples": 1,
+     "hr": 3,
+     "rbi": 29,
+     "r": 37,
+     "sb": 9,
+     "bb": 48,
+     "so": 22,
+     "avg": 0.272,
+     "obp": 0.407,
+     "slg": 0.378,
+     "ops": 0.785,
+     "wrcPlus": 110,
+     "swar": 0.39,
+     "speed": 58,
+     "pa": 279,
      "hbp": 2,
      "sf": 1,
-     "sac": 16,
-     "cs": 4
+     "sac": 11,
+     "cs": 5
     }
    },
    {
@@ -6775,6 +6789,114 @@
      "sf": 0,
      "sac": 2,
      "cs": 2
+    }
+   },
+   {
+    "id": "canon-1992-lt:p83530",
+    "sourceId": "83530",
+    "name": "박영태",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 74,
+     "ab": 66,
+     "h": 17,
+     "doubles": 2,
+     "triples": 2,
+     "hr": 0,
+     "rbi": 8,
+     "r": 19,
+     "sb": 3,
+     "bb": 7,
+     "so": 15,
+     "avg": 0.258,
+     "obp": 0.329,
+     "slg": 0.348,
+     "ops": 0.677,
+     "wrcPlus": 71,
+     "swar": -0.18,
+     "speed": 61,
+     "pa": 75,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 2,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1992-lt:p90514",
+    "sourceId": "90514",
+    "name": "김종헌",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 22,
+     "ab": 20,
+     "h": 4,
+     "doubles": 0,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 0,
+     "r": 6,
+     "sb": 0,
+     "bb": 3,
+     "so": 2,
+     "avg": 0.2,
+     "obp": 0.333,
+     "slg": 0.2,
+     "ops": 0.533,
+     "wrcPlus": 44,
+     "swar": -0.2,
+     "speed": 40,
+     "pa": 25,
+     "hbp": 1,
+     "sf": 0,
+     "sac": 1,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-1992-lt:p88571",
+    "sourceId": "88571",
+    "name": "고정식",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 23,
+     "ab": 30,
+     "h": 7,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 1,
+     "r": 4,
+     "sb": 0,
+     "bb": 2,
+     "so": 3,
+     "avg": 0.233,
+     "obp": 0.281,
+     "slg": 0.3,
+     "ops": 0.581,
+     "wrcPlus": 41,
+     "swar": -0.21,
+     "speed": 40,
+     "pa": 32,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
     }
    },
    {
@@ -6988,66 +7110,6 @@
     }
    },
    {
-    "id": "canon-1992-lt:p92501",
-    "sourceId": "92501",
-    "name": "가득염",
-    "kind": "P",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 15,
-     "w": 1,
-     "l": 0,
-     "sv": 0,
-     "hld": 0,
-     "ip": 30.33,
-     "era": 6.82,
-     "h": 30,
-     "hr": 3,
-     "bb": 20,
-     "hbp": 1,
-     "so": 16,
-     "whip": 1.65,
-     "swar": -0.71,
-     "speed": 139,
-     "er": 23,
-     "r": 25
-    }
-   },
-   {
-    "id": "canon-1992-lt:p89511",
-    "sourceId": "89511",
-    "name": "김청수",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 14,
-     "w": 3,
-     "l": 1,
-     "sv": 0,
-     "hld": 0,
-     "ip": 41.33,
-     "era": 5.23,
-     "h": 43,
-     "hr": 5,
-     "bb": 12,
-     "hbp": 3,
-     "so": 12,
-     "whip": 1.33,
-     "swar": -0.24,
-     "speed": 138,
-     "er": 24,
-     "r": 26
-    }
-   },
-   {
     "id": "canon-1992-lt:p87510",
     "sourceId": "87510",
     "name": "김종석",
@@ -7075,6 +7137,36 @@
      "speed": 138,
      "er": 44,
      "r": 48
+    }
+   },
+   {
+    "id": "canon-1992-lt:p85531",
+    "sourceId": "85531",
+    "name": "박동수",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 12,
+     "w": 2,
+     "l": 1,
+     "sv": 0,
+     "hld": 0,
+     "ip": 29.33,
+     "era": 4.6,
+     "h": 38,
+     "hr": 1,
+     "bb": 8,
+     "hbp": 1,
+     "so": 18,
+     "whip": 1.57,
+     "swar": 0.03,
+     "speed": 140,
+     "er": 15,
+     "r": 17
     }
    }
   ],
@@ -9094,7 +9186,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2014 한국시리즈 진출 엔트리. 손승락이 마무리, 한현희·조상우가 앞에 섰다.",
+  "blurb": "2014 한국시리즈 진출 엔트리. 밴헤켄·소사·오주원(옛 오재영) 선발, 손승락 마무리, 한현희·조상우 필승조. 하영민은 당시 김영민.",
   "lineup": [
    {
     "playerId": "canon-2014-wo:p78168",
@@ -9136,15 +9228,15 @@
   "rotation": [
    "canon-2014-wo:p62322",
    "canon-2014-wo:p62698",
-   "canon-2014-wo:p74359",
-   "canon-2014-wo:p61365",
-   "canon-2014-wo:p60336"
+   "canon-2014-wo:p74359"
   ],
   "bullpen": [
    "canon-2014-wo:p62363",
    "canon-2014-wo:p63342",
    "canon-2014-wo:p72749",
-   "canon-2014-wo:p76350"
+   "canon-2014-wo:p61365",
+   "canon-2014-wo:p60336",
+   "canon-2014-wo:p64350"
   ],
   "closers": [
    "canon-2014-wo:p75321"
@@ -9863,66 +9955,6 @@
     }
    },
    {
-    "id": "canon-2014-wo:p61365",
-    "sourceId": "61365",
-    "name": "김대우",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 30,
-     "w": 2,
-     "l": 2,
-     "sv": 1,
-     "hld": 0,
-     "ip": 73.67,
-     "era": 5.5,
-     "h": 88,
-     "hr": 9,
-     "bb": 45,
-     "hbp": 8,
-     "so": 66,
-     "whip": 1.81,
-     "swar": 0.25,
-     "speed": 146,
-     "er": 45,
-     "r": 48
-    }
-   },
-   {
-    "id": "canon-2014-wo:p60336",
-    "sourceId": "60336",
-    "name": "문성현",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 20,
-     "w": 9,
-     "l": 4,
-     "sv": 0,
-     "hld": 1,
-     "ip": 85.33,
-     "era": 5.91,
-     "h": 96,
-     "hr": 12,
-     "bb": 48,
-     "hbp": 5,
-     "so": 51,
-     "whip": 1.69,
-     "swar": -0.1,
-     "speed": 145,
-     "er": 56,
-     "r": 59
-    }
-   },
-   {
     "id": "canon-2014-wo:p62363",
     "sourceId": "62363",
     "name": "한현희",
@@ -10013,9 +10045,9 @@
     }
    },
    {
-    "id": "canon-2014-wo:p76350",
-    "sourceId": "76350",
-    "name": "김세현",
+    "id": "canon-2014-wo:p61365",
+    "sourceId": "61365",
+    "name": "김대우",
     "kind": "P",
     "bats": "R",
     "throws": "R",
@@ -10023,23 +10055,83 @@
      "P"
     ],
     "pitcher": {
-     "g": 34,
-     "w": 5,
+     "g": 30,
+     "w": 2,
      "l": 2,
+     "sv": 1,
+     "hld": 0,
+     "ip": 73.67,
+     "era": 5.5,
+     "h": 88,
+     "hr": 9,
+     "bb": 45,
+     "hbp": 8,
+     "so": 66,
+     "whip": 1.81,
+     "swar": 0.25,
+     "speed": 146,
+     "er": 45,
+     "r": 48
+    }
+   },
+   {
+    "id": "canon-2014-wo:p60336",
+    "sourceId": "60336",
+    "name": "문성현",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 20,
+     "w": 9,
+     "l": 4,
      "sv": 0,
-     "hld": 2,
-     "ip": 45.0,
-     "era": 8.0,
-     "h": 62,
-     "hr": 3,
-     "bb": 29,
+     "hld": 1,
+     "ip": 85.33,
+     "era": 5.91,
+     "h": 96,
+     "hr": 12,
+     "bb": 48,
      "hbp": 5,
-     "so": 33,
-     "whip": 2.02,
-     "swar": -1.1,
+     "so": 51,
+     "whip": 1.69,
+     "swar": -0.1,
      "speed": 145,
-     "er": 40,
-     "r": 43
+     "er": 56,
+     "r": 59
+    }
+   },
+   {
+    "id": "canon-2014-wo:p64350",
+    "sourceId": "64350",
+    "name": "하영민",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 14,
+     "w": 3,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 62.33,
+     "era": 7.22,
+     "h": 84,
+     "hr": 9,
+     "bb": 28,
+     "hbp": 0,
+     "so": 43,
+     "whip": 1.8,
+     "swar": -0.98,
+     "speed": 145,
+     "er": 50,
+     "r": 52
     }
    },
    {
@@ -10086,7 +10178,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "현대 해체 뒤 첫 시즌. 정규 7위. 장원삼·마일영이 선발, 황두성·다카쓰가 마무리를 나눠 맡았다.",
+  "blurb": "현대 해체 뒤 첫 시즌. 정규 7위. 장원삼·마일영·김수경·이현승 선발축, 황두성·다카쓰가 마무리를 나눠 맡았다.",
   "lineup": [
    {
     "playerId": "canon-2008-wo:p73342",
@@ -10129,19 +10221,18 @@
    "canon-2008-wo:p76355",
    "canon-2008-wo:p70329",
    "canon-2008-wo:p98330",
-   "canon-2008-wo:p77658"
+   "canon-2008-wo:p76329"
   ],
   "bullpen": [
-   "canon-2008-wo:p76329",
    "canon-2008-wo:p99314",
    "canon-2008-wo:p76357",
    "canon-2008-wo:p70349",
    "canon-2008-wo:p73343",
-   "canon-2008-wo:p94364",
-   "canon-2008-wo:p78333"
+   "canon-2008-wo:p94364"
   ],
   "closers": [
-   "canon-2008-wo:p97423"
+   "canon-2008-wo:p97423",
+   "canon-2008-wo:p78333"
   ],
   "bench": [
    "canon-2008-wo:p76313",
@@ -10820,36 +10911,6 @@
     }
    },
    {
-    "id": "canon-2008-wo:p77658",
-    "sourceId": "77658",
-    "name": "스코비",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 11,
-     "w": 2,
-     "l": 5,
-     "sv": 0,
-     "hld": 0,
-     "ip": 55.67,
-     "era": 6.95,
-     "h": 81,
-     "hr": 6,
-     "bb": 24,
-     "hbp": 3,
-     "so": 25,
-     "whip": 1.89,
-     "swar": -1.08,
-     "speed": 147,
-     "er": 43,
-     "r": 47
-    }
-   },
-   {
     "id": "canon-2008-wo:p76329",
     "sourceId": "76329",
     "name": "이현승",
@@ -11030,36 +11091,6 @@
     }
    },
    {
-    "id": "canon-2008-wo:p78333",
-    "sourceId": "78333",
-    "name": "다카쓰",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 18,
-     "w": 1,
-     "l": 0,
-     "sv": 8,
-     "hld": 0,
-     "ip": 21.0,
-     "era": 0.86,
-     "h": 16,
-     "hr": 1,
-     "bb": 5,
-     "hbp": 4,
-     "so": 18,
-     "whip": 1.0,
-     "swar": 1.27,
-     "speed": 148,
-     "er": 2,
-     "r": 2
-    }
-   },
-   {
     "id": "canon-2008-wo:p97423",
     "sourceId": "97423",
     "name": "황두성",
@@ -11088,6 +11119,36 @@
      "er": 47,
      "r": 50
     }
+   },
+   {
+    "id": "canon-2008-wo:p78333",
+    "sourceId": "78333",
+    "name": "다카쓰",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 18,
+     "w": 1,
+     "l": 0,
+     "sv": 8,
+     "hld": 0,
+     "ip": 21.0,
+     "era": 0.86,
+     "h": 16,
+     "hr": 1,
+     "bb": 5,
+     "hbp": 4,
+     "so": 18,
+     "whip": 1.0,
+     "swar": 1.27,
+     "speed": 148,
+     "er": 2,
+     "r": 2
+    }
    }
   ],
   "createdAt": "2008-10-01T00:00:00.000Z"
@@ -11103,7 +11164,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "스폰서 없이 서울 히어로즈로 치른 시즌. 정규 6위. 이택근 골든글러브, 황두성이 마무리.",
+  "blurb": "스폰서 없이 서울 히어로즈로 치른 시즌. 정규 6위. 이택근 골든글러브, 이현승 13승, 황두성 마무리.",
   "lineup": [
    {
     "playerId": "canon-2009-wo:p73342",
@@ -11146,14 +11207,14 @@
    "canon-2009-wo:p76329",
    "canon-2009-wo:p98330",
    "canon-2009-wo:p70329",
-   "canon-2009-wo:p76355",
-   "canon-2009-wo:p79358"
+   "canon-2009-wo:p76355"
   ],
   "bullpen": [
    "canon-2009-wo:p75342",
    "canon-2009-wo:p99314",
    "canon-2009-wo:p70323",
    "canon-2009-wo:p74359",
+   "canon-2009-wo:p79358",
    "canon-2009-wo:p72321",
    "canon-2009-wo:p78353"
   ],
@@ -11867,36 +11928,6 @@
     }
    },
    {
-    "id": "canon-2009-wo:p79358",
-    "sourceId": "79358",
-    "name": "강윤구",
-    "kind": "P",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 45,
-     "w": 3,
-     "l": 2,
-     "sv": 1,
-     "hld": 2,
-     "ip": 80.0,
-     "era": 5.51,
-     "h": 64,
-     "hr": 12,
-     "bb": 70,
-     "hbp": 0,
-     "so": 79,
-     "whip": 1.68,
-     "swar": -0.28,
-     "speed": 148,
-     "er": 49,
-     "r": 52
-    }
-   },
-   {
     "id": "canon-2009-wo:p75342",
     "sourceId": "75342",
     "name": "이보근",
@@ -12017,6 +12048,36 @@
     }
    },
    {
+    "id": "canon-2009-wo:p79358",
+    "sourceId": "79358",
+    "name": "강윤구",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 45,
+     "w": 3,
+     "l": 2,
+     "sv": 1,
+     "hld": 2,
+     "ip": 80.0,
+     "era": 5.51,
+     "h": 64,
+     "hr": 12,
+     "bb": 70,
+     "hbp": 0,
+     "so": 79,
+     "whip": 1.68,
+     "swar": -0.28,
+     "speed": 148,
+     "er": 49,
+     "r": 52
+    }
+   },
+   {
     "id": "canon-2009-wo:p72321",
     "sourceId": "72321",
     "name": "배힘찬",
@@ -12120,7 +12181,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1993 한국시리즈 우승 전력. 선동열이 마무리, 조계현·이강철·이대진이 선발을 맡았다. 당시 규모에 맞춰 보강했다.",
+  "blurb": "1993 한국시리즈 우승 엔트리. 선동열 마무리, 조계현·이강철·이대진·김정수·송유석이 선발축.",
   "lineup": [
    {
     "playerId": "canon-1993-ht:p93607",
@@ -12140,7 +12201,7 @@
    },
    {
     "playerId": "canon-1993-ht:p90695",
-    "position": "DH"
+    "position": "2B"
    },
    {
     "playerId": "canon-1993-ht:p84450",
@@ -12156,7 +12217,7 @@
    },
    {
     "playerId": "canon-1993-ht:p86620",
-    "position": "2B"
+    "position": "DH"
    }
   ],
   "rotation": [
@@ -12167,11 +12228,9 @@
    "canon-1993-ht:p87672"
   ],
   "bullpen": [
-   "canon-1993-ht:p92601",
    "canon-1993-ht:p84671",
    "canon-1993-ht:p89672",
-   "canon-1993-ht:p86672",
-   "canon-1993-ht:p93642"
+   "canon-1993-ht:p86672"
   ],
   "closers": [
    "canon-1993-ht:p85672"
@@ -12180,7 +12239,9 @@
    "canon-1993-ht:p93612",
    "canon-1993-ht:p90660",
    "canon-1993-ht:p87630",
-   "canon-1993-ht:p93601"
+   "canon-1993-ht:p93601",
+   "canon-1993-ht:p89674",
+   "canon-1993-ht:p92607"
   ],
   "players": [
    {
@@ -12335,7 +12396,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "DH"
+     "2B"
     ],
     "batter": {
      "g": 123,
@@ -12354,7 +12415,7 @@
      "slg": 0.401,
      "ops": 0.756,
      "wrcPlus": 93,
-     "swar": -0.21,
+     "swar": 1.55,
      "speed": 51,
      "pa": 527,
      "hbp": 4,
@@ -12479,7 +12540,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "2B"
+     "DH"
     ],
     "batter": {
      "g": 111,
@@ -12498,7 +12559,7 @@
      "slg": 0.301,
      "ops": 0.601,
      "wrcPlus": 49,
-     "swar": -0.91,
+     "swar": -2.08,
      "speed": 56,
      "pa": 350,
      "hbp": 3,
@@ -12652,6 +12713,78 @@
     }
    },
    {
+    "id": "canon-1993-ht:p89674",
+    "sourceId": "89674",
+    "name": "윤재호",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 60,
+     "ab": 52,
+     "h": 5,
+     "doubles": 0,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 2,
+     "r": 2,
+     "sb": 4,
+     "bb": 4,
+     "so": 14,
+     "avg": 0.096,
+     "obp": 0.175,
+     "slg": 0.096,
+     "ops": 0.272,
+     "wrcPlus": -46,
+     "swar": -1.02,
+     "speed": 76,
+     "pa": 59,
+     "hbp": 1,
+     "sf": 0,
+     "sac": 2,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1993-ht:p92607",
+    "sourceId": "92607",
+    "name": "김병조",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 66,
+     "ab": 68,
+     "h": 12,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 1,
+     "rbi": 9,
+     "r": 12,
+     "sb": 0,
+     "bb": 7,
+     "so": 15,
+     "avg": 0.176,
+     "obp": 0.26,
+     "slg": 0.25,
+     "ops": 0.51,
+     "wrcPlus": 22,
+     "swar": -0.75,
+     "speed": 40,
+     "pa": 79,
+     "hbp": 1,
+     "sf": 1,
+     "sac": 2,
+     "cs": 1
+    }
+   },
+   {
     "id": "canon-1993-ht:p89670",
     "sourceId": "89670",
     "name": "조계현",
@@ -12802,36 +12935,6 @@
     }
    },
    {
-    "id": "canon-1993-ht:p92601",
-    "sourceId": "92601",
-    "name": "양승철",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 38,
-     "w": 4,
-     "l": 0,
-     "sv": 2,
-     "hld": 0,
-     "ip": 87.0,
-     "era": 4.86,
-     "h": 104,
-     "hr": 14,
-     "bb": 20,
-     "hbp": 6,
-     "so": 41,
-     "whip": 1.43,
-     "swar": -0.15,
-     "speed": 139,
-     "er": 47,
-     "r": 55
-    }
-   },
-   {
     "id": "canon-1993-ht:p84671",
     "sourceId": "84671",
     "name": "문희수",
@@ -12922,36 +13025,6 @@
     }
    },
    {
-    "id": "canon-1993-ht:p93642",
-    "sourceId": "93642",
-    "name": "이재만",
-    "kind": "P",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 16,
-     "w": 0,
-     "l": 0,
-     "sv": 2,
-     "hld": 0,
-     "ip": 35.33,
-     "era": 5.09,
-     "h": 36,
-     "hr": 5,
-     "bb": 13,
-     "hbp": 1,
-     "so": 18,
-     "whip": 1.39,
-     "swar": -0.15,
-     "speed": 139,
-     "er": 20,
-     "r": 21
-    }
-   },
-   {
     "id": "canon-1993-ht:p85672",
     "sourceId": "85672",
     "name": "선동열",
@@ -12995,7 +13068,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1983 MBC 청룡. 김재박이 유격을 지키고 이길환·하기룡·오영일이 이닝을 먹었다. 당시 로스터 규모에 맞춰 보강했다.",
+  "blurb": "1983 MBC 청룡. 김재박이 유격을 지키고 이길환·하기룡·오영일이 이닝을 먹었다.",
   "lineup": [
    {
     "playerId": "canon-1983-lg:p82116",
@@ -13776,43 +13849,43 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1995 한국시리즈 우승 전력. 김상진이 209이닝, 김경원이 마무리. 당시 규모에 맞춰 보강했다.",
+  "blurb": "1995 한국시리즈 우승 엔트리. 김상진 209이닝, 김경원 마무리, 김민호 시리즈 MVP.",
   "lineup": [
    {
     "playerId": "canon-1995-ob:p93242",
-    "position": "LF"
+    "position": "SS"
    },
    {
-    "playerId": "canon-1995-ob:p92211",
+    "playerId": "canon-1995-ob:p89221",
     "position": "2B"
    },
    {
-    "playerId": "canon-1995-ob:p85210",
-    "position": "RF"
+    "playerId": "canon-1995-ob:p88110",
+    "position": "LF"
    },
    {
-    "playerId": "canon-1995-ob:p88110",
+    "playerId": "canon-1995-ob:p85210",
     "position": "DH"
    },
    {
     "playerId": "canon-1995-ob:p94204",
-    "position": "1B"
+    "position": "RF"
    },
    {
-    "playerId": "canon-1995-ob:p93225",
+    "playerId": "canon-1995-ob:p92211",
+    "position": "CF"
+   },
+   {
+    "playerId": "canon-1995-ob:p92207",
     "position": "3B"
    },
    {
-    "playerId": "canon-1995-ob:p89221",
-    "position": "CF"
+    "playerId": "canon-1995-ob:p89214",
+    "position": "1B"
    },
    {
     "playerId": "canon-1995-ob:p90214",
     "position": "C"
-   },
-   {
-    "playerId": "canon-1995-ob:p89214",
-    "position": "SS"
    }
   ],
   "rotation": [
@@ -13820,23 +13893,24 @@
    "canon-1995-ob:p92202",
    "canon-1995-ob:p95235",
    "canon-1995-ob:p82234",
-   "canon-1995-ob:p91206",
    "canon-1995-ob:p83260"
   ],
   "bullpen": [
    "canon-1995-ob:p93245",
    "canon-1995-ob:p91821",
-   "canon-1995-ob:p95236",
-   "canon-1995-ob:p94215"
+   "canon-1995-ob:p89271"
   ],
   "closers": [
    "canon-1995-ob:p93219"
   ],
   "bench": [
-   "canon-1995-ob:p92207",
-   "canon-1995-ob:p90250",
+   "canon-1995-ob:p93225",
+   "canon-1995-ob:p87230",
    "canon-1995-ob:p95208",
-   "canon-1995-ob:p87230"
+   "canon-1995-ob:p92209",
+   "canon-1995-ob:p94232",
+   "canon-1995-ob:p94233",
+   "canon-1995-ob:p92210"
   ],
   "players": [
    {
@@ -13847,7 +13921,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "LF"
+     "SS"
     ],
     "batter": {
      "g": 113,
@@ -13866,13 +13940,157 @@
      "slg": 0.378,
      "ops": 0.73,
      "wrcPlus": 87,
-     "swar": 0.36,
+     "swar": 1.49,
      "speed": 99,
      "pa": 455,
      "hbp": 5,
      "sf": 3,
      "sac": 10,
      "cs": 17
+    }
+   },
+   {
+    "id": "canon-1995-ob:p89221",
+    "sourceId": "89221",
+    "name": "이명수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "2B"
+    ],
+    "batter": {
+     "g": 111,
+     "ab": 383,
+     "h": 111,
+     "doubles": 11,
+     "triples": 1,
+     "hr": 9,
+     "rbi": 32,
+     "r": 46,
+     "sb": 1,
+     "bb": 37,
+     "so": 55,
+     "avg": 0.29,
+     "obp": 0.357,
+     "slg": 0.394,
+     "ops": 0.751,
+     "wrcPlus": 92,
+     "swar": 1.07,
+     "speed": 41,
+     "pa": 431,
+     "hbp": 4,
+     "sf": 2,
+     "sac": 5,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-1995-ob:p88110",
+    "sourceId": "88110",
+    "name": "김상호",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "LF"
+    ],
+    "batter": {
+     "g": 126,
+     "ab": 504,
+     "h": 137,
+     "doubles": 23,
+     "triples": 2,
+     "hr": 25,
+     "rbi": 101,
+     "r": 79,
+     "sb": 10,
+     "bb": 45,
+     "so": 113,
+     "avg": 0.272,
+     "obp": 0.335,
+     "slg": 0.474,
+     "ops": 0.809,
+     "wrcPlus": 102,
+     "swar": 1.2,
+     "speed": 50,
+     "pa": 565,
+     "hbp": 6,
+     "sf": 6,
+     "sac": 4,
+     "cs": 7
+    }
+   },
+   {
+    "id": "canon-1995-ob:p85210",
+    "sourceId": "85210",
+    "name": "김형석",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 121,
+     "ab": 423,
+     "h": 114,
+     "doubles": 29,
+     "triples": 2,
+     "hr": 10,
+     "rbi": 68,
+     "r": 50,
+     "sb": 2,
+     "bb": 32,
+     "so": 71,
+     "avg": 0.27,
+     "obp": 0.318,
+     "slg": 0.418,
+     "ops": 0.737,
+     "wrcPlus": 82,
+     "swar": -0.81,
+     "speed": 42,
+     "pa": 464,
+     "hbp": 1,
+     "sf": 6,
+     "sac": 2,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-1995-ob:p94204",
+    "sourceId": "94204",
+    "name": "심정수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 116,
+     "ab": 362,
+     "h": 102,
+     "doubles": 19,
+     "triples": 0,
+     "hr": 21,
+     "rbi": 59,
+     "r": 63,
+     "sb": 4,
+     "bb": 29,
+     "so": 78,
+     "avg": 0.282,
+     "obp": 0.344,
+     "slg": 0.508,
+     "ops": 0.852,
+     "wrcPlus": 113,
+     "swar": 1.48,
+     "speed": 46,
+     "pa": 405,
+     "hbp": 8,
+     "sf": 5,
+     "sac": 1,
+     "cs": 2
     }
    },
    {
@@ -13883,7 +14101,7 @@
     "bats": "S",
     "throws": "R",
     "positions": [
-     "2B"
+     "CF"
     ],
     "batter": {
      "g": 123,
@@ -13912,117 +14130,9 @@
     }
    },
    {
-    "id": "canon-1995-ob:p85210",
-    "sourceId": "85210",
-    "name": "김형석",
-    "kind": "B",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "RF"
-    ],
-    "batter": {
-     "g": 121,
-     "ab": 423,
-     "h": 114,
-     "doubles": 29,
-     "triples": 2,
-     "hr": 10,
-     "rbi": 68,
-     "r": 50,
-     "sb": 2,
-     "bb": 32,
-     "so": 71,
-     "avg": 0.27,
-     "obp": 0.318,
-     "slg": 0.418,
-     "ops": 0.737,
-     "wrcPlus": 82,
-     "swar": -0.04,
-     "speed": 42,
-     "pa": 464,
-     "hbp": 1,
-     "sf": 6,
-     "sac": 2,
-     "cs": 1
-    }
-   },
-   {
-    "id": "canon-1995-ob:p88110",
-    "sourceId": "88110",
-    "name": "김상호",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "DH"
-    ],
-    "batter": {
-     "g": 126,
-     "ab": 504,
-     "h": 137,
-     "doubles": 23,
-     "triples": 2,
-     "hr": 25,
-     "rbi": 101,
-     "r": 79,
-     "sb": 10,
-     "bb": 45,
-     "so": 113,
-     "avg": 0.272,
-     "obp": 0.335,
-     "slg": 0.474,
-     "ops": 0.809,
-     "wrcPlus": 102,
-     "swar": 0.26,
-     "speed": 50,
-     "pa": 565,
-     "hbp": 6,
-     "sf": 6,
-     "sac": 4,
-     "cs": 7
-    }
-   },
-   {
-    "id": "canon-1995-ob:p94204",
-    "sourceId": "94204",
-    "name": "심정수",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "1B"
-    ],
-    "batter": {
-     "g": 116,
-     "ab": 362,
-     "h": 102,
-     "doubles": 19,
-     "triples": 0,
-     "hr": 21,
-     "rbi": 59,
-     "r": 63,
-     "sb": 4,
-     "bb": 29,
-     "so": 78,
-     "avg": 0.282,
-     "obp": 0.344,
-     "slg": 0.508,
-     "ops": 0.852,
-     "wrcPlus": 113,
-     "swar": 1.15,
-     "speed": 46,
-     "pa": 405,
-     "hbp": 8,
-     "sf": 5,
-     "sac": 1,
-     "cs": 2
-    }
-   },
-   {
-    "id": "canon-1995-ob:p93225",
-    "sourceId": "93225",
-    "name": "이도형",
+    "id": "canon-1995-ob:p92207",
+    "sourceId": "92207",
+    "name": "안경현",
     "kind": "B",
     "bats": "R",
     "throws": "R",
@@ -14030,65 +14140,65 @@
      "3B"
     ],
     "batter": {
-     "g": 95,
-     "ab": 283,
-     "h": 82,
-     "doubles": 12,
-     "triples": 0,
-     "hr": 14,
-     "rbi": 48,
-     "r": 38,
-     "sb": 1,
-     "bb": 17,
-     "so": 53,
-     "avg": 0.29,
-     "obp": 0.333,
-     "slg": 0.481,
-     "ops": 0.814,
-     "wrcPlus": 103,
-     "swar": 1.24,
-     "speed": 42,
-     "pa": 307,
-     "hbp": 3,
-     "sf": 3,
-     "sac": 1,
+     "g": 103,
+     "ab": 268,
+     "h": 75,
+     "doubles": 10,
+     "triples": 3,
+     "hr": 5,
+     "rbi": 38,
+     "r": 34,
+     "sb": 0,
+     "bb": 19,
+     "so": 34,
+     "avg": 0.28,
+     "obp": 0.33,
+     "slg": 0.396,
+     "ops": 0.725,
+     "wrcPlus": 82,
+     "swar": 0.42,
+     "speed": 40,
+     "pa": 299,
+     "hbp": 2,
+     "sf": 2,
+     "sac": 8,
      "cs": 1
     }
    },
    {
-    "id": "canon-1995-ob:p89221",
-    "sourceId": "89221",
-    "name": "이명수",
+    "id": "canon-1995-ob:p89214",
+    "sourceId": "89214",
+    "name": "김종석",
     "kind": "B",
-    "bats": "R",
-    "throws": "R",
+    "bats": "L",
+    "throws": "L",
     "positions": [
-     "CF"
+     "1B"
     ],
     "batter": {
-     "g": 111,
-     "ab": 383,
-     "h": 111,
-     "doubles": 11,
-     "triples": 1,
-     "hr": 9,
-     "rbi": 32,
-     "r": 46,
-     "sb": 1,
-     "bb": 37,
-     "so": 55,
-     "avg": 0.29,
-     "obp": 0.357,
-     "slg": 0.394,
-     "ops": 0.751,
-     "wrcPlus": 92,
-     "swar": 1.07,
-     "speed": 41,
-     "pa": 431,
-     "hbp": 4,
-     "sf": 2,
-     "sac": 5,
-     "cs": 4
+     "g": 116,
+     "ab": 395,
+     "h": 118,
+     "doubles": 26,
+     "triples": 8,
+     "hr": 4,
+     "rbi": 56,
+     "r": 63,
+     "sb": 5,
+     "bb": 33,
+     "so": 41,
+     "avg": 0.299,
+     "obp": 0.355,
+     "slg": 0.435,
+     "ops": 0.79,
+     "wrcPlus": 101,
+     "swar": 0.6,
+     "speed": 47,
+     "pa": 433,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 2,
+     "cs": 2
     }
    },
    {
@@ -14128,111 +14238,75 @@
     }
    },
    {
-    "id": "canon-1995-ob:p89214",
-    "sourceId": "89214",
-    "name": "김종석",
-    "kind": "B",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "SS"
-    ],
-    "batter": {
-     "g": 116,
-     "ab": 395,
-     "h": 118,
-     "doubles": 26,
-     "triples": 8,
-     "hr": 4,
-     "rbi": 56,
-     "r": 63,
-     "sb": 5,
-     "bb": 33,
-     "so": 41,
-     "avg": 0.299,
-     "obp": 0.355,
-     "slg": 0.435,
-     "ops": 0.79,
-     "wrcPlus": 101,
-     "swar": 2.04,
-     "speed": 47,
-     "pa": 433,
-     "hbp": 2,
-     "sf": 1,
-     "sac": 2,
-     "cs": 2
-    }
-   },
-   {
-    "id": "canon-1995-ob:p92207",
-    "sourceId": "92207",
-    "name": "안경현",
+    "id": "canon-1995-ob:p93225",
+    "sourceId": "93225",
+    "name": "이도형",
     "kind": "B",
     "bats": "R",
     "throws": "R",
     "positions": [
-     "1B"
+     "DH"
     ],
     "batter": {
-     "g": 103,
-     "ab": 268,
-     "h": 75,
-     "doubles": 10,
-     "triples": 3,
-     "hr": 5,
-     "rbi": 38,
-     "r": 34,
-     "sb": 0,
-     "bb": 19,
-     "so": 34,
-     "avg": 0.28,
-     "obp": 0.33,
-     "slg": 0.396,
-     "ops": 0.725,
-     "wrcPlus": 82,
-     "swar": -0.33,
-     "speed": 40,
-     "pa": 299,
-     "hbp": 2,
-     "sf": 2,
-     "sac": 8,
+     "g": 95,
+     "ab": 283,
+     "h": 82,
+     "doubles": 12,
+     "triples": 0,
+     "hr": 14,
+     "rbi": 48,
+     "r": 38,
+     "sb": 1,
+     "bb": 17,
+     "so": 53,
+     "avg": 0.29,
+     "obp": 0.333,
+     "slg": 0.481,
+     "ops": 0.814,
+     "wrcPlus": 103,
+     "swar": 0.22,
+     "speed": 42,
+     "pa": 307,
+     "hbp": 3,
+     "sf": 3,
+     "sac": 1,
      "cs": 1
     }
    },
    {
-    "id": "canon-1995-ob:p90250",
-    "sourceId": "90250",
-    "name": "임형석",
+    "id": "canon-1995-ob:p87230",
+    "sourceId": "87230",
+    "name": "박현영",
     "kind": "B",
     "bats": "R",
     "throws": "R",
     "positions": [
-     "LF"
+     "C"
     ],
     "batter": {
-     "g": 82,
-     "ab": 250,
-     "h": 60,
-     "doubles": 9,
-     "triples": 0,
-     "hr": 3,
-     "rbi": 35,
-     "r": 25,
-     "sb": 7,
-     "bb": 30,
-     "so": 48,
-     "avg": 0.24,
-     "obp": 0.322,
-     "slg": 0.312,
-     "ops": 0.634,
-     "wrcPlus": 60,
-     "swar": -0.66,
-     "speed": 54,
-     "pa": 287,
-     "hbp": 2,
-     "sf": 4,
-     "sac": 1,
-     "cs": 0
+     "g": 54,
+     "ab": 92,
+     "h": 13,
+     "doubles": 2,
+     "triples": 1,
+     "hr": 0,
+     "rbi": 12,
+     "r": 8,
+     "sb": 2,
+     "bb": 2,
+     "so": 23,
+     "avg": 0.141,
+     "obp": 0.202,
+     "slg": 0.185,
+     "ops": 0.387,
+     "wrcPlus": -16,
+     "swar": -0.86,
+     "speed": 51,
+     "pa": 101,
+     "hbp": 5,
+     "sf": 0,
+     "sac": 2,
+     "cs": 1
     }
    },
    {
@@ -14272,39 +14346,147 @@
     }
    },
    {
-    "id": "canon-1995-ob:p87230",
-    "sourceId": "87230",
-    "name": "박현영",
+    "id": "canon-1995-ob:p92209",
+    "sourceId": "92209",
+    "name": "소상영",
     "kind": "B",
     "bats": "R",
     "throws": "R",
     "positions": [
-     "C"
+     "DH"
     ],
     "batter": {
-     "g": 54,
-     "ab": 92,
-     "h": 13,
-     "doubles": 2,
+     "g": 30,
+     "ab": 63,
+     "h": 15,
+     "doubles": 3,
+     "triples": 1,
+     "hr": 1,
+     "rbi": 7,
+     "r": 7,
+     "sb": 0,
+     "bb": 6,
+     "so": 15,
+     "avg": 0.238,
+     "obp": 0.3,
+     "slg": 0.365,
+     "ops": 0.665,
+     "wrcPlus": 62,
+     "swar": -0.29,
+     "speed": 40,
+     "pa": 72,
+     "hbp": 0,
+     "sf": 1,
+     "sac": 2,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1995-ob:p94232",
+    "sourceId": "94232",
+    "name": "윤기수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 51,
+     "ab": 45,
+     "h": 9,
+     "doubles": 1,
      "triples": 1,
      "hr": 0,
-     "rbi": 12,
-     "r": 8,
-     "sb": 2,
-     "bb": 2,
-     "so": 23,
-     "avg": 0.141,
-     "obp": 0.202,
-     "slg": 0.185,
-     "ops": 0.387,
-     "wrcPlus": -16,
-     "swar": -0.86,
-     "speed": 51,
-     "pa": 101,
-     "hbp": 5,
+     "rbi": 2,
+     "r": 4,
+     "sb": 0,
+     "bb": 1,
+     "so": 5,
+     "avg": 0.2,
+     "obp": 0.213,
+     "slg": 0.267,
+     "ops": 0.479,
+     "wrcPlus": 2,
+     "swar": -0.66,
+     "speed": 40,
+     "pa": 51,
+     "hbp": 0,
+     "sf": 1,
+     "sac": 4,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1995-ob:p94233",
+    "sourceId": "94233",
+    "name": "김광현",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 11,
+     "ab": 17,
+     "h": 3,
+     "doubles": 1,
+     "triples": 2,
+     "hr": 0,
+     "rbi": 2,
+     "r": 1,
+     "sb": 0,
+     "bb": 1,
+     "so": 5,
+     "avg": 0.176,
+     "obp": 0.222,
+     "slg": 0.471,
+     "ops": 0.693,
+     "wrcPlus": 57,
+     "swar": -0.09,
+     "speed": 40,
+     "pa": 18,
+     "hbp": 0,
      "sf": 0,
-     "sac": 2,
-     "cs": 1
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-1995-ob:p92210",
+    "sourceId": "92210",
+    "name": "김정규",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 12,
+     "ab": 7,
+     "h": 1,
+     "doubles": 0,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 0,
+     "r": 1,
+     "sb": 0,
+     "bb": 0,
+     "so": 1,
+     "avg": 0.143,
+     "obp": 0.143,
+     "slg": 0.143,
+     "ops": 0.286,
+     "wrcPlus": -55,
+     "swar": -0.13,
+     "speed": 40,
+     "pa": 7,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
     }
    },
    {
@@ -14428,36 +14610,6 @@
     }
    },
    {
-    "id": "canon-1995-ob:p91206",
-    "sourceId": "91206",
-    "name": "강병규",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 18,
-     "w": 5,
-     "l": 6,
-     "sv": 0,
-     "hld": 0,
-     "ip": 103.67,
-     "era": 4.6,
-     "h": 112,
-     "hr": 12,
-     "bb": 39,
-     "hbp": 7,
-     "so": 50,
-     "whip": 1.46,
-     "swar": 0.58,
-     "speed": 139,
-     "er": 53,
-     "r": 56
-    }
-   },
-   {
     "id": "canon-1995-ob:p83260",
     "sourceId": "83260",
     "name": "장호연",
@@ -14548,9 +14700,9 @@
     }
    },
    {
-    "id": "canon-1995-ob:p95236",
-    "sourceId": "95236",
-    "name": "송재용",
+    "id": "canon-1995-ob:p89271",
+    "sourceId": "89271",
+    "name": "홍길남",
     "kind": "P",
     "bats": "R",
     "throws": "R",
@@ -14558,53 +14710,23 @@
      "P"
     ],
     "pitcher": {
-     "g": 17,
-     "w": 3,
-     "l": 3,
+     "g": 10,
+     "w": 0,
+     "l": 2,
      "sv": 1,
      "hld": 0,
-     "ip": 61.0,
-     "era": 4.87,
-     "h": 59,
-     "hr": 1,
-     "bb": 33,
-     "hbp": 0,
-     "so": 40,
-     "whip": 1.51,
-     "swar": 0.16,
-     "speed": 140,
-     "er": 33,
-     "r": 40
-    }
-   },
-   {
-    "id": "canon-1995-ob:p94215",
-    "sourceId": "94215",
-    "name": "한태균",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 16,
-     "w": 1,
-     "l": 0,
-     "sv": 0,
-     "hld": 0,
-     "ip": 28.67,
-     "era": 3.14,
-     "h": 31,
-     "hr": 3,
-     "bb": 12,
+     "ip": 20.33,
+     "era": 6.64,
+     "h": 22,
+     "hr": 0,
+     "bb": 13,
      "hbp": 1,
-     "so": 11,
-     "whip": 1.5,
-     "swar": 0.62,
-     "speed": 138,
-     "er": 10,
-     "r": 12
+     "so": 13,
+     "whip": 1.72,
+     "swar": -0.35,
+     "speed": 140,
+     "er": 15,
+     "r": 16
     }
    },
    {
@@ -14651,7 +14773,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2008 한국시리즈 우승 엔트리. 김광현·레이번·채병용 선발에 정대현이 마무리, 정우람이 셋업을 맡았다.",
+  "blurb": "2008 한국시리즈 우승 엔트리. 김광현·레이번·채병용 선발에 정대현이 마무리, 정우람이 셋업을 맡았다. 박정권은 시즌 중 부상으로 KS 엔트리 제외.",
   "lineup": [
    {
     "playerId": "canon-2008-sk:p75808",
@@ -14662,7 +14784,7 @@
     "position": "3B"
    },
    {
-    "playerId": "canon-2008-sk:p96362",
+    "playerId": "canon-2008-sk:p71848",
     "position": "CF"
    },
    {
@@ -14671,11 +14793,11 @@
    },
    {
     "playerId": "canon-2008-sk:p99810",
-    "position": "LF"
+    "position": "1B"
    },
    {
-    "playerId": "canon-2008-sk:p74846",
-    "position": "1B"
+    "playerId": "canon-2008-sk:p71857",
+    "position": "LF"
    },
    {
     "playerId": "canon-2008-sk:p73209",
@@ -14686,7 +14808,7 @@
     "position": "C"
    },
    {
-    "playerId": "canon-2008-sk:p71857",
+    "playerId": "canon-2008-sk:p96362",
     "position": "RF"
    }
   ],
@@ -14709,7 +14831,6 @@
    "canon-2008-sk:p71801"
   ],
   "bench": [
-   "canon-2008-sk:p71848",
    "canon-2008-sk:p71837",
    "canon-2008-sk:p71842",
    "canon-2008-sk:p76812",
@@ -14790,39 +14911,39 @@
     }
    },
    {
-    "id": "canon-2008-sk:p96362",
-    "sourceId": "96362",
-    "name": "박재홍",
+    "id": "canon-2008-sk:p71848",
+    "sourceId": "71848",
+    "name": "조동화",
     "kind": "B",
-    "bats": "R",
-    "throws": "R",
+    "bats": "L",
+    "throws": "L",
     "positions": [
      "CF"
     ],
     "batter": {
-     "g": 112,
-     "ab": 396,
-     "h": 126,
-     "doubles": 26,
-     "triples": 2,
-     "hr": 19,
-     "rbi": 72,
-     "r": 66,
-     "sb": 5,
-     "bb": 69,
-     "so": 66,
-     "avg": 0.318,
-     "obp": 0.42,
-     "slg": 0.538,
-     "ops": 0.958,
-     "wrcPlus": 150,
-     "swar": 4.43,
-     "speed": 46,
-     "pa": 471,
+     "g": 103,
+     "ab": 283,
+     "h": 79,
+     "doubles": 4,
+     "triples": 4,
+     "hr": 1,
+     "rbi": 26,
+     "r": 43,
+     "sb": 19,
+     "bb": 33,
+     "so": 56,
+     "avg": 0.279,
+     "obp": 0.357,
+     "slg": 0.332,
+     "ops": 0.689,
+     "wrcPlus": 79,
+     "swar": 0.65,
+     "speed": 72,
+     "pa": 337,
      "hbp": 3,
      "sf": 3,
-     "sac": 0,
-     "cs": 6
+     "sac": 15,
+     "cs": 3
     }
    },
    {
@@ -14869,7 +14990,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "LF"
+     "1B"
     ],
     "batter": {
      "g": 95,
@@ -14888,7 +15009,7 @@
      "slg": 0.451,
      "ops": 0.827,
      "wrcPlus": 114,
-     "swar": 1.34,
+     "swar": 1.03,
      "speed": 59,
      "pa": 363,
      "hbp": 3,
@@ -14898,39 +15019,39 @@
     }
    },
    {
-    "id": "canon-2008-sk:p74846",
-    "sourceId": "74846",
-    "name": "박정권",
+    "id": "canon-2008-sk:p71857",
+    "sourceId": "71857",
+    "name": "박재상",
     "kind": "B",
     "bats": "L",
     "throws": "L",
     "positions": [
-     "1B"
+     "LF"
     ],
     "batter": {
-     "g": 56,
-     "ab": 127,
-     "h": 33,
-     "doubles": 4,
+     "g": 94,
+     "ab": 314,
+     "h": 86,
+     "doubles": 18,
      "triples": 1,
-     "hr": 3,
-     "rbi": 20,
-     "r": 15,
-     "sb": 0,
-     "bb": 11,
-     "so": 23,
-     "avg": 0.26,
-     "obp": 0.319,
-     "slg": 0.378,
-     "ops": 0.697,
-     "wrcPlus": 75,
-     "swar": -0.23,
-     "speed": 40,
-     "pa": 138,
-     "hbp": 0,
-     "sf": 0,
-     "sac": 0,
-     "cs": 0
+     "hr": 1,
+     "rbi": 34,
+     "r": 46,
+     "sb": 21,
+     "bb": 36,
+     "so": 50,
+     "avg": 0.274,
+     "obp": 0.357,
+     "slg": 0.347,
+     "ops": 0.704,
+     "wrcPlus": 84,
+     "swar": 0.05,
+     "speed": 73,
+     "pa": 363,
+     "hbp": 5,
+     "sf": 1,
+     "sac": 7,
+     "cs": 9
     }
    },
    {
@@ -15006,75 +15127,39 @@
     }
    },
    {
-    "id": "canon-2008-sk:p71857",
-    "sourceId": "71857",
-    "name": "박재상",
+    "id": "canon-2008-sk:p96362",
+    "sourceId": "96362",
+    "name": "박재홍",
     "kind": "B",
-    "bats": "L",
-    "throws": "L",
+    "bats": "R",
+    "throws": "R",
     "positions": [
      "RF"
     ],
     "batter": {
-     "g": 94,
-     "ab": 314,
-     "h": 86,
-     "doubles": 18,
-     "triples": 1,
-     "hr": 1,
-     "rbi": 34,
-     "r": 46,
-     "sb": 21,
-     "bb": 36,
-     "so": 50,
-     "avg": 0.274,
-     "obp": 0.357,
-     "slg": 0.347,
-     "ops": 0.704,
-     "wrcPlus": 84,
-     "swar": 0.05,
-     "speed": 73,
-     "pa": 363,
-     "hbp": 5,
-     "sf": 1,
-     "sac": 7,
-     "cs": 9
-    }
-   },
-   {
-    "id": "canon-2008-sk:p71848",
-    "sourceId": "71848",
-    "name": "조동화",
-    "kind": "B",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "CF"
-    ],
-    "batter": {
-     "g": 103,
-     "ab": 283,
-     "h": 79,
-     "doubles": 4,
-     "triples": 4,
-     "hr": 1,
-     "rbi": 26,
-     "r": 43,
-     "sb": 19,
-     "bb": 33,
-     "so": 56,
-     "avg": 0.279,
-     "obp": 0.357,
-     "slg": 0.332,
-     "ops": 0.689,
-     "wrcPlus": 79,
-     "swar": 0.64,
-     "speed": 72,
-     "pa": 337,
+     "g": 112,
+     "ab": 396,
+     "h": 126,
+     "doubles": 26,
+     "triples": 2,
+     "hr": 19,
+     "rbi": 72,
+     "r": 66,
+     "sb": 5,
+     "bb": 69,
+     "so": 66,
+     "avg": 0.318,
+     "obp": 0.42,
+     "slg": 0.538,
+     "ops": 0.958,
+     "wrcPlus": 150,
+     "swar": 3.65,
+     "speed": 46,
+     "pa": 471,
      "hbp": 3,
      "sf": 3,
-     "sac": 15,
-     "cs": 3
+     "sac": 0,
+     "cs": 6
     }
    },
    {
@@ -15631,26 +15716,26 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1992 빙그레 이글스. 장종훈 41홈런, 송진우가 선발·마무리를 오갔다. 당시 규모에 맞춰 보강했다.",
+  "blurb": "1992 한국시리즈 진출 엔트리. 장종훈 41홈런, 정민철·한용덕 선발, 송진우가 선발·마무리를 오갔다.",
   "lineup": [
    {
     "playerId": "canon-1992-hh:p87721",
     "position": "CF"
    },
    {
-    "playerId": "canon-1992-hh:p91734",
-    "position": "2B"
+    "playerId": "canon-1992-hh:p87722",
+    "position": "RF"
    },
    {
     "playerId": "canon-1992-hh:p87760",
-    "position": "DH"
-   },
-   {
-    "playerId": "canon-1992-hh:p86724",
     "position": "1B"
    },
    {
     "playerId": "canon-1992-hh:p86780",
+    "position": "DH"
+   },
+   {
+    "playerId": "canon-1992-hh:p86724",
     "position": "LF"
    },
    {
@@ -15658,12 +15743,12 @@
     "position": "3B"
    },
    {
-    "playerId": "canon-1992-hh:p86718",
+    "playerId": "canon-1992-hh:p86711",
     "position": "C"
    },
    {
-    "playerId": "canon-1992-hh:p86711",
-    "position": "RF"
+    "playerId": "canon-1992-hh:p86718",
+    "position": "2B"
    },
    {
     "playerId": "canon-1992-hh:p90761",
@@ -15680,17 +15765,20 @@
   "bullpen": [
    "canon-1992-hh:p91729",
    "canon-1992-hh:p86770",
-   "canon-1992-hh:p89771"
+   "canon-1992-hh:p89771",
+   "canon-1992-hh:p92701"
   ],
   "closers": [
    "canon-1992-hh:p89770"
   ],
   "bench": [
-   "canon-1992-hh:p87722",
+   "canon-1992-hh:p91734",
    "canon-1992-hh:p91739",
    "canon-1992-hh:p89721",
    "canon-1992-hh:p88772",
-   "canon-1992-hh:p90768"
+   "canon-1992-hh:p90768",
+   "canon-1992-hh:p89775",
+   "canon-1992-hh:p89712"
   ],
   "players": [
    {
@@ -15730,39 +15818,39 @@
     }
    },
    {
-    "id": "canon-1992-hh:p91734",
-    "sourceId": "91734",
-    "name": "양용모",
+    "id": "canon-1992-hh:p87722",
+    "sourceId": "87722",
+    "name": "이중화",
     "kind": "B",
-    "bats": "R",
-    "throws": "R",
+    "bats": "L",
+    "throws": "L",
     "positions": [
-     "2B"
+     "RF"
     ],
     "batter": {
-     "g": 93,
-     "ab": 194,
-     "h": 52,
-     "doubles": 6,
-     "triples": 3,
-     "hr": 4,
-     "rbi": 30,
-     "r": 36,
-     "sb": 8,
-     "bb": 38,
-     "so": 45,
-     "avg": 0.268,
-     "obp": 0.391,
-     "slg": 0.392,
-     "ops": 0.783,
-     "wrcPlus": 106,
-     "swar": 1.12,
+     "g": 90,
+     "ab": 247,
+     "h": 51,
+     "doubles": 10,
+     "triples": 0,
+     "hr": 1,
+     "rbi": 20,
+     "r": 33,
+     "sb": 9,
+     "bb": 14,
+     "so": 12,
+     "avg": 0.206,
+     "obp": 0.249,
+     "slg": 0.259,
+     "ops": 0.508,
+     "wrcPlus": 18,
+     "swar": -2.04,
      "speed": 59,
-     "pa": 236,
-     "hbp": 2,
-     "sf": 1,
+     "pa": 266,
+     "hbp": 1,
+     "sf": 3,
      "sac": 1,
-     "cs": 2
+     "cs": 3
     }
    },
    {
@@ -15773,7 +15861,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "DH"
+     "1B"
     ],
     "batter": {
      "g": 125,
@@ -15792,49 +15880,13 @@
      "slg": 0.659,
      "ops": 1.105,
      "wrcPlus": 181,
-     "swar": 5.69,
+     "swar": 6.15,
      "speed": 55,
      "pa": 556,
      "hbp": 13,
      "sf": 6,
      "sac": 0,
      "cs": 5
-    }
-   },
-   {
-    "id": "canon-1992-hh:p86724",
-    "sourceId": "86724",
-    "name": "이강돈",
-    "kind": "B",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "1B"
-    ],
-    "batter": {
-     "g": 121,
-     "ab": 403,
-     "h": 129,
-     "doubles": 27,
-     "triples": 8,
-     "hr": 13,
-     "rbi": 60,
-     "r": 73,
-     "sb": 7,
-     "bb": 41,
-     "so": 63,
-     "avg": 0.32,
-     "obp": 0.379,
-     "slg": 0.524,
-     "ops": 0.903,
-     "wrcPlus": 129,
-     "swar": 1.91,
-     "speed": 48,
-     "pa": 454,
-     "hbp": 1,
-     "sf": 6,
-     "sac": 3,
-     "cs": 9
     }
    },
    {
@@ -15845,7 +15897,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "LF"
+     "DH"
     ],
     "batter": {
      "g": 119,
@@ -15864,13 +15916,49 @@
      "slg": 0.429,
      "ops": 0.799,
      "wrcPlus": 106,
-     "swar": 0.97,
+     "swar": 0.25,
      "speed": 39,
      "pa": 428,
      "hbp": 5,
      "sf": 4,
      "sac": 4,
      "cs": 5
+    }
+   },
+   {
+    "id": "canon-1992-hh:p86724",
+    "sourceId": "86724",
+    "name": "이강돈",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "LF"
+    ],
+    "batter": {
+     "g": 121,
+     "ab": 403,
+     "h": 129,
+     "doubles": 27,
+     "triples": 8,
+     "hr": 13,
+     "rbi": 60,
+     "r": 73,
+     "sb": 7,
+     "bb": 41,
+     "so": 63,
+     "avg": 0.32,
+     "obp": 0.379,
+     "slg": 0.524,
+     "ops": 0.903,
+     "wrcPlus": 129,
+     "swar": 2.29,
+     "speed": 48,
+     "pa": 454,
+     "hbp": 1,
+     "sf": 6,
+     "sac": 3,
+     "cs": 9
     }
    },
    {
@@ -15910,42 +15998,6 @@
     }
    },
    {
-    "id": "canon-1992-hh:p86718",
-    "sourceId": "86718",
-    "name": "전대영",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "C"
-    ],
-    "batter": {
-     "g": 83,
-     "ab": 189,
-     "h": 49,
-     "doubles": 6,
-     "triples": 0,
-     "hr": 7,
-     "rbi": 38,
-     "r": 15,
-     "sb": 1,
-     "bb": 23,
-     "so": 42,
-     "avg": 0.259,
-     "obp": 0.339,
-     "slg": 0.402,
-     "ops": 0.742,
-     "wrcPlus": 87,
-     "swar": 0.81,
-     "speed": 42,
-     "pa": 218,
-     "hbp": 2,
-     "sf": 4,
-     "sac": 0,
-     "cs": 1
-    }
-   },
-   {
     "id": "canon-1992-hh:p86711",
     "sourceId": "86711",
     "name": "김상국",
@@ -15953,7 +16005,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "RF"
+     "C"
     ],
     "batter": {
      "g": 114,
@@ -15972,13 +16024,49 @@
      "slg": 0.407,
      "ops": 0.742,
      "wrcPlus": 87,
-     "swar": 0.13,
+     "swar": 1.23,
      "speed": 48,
      "pa": 331,
      "hbp": 2,
      "sf": 2,
      "sac": 3,
      "cs": 3
+    }
+   },
+   {
+    "id": "canon-1992-hh:p86718",
+    "sourceId": "86718",
+    "name": "전대영",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "2B"
+    ],
+    "batter": {
+     "g": 83,
+     "ab": 189,
+     "h": 49,
+     "doubles": 6,
+     "triples": 0,
+     "hr": 7,
+     "rbi": 38,
+     "r": 15,
+     "sb": 1,
+     "bb": 23,
+     "so": 42,
+     "avg": 0.259,
+     "obp": 0.339,
+     "slg": 0.402,
+     "ops": 0.742,
+     "wrcPlus": 87,
+     "swar": 0.44,
+     "speed": 42,
+     "pa": 218,
+     "hbp": 2,
+     "sf": 4,
+     "sac": 0,
+     "cs": 1
     }
    },
    {
@@ -16018,39 +16106,39 @@
     }
    },
    {
-    "id": "canon-1992-hh:p87722",
-    "sourceId": "87722",
-    "name": "이중화",
+    "id": "canon-1992-hh:p91734",
+    "sourceId": "91734",
+    "name": "양용모",
     "kind": "B",
-    "bats": "L",
-    "throws": "L",
+    "bats": "R",
+    "throws": "R",
     "positions": [
-     "CF"
+     "DH"
     ],
     "batter": {
-     "g": 90,
-     "ab": 247,
-     "h": 51,
-     "doubles": 10,
-     "triples": 0,
-     "hr": 1,
-     "rbi": 20,
-     "r": 33,
-     "sb": 9,
-     "bb": 14,
-     "so": 12,
-     "avg": 0.206,
-     "obp": 0.249,
-     "slg": 0.259,
-     "ops": 0.508,
-     "wrcPlus": 18,
-     "swar": -1.6,
+     "g": 93,
+     "ab": 194,
+     "h": 52,
+     "doubles": 6,
+     "triples": 3,
+     "hr": 4,
+     "rbi": 30,
+     "r": 36,
+     "sb": 8,
+     "bb": 38,
+     "so": 45,
+     "avg": 0.268,
+     "obp": 0.391,
+     "slg": 0.392,
+     "ops": 0.783,
+     "wrcPlus": 106,
+     "swar": 0.33,
      "speed": 59,
-     "pa": 266,
-     "hbp": 1,
-     "sf": 3,
+     "pa": 236,
+     "hbp": 2,
+     "sf": 1,
      "sac": 1,
-     "cs": 3
+     "cs": 2
     }
    },
    {
@@ -16194,6 +16282,78 @@
      "hbp": 4,
      "sf": 0,
      "sac": 1,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-1992-hh:p89775",
+    "sourceId": "89775",
+    "name": "성군철",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 45,
+     "ab": 55,
+     "h": 12,
+     "doubles": 1,
+     "triples": 0,
+     "hr": 1,
+     "rbi": 7,
+     "r": 17,
+     "sb": 4,
+     "bb": 5,
+     "so": 13,
+     "avg": 0.218,
+     "obp": 0.279,
+     "slg": 0.291,
+     "ops": 0.57,
+     "wrcPlus": 37,
+     "swar": -0.45,
+     "speed": 74,
+     "pa": 62,
+     "hbp": 0,
+     "sf": 1,
+     "sac": 1,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-1992-hh:p89712",
+    "sourceId": "89712",
+    "name": "김용선",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 52,
+     "ab": 94,
+     "h": 20,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 3,
+     "rbi": 12,
+     "r": 11,
+     "sb": 2,
+     "bb": 8,
+     "so": 29,
+     "avg": 0.213,
+     "obp": 0.275,
+     "slg": 0.33,
+     "ops": 0.604,
+     "wrcPlus": 46,
+     "swar": -0.65,
+     "speed": 50,
+     "pa": 105,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 3,
      "cs": 1
     }
    },
@@ -16438,6 +16598,36 @@
     }
    },
    {
+    "id": "canon-1992-hh:p92701",
+    "sourceId": "92701",
+    "name": "지연규",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 9,
+     "w": 2,
+     "l": 0,
+     "sv": 0,
+     "hld": 0,
+     "ip": 28.67,
+     "era": 5.97,
+     "h": 39,
+     "hr": 4,
+     "bb": 12,
+     "hbp": 0,
+     "so": 12,
+     "whip": 1.78,
+     "swar": -0.4,
+     "speed": 139,
+     "er": 19,
+     "r": 20
+    }
+   },
+   {
     "id": "canon-1992-hh:p89770",
     "sourceId": "89770",
     "name": "송진우",
@@ -16481,7 +16671,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1983 삼미 슈퍼스타즈. 장명부가 427⅓이닝을 던진 시즌. 당시 로스터 규모에 맞춰 보강했다.",
+  "blurb": "1983 삼미 슈퍼스타즈. 장명부가 427⅓이닝을 던진 시즌.",
   "lineup": [
    {
     "playerId": "canon-1983-hd:p80097",
@@ -16512,7 +16702,7 @@
     "position": "3B"
    },
    {
-    "playerId": "canon-1983-hd:p91444",
+    "playerId": "canon-1983-hd:p82001",
     "position": "2B"
    },
    {
@@ -16534,8 +16724,8 @@
   ],
   "closers": [],
   "bench": [
+   "canon-1983-hd:p91444",
    "canon-1983-hd:p82046",
-   "canon-1983-hd:p82001",
    "canon-1983-hd:p96480",
    "canon-1983-hd:p95777"
   ],
@@ -16793,9 +16983,9 @@
     }
    },
    {
-    "id": "canon-1983-hd:p91444",
-    "sourceId": "91444",
-    "name": "최홍석",
+    "id": "canon-1983-hd:p82001",
+    "sourceId": "82001",
+    "name": "정구왕",
     "kind": "B",
     "bats": "R",
     "throws": "R",
@@ -16803,29 +16993,29 @@
      "2B"
     ],
     "batter": {
-     "g": 60,
-     "ab": 163,
-     "h": 41,
-     "doubles": 5,
+     "g": 57,
+     "ab": 156,
+     "h": 29,
+     "doubles": 0,
      "triples": 0,
-     "hr": 3,
+     "hr": 1,
      "rbi": 11,
-     "r": 17,
-     "sb": 0,
-     "bb": 9,
-     "so": 25,
-     "avg": 0.252,
-     "obp": 0.307,
-     "slg": 0.337,
-     "ops": 0.644,
-     "wrcPlus": 71,
-     "swar": 0.05,
-     "speed": 40,
-     "pa": 177,
-     "hbp": 4,
+     "r": 8,
+     "sb": 3,
+     "bb": 5,
+     "so": 15,
+     "avg": 0.186,
+     "obp": 0.216,
+     "slg": 0.205,
+     "ops": 0.421,
+     "wrcPlus": 2,
+     "swar": -1.66,
+     "speed": 49,
+     "pa": 167,
+     "hbp": 1,
      "sf": 0,
-     "sac": 1,
-     "cs": 0
+     "sac": 5,
+     "cs": 9
     }
    },
    {
@@ -16865,6 +17055,42 @@
     }
    },
    {
+    "id": "canon-1983-hd:p91444",
+    "sourceId": "91444",
+    "name": "최홍석",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 60,
+     "ab": 163,
+     "h": 41,
+     "doubles": 5,
+     "triples": 0,
+     "hr": 3,
+     "rbi": 11,
+     "r": 17,
+     "sb": 0,
+     "bb": 9,
+     "so": 25,
+     "avg": 0.252,
+     "obp": 0.307,
+     "slg": 0.337,
+     "ops": 0.644,
+     "wrcPlus": 71,
+     "swar": -0.54,
+     "speed": 40,
+     "pa": 177,
+     "hbp": 4,
+     "sf": 0,
+     "sac": 1,
+     "cs": 0
+    }
+   },
+   {
     "id": "canon-1983-hd:p82046",
     "sourceId": "82046",
     "name": "박준영",
@@ -16898,42 +17124,6 @@
      "sf": 1,
      "sac": 3,
      "cs": 2
-    }
-   },
-   {
-    "id": "canon-1983-hd:p82001",
-    "sourceId": "82001",
-    "name": "정구왕",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "SS"
-    ],
-    "batter": {
-     "g": 57,
-     "ab": 156,
-     "h": 29,
-     "doubles": 0,
-     "triples": 0,
-     "hr": 1,
-     "rbi": 11,
-     "r": 8,
-     "sb": 3,
-     "bb": 5,
-     "so": 15,
-     "avg": 0.186,
-     "obp": 0.216,
-     "slg": 0.205,
-     "ops": 0.421,
-     "wrcPlus": 2,
-     "swar": -1.52,
-     "speed": 49,
-     "pa": 167,
-     "hbp": 1,
-     "sf": 0,
-     "sac": 5,
-     "cs": 9
     }
    },
    {
@@ -17262,7 +17452,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1986 청보 핀토스. 김신부·김기태가 이닝을 먹었다. 당시 로스터 규모에 맞춰 보강했다.",
+  "blurb": "1986 청보 핀토스. 김신부·김기태가 이닝을 먹었고, 권두조·정구선이 타선을 이끌었다.",
   "lineup": [
    {
     "playerId": "canon-1986-hd:p80030",
@@ -17281,7 +17471,7 @@
     "position": "1B"
    },
    {
-    "playerId": "canon-1986-hd:p86312",
+    "playerId": "canon-1986-hd:p95576",
     "position": "LF"
    },
    {
@@ -17316,10 +17506,10 @@
   ],
   "closers": [],
   "bench": [
+   "canon-1986-hd:p86312",
    "canon-1986-hd:p95777",
    "canon-1986-hd:p95901",
    "canon-1986-hd:p83321",
-   "canon-1986-hd:p95576",
    "canon-1986-hd:p85370"
   ],
   "players": [
@@ -17468,9 +17658,9 @@
     }
    },
    {
-    "id": "canon-1986-hd:p86312",
-    "sourceId": "86312",
-    "name": "김동기",
+    "id": "canon-1986-hd:p95576",
+    "sourceId": "95576",
+    "name": "권두조",
     "kind": "B",
     "bats": "R",
     "throws": "R",
@@ -17478,29 +17668,29 @@
      "LF"
     ],
     "batter": {
-     "g": 87,
-     "ab": 230,
-     "h": 57,
-     "doubles": 14,
+     "g": 108,
+     "ab": 303,
+     "h": 49,
+     "doubles": 6,
      "triples": 1,
-     "hr": 10,
-     "rbi": 26,
-     "r": 20,
-     "sb": 1,
-     "bb": 19,
-     "so": 48,
-     "avg": 0.248,
-     "obp": 0.313,
-     "slg": 0.448,
-     "ops": 0.761,
-     "wrcPlus": 100,
-     "swar": 0.46,
-     "speed": 42,
-     "pa": 253,
+     "hr": 0,
+     "rbi": 11,
+     "r": 14,
+     "sb": 2,
+     "bb": 27,
+     "so": 33,
+     "avg": 0.162,
+     "obp": 0.237,
+     "slg": 0.188,
+     "ops": 0.425,
+     "wrcPlus": 10,
+     "swar": -3.22,
+     "speed": 43,
+     "pa": 358,
      "hbp": 3,
      "sf": 0,
-     "sac": 1,
-     "cs": 2
+     "sac": 25,
+     "cs": 3
     }
    },
    {
@@ -17648,6 +17838,42 @@
     }
    },
    {
+    "id": "canon-1986-hd:p86312",
+    "sourceId": "86312",
+    "name": "김동기",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 87,
+     "ab": 230,
+     "h": 57,
+     "doubles": 14,
+     "triples": 1,
+     "hr": 10,
+     "rbi": 26,
+     "r": 20,
+     "sb": 1,
+     "bb": 19,
+     "so": 48,
+     "avg": 0.248,
+     "obp": 0.313,
+     "slg": 0.448,
+     "ops": 0.761,
+     "wrcPlus": 100,
+     "swar": 0.04,
+     "speed": 42,
+     "pa": 253,
+     "hbp": 3,
+     "sf": 0,
+     "sac": 1,
+     "cs": 2
+    }
+   },
+   {
     "id": "canon-1986-hd:p95777",
     "sourceId": "95777",
     "name": "김경남",
@@ -17753,42 +17979,6 @@
      "sf": 0,
      "sac": 1,
      "cs": 0
-    }
-   },
-   {
-    "id": "canon-1986-hd:p95576",
-    "sourceId": "95576",
-    "name": "권두조",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "1B"
-    ],
-    "batter": {
-     "g": 108,
-     "ab": 303,
-     "h": 49,
-     "doubles": 6,
-     "triples": 1,
-     "hr": 0,
-     "rbi": 11,
-     "r": 14,
-     "sb": 2,
-     "bb": 27,
-     "so": 33,
-     "avg": 0.162,
-     "obp": 0.237,
-     "slg": 0.188,
-     "ops": 0.425,
-     "wrcPlus": 10,
-     "swar": -3.52,
-     "speed": 43,
-     "pa": 358,
-     "hbp": 3,
-     "sf": 0,
-     "sac": 25,
-     "cs": 3
     }
    },
    {
@@ -18111,7 +18301,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1989 태평양 돌핀스. 김일권 62도루, 박정현·최창호가 220이닝 이상. 당시 규모에 맞춰 보강했다.",
+  "blurb": "1989 태평양 돌핀스. 김일권 62도루, 박정현·최창호가 220이닝 이상.",
   "lineup": [
    {
     "playerId": "canon-1989-hd:p82616",
@@ -18160,8 +18350,7 @@
   "bullpen": [
    "canon-1989-hd:p89330",
    "canon-1989-hd:p88371",
-   "canon-1989-hd:p86370",
-   "canon-1989-hd:p83371"
+   "canon-1989-hd:p86370"
   ],
   "closers": [],
   "bench": [
@@ -18915,36 +19104,6 @@
      "er": 15,
      "r": 18
     }
-   },
-   {
-    "id": "canon-1989-hd:p83371",
-    "sourceId": "83371",
-    "name": "임호균",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 7,
-     "w": 0,
-     "l": 1,
-     "sv": 1,
-     "hld": 0,
-     "ip": 15.0,
-     "era": 2.4,
-     "h": 13,
-     "hr": 0,
-     "bb": 6,
-     "hbp": 2,
-     "so": 6,
-     "whip": 1.27,
-     "swar": 0.38,
-     "speed": 134,
-     "er": 4,
-     "r": 7
-    }
    }
   ],
   "createdAt": "1989-10-01T00:00:00.000Z"
@@ -18960,11 +19119,11 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "2000 한국시리즈 우승 엔트리. 정민태·임선동·김수경 18승 트리오, 위재영이 마무리.",
+  "blurb": "2000 한국시리즈 우승 엔트리. 정민태·임선동·김수경 18승 트리오, 위재영 마무리, 퀸란 시리즈 MVP.",
   "lineup": [
    {
     "playerId": "canon-2000-hd:p91511",
-    "position": "CF"
+    "position": "LF"
    },
    {
     "playerId": "canon-2000-hd:p92906",
@@ -18972,19 +19131,19 @@
    },
    {
     "playerId": "canon-2000-hd:p96362",
-    "position": "LF"
+    "position": "CF"
    },
    {
     "playerId": "canon-2000-hd:p92809",
     "position": "C"
    },
    {
-    "playerId": "canon-2000-hd:p70317",
-    "position": "DH"
-   },
-   {
     "playerId": "canon-2000-hd:p95114",
     "position": "RF"
+   },
+   {
+    "playerId": "canon-2000-hd:p70317",
+    "position": "3B"
    },
    {
     "playerId": "canon-2000-hd:p96307",
@@ -18995,8 +19154,8 @@
     "position": "1B"
    },
    {
-    "playerId": "canon-2000-hd:p89513",
-    "position": "3B"
+    "playerId": "canon-2000-hd:p70310",
+    "position": "DH"
    }
   ],
   "rotation": [
@@ -19017,7 +19176,7 @@
   ],
   "bench": [
    "canon-2000-hd:p89221",
-   "canon-2000-hd:p70310",
+   "canon-2000-hd:p89513",
    "canon-2000-hd:p92304",
    "canon-2000-hd:p91350",
    "canon-2000-hd:p70303",
@@ -19032,7 +19191,7 @@
     "bats": "L",
     "throws": "L",
     "positions": [
-     "CF"
+     "LF"
     ],
     "batter": {
      "g": 87,
@@ -19051,7 +19210,7 @@
      "slg": 0.388,
      "ops": 0.824,
      "wrcPlus": 124,
-     "swar": 2.22,
+     "swar": 1.66,
      "speed": 70,
      "pa": 334,
      "hbp": 6,
@@ -19104,7 +19263,7 @@
     "bats": "R",
     "throws": "R",
     "positions": [
-     "LF"
+     "CF"
     ],
     "batter": {
      "g": 132,
@@ -19123,7 +19282,7 @@
      "slg": 0.589,
      "ops": 0.977,
      "wrcPlus": 148,
-     "swar": 4.41,
+     "swar": 5.36,
      "speed": 71,
      "pa": 572,
      "hbp": 7,
@@ -19169,42 +19328,6 @@
     }
    },
    {
-    "id": "canon-2000-hd:p70317",
-    "sourceId": "70317",
-    "name": "퀸란",
-    "kind": "B",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "DH"
-    ],
-    "batter": {
-     "g": 133,
-     "ab": 487,
-     "h": 115,
-     "doubles": 23,
-     "triples": 2,
-     "hr": 37,
-     "rbi": 91,
-     "r": 74,
-     "sb": 2,
-     "bb": 36,
-     "so": 173,
-     "avg": 0.236,
-     "obp": 0.302,
-     "slg": 0.52,
-     "ops": 0.822,
-     "wrcPlus": 103,
-     "swar": 0.39,
-     "speed": 42,
-     "pa": 537,
-     "hbp": 11,
-     "sf": 2,
-     "sac": 1,
-     "cs": 1
-    }
-   },
-   {
     "id": "canon-2000-hd:p95114",
     "sourceId": "95114",
     "name": "심재학",
@@ -19238,6 +19361,42 @@
      "sf": 3,
      "sac": 3,
      "cs": 2
+    }
+   },
+   {
+    "id": "canon-2000-hd:p70317",
+    "sourceId": "70317",
+    "name": "퀸란",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 133,
+     "ab": 487,
+     "h": 115,
+     "doubles": 23,
+     "triples": 2,
+     "hr": 37,
+     "rbi": 91,
+     "r": 74,
+     "sb": 2,
+     "bb": 36,
+     "so": 173,
+     "avg": 0.236,
+     "obp": 0.302,
+     "slg": 0.52,
+     "ops": 0.822,
+     "wrcPlus": 103,
+     "swar": 2.18,
+     "speed": 42,
+     "pa": 537,
+     "hbp": 11,
+     "sf": 2,
+     "sac": 1,
+     "cs": 1
     }
    },
    {
@@ -19313,39 +19472,39 @@
     }
    },
    {
-    "id": "canon-2000-hd:p89513",
-    "sourceId": "89513",
-    "name": "김인호",
+    "id": "canon-2000-hd:p70310",
+    "sourceId": "70310",
+    "name": "카펜터",
     "kind": "B",
-    "bats": "R",
-    "throws": "R",
+    "bats": "L",
+    "throws": "L",
     "positions": [
-     "3B"
+     "DH"
     ],
     "batter": {
-     "g": 115,
-     "ab": 281,
-     "h": 64,
-     "doubles": 17,
-     "triples": 2,
-     "hr": 3,
-     "rbi": 21,
-     "r": 48,
-     "sb": 8,
-     "bb": 30,
-     "so": 44,
-     "avg": 0.228,
-     "obp": 0.308,
-     "slg": 0.335,
-     "ops": 0.642,
-     "wrcPlus": 62,
-     "swar": -0.29,
-     "speed": 54,
-     "pa": 324,
-     "hbp": 3,
-     "sf": 1,
-     "sac": 9,
-     "cs": 4
+     "g": 39,
+     "ab": 142,
+     "h": 40,
+     "doubles": 7,
+     "triples": 0,
+     "hr": 5,
+     "rbi": 32,
+     "r": 23,
+     "sb": 5,
+     "bb": 13,
+     "so": 32,
+     "avg": 0.282,
+     "obp": 0.342,
+     "slg": 0.437,
+     "ops": 0.778,
+     "wrcPlus": 97,
+     "swar": 0.02,
+     "speed": 57,
+     "pa": 158,
+     "hbp": 1,
+     "sf": 2,
+     "sac": 0,
+     "cs": 2
     }
    },
    {
@@ -19385,39 +19544,39 @@
     }
    },
    {
-    "id": "canon-2000-hd:p70310",
-    "sourceId": "70310",
-    "name": "카펜터",
+    "id": "canon-2000-hd:p89513",
+    "sourceId": "89513",
+    "name": "김인호",
     "kind": "B",
-    "bats": "L",
-    "throws": "L",
+    "bats": "R",
+    "throws": "R",
     "positions": [
-     "LF"
+     "DH"
     ],
     "batter": {
-     "g": 39,
-     "ab": 142,
-     "h": 40,
-     "doubles": 7,
-     "triples": 0,
-     "hr": 5,
-     "rbi": 32,
-     "r": 23,
-     "sb": 5,
-     "bb": 13,
-     "so": 32,
-     "avg": 0.282,
-     "obp": 0.342,
-     "slg": 0.437,
-     "ops": 0.778,
-     "wrcPlus": 97,
-     "swar": 0.28,
-     "speed": 57,
-     "pa": 158,
-     "hbp": 1,
-     "sf": 2,
-     "sac": 0,
-     "cs": 2
+     "g": 115,
+     "ab": 281,
+     "h": 64,
+     "doubles": 17,
+     "triples": 2,
+     "hr": 3,
+     "rbi": 21,
+     "r": 48,
+     "sb": 8,
+     "bb": 30,
+     "so": 44,
+     "avg": 0.228,
+     "obp": 0.308,
+     "slg": 0.335,
+     "ops": 0.642,
+     "wrcPlus": 62,
+     "swar": -1.37,
+     "speed": 54,
+     "pa": 324,
+     "hbp": 3,
+     "sf": 1,
+     "sac": 9,
+     "cs": 4
     }
    },
    {
@@ -19878,7 +20037,7 @@
   "visibility": "public",
   "ownerId": null,
   "canonical": true,
-  "blurb": "1996 정규시즌 2위, 창단 첫 가을야구. 조규제가 마무리. 당시 규모에 맞춰 보강했다.",
+  "blurb": "1996 정규시즌 2위, 창단 첫 가을야구(PO). 조규제가 마무리.",
   "lineup": [
    {
     "playerId": "canon-1996-sb:p84210",
@@ -19929,9 +20088,7 @@
    "canon-1996-sb:p96824",
    "canon-1996-sb:p96847",
    "canon-1996-sb:p91899",
-   "canon-1996-sb:p94834",
-   "canon-1996-sb:p94821",
-   "canon-1996-sb:p96851"
+   "canon-1996-sb:p94834"
   ],
   "closers": [
    "canon-1996-sb:p91818"
@@ -20820,66 +20977,6 @@
      "speed": 139,
      "er": 27,
      "r": 29
-    }
-   },
-   {
-    "id": "canon-1996-sb:p94821",
-    "sourceId": "94821",
-    "name": "김민국",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 20,
-     "w": 2,
-     "l": 1,
-     "sv": 1,
-     "hld": 0,
-     "ip": 37.67,
-     "era": 3.11,
-     "h": 42,
-     "hr": 2,
-     "bb": 15,
-     "hbp": 6,
-     "so": 32,
-     "whip": 1.51,
-     "swar": 0.83,
-     "speed": 141,
-     "er": 13,
-     "r": 13
-    }
-   },
-   {
-    "id": "canon-1996-sb:p96851",
-    "sourceId": "96851",
-    "name": "신영균",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 19,
-     "w": 2,
-     "l": 3,
-     "sv": 1,
-     "hld": 0,
-     "ip": 36.0,
-     "era": 7.5,
-     "h": 46,
-     "hr": 1,
-     "bb": 31,
-     "hbp": 1,
-     "so": 19,
-     "whip": 2.14,
-     "swar": -0.96,
-     "speed": 139,
-     "er": 30,
-     "r": 32
     }
    },
    {
