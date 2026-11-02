@@ -3209,10 +3209,10 @@
    "canon-1994-lg:p93147",
    "canon-1994-lg:p86110",
    "canon-1994-lg:p85150",
-   "canon-1994-lg:p94134",
-   "canon-1994-lg:p89111"
+   "canon-1994-lg:p94134"
   ],
   "bullpen": [
+   "canon-1994-lg:p89111",
    "canon-1994-lg:p86670",
    "canon-1994-lg:p93121",
    "canon-1994-lg:p92901",
@@ -6266,12 +6266,12 @@
    "canon-1992-lt:p92508",
    "canon-1992-lt:p86572",
    "canon-1992-lt:p90532",
-   "canon-1992-lt:p92506",
-   "canon-1992-lt:p92502",
-   "canon-1992-lt:p91153"
+   "canon-1992-lt:p92506"
   ],
   "bullpen": [
    "canon-1992-lt:p89520",
+   "canon-1992-lt:p92502",
+   "canon-1992-lt:p91153",
    "canon-1992-lt:p87510",
    "canon-1992-lt:p85531"
   ],
@@ -7020,6 +7020,36 @@
     }
    },
    {
+    "id": "canon-1992-lt:p89520",
+    "sourceId": "89520",
+    "name": "이상번",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 20,
+     "w": 0,
+     "l": 1,
+     "sv": 0,
+     "hld": 0,
+     "ip": 41.67,
+     "era": 3.89,
+     "h": 32,
+     "hr": 3,
+     "bb": 26,
+     "hbp": 2,
+     "so": 24,
+     "whip": 1.39,
+     "swar": 0.38,
+     "speed": 139,
+     "er": 18,
+     "r": 18
+    }
+   },
+   {
     "id": "canon-1992-lt:p92502",
     "sourceId": "92502",
     "name": "김상현",
@@ -7077,36 +7107,6 @@
      "speed": 139,
      "er": 66,
      "r": 74
-    }
-   },
-   {
-    "id": "canon-1992-lt:p89520",
-    "sourceId": "89520",
-    "name": "이상번",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 20,
-     "w": 0,
-     "l": 1,
-     "sv": 0,
-     "hld": 0,
-     "ip": 41.67,
-     "era": 3.89,
-     "h": 32,
-     "hr": 3,
-     "bb": 26,
-     "hbp": 2,
-     "so": 24,
-     "whip": 1.39,
-     "swar": 0.38,
-     "speed": 139,
-     "er": 18,
-     "r": 18
     }
    },
    {
@@ -12224,10 +12224,10 @@
    "canon-1993-ht:p89670",
    "canon-1993-ht:p89620",
    "canon-1993-ht:p93626",
-   "canon-1993-ht:p86612",
-   "canon-1993-ht:p87672"
+   "canon-1993-ht:p86612"
   ],
   "bullpen": [
+   "canon-1993-ht:p87672",
    "canon-1993-ht:p84671",
    "canon-1993-ht:p89672",
    "canon-1993-ht:p86672"
@@ -13111,10 +13111,10 @@
    "canon-1983-lg:p82122",
    "canon-1983-lg:p94490",
    "canon-1983-lg:p83171",
-   "canon-1983-lg:p82175",
-   "canon-1983-lg:p82699"
+   "canon-1983-lg:p82175"
   ],
   "bullpen": [
+   "canon-1983-lg:p82699",
    "canon-1983-lg:p96471",
    "canon-1983-lg:p83324",
    "canon-1983-lg:p82778"
@@ -13892,10 +13892,10 @@
    "canon-1995-ob:p90213",
    "canon-1995-ob:p92202",
    "canon-1995-ob:p95235",
-   "canon-1995-ob:p82234",
-   "canon-1995-ob:p83260"
+   "canon-1995-ob:p82234"
   ],
   "bullpen": [
+   "canon-1995-ob:p83260",
    "canon-1995-ob:p93245",
    "canon-1995-ob:p91821",
    "canon-1995-ob:p89271"
@@ -17495,11 +17495,11 @@
    "canon-1986-hd:p86310",
    "canon-1986-hd:p86303",
    "canon-1986-hd:p95488",
-   "canon-1986-hd:p85350",
-   "canon-1986-hd:p86370",
-   "canon-1986-hd:p80204"
+   "canon-1986-hd:p85350"
   ],
   "bullpen": [
+   "canon-1986-hd:p86370",
+   "canon-1986-hd:p80204",
    "canon-1986-hd:p84111",
    "canon-1986-hd:p83272",
    "canon-1986-hd:p82702"
@@ -18343,11 +18343,11 @@
   "rotation": [
    "canon-1989-hd:p88332",
    "canon-1989-hd:p87340",
-   "canon-1989-hd:p89351",
    "canon-1989-hd:p85570",
-   "canon-1989-hd:p86310"
+   "canon-1989-hd:p89351"
   ],
   "bullpen": [
+   "canon-1989-hd:p86310",
    "canon-1989-hd:p89330",
    "canon-1989-hd:p88371",
    "canon-1989-hd:p86370"
@@ -18926,36 +18926,6 @@
     }
    },
    {
-    "id": "canon-1989-hd:p89351",
-    "sourceId": "89351",
-    "name": "정명원",
-    "kind": "P",
-    "bats": "R",
-    "throws": "R",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 38,
-     "w": 11,
-     "l": 4,
-     "sv": 6,
-     "hld": 0,
-     "ip": 139.33,
-     "era": 2.45,
-     "h": 126,
-     "hr": 4,
-     "bb": 46,
-     "hbp": 3,
-     "so": 68,
-     "whip": 1.23,
-     "swar": 3.48,
-     "speed": 135,
-     "er": 38,
-     "r": 60
-    }
-   },
-   {
     "id": "canon-1989-hd:p85570",
     "sourceId": "85570",
     "name": "양상문",
@@ -18982,6 +18952,36 @@
      "swar": 2.55,
      "speed": 135,
      "er": 59,
+     "r": 60
+    }
+   },
+   {
+    "id": "canon-1989-hd:p89351",
+    "sourceId": "89351",
+    "name": "정명원",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 38,
+     "w": 11,
+     "l": 4,
+     "sv": 6,
+     "hld": 0,
+     "ip": 139.33,
+     "era": 2.45,
+     "h": 126,
+     "hr": 4,
+     "bb": 46,
+     "hbp": 3,
+     "so": 68,
+     "whip": 1.23,
+     "swar": 3.48,
+     "speed": 135,
+     "er": 38,
      "r": 60
     }
    },
@@ -21066,10 +21066,10 @@
    "canon-2008-kor:po08-류현진",
    "canon-2008-kor:po08-김광현",
    "canon-2008-kor:po08-송승준",
-   "canon-2008-kor:po08-봉중근",
    "canon-2008-kor:po08-장원삼"
   ],
   "bullpen": [
+   "canon-2008-kor:po08-봉중근",
    "canon-2008-kor:po08-윤석민",
    "canon-2008-kor:po08-정대현",
    "canon-2008-kor:po08-한기주",
@@ -21681,36 +21681,6 @@
     }
    },
    {
-    "id": "canon-2008-kor:po08-봉중근",
-    "sourceId": "o08-봉중근",
-    "name": "봉중근",
-    "kind": "P",
-    "bats": "L",
-    "throws": "L",
-    "positions": [
-     "P"
-    ],
-    "pitcher": {
-     "g": 2,
-     "w": 0,
-     "l": 0,
-     "sv": 0,
-     "hld": 0,
-     "ip": 8.67,
-     "era": 8.31,
-     "h": 14,
-     "hr": 0,
-     "bb": 4,
-     "hbp": 1,
-     "so": 6,
-     "whip": 2.08,
-     "swar": -0.3,
-     "speed": 145,
-     "er": 8,
-     "r": 9
-    }
-   },
-   {
     "id": "canon-2008-kor:po08-장원삼",
     "sourceId": "o08-장원삼",
     "name": "장원삼",
@@ -21738,6 +21708,36 @@
      "speed": 142,
      "er": 0,
      "r": 0
+    }
+   },
+   {
+    "id": "canon-2008-kor:po08-봉중근",
+    "sourceId": "o08-봉중근",
+    "name": "봉중근",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 2,
+     "w": 0,
+     "l": 0,
+     "sv": 0,
+     "hld": 0,
+     "ip": 8.67,
+     "era": 8.31,
+     "h": 14,
+     "hr": 0,
+     "bb": 4,
+     "hbp": 1,
+     "so": 6,
+     "whip": 2.08,
+     "swar": -0.3,
+     "speed": 145,
+     "er": 8,
+     "r": 9
     }
    },
    {
