@@ -6,5 +6,6 @@ export async function GET() {
     google: googleAuthEnabled(),
     github: githubAuthEnabled(),
     local: localLoginEnabled(),
+    register: true,
   });
 }

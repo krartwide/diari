@@ -3,13 +3,25 @@ import Google from "next-auth/providers/google";
 import GitHub from "next-auth/providers/github";
 import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import bcrypt from "bcryptjs";
 import { prisma } from "@/lib/prisma";
 import { isAdminEmail } from "@/lib/admin";
 
 const googleReady = Boolean(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET);
 const githubReady = Boolean(process.env.AUTH_GITHUB_ID && process.env.AUTH_GITHUB_SECRET);
 const sitePassword = (process.env.AUTH_SITE_PASSWORD ?? "").trim();
-const localLoginReady = sitePassword.length >= 8;
+const localLoginReady = true;
+
+async function verifyPassword(password: string, passwordHash: string | null | undefined) {
+  if (passwordHash) {
+    return bcrypt.compare(password, passwordHash);
+  }
+  // Legacy shared site password (bootstrap / older installs)
+  if (sitePassword.length >= 8 && password === sitePassword) {
+    return true;
+  }
+  return false;
+}
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
@@ -40,38 +52,59 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
           }),
         ]
       : []),
-    ...(localLoginReady
-      ? [
-          Credentials({
-            id: "site-login",
-            name: "사이트 로그인",
-            credentials: {
-              email: { label: "이메일", type: "email" },
-              password: { label: "사이트 비밀번호", type: "password" },
-              name: { label: "이름", type: "text" },
+    Credentials({
+      id: "site-login",
+      name: "이메일 로그인",
+      credentials: {
+        email: { label: "이메일", type: "email" },
+        password: { label: "비밀번호", type: "password" },
+        name: { label: "이름", type: "text" },
+      },
+      async authorize(credentials) {
+        const emailRaw = String(credentials?.email ?? "").trim().toLowerCase();
+        const password = String(credentials?.password ?? "");
+        const nameRaw = String(credentials?.name ?? "").trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailRaw)) return null;
+        if (password.length < 8) return null;
+
+        let user = await prisma.user.findUnique({ where: { email: emailRaw } });
+
+        if (!user) {
+          // First login with shared site password creates the account.
+          if (!(sitePassword.length >= 8 && password === sitePassword)) return null;
+          const passwordHash = await bcrypt.hash(password, 10);
+          user = await prisma.user.create({
+            data: {
+              email: emailRaw,
+              name: nameRaw || emailRaw.split("@")[0] || "다이아리",
+              emailVerified: new Date(),
+              passwordHash,
             },
-            async authorize(credentials) {
-              const emailRaw = String(credentials?.email ?? "").trim().toLowerCase();
-              const password = String(credentials?.password ?? "");
-              const nameRaw = String(credentials?.name ?? "").trim();
-              if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailRaw)) return null;
-              if (password !== sitePassword) return null;
-              const user = await prisma.user.upsert({
-                where: { email: emailRaw },
-                create: {
-                  email: emailRaw,
-                  name: nameRaw || emailRaw.split("@")[0] || "다이아리",
-                  emailVerified: new Date(),
-                },
-                update: {
-                  name: nameRaw || undefined,
-                },
-              });
-              return { id: user.id, email: user.email, name: user.name, image: user.image };
-            },
-          }),
-        ]
-      : []),
+          });
+        } else {
+          const ok = await verifyPassword(password, user.passwordHash);
+          if (!ok) return null;
+          // Upgrade legacy shared-password accounts to a stored hash.
+          if (!user.passwordHash && sitePassword.length >= 8 && password === sitePassword) {
+            const passwordHash = await bcrypt.hash(password, 10);
+            user = await prisma.user.update({
+              where: { id: user.id },
+              data: {
+                passwordHash,
+                name: nameRaw || user.name || undefined,
+              },
+            });
+          } else if (nameRaw && nameRaw !== user.name) {
+            user = await prisma.user.update({
+              where: { id: user.id },
+              data: { name: nameRaw },
+            });
+          }
+        }
+
+        return { id: user.id, email: user.email, name: user.name, image: user.image };
+      },
+    }),
   ],
   callbacks: {
     async jwt({ token, user }) {
