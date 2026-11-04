@@ -6,10 +6,12 @@ import { GameView, Linescore } from "@/components/game-view";
 import { TeamMark } from "@/components/team-mark";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
+import { Switch } from "@/components/ui/switch";
 import { api } from "@/lib/client";
+import { defaultVenue, INNING_OPTIONS, SERIES_OPTIONS, seriesMeta, VENUE_OPTIONS } from "@/lib/modes";
 import { groupHalves, halfLabel } from "@/lib/present";
 import { playerById } from "@/lib/stats";
-import type { GameRecord, Team } from "@/lib/types";
+import type { GameRecord, SeriesFormat, SeriesRecord, Team, VenueMode } from "@/lib/types";
 
 export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string }) {
   const [teams, setTeams] = useState<Team[] | null>(null);
@@ -18,8 +20,13 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
   const [home, setHome] = useState(homeId ?? "");
   const [awayStarterPick, setAwayStarterPick] = useState("");
   const [homeStarterPick, setHomeStarterPick] = useState("");
+  const [series, setSeries] = useState<SeriesFormat>("single");
+  const [innings, setInnings] = useState<7 | 9>(9);
+  const [homeAdvantage, setHomeAdvantage] = useState(true);
+  const [venue, setVenue] = useState<VenueMode>("fixed");
+  const [venueTouched, setVenueTouched] = useState(false);
   const [busy, setBusy] = useState(false);
-  const [game, setGame] = useState<GameRecord | null>(null);
+  const [result, setResult] = useState<{ series: SeriesRecord; gameIndex: number } | null>(null);
 
   useEffect(() => {
     api<{ teams: Team[] }>("/api/teams")
@@ -31,22 +38,36 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
       .catch((caught: Error) => setError(caught.message));
   }, []);
 
+  useEffect(() => {
+    if (!venueTouched) setVenue(defaultVenue(series));
+  }, [series, venueTouched]);
+
   const awayTeam = teams?.find((team) => team.id === away);
   const homeTeam = teams?.find((team) => team.id === home);
   const awayStarter = awayTeam?.rotation.includes(awayStarterPick) ? awayStarterPick : (awayTeam?.rotation[0] ?? "");
   const homeStarter = homeTeam?.rotation.includes(homeStarterPick) ? homeStarterPick : (homeTeam?.rotation[0] ?? "");
+  const meta = seriesMeta(series);
 
   async function start() {
     if (!away || !home) return;
     setBusy(true);
     setError("");
-    setGame(null);
+    setResult(null);
     try {
-      const result = await api<{ game: GameRecord }>("/api/games", {
+      const payload = await api<{ series: SeriesRecord; game: GameRecord | null }>("/api/games", {
         method: "POST",
-        body: JSON.stringify({ awayId: away, homeId: home, awayStarterId: awayStarter, homeStarterId: homeStarter }),
+        body: JSON.stringify({
+          awayId: away,
+          homeId: home,
+          awayStarterId: awayStarter,
+          homeStarterId: homeStarter,
+          series,
+          innings,
+          homeAdvantage,
+          venue,
+        }),
       });
-      setGame(result.game);
+      setResult({ series: payload.series, gameIndex: 0 });
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "경기를 시작하지 못했습니다.");
     } finally {
@@ -54,30 +75,109 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
     }
   }
 
+  const activeGame = result?.series.games[result.gameIndex] ?? null;
+
   return (
     <div className="mx-auto grid w-full min-w-0 max-w-6xl gap-6 px-4 py-6">
       <div>
         <p className="text-xs tracking-[0.18em] text-primary">경기</p>
         <h1 className="font-heading text-4xl">팀 맞대결</h1>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
-          선발을 고르고 시작하면 이닝이 진행표에 쌓입니다. 끝난 뒤에는 공 하나, 타구 하나까지 글로 남습니다.
+          단판부터 한국시리즈형 다전제까지 고르고, 홈 어드밴티지·이닝·구장 배분을 맞춘 뒤 시작합니다.
         </p>
       </div>
       {error && <p className="rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm">{error}</p>}
       {!teams && !error && <p className="text-sm text-muted-foreground">구단 명단을 불러오는 중입니다.</p>}
       {teams && teams.length === 0 && <p className="text-sm">쓸 수 있는 팀이 없습니다.</p>}
-      {teams && teams.length > 0 && !game && (
-        <div className="grid gap-4 lg:grid-cols-2">
-          <TeamPick label="원정" teams={teams} teamId={away} onTeam={setAway} starterId={awayStarter} onStarter={setAwayStarterPick} />
-          <TeamPick label="홈" teams={teams} teamId={home} onTeam={setHome} starterId={homeStarter} onStarter={setHomeStarterPick} />
-          <div className="lg:col-span-2">
-            <Button type="button" className="h-10 px-5" onClick={start} disabled={busy || !away || !home}>
-              {busy ? "경기를 만드는 중" : "경기 시작"}
+      {teams && teams.length > 0 && !result && (
+        <div className="grid gap-4">
+          <div className="grid gap-4 lg:grid-cols-2">
+            <TeamPick label="원정" teams={teams} teamId={away} onTeam={setAway} starterId={awayStarter} onStarter={setAwayStarterPick} />
+            <TeamPick label="홈" teams={teams} teamId={home} onTeam={setHome} starterId={homeStarter} onStarter={setHomeStarterPick} />
+          </div>
+
+          <section className="grid gap-4 rounded-2xl border border-border bg-card p-4">
+            <div>
+              <h2 className="text-sm font-medium">시리즈 형식</h2>
+              <p className="mt-1 text-xs text-muted-foreground">{meta.detail}</p>
+            </div>
+            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+              {SERIES_OPTIONS.map((option) => (
+                <button
+                  key={option.id}
+                  type="button"
+                  onClick={() => setSeries(option.id)}
+                  className={`rounded-xl border px-3 py-3 text-left transition ${
+                    series === option.id
+                      ? "border-primary bg-primary/10"
+                      : "border-border bg-background hover:border-primary/40"
+                  }`}
+                >
+                  <span className="block text-sm font-medium">{option.label}</span>
+                  <span className="mt-1 block text-xs text-muted-foreground">{option.detail}</span>
+                </button>
+              ))}
+            </div>
+
+            <div className="grid gap-4 border-t border-border pt-4 md:grid-cols-3">
+              <label className="grid gap-2">
+                <span className="text-xs text-muted-foreground">이닝</span>
+                <select
+                  className="field-select"
+                  value={innings}
+                  onChange={(event) => setInnings(Number(event.target.value) === 7 ? 7 : 9)}
+                >
+                  {INNING_OPTIONS.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.label} · {option.detail}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <label className="grid gap-2">
+                <span className="text-xs text-muted-foreground">구장 배분</span>
+                <select
+                  className="field-select"
+                  value={venue}
+                  onChange={(event) => {
+                    setVenueTouched(true);
+                    setVenue(event.target.value as VenueMode);
+                  }}
+                  disabled={series === "single"}
+                >
+                  {VENUE_OPTIONS.map((option) => (
+                    <option key={option.id} value={option.id}>
+                      {option.label} · {option.detail}
+                    </option>
+                  ))}
+                </select>
+              </label>
+              <div className="flex items-end justify-between gap-3 rounded-xl border border-border px-3 py-2">
+                <div>
+                  <p className="text-sm font-medium">홈 어드밴티지</p>
+                  <p className="text-xs text-muted-foreground">후공 타격·투수 소폭 보정</p>
+                </div>
+                <Switch checked={homeAdvantage} onCheckedChange={setHomeAdvantage} />
+              </div>
+            </div>
+          </section>
+
+          <div>
+            <Button type="button" className="h-10 px-5" onClick={start} disabled={busy || !away || !home || away === home}>
+              {busy ? "경기를 만드는 중" : series === "single" ? "경기 시작" : `${meta.label} 시작`}
             </Button>
+            {away === home && <p className="mt-2 text-xs text-muted-foreground">같은 팀끼리는 맞붙일 수 없습니다.</p>}
           </div>
         </div>
       )}
-      {game && <LiveGame game={game} onAgain={() => setGame(null)} />}
+      {result && activeGame && (
+        <SeriesDesk
+          record={result.series}
+          gameIndex={result.gameIndex}
+          onSelectGame={(index) => setResult({ series: result.series, gameIndex: index })}
+          onAgain={() => setResult(null)}
+        />
+      )}
     </div>
   );
 }
@@ -127,10 +227,93 @@ function TeamPick({
   );
 }
 
-function LiveGame({ game, onAgain }: { game: GameRecord; onAgain: () => void }) {
+function SeriesDesk({
+  record,
+  gameIndex,
+  onSelectGame,
+  onAgain,
+}: {
+  record: SeriesRecord;
+  gameIndex: number;
+  onSelectGame: (index: number) => void;
+  onAgain: () => void;
+}) {
+  const game = record.games[gameIndex]!;
+  const multi = record.games.length > 1 || record.format !== "single";
+  const formatLabel = seriesMeta(record.format).label;
+
+  return (
+    <div className="grid min-w-0 gap-4">
+      {multi && (
+        <section className="grid gap-3 rounded-2xl border border-border bg-card p-4">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <p className="text-xs text-muted-foreground">{formatLabel}</p>
+              <h2 className="font-heading text-2xl">
+                {record.away.shortName} {record.awayWins}
+                <span className="mx-2 text-muted-foreground">–</span>
+                {record.homeWins} {record.home.shortName}
+              </h2>
+              <p className="mt-1 text-sm text-muted-foreground">{record.summary}</p>
+            </div>
+            <Button type="button" variant="outline" onClick={onAgain}>
+              다시 맞붙이기
+            </Button>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {record.games.map((item, index) => {
+              const topWon = item.linescore.awayR > item.linescore.homeR;
+              const bottomWon = item.linescore.homeR > item.linescore.awayR;
+              const label = `${item.away.shortName} ${item.linescore.awayR}–${item.linescore.homeR} ${item.home.shortName}`;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => onSelectGame(index)}
+                  className={`rounded-lg border px-3 py-2 text-left text-xs transition ${
+                    index === gameIndex ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"
+                  }`}
+                >
+                  <span className="block font-medium">{index + 1}차전</span>
+                  <span className="mt-0.5 block text-muted-foreground">
+                    {label}
+                    {topWon || bottomWon ? "" : " · 무"}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+      )}
+      <LiveGame
+        game={game}
+        onAgain={onAgain}
+        againLabel={multi ? "다른 시리즈" : "다른 경기"}
+        hideAgain={multi}
+      />
+    </div>
+  );
+}
+
+function LiveGame({
+  game,
+  onAgain,
+  againLabel = "다른 경기",
+  hideAgain = false,
+}: {
+  game: GameRecord;
+  onAgain: () => void;
+  againLabel?: string;
+  hideAgain?: boolean;
+}) {
   const halves = useMemo(() => groupHalves(game.plays), [game]);
   const [step, setStep] = useState(0);
   const [done, setDone] = useState(false);
+
+  useEffect(() => {
+    setStep(0);
+    setDone(false);
+  }, [game.id]);
 
   useEffect(() => {
     if (done) return;
@@ -144,19 +327,28 @@ function LiveGame({ game, onAgain }: { game: GameRecord; onAgain: () => void }) 
       });
     }, 700);
     return () => window.clearInterval(timer);
-  }, [done, halves.length]);
+  }, [done, halves.length, game.id]);
 
   if (done) {
     return (
       <div className="grid min-w-0 gap-4">
-        <div className="flex flex-wrap gap-2">
-          <Button type="button" variant="outline" onClick={onAgain}>
-            다른 경기
-          </Button>
-          <Button asChild variant="secondary">
-            <Link href={`/games/${game.id}`}>기록 페이지</Link>
-          </Button>
-        </div>
+        {!hideAgain && (
+          <div className="flex flex-wrap gap-2">
+            <Button type="button" variant="outline" onClick={onAgain}>
+              {againLabel}
+            </Button>
+            <Button asChild variant="secondary">
+              <Link href={`/games/${game.id}`}>기록 페이지</Link>
+            </Button>
+          </div>
+        )}
+        {hideAgain && (
+          <div className="flex flex-wrap gap-2">
+            <Button asChild variant="secondary">
+              <Link href={`/games/${game.id}`}>이 경기 기록 페이지</Link>
+            </Button>
+          </div>
+        )}
         <GameView game={game} />
       </div>
     );
@@ -181,12 +373,16 @@ function LiveGame({ game, onAgain }: { game: GameRecord; onAgain: () => void }) 
   const current = shown[shown.length - 1];
   const latest = [...(current?.plays ?? [])].reverse().find((play) => play.result !== "NOTE") ?? current?.plays.at(-1);
   const progress = Math.round((Math.max(step, 1) / Math.max(halves.length, 1)) * 100);
+  const seriesNote =
+    game.mode?.series && game.mode.series !== "single" && game.mode.seriesGame != null
+      ? `${game.mode.seriesGame}차전`
+      : null;
 
   return (
     <section className="scorebook grid min-w-0 gap-4 rounded-2xl p-4">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
-          <p className="text-xs text-[#6d6254]">진행표</p>
+          <p className="text-xs text-[#6d6254]">진행표{seriesNote ? ` · ${seriesNote}` : ""}</p>
           <h2 className="text-2xl">
             {game.away.shortName} {awayRuns}
             <span className="mx-2 text-[#6d6254]">:</span>
@@ -199,7 +395,10 @@ function LiveGame({ game, onAgain }: { game: GameRecord; onAgain: () => void }) 
         </Button>
       </div>
       <Progress value={progress} className="h-2" />
-      <p className="text-xs text-[#6d6254]">{progress}% · {Math.max(step, 1)} / {halves.length} 이닝 절반</p>
+      <p className="text-xs text-[#6d6254]">
+        {progress}% · {Math.max(step, 1)} / {halves.length} 이닝 절반
+        {game.mode ? ` · ${game.mode.innings}이닝 · ${game.mode.homeAdvantage ? "홈 어드" : "중립"}` : ""}
+      </p>
       <Linescore
         awayName={game.away.shortName}
         homeName={game.home.shortName}

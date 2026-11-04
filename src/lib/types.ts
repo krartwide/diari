@@ -193,6 +193,18 @@ export type DecisionPlayer = {
   teamName: string;
 };
 
+export type SeriesFormat = "single" | "bo2" | "bo3" | "bo5" | "bo7" | "wc";
+export type VenueMode = "fixed" | "alternate" | "ks232";
+
+export type GameModeInfo = {
+  homeAdvantage: boolean;
+  innings: 7 | 9;
+  series?: SeriesFormat;
+  seriesId?: string;
+  seriesGame?: number;
+  venue?: VenueMode;
+};
+
 export type GameRecord = {
   id: string;
   createdAt: string;
@@ -232,4 +244,26 @@ export type GameRecord = {
   };
   walkOff: boolean;
   completeGame: { name: string; shutout: boolean } | null;
+  mode?: GameModeInfo;
+};
+
+export type SeriesRecord = {
+  id: string;
+  createdAt: string;
+  ownerId: string;
+  format: SeriesFormat;
+  winsNeeded: number;
+  awayWinsNeeded: number;
+  homeWinsNeeded: number;
+  maxGames: number;
+  awayWins: number;
+  homeWins: number;
+  winner: "away" | "home" | null;
+  homeAdvantage: boolean;
+  innings: 7 | 9;
+  venue: VenueMode;
+  away: { id: string; name: string; shortName: string; primary: string; secondary: string };
+  home: { id: string; name: string; shortName: string; primary: string; secondary: string };
+  games: GameRecord[];
+  summary: string;
 };

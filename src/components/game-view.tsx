@@ -6,6 +6,7 @@ import { StrikeZone } from "@/components/strike-zone";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { groupHalves, halfLabel } from "@/lib/present";
 import { fmtIp } from "@/lib/stats";
+import { seriesMeta } from "@/lib/modes";
 import type { BoxBatter, BoxPitcher, GameRecord, PitchEvent, PlateAppearance } from "@/lib/types";
 
 export function whenLabel(iso: string) {
@@ -39,7 +40,7 @@ export function Linescore({
   awayE?: number;
   homeE?: number;
 }) {
-  const innings = Math.max(away.length, home.length, 9);
+  const innings = Math.max(away.length, home.length, 7);
   const headers = Array.from({ length: innings }, (_, index) => index + 1);
   return (
     <div className="min-w-0 overflow-x-auto">
@@ -115,6 +116,18 @@ export function GameView({ game }: { game: GameRecord }) {
           <span className="mx-2 text-muted-foreground">:</span>
           {game.home.shortName} {game.linescore.homeR}
         </h1>
+        {game.mode && (
+          <p className="flex flex-wrap gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <span>{game.mode.innings}이닝</span>
+            <span>{game.mode.homeAdvantage ? "홈 어드밴티지" : "중립 구장"}</span>
+            {game.mode.series && game.mode.series !== "single" && (
+              <span>
+                {seriesMeta(game.mode.series).label}
+                {game.mode.seriesGame != null ? ` · ${game.mode.seriesGame}차전` : ""}
+              </span>
+            )}
+          </p>
+        )}
         <p className="max-w-3xl text-sm leading-6 text-muted-foreground">{game.summary}</p>
       </header>
 

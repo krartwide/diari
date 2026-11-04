@@ -4,6 +4,7 @@ import type {
   BatterLine,
   BoxBatter,
   BoxPitcher,
+  GameModeInfo,
   GameRecord,
   Half,
   PitchCall,
@@ -457,14 +458,36 @@ function nid(prefix: string) {
 export function simulateGame(
   away: Team,
   home: Team,
-  options?: { seed?: number; awayStarterId?: string; homeStarterId?: string; ownerId?: string; id?: string },
+  options?: {
+    seed?: number;
+    awayStarterId?: string;
+    homeStarterId?: string;
+    ownerId?: string;
+    id?: string;
+    homeAdvantage?: boolean;
+    regulationInnings?: 7 | 9;
+    seriesId?: string;
+    seriesGame?: number;
+    seriesFormat?: import("@/lib/types").SeriesFormat;
+    venue?: import("@/lib/types").VenueMode;
+  },
 ): GameRecord {
   seq = 0;
   const seed = options?.seed ?? Math.floor(Math.random() * 1_000_000_000);
   const rng = mulberry32(seed);
-  const sim = new Sim(away, home, rng, options?.awayStarterId, options?.homeStarterId);
+  const sim = new Sim(away, home, rng, options?.awayStarterId, options?.homeStarterId, {
+    homeAdvantage: options?.homeAdvantage ?? true,
+    regulationInnings: options?.regulationInnings ?? 9,
+  });
   sim.run();
-  return sim.finish(options?.id ?? `game-${seed}`, options?.ownerId ?? "local", seed);
+  return sim.finish(options?.id ?? `game-${seed}`, options?.ownerId ?? "local", seed, {
+    homeAdvantage: options?.homeAdvantage ?? true,
+    innings: options?.regulationInnings ?? 9,
+    seriesId: options?.seriesId,
+    seriesGame: options?.seriesGame,
+    series: options?.seriesFormat,
+    venue: options?.venue,
+  });
 }
 
 class Sim {
@@ -498,11 +521,22 @@ class Sim {
   goAheadPitcher: string | null = null;
   potentialWin: string | null = null;
   yearPair: [number | null, number | null];
+  homeAdvantage: boolean;
+  regulationInnings: number;
 
-  constructor(away: Team, home: Team, rng: Rng, awayStarter?: string, homeStarter?: string) {
+  constructor(
+    away: Team,
+    home: Team,
+    rng: Rng,
+    awayStarter?: string,
+    homeStarter?: string,
+    mode?: { homeAdvantage?: boolean; regulationInnings?: 7 | 9 },
+  ) {
     this.rng = rng;
     this.teams = [away, home];
     this.yearPair = [away.year, home.year];
+    this.homeAdvantage = mode?.homeAdvantage ?? true;
+    this.regulationInnings = mode?.regulationInnings ?? 9;
     for (const side of [0, 1] as Side[]) {
       const team = this.teams[side];
       this.order[side] = team.lineup.map((slot) => slot.playerId);
@@ -628,22 +662,28 @@ class Sim {
   run() {
     const awayStarter = this.current[0]!;
     const homeStarter = this.current[1]!;
+    const modeNote = [
+      this.regulationInnings === 7 ? "7이닝제" : null,
+      this.homeAdvantage ? "홈 어드밴티지" : "중립 구장",
+    ]
+      .filter(Boolean)
+      .join(" · ");
     this.plays.push(this.banner(
-      `${this.teams[0].name}${wa(this.teams[0].name)} ${this.teams[1].name}의 경기. 원정 선발은 ${awayStarter.name}, 홈 선발은 ${homeStarter.name}.`,
+      `${this.teams[0].name}${wa(this.teams[0].name)} ${this.teams[1].name}의 경기${modeNote ? ` (${modeNote})` : ""}. 원정 선발은 ${awayStarter.name}, 홈 선발은 ${homeStarter.name}.`,
     ));
     let inning = 1;
     while (!this.over && inning <= 24) {
       this.inning = inning;
       this.playHalf(0);
       if (this.over) break;
-      if (inning >= 9 && this.score[1] > this.score[0]) {
+      if (inning >= this.regulationInnings && this.score[1] > this.score[0]) {
         this.lines[1].push(null);
         this.over = true;
         break;
       }
       this.playHalf(1);
       if (this.over) break;
-      if (inning >= 9 && this.score[0] !== this.score[1]) {
+      if (inning >= this.regulationInnings && this.score[0] !== this.score[1]) {
         this.over = true;
         break;
       }
@@ -740,14 +780,14 @@ class Sim {
     const cruising = app.er <= 2 && app.runsThisInning === 0;
     if (app.role === "SP") {
       const deep = app.outs >= 18;
-      if (this.inning >= 9 && cruising && deep && app.pitches < app.limit + 12 && lead >= 0) return false;
+      if (this.inning >= this.regulationInnings && cruising && deep && app.pitches < app.limit + 12 && lead >= 0) return false;
       if (this.inning >= 8 && cruising && deep && app.pitches < app.limit - 6 && lead >= 0) return false;
       if (app.pitches >= app.limit) return true;
       if (this.inning >= 6 && app.runsThisInning >= 3 && app.pitches >= 50) return true;
       if (this.inning >= 7 && app.pitches >= app.limit - 16 && !cruising) return true;
       return false;
     }
-    const saveSit = app.isCloser && lead > 0 && lead <= 3 && this.inning >= 9;
+    const saveSit = app.isCloser && lead > 0 && lead <= 3 && this.inning >= this.regulationInnings;
     if (saveSit && app.runsThisInning === 0 && app.pitches < Math.max(app.limit, 30)) return false;
     if (app.pitches >= app.limit) return true;
     if (app.runsThisInning >= 3) return true;
@@ -760,7 +800,10 @@ class Sim {
     const available = this.pool[defense].filter((arm) => !this.used.has(arm.id));
     const lead = this.leadFor(defense);
     const runners = this.bases.filter(Boolean).length;
-    const saveSit = lead > 0 && lead <= 3 && (this.inning >= 9 || (this.inning >= 8 && runners > 0));
+    const saveSit =
+      lead > 0 &&
+      lead <= 3 &&
+      (this.inning >= this.regulationInnings || (this.inning >= this.regulationInnings - 1 && runners > 0));
     const blowout = lead <= -4 || lead >= 5;
     const list = available.length ? available : this.emergencyArm(defense);
     if (!list.length) return null;
@@ -770,10 +813,10 @@ class Sim {
       const era = p.era || 4.5;
       const listed = closerIds.has(arm.id);
       // Keep dedicated closers for real save spots; do not burn them in the 6th.
-      if (listed && saveSit && this.inning >= 9) return 5000 + p.sv * 5 - era;
-      if (listed && !saveSit && this.inning < 9) return -4000 - era;
+      if (listed && saveSit && this.inning >= this.regulationInnings) return 5000 + p.sv * 5 - era;
+      if (listed && !saveSit && this.inning < this.regulationInnings) return -4000 - era;
       if (listed && blowout) return -2000;
-      if (saveSit && this.inning >= 9 && (listed || p.sv >= 5)) return 1000 + p.sv * 5 - era;
+      if (saveSit && this.inning >= this.regulationInnings && (listed || p.sv >= 5)) return 1000 + p.sv * 5 - era;
       if (blowout) return -p.ip / Math.max(p.g, 1);
       if (lead > 0 && this.inning >= 7) return p.hld * 3 + p.sv - era;
       if (lead === 0 && this.inning >= 6) return p.swar * 4 - era + (p.hld > 0 ? 2 : 0);
@@ -819,7 +862,7 @@ class Sim {
       return;
     }
     const pitcher = this.player(defense, this.current[defense]!.playerId);
-    const rates = matchup(batterOf(batter), pitcherOf(pitcher), this.yearPair);
+    const rates = this.applyHomeAdvantage(matchup(batterOf(batter), pitcherOf(pitcher), this.yearPair), offense);
     let result = sampleResult(rates, this.rng);
     if ((result === "GO" || result === "FO" || result === "LO") && this.rng() < (result === "GO" ? 0.028 : 0.006)) {
       result = "E";
@@ -851,10 +894,44 @@ class Sim {
       homeAfter: this.score[1],
     });
     this.index[offense] = (this.index[offense] + 1) % 9;
-    if (offense === 1 && this.inning >= 9 && this.score[1] > this.score[0]) {
+    if (offense === 1 && this.inning >= this.regulationInnings && this.score[1] > this.score[0]) {
       this.walkOff = true;
       this.over = true;
     }
+  }
+
+  applyHomeAdvantage(rates: Rates, offense: Side): Rates {
+    if (!this.homeAdvantage) return rates;
+    // Home batting (offense 1) gets a small bump; home pitching (offense 0) suppresses the visitor.
+    const homeBatting = offense === 1;
+    const hitMul = homeBatting ? 1.045 : 0.965;
+    const kMul = homeBatting ? 0.96 : 1.04;
+    const bbMul = homeBatting ? 1.03 : 0.97;
+    let k = rates.k * kMul;
+    let bb = rates.bb * bbMul;
+    let hbp = rates.hbp;
+    let hr = rates.hr * hitMul;
+    let single = rates.single * hitMul;
+    let dbl = rates.double * hitMul;
+    let tpl = rates.triple * hitMul;
+    let go = rates.go;
+    let fo = rates.fo;
+    let lo = rates.lo;
+    const sum = k + bb + hbp + hr + single + dbl + tpl + go + fo + lo;
+    if (sum <= 0) return rates;
+    const scale = 1 / sum;
+    return {
+      k: k * scale,
+      bb: bb * scale,
+      hbp: hbp * scale,
+      hr: hr * scale,
+      single: single * scale,
+      double: dbl * scale,
+      triple: tpl * scale,
+      go: go * scale,
+      fo: fo * scale,
+      lo: lo * scale,
+    };
   }
 
   trySteal(offense: Side, defense: Side) {
@@ -1263,7 +1340,7 @@ class Sim {
     };
   }
 
-  finish(id: string, ownerId: string, seed: number): GameRecord {
+  finish(id: string, ownerId: string, seed: number, mode?: GameModeInfo): GameRecord {
     const tied = this.score[0] === this.score[1];
     const winner: Side = this.score[0] > this.score[1] ? 0 : 1;
     const loserSide: Side = winner === 0 ? 1 : 0;
@@ -1314,7 +1391,10 @@ class Sim {
     const loss = nameOf(lossId, loserSide);
     const save = nameOf(saveId, winner);
     const holdPlayers = holds.map((pid) => nameOf(pid, winner)).filter((item): item is NonNullable<typeof item> => Boolean(item));
-    const cgApp = this.apps.find((app) => app.role === "SP" && app.outs >= 27 && this.score[app.side] >= this.score[app.side === 0 ? 1 : 0]);
+    const cgOuts = this.regulationInnings * 3;
+    const cgApp = this.apps.find(
+      (app) => app.role === "SP" && app.outs >= cgOuts && this.score[app.side] >= this.score[app.side === 0 ? 1 : 0],
+    );
     const completeGame = cgApp
       ? { name: cgApp.name, shutout: cgApp.r === 0 }
       : null;
@@ -1322,6 +1402,14 @@ class Sim {
     const homeR = this.score[1];
     const decisive = this.score[0] === this.score[1] ? null : this.goAhead;
     const summary = this.summaryText(win, loss, save, holdPlayers, decisive, completeGame);
+    const modeInfo: GameModeInfo = {
+      homeAdvantage: mode?.homeAdvantage ?? this.homeAdvantage,
+      innings: mode?.innings ?? (this.regulationInnings === 7 ? 7 : 9),
+      series: mode?.series,
+      seriesId: mode?.seriesId,
+      seriesGame: mode?.seriesGame,
+      venue: mode?.venue,
+    };
     return {
       id,
       createdAt: new Date().toISOString(),
@@ -1349,6 +1437,7 @@ class Sim {
       decisions: { win, loss, save, holds: holdPlayers, decisive },
       walkOff: this.walkOff,
       completeGame,
+      mode: modeInfo,
     };
   }
 
