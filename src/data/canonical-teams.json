@@ -9949,7 +9949,7 @@
      "so": 31,
      "whip": 1.78,
      "swar": -0.53,
-     "speed": 144,
+     "speed": 142,
      "er": 53,
      "r": 59
     }
@@ -10166,6 +10166,1085 @@
    }
   ],
   "createdAt": "2014-10-01T00:00:00.000Z"
+ },
+ {
+  "id": "canon-2019-wo",
+  "name": "2019 키움 히어로즈",
+  "shortName": "키움",
+  "year": 2019,
+  "primary": "#820024",
+  "secondary": "#B07F4A",
+  "logo": null,
+  "visibility": "public",
+  "ownerId": null,
+  "canonical": true,
+  "blurb": "2019 한국시리즈 진출 엔트리(준PO·PO와 동일 30인). 요키시·브리검·최원태·이승호 선발, 조상우·오주원 마무리, 김상수(현 김태혁) 40홀드. 이정후·샌즈·박병호·김하성 중심 타선.",
+  "lineup": [
+   {
+    "playerId": "canon-2019-wo:p67341",
+    "position": "CF"
+   },
+   {
+    "playerId": "canon-2019-wo:p78168",
+    "position": "2B"
+   },
+   {
+    "playerId": "canon-2019-wo:p68345",
+    "position": "RF"
+   },
+   {
+    "playerId": "canon-2019-wo:p75125",
+    "position": "1B"
+   },
+   {
+    "playerId": "canon-2019-wo:p64300",
+    "position": "SS"
+   },
+   {
+    "playerId": "canon-2019-wo:p67304",
+    "position": "3B"
+   },
+   {
+    "playerId": "canon-2019-wo:p79456",
+    "position": "C"
+   },
+   {
+    "playerId": "canon-2019-wo:p65357",
+    "position": "DH"
+   },
+   {
+    "playerId": "canon-2019-wo:p62356",
+    "position": "LF"
+   }
+  ],
+  "rotation": [
+   "canon-2019-wo:p69343",
+   "canon-2019-wo:p67313",
+   "canon-2019-wo:p65320",
+   "canon-2019-wo:p67603"
+  ],
+  "bullpen": [
+   "canon-2019-wo:p62363",
+   "canon-2019-wo:p76430",
+   "canon-2019-wo:p68341",
+   "canon-2019-wo:p67828",
+   "canon-2019-wo:p61456",
+   "canon-2019-wo:p61268",
+   "canon-2019-wo:p62360",
+   "canon-2019-wo:p64051"
+  ],
+  "closers": [
+   "canon-2019-wo:p63342",
+   "canon-2019-wo:p74359"
+  ],
+  "bench": [
+   "canon-2019-wo:p79365",
+   "canon-2019-wo:p66354",
+   "canon-2019-wo:p79334",
+   "canon-2019-wo:p65898",
+   "canon-2019-wo:p79300",
+   "canon-2019-wo:p62353",
+   "canon-2019-wo:p68330"
+  ],
+  "players": [
+   {
+    "id": "canon-2019-wo:p67341",
+    "sourceId": "67341",
+    "name": "이정후",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 140,
+     "ab": 574,
+     "h": 193,
+     "doubles": 31,
+     "triples": 10,
+     "hr": 6,
+     "rbi": 68,
+     "r": 91,
+     "sb": 13,
+     "bb": 45,
+     "so": 40,
+     "avg": 0.336,
+     "obp": 0.386,
+     "slg": 0.456,
+     "ops": 0.842,
+     "wrcPlus": 110,
+     "swar": 3.06,
+     "speed": 52,
+     "pa": 630,
+     "hbp": 4,
+     "sf": 4,
+     "sac": 3,
+     "cs": 7
+    }
+   },
+   {
+    "id": "canon-2019-wo:p78168",
+    "sourceId": "78168",
+    "name": "서건창",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "2B"
+    ],
+    "batter": {
+     "g": 113,
+     "ab": 426,
+     "h": 128,
+     "doubles": 23,
+     "triples": 3,
+     "hr": 2,
+     "rbi": 41,
+     "r": 67,
+     "sb": 17,
+     "bb": 49,
+     "so": 50,
+     "avg": 0.3,
+     "obp": 0.373,
+     "slg": 0.383,
+     "ops": 0.755,
+     "wrcPlus": 88,
+     "swar": 1.3,
+     "speed": 61,
+     "pa": 486,
+     "hbp": 3,
+     "sf": 5,
+     "sac": 3,
+     "cs": 3
+    }
+   },
+   {
+    "id": "canon-2019-wo:p68345",
+    "sourceId": "68345",
+    "name": "샌즈",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 139,
+     "ab": 525,
+     "h": 160,
+     "doubles": 39,
+     "triples": 1,
+     "hr": 28,
+     "rbi": 113,
+     "r": 100,
+     "sb": 1,
+     "bb": 77,
+     "so": 101,
+     "avg": 0.305,
+     "obp": 0.396,
+     "slg": 0.543,
+     "ops": 0.939,
+     "wrcPlus": 134,
+     "swar": 3.68,
+     "speed": 41,
+     "pa": 613,
+     "hbp": 6,
+     "sf": 5,
+     "sac": 0,
+     "cs": 2
+    }
+   },
+   {
+    "id": "canon-2019-wo:p75125",
+    "sourceId": "75125",
+    "name": "박병호",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "1B"
+    ],
+    "batter": {
+     "g": 122,
+     "ab": 432,
+     "h": 121,
+     "doubles": 22,
+     "triples": 0,
+     "hr": 33,
+     "rbi": 98,
+     "r": 92,
+     "sb": 0,
+     "bb": 78,
+     "so": 117,
+     "avg": 0.28,
+     "obp": 0.398,
+     "slg": 0.56,
+     "ops": 0.959,
+     "wrcPlus": 136,
+     "swar": 2.94,
+     "speed": 40,
+     "pa": 532,
+     "hbp": 13,
+     "sf": 9,
+     "sac": 0,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2019-wo:p64300",
+    "sourceId": "64300",
+    "name": "김하성",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "SS"
+    ],
+    "batter": {
+     "g": 139,
+     "ab": 540,
+     "h": 166,
+     "doubles": 38,
+     "triples": 2,
+     "hr": 19,
+     "rbi": 104,
+     "r": 112,
+     "sb": 33,
+     "bb": 70,
+     "so": 80,
+     "avg": 0.307,
+     "obp": 0.389,
+     "slg": 0.491,
+     "ops": 0.88,
+     "wrcPlus": 119,
+     "swar": 4.72,
+     "speed": 73,
+     "pa": 625,
+     "hbp": 7,
+     "sf": 7,
+     "sac": 1,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-2019-wo:p67304",
+    "sourceId": "67304",
+    "name": "김혜성",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 122,
+     "ab": 348,
+     "h": 96,
+     "doubles": 16,
+     "triples": 7,
+     "hr": 0,
+     "rbi": 32,
+     "r": 57,
+     "sb": 20,
+     "bb": 29,
+     "so": 85,
+     "avg": 0.276,
+     "obp": 0.332,
+     "slg": 0.362,
+     "ops": 0.694,
+     "wrcPlus": 67,
+     "swar": 0.14,
+     "speed": 70,
+     "pa": 387,
+     "hbp": 2,
+     "sf": 4,
+     "sac": 4,
+     "cs": 3
+    }
+   },
+   {
+    "id": "canon-2019-wo:p79456",
+    "sourceId": "79456",
+    "name": "이지영",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 106,
+     "ab": 308,
+     "h": 87,
+     "doubles": 5,
+     "triples": 1,
+     "hr": 1,
+     "rbi": 39,
+     "r": 40,
+     "sb": 5,
+     "bb": 15,
+     "so": 28,
+     "avg": 0.282,
+     "obp": 0.317,
+     "slg": 0.315,
+     "ops": 0.632,
+     "wrcPlus": 50,
+     "swar": -0.16,
+     "speed": 49,
+     "pa": 331,
+     "hbp": 1,
+     "sf": 1,
+     "sac": 6,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2019-wo:p65357",
+    "sourceId": "65357",
+    "name": "송성문",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "DH"
+    ],
+    "batter": {
+     "g": 103,
+     "ab": 308,
+     "h": 70,
+     "doubles": 12,
+     "triples": 5,
+     "hr": 3,
+     "rbi": 34,
+     "r": 33,
+     "sb": 2,
+     "bb": 19,
+     "so": 53,
+     "avg": 0.227,
+     "obp": 0.269,
+     "slg": 0.328,
+     "ops": 0.597,
+     "wrcPlus": 34,
+     "swar": -2.53,
+     "speed": 43,
+     "pa": 335,
+     "hbp": 0,
+     "sf": 4,
+     "sac": 4,
+     "cs": 1
+    }
+   },
+   {
+    "id": "canon-2019-wo:p62356",
+    "sourceId": "62356",
+    "name": "김규민",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "LF"
+    ],
+    "batter": {
+     "g": 94,
+     "ab": 222,
+     "h": 55,
+     "doubles": 8,
+     "triples": 1,
+     "hr": 3,
+     "rbi": 24,
+     "r": 33,
+     "sb": 2,
+     "bb": 22,
+     "so": 68,
+     "avg": 0.248,
+     "obp": 0.324,
+     "slg": 0.333,
+     "ops": 0.657,
+     "wrcPlus": 59,
+     "swar": -0.85,
+     "speed": 44,
+     "pa": 250,
+     "hbp": 4,
+     "sf": 2,
+     "sac": 0,
+     "cs": 4
+    }
+   },
+   {
+    "id": "canon-2019-wo:p79365",
+    "sourceId": "79365",
+    "name": "박동원",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 112,
+     "ab": 317,
+     "h": 94,
+     "doubles": 15,
+     "triples": 1,
+     "hr": 10,
+     "rbi": 55,
+     "r": 50,
+     "sb": 1,
+     "bb": 34,
+     "so": 56,
+     "avg": 0.297,
+     "obp": 0.367,
+     "slg": 0.445,
+     "ops": 0.812,
+     "wrcPlus": 101,
+     "swar": 2.02,
+     "speed": 42,
+     "pa": 361,
+     "hbp": 2,
+     "sf": 1,
+     "sac": 7,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2019-wo:p66354",
+    "sourceId": "66354",
+    "name": "주효상",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "C"
+    ],
+    "batter": {
+     "g": 18,
+     "ab": 29,
+     "h": 6,
+     "doubles": 2,
+     "triples": 1,
+     "hr": 0,
+     "rbi": 5,
+     "r": 3,
+     "sb": 0,
+     "bb": 1,
+     "so": 7,
+     "avg": 0.207,
+     "obp": 0.233,
+     "slg": 0.345,
+     "ops": 0.578,
+     "wrcPlus": 24,
+     "swar": -0.11,
+     "speed": 40,
+     "pa": 30,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2019-wo:p79334",
+    "sourceId": "79334",
+    "name": "장영석",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 119,
+     "ab": 372,
+     "h": 92,
+     "doubles": 15,
+     "triples": 0,
+     "hr": 7,
+     "rbi": 62,
+     "r": 41,
+     "sb": 0,
+     "bb": 27,
+     "so": 77,
+     "avg": 0.247,
+     "obp": 0.31,
+     "slg": 0.344,
+     "ops": 0.654,
+     "wrcPlus": 55,
+     "swar": -0.67,
+     "speed": 40,
+     "pa": 413,
+     "hbp": 9,
+     "sf": 5,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2019-wo:p65898",
+    "sourceId": "65898",
+    "name": "김웅빈",
+    "kind": "B",
+    "bats": "L",
+    "throws": "R",
+    "positions": [
+     "1B"
+    ],
+    "batter": {
+     "g": 4,
+     "ab": 11,
+     "h": 3,
+     "doubles": 1,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 3,
+     "r": 1,
+     "sb": 0,
+     "bb": 0,
+     "so": 2,
+     "avg": 0.273,
+     "obp": 0.273,
+     "slg": 0.364,
+     "ops": 0.636,
+     "wrcPlus": 44,
+     "swar": -0.06,
+     "speed": 40,
+     "pa": 11,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2019-wo:p79300",
+    "sourceId": "79300",
+    "name": "김지수",
+    "kind": "B",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "3B"
+    ],
+    "batter": {
+     "g": 69,
+     "ab": 30,
+     "h": 8,
+     "doubles": 2,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 3,
+     "r": 3,
+     "sb": 0,
+     "bb": 2,
+     "so": 7,
+     "avg": 0.267,
+     "obp": 0.313,
+     "slg": 0.333,
+     "ops": 0.646,
+     "wrcPlus": 53,
+     "swar": -0.06,
+     "speed": 40,
+     "pa": 32,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2019-wo:p62353",
+    "sourceId": "62353",
+    "name": "박정음",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "CF"
+    ],
+    "batter": {
+     "g": 60,
+     "ab": 71,
+     "h": 14,
+     "doubles": 2,
+     "triples": 1,
+     "hr": 0,
+     "rbi": 7,
+     "r": 13,
+     "sb": 6,
+     "bb": 11,
+     "so": 31,
+     "avg": 0.197,
+     "obp": 0.345,
+     "slg": 0.254,
+     "ops": 0.598,
+     "wrcPlus": 54,
+     "swar": -0.26,
+     "speed": 76,
+     "pa": 88,
+     "hbp": 5,
+     "sf": 0,
+     "sac": 1,
+     "cs": 5
+    }
+   },
+   {
+    "id": "canon-2019-wo:p68330",
+    "sourceId": "68330",
+    "name": "예진원",
+    "kind": "B",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "RF"
+    ],
+    "batter": {
+     "g": 2,
+     "ab": 6,
+     "h": 1,
+     "doubles": 1,
+     "triples": 0,
+     "hr": 0,
+     "rbi": 1,
+     "r": 1,
+     "sb": 0,
+     "bb": 2,
+     "so": 3,
+     "avg": 0.167,
+     "obp": 0.375,
+     "slg": 0.333,
+     "ops": 0.708,
+     "wrcPlus": 84,
+     "swar": 0.0,
+     "speed": 40,
+     "pa": 8,
+     "hbp": 0,
+     "sf": 0,
+     "sac": 0,
+     "cs": 0
+    }
+   },
+   {
+    "id": "canon-2019-wo:p69343",
+    "sourceId": "69343",
+    "name": "요키시",
+    "kind": "P",
+    "bats": "R",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 30,
+     "w": 13,
+     "l": 9,
+     "sv": 0,
+     "hld": 0,
+     "ip": 181.33,
+     "era": 3.13,
+     "h": 166,
+     "hr": 9,
+     "bb": 39,
+     "hbp": 11,
+     "so": 141,
+     "whip": 1.13,
+     "swar": 5.38,
+     "speed": 146,
+     "er": 63,
+     "r": 72
+    }
+   },
+   {
+    "id": "canon-2019-wo:p67313",
+    "sourceId": "67313",
+    "name": "브리검",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 28,
+     "w": 13,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 158.33,
+     "era": 2.96,
+     "h": 148,
+     "hr": 5,
+     "bb": 46,
+     "hbp": 12,
+     "so": 130,
+     "whip": 1.23,
+     "swar": 5.0,
+     "speed": 147,
+     "er": 52,
+     "r": 62
+    }
+   },
+   {
+    "id": "canon-2019-wo:p65320",
+    "sourceId": "65320",
+    "name": "최원태",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 27,
+     "w": 11,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 157.33,
+     "era": 3.38,
+     "h": 165,
+     "hr": 5,
+     "bb": 36,
+     "hbp": 5,
+     "so": 105,
+     "whip": 1.28,
+     "swar": 4.23,
+     "speed": 148,
+     "er": 59,
+     "r": 68
+    }
+   },
+   {
+    "id": "canon-2019-wo:p67603",
+    "sourceId": "67603",
+    "name": "이승호",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 23,
+     "w": 8,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 122.67,
+     "era": 4.48,
+     "h": 134,
+     "hr": 10,
+     "bb": 51,
+     "hbp": 1,
+     "so": 82,
+     "whip": 1.51,
+     "swar": 1.8,
+     "speed": 144,
+     "er": 61,
+     "r": 70
+    }
+   },
+   {
+    "id": "canon-2019-wo:p62363",
+    "sourceId": "62363",
+    "name": "한현희",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 61,
+     "w": 7,
+     "l": 5,
+     "sv": 0,
+     "hld": 24,
+     "ip": 58.0,
+     "era": 3.41,
+     "h": 50,
+     "hr": 1,
+     "bb": 20,
+     "hbp": 7,
+     "so": 49,
+     "whip": 1.21,
+     "swar": 1.93,
+     "speed": 146,
+     "er": 22,
+     "r": 26
+    }
+   },
+   {
+    "id": "canon-2019-wo:p76430",
+    "sourceId": "76430",
+    "name": "김상수",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 67,
+     "w": 3,
+     "l": 5,
+     "sv": 0,
+     "hld": 40,
+     "ip": 56.67,
+     "era": 3.02,
+     "h": 50,
+     "hr": 3,
+     "bb": 28,
+     "hbp": 2,
+     "so": 60,
+     "whip": 1.38,
+     "swar": 2.19,
+     "speed": 147,
+     "er": 19,
+     "r": 19
+    }
+   },
+   {
+    "id": "canon-2019-wo:p68341",
+    "sourceId": "68341",
+    "name": "안우진",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 19,
+     "w": 7,
+     "l": 5,
+     "sv": 0,
+     "hld": 0,
+     "ip": 88.33,
+     "era": 5.2,
+     "h": 97,
+     "hr": 8,
+     "bb": 36,
+     "hbp": 3,
+     "so": 80,
+     "whip": 1.51,
+     "swar": 0.59,
+     "speed": 155,
+     "er": 51,
+     "r": 56
+    }
+   },
+   {
+    "id": "canon-2019-wo:p67828",
+    "sourceId": "67828",
+    "name": "김성민",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 50,
+     "w": 2,
+     "l": 0,
+     "sv": 0,
+     "hld": 5,
+     "ip": 56.33,
+     "era": 2.56,
+     "h": 53,
+     "hr": 0,
+     "bb": 11,
+     "hbp": 2,
+     "so": 38,
+     "whip": 1.14,
+     "swar": 2.03,
+     "speed": 145,
+     "er": 16,
+     "r": 17
+    }
+   },
+   {
+    "id": "canon-2019-wo:p61456",
+    "sourceId": "61456",
+    "name": "윤영삼",
+    "kind": "P",
+    "bats": "S",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 54,
+     "w": 3,
+     "l": 3,
+     "sv": 1,
+     "hld": 3,
+     "ip": 62.67,
+     "era": 2.87,
+     "h": 60,
+     "hr": 5,
+     "bb": 14,
+     "hbp": 1,
+     "so": 56,
+     "whip": 1.18,
+     "swar": 2.04,
+     "speed": 146,
+     "er": 20,
+     "r": 23
+    }
+   },
+   {
+    "id": "canon-2019-wo:p61268",
+    "sourceId": "61268",
+    "name": "양현",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 29,
+     "w": 1,
+     "l": 0,
+     "sv": 0,
+     "hld": 1,
+     "ip": 40.67,
+     "era": 1.99,
+     "h": 31,
+     "hr": 1,
+     "bb": 11,
+     "hbp": 1,
+     "so": 25,
+     "whip": 1.03,
+     "swar": 1.72,
+     "speed": 145,
+     "er": 9,
+     "r": 10
+    }
+   },
+   {
+    "id": "canon-2019-wo:p62360",
+    "sourceId": "62360",
+    "name": "김동준",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 33,
+     "w": 8,
+     "l": 3,
+     "sv": 0,
+     "hld": 3,
+     "ip": 70.0,
+     "era": 4.5,
+     "h": 77,
+     "hr": 5,
+     "bb": 23,
+     "hbp": 0,
+     "so": 50,
+     "whip": 1.43,
+     "swar": 1.01,
+     "speed": 145,
+     "er": 35,
+     "r": 36
+    }
+   },
+   {
+    "id": "canon-2019-wo:p64051",
+    "sourceId": "64051",
+    "name": "이영준",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 29,
+     "w": 1,
+     "l": 1,
+     "sv": 0,
+     "hld": 1,
+     "ip": 33.33,
+     "era": 2.97,
+     "h": 39,
+     "hr": 0,
+     "bb": 5,
+     "hbp": 0,
+     "so": 19,
+     "whip": 1.32,
+     "swar": 1.05,
+     "speed": 144,
+     "er": 11,
+     "r": 11
+    }
+   },
+   {
+    "id": "canon-2019-wo:p63342",
+    "sourceId": "63342",
+    "name": "조상우",
+    "kind": "P",
+    "bats": "R",
+    "throws": "R",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 48,
+     "w": 2,
+     "l": 4,
+     "sv": 20,
+     "hld": 8,
+     "ip": 47.33,
+     "era": 2.66,
+     "h": 45,
+     "hr": 3,
+     "bb": 8,
+     "hbp": 2,
+     "so": 46,
+     "whip": 1.12,
+     "swar": 2.06,
+     "speed": 155,
+     "er": 14,
+     "r": 15
+    }
+   },
+   {
+    "id": "canon-2019-wo:p74359",
+    "sourceId": "74359",
+    "name": "오주원",
+    "kind": "P",
+    "bats": "L",
+    "throws": "L",
+    "positions": [
+     "P"
+    ],
+    "pitcher": {
+     "g": 57,
+     "w": 3,
+     "l": 3,
+     "sv": 18,
+     "hld": 3,
+     "ip": 54.33,
+     "era": 2.32,
+     "h": 54,
+     "hr": 1,
+     "bb": 7,
+     "hbp": 3,
+     "so": 41,
+     "whip": 1.12,
+     "swar": 2.63,
+     "speed": 142,
+     "er": 14,
+     "r": 17
+    }
+   }
+  ],
+  "createdAt": "2019-10-01T00:00:00.000Z"
  },
  {
   "id": "canon-2008-wo",
@@ -12042,7 +13121,7 @@
      "so": 25,
      "whip": 1.41,
      "swar": 0.49,
-     "speed": 143,
+     "speed": 142,
      "er": 18,
      "r": 18
     }
