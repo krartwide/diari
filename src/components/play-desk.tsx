@@ -78,10 +78,10 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
   const activeGame = result?.series.games[result.gameIndex] ?? null;
 
   return (
-    <div className="mx-auto grid w-full min-w-0 max-w-6xl gap-6 px-4 py-6">
+    <div className="mx-auto grid w-full min-w-0 max-w-6xl gap-5 px-3 py-5 sm:gap-6 sm:px-4 sm:py-6">
       <div>
         <p className="text-xs tracking-[0.18em] text-primary">경기</p>
-        <h1 className="font-heading text-4xl">팀 맞대결</h1>
+        <h1 className="font-heading text-3xl sm:text-4xl">팀 맞대결</h1>
         <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">
           단판부터 한국시리즈형 다전제까지 고르고, 홈 어드밴티지·이닝·구장 배분을 맞춘 뒤 시작합니다.
         </p>
@@ -96,30 +96,30 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
             <TeamPick label="홈" teams={teams} teamId={home} onTeam={setHome} starterId={homeStarter} onStarter={setHomeStarterPick} />
           </div>
 
-          <section className="grid gap-4 rounded-2xl border border-border bg-card p-4">
+          <section className="grid gap-4 rounded-2xl border border-border bg-card p-3 sm:p-4">
             <div>
               <h2 className="text-sm font-medium">시리즈 형식</h2>
               <p className="mt-1 text-xs text-muted-foreground">{meta.detail}</p>
             </div>
-            <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-2 lg:grid-cols-3">
               {SERIES_OPTIONS.map((option) => (
                 <button
                   key={option.id}
                   type="button"
                   onClick={() => setSeries(option.id)}
-                  className={`rounded-xl border px-3 py-3 text-left transition ${
+                  className={`min-h-16 rounded-xl border px-3 py-3 text-left transition ${
                     series === option.id
                       ? "border-primary bg-primary/10"
                       : "border-border bg-background hover:border-primary/40"
                   }`}
                 >
-                  <span className="block text-sm font-medium">{option.label}</span>
-                  <span className="mt-1 block text-xs text-muted-foreground">{option.detail}</span>
+                  <span className="block text-sm font-medium leading-snug">{option.label}</span>
+                  <span className="mt-1 block text-[11px] leading-4 text-muted-foreground sm:text-xs">{option.detail}</span>
                 </button>
               ))}
             </div>
 
-            <div className="grid gap-4 border-t border-border pt-4 md:grid-cols-3">
+            <div className="grid gap-3 border-t border-border pt-4 sm:gap-4 md:grid-cols-3">
               <label className="grid gap-2">
                 <span className="text-xs text-muted-foreground">이닝</span>
                 <select
@@ -152,7 +152,7 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
                   ))}
                 </select>
               </label>
-              <div className="flex items-end justify-between gap-3 rounded-xl border border-border px-3 py-2">
+              <div className="flex min-h-11 items-center justify-between gap-3 rounded-xl border border-border px-3 py-2.5">
                 <div>
                   <p className="text-sm font-medium">홈 어드밴티지</p>
                   <p className="text-xs text-muted-foreground">후공 타격·투수 소폭 보정</p>
@@ -162,8 +162,13 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
             </div>
           </section>
 
-          <div>
-            <Button type="button" className="h-10 px-5" onClick={start} disabled={busy || !away || !home || away === home}>
+          <div className="sticky bottom-[calc(3.75rem+env(safe-area-inset-bottom))] z-20 -mx-3 border-t border-border/70 bg-background/95 px-3 py-3 backdrop-blur md:static md:mx-0 md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
+            <Button
+              type="button"
+              className="h-11 w-full px-5 sm:h-10 sm:w-auto"
+              onClick={start}
+              disabled={busy || !away || !home || away === home}
+            >
               {busy ? "경기를 만드는 중" : series === "single" ? "경기 시작" : `${meta.label} 시작`}
             </Button>
             {away === home && <p className="mt-2 text-xs text-muted-foreground">같은 팀끼리는 맞붙일 수 없습니다.</p>}
@@ -199,7 +204,7 @@ function TeamPick({
 }) {
   const team = teams.find((item) => item.id === teamId);
   return (
-    <section className="grid gap-3 rounded-2xl border border-border bg-card p-4">
+    <section className="grid gap-3 rounded-2xl border border-border bg-card p-3 sm:p-4">
       <h2 className="text-sm text-muted-foreground">{label}</h2>
       <select className="field-select" value={teamId} onChange={(event) => onTeam(event.target.value)}>
         {teams.map((item) => (
@@ -209,9 +214,9 @@ function TeamPick({
         ))}
       </select>
       {team && (
-        <div className="flex items-center gap-3">
-          <TeamMark shortName={team.shortName} primary={team.primary} secondary={team.secondary} logo={team.logo} size={48} />
-          <label className="grid flex-1 gap-1 text-xs">
+        <div className="flex min-w-0 items-center gap-3">
+          <TeamMark shortName={team.shortName} primary={team.primary} secondary={team.secondary} logo={team.logo} size={44} />
+          <label className="grid min-w-0 flex-1 gap-1 text-xs">
             <span className="text-muted-foreground">선발</span>
             <select className="field-select" value={starterId} onChange={(event) => onStarter(event.target.value)}>
               {team.rotation.map((id) => (
@@ -245,22 +250,22 @@ function SeriesDesk({
   return (
     <div className="grid min-w-0 gap-4">
       {multi && (
-        <section className="grid gap-3 rounded-2xl border border-border bg-card p-4">
+        <section className="grid gap-3 rounded-2xl border border-border bg-card p-3 sm:p-4">
           <div className="flex flex-wrap items-end justify-between gap-3">
-            <div>
+            <div className="min-w-0">
               <p className="text-xs text-muted-foreground">{formatLabel}</p>
-              <h2 className="font-heading text-2xl">
+              <h2 className="font-heading text-xl sm:text-2xl">
                 {record.away.shortName} {record.awayWins}
                 <span className="mx-2 text-muted-foreground">–</span>
                 {record.homeWins} {record.home.shortName}
               </h2>
-              <p className="mt-1 text-sm text-muted-foreground">{record.summary}</p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">{record.summary}</p>
             </div>
-            <Button type="button" variant="outline" onClick={onAgain}>
+            <Button type="button" variant="outline" className="min-h-10 w-full sm:w-auto" onClick={onAgain}>
               다시 맞붙이기
             </Button>
           </div>
-          <div className="flex flex-wrap gap-2">
+          <div className="-mx-1 flex gap-2 overflow-x-auto px-1 pb-1">
             {record.games.map((item, index) => {
               const topWon = item.linescore.awayR > item.linescore.homeR;
               const bottomWon = item.linescore.homeR > item.linescore.awayR;
@@ -270,7 +275,7 @@ function SeriesDesk({
                   key={item.id}
                   type="button"
                   onClick={() => onSelectGame(index)}
-                  className={`rounded-lg border px-3 py-2 text-left text-xs transition ${
+                  className={`min-w-[8.5rem] shrink-0 rounded-lg border px-3 py-2.5 text-left text-xs transition ${
                     index === gameIndex ? "border-primary bg-primary/10" : "border-border hover:border-primary/40"
                   }`}
                 >
@@ -333,18 +338,18 @@ function LiveGame({
     return (
       <div className="grid min-w-0 gap-4">
         {!hideAgain && (
-          <div className="flex flex-wrap gap-2">
-            <Button type="button" variant="outline" onClick={onAgain}>
+          <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap">
+            <Button type="button" variant="outline" className="min-h-10" onClick={onAgain}>
               {againLabel}
             </Button>
-            <Button asChild variant="secondary">
+            <Button asChild variant="secondary" className="min-h-10">
               <Link href={`/games/${game.id}`}>기록 페이지</Link>
             </Button>
           </div>
         )}
         {hideAgain && (
-          <div className="flex flex-wrap gap-2">
-            <Button asChild variant="secondary">
+          <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap">
+            <Button asChild variant="secondary" className="min-h-10">
               <Link href={`/games/${game.id}`}>이 경기 기록 페이지</Link>
             </Button>
           </div>
@@ -379,18 +384,18 @@ function LiveGame({
       : null;
 
   return (
-    <section className="scorebook grid min-w-0 gap-4 rounded-2xl p-4">
+    <section className="scorebook grid min-w-0 gap-3 rounded-2xl p-3 sm:gap-4 sm:p-4">
       <div className="flex flex-wrap items-end justify-between gap-3">
-        <div>
+        <div className="min-w-0">
           <p className="text-xs text-[#6d6254]">진행표{seriesNote ? ` · ${seriesNote}` : ""}</p>
-          <h2 className="text-2xl">
+          <h2 className="text-xl sm:text-2xl">
             {game.away.shortName} {awayRuns}
             <span className="mx-2 text-[#6d6254]">:</span>
             {game.home.shortName} {homeRuns}
           </h2>
           <p className="text-sm">{current ? halfLabel(current.inning, current.half) : "경기 시작"}</p>
         </div>
-        <Button type="button" variant="outline" onClick={() => setDone(true)}>
+        <Button type="button" variant="outline" className="min-h-10 shrink-0" onClick={() => setDone(true)}>
           끝까지
         </Button>
       </div>

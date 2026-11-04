@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Black_Han_Sans, IBM_Plex_Sans_KR, Noto_Serif_KR } from "next/font/google";
+import { MobileNav } from "@/components/mobile-nav";
 import { Providers } from "@/components/providers";
 import { SiteHeader } from "@/components/site-header";
 import "./globals.css";
@@ -31,15 +32,31 @@ const display = Black_Han_Sans({
 export const metadata: Metadata = {
   title: "다이아리",
   description: "팀을 만들고 공 하나까지 기록으로 남는 야구 경기를 치릅니다.",
+  appleWebApp: {
+    capable: true,
+    title: "다이아리",
+    statusBarStyle: "black-translucent",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#1f3329",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="ko" className={`dark ${sans.variable} ${serif.variable} ${display.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-background text-foreground">
+      <body className="flex min-h-full flex-col bg-background text-foreground">
         <Providers>
           <SiteHeader />
-          <div className="flex-1">{children}</div>
+          <div className="page-shell flex-1">{children}</div>
+          <MobileNav />
         </Providers>
       </body>
     </html>

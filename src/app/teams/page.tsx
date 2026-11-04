@@ -34,13 +34,13 @@ export default function TeamsPage() {
   const canon = filtered.filter((team) => team.canonical);
 
   return (
-    <main className="mx-auto grid w-full min-w-0 max-w-6xl gap-6 px-4 py-6">
+    <main className="mx-auto grid w-full min-w-0 max-w-6xl gap-5 px-3 py-5 sm:gap-6 sm:px-4 sm:py-6">
       <div className="flex flex-wrap items-end justify-between gap-3">
         <div>
           <p className="text-xs tracking-[0.18em] text-primary">구단</p>
-          <h1 className="font-heading text-4xl">팀 목록</h1>
+          <h1 className="font-heading text-3xl sm:text-4xl">팀 목록</h1>
         </div>
-        <Button asChild className="h-10 px-4">
+        <Button asChild className="h-11 w-full px-4 sm:h-10 sm:w-auto">
           <Link href="/teams/new">새 팀</Link>
         </Button>
       </div>

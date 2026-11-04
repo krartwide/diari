@@ -124,9 +124,27 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
   }
   html {
     @apply font-sans;
+    text-size-adjust: 100%;
+  }
+  button,
+  a,
+  [role="button"] {
+    touch-action: manipulation;
+  }
+}
+
+.page-shell {
+  padding-bottom: calc(4.25rem + env(safe-area-inset-bottom));
+}
+
+@media (min-width: 768px) {
+  .page-shell {
+    padding-bottom: 0;
   }
 }
 
@@ -144,11 +162,40 @@
 }
 
 .field-select {
-  height: 2.25rem;
+  min-height: 2.75rem;
   width: 100%;
   border-radius: 0.5rem;
   border: 1px solid var(--input);
   background: color-mix(in oklch, var(--background) 88%, transparent);
-  padding: 0 0.5rem;
-  font-size: 0.875rem;
+  padding: 0 0.75rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 640px) {
+  .field-select {
+    min-height: 2.25rem;
+    font-size: 0.875rem;
+    padding: 0 0.5rem;
+  }
+}
+
+.scroll-fade-x {
+  mask-image: linear-gradient(90deg, #000 85%, transparent);
+}
+
+@media (min-width: 640px) {
+  .scroll-fade-x {
+    mask-image: none;
+  }
+}
+
+.sticky-col {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: inherit;
+}
+
+.scorebook .sticky-col {
+  background: #f4efe2;
 }

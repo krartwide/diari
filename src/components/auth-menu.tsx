@@ -10,7 +10,7 @@ type Me = {
   admin?: boolean;
 };
 
-export function AuthMenu() {
+export function AuthMenu({ compact = false }: { compact?: boolean }) {
   const [user, setUser] = useState<Me | null>(null);
 
   useEffect(() => {
@@ -23,10 +23,15 @@ export function AuthMenu() {
       .catch(() => undefined);
   }, []);
 
+  const label = compact ? user?.name || "혼자 사용" : `${user?.name || "다이아리"}${user?.admin ? " · 혼자 사용" : ""}`;
+
   return (
-    <Link href="/achievements" className="text-xs text-muted-foreground hover:text-foreground">
-      {user?.name || "다이아리"}
-      {user?.admin ? " · 혼자 사용" : ""}
+    <Link
+      href="/achievements"
+      className="max-w-[9rem] truncate text-xs text-muted-foreground hover:text-foreground sm:max-w-none"
+      title={user?.name || "다이아리"}
+    >
+      {label}
     </Link>
   );
 }

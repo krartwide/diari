@@ -17,10 +17,10 @@ export default function GamePage() {
       .catch((caught: Error) => setError(caught.message));
   }, [params.id]);
 
-  if (error) return <main className="px-4 py-8 text-sm">{error}</main>;
-  if (!game) return <main className="px-4 py-8 text-sm text-muted-foreground">경기 기록을 불러오는 중입니다.</main>;
+  if (error) return <main className="px-3 py-8 text-sm sm:px-4">{error}</main>;
+  if (!game) return <main className="px-3 py-8 text-sm text-muted-foreground sm:px-4">경기 기록을 불러오는 중입니다.</main>;
   return (
-    <main className="mx-auto w-full min-w-0 max-w-6xl px-4 py-6">
+    <main className="mx-auto w-full min-w-0 max-w-6xl px-3 py-5 sm:px-4 sm:py-6">
       <GameView game={game} />
     </main>
   );

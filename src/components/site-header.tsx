@@ -15,12 +15,15 @@ const LINKS = [
 export function SiteHeader() {
   const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur">
-      <div className="mx-auto flex h-14 w-full min-w-0 max-w-6xl items-center gap-3 px-4">
-        <Link href="/" className="font-heading text-2xl tracking-wide text-primary">
+    <header
+      className="sticky top-0 z-40 border-b border-border/80 bg-background/85 backdrop-blur"
+      style={{ paddingTop: "env(safe-area-inset-top)" }}
+    >
+      <div className="mx-auto flex h-12 w-full min-w-0 max-w-6xl items-center gap-2 px-3 sm:h-14 sm:gap-3 sm:px-4">
+        <Link href="/" className="shrink-0 font-heading text-xl tracking-wide text-primary sm:text-2xl">
           다이아리
         </Link>
-        <nav className="ml-auto flex items-center gap-1 overflow-x-auto text-sm">
+        <nav className="ml-auto hidden items-center gap-1 text-sm md:flex">
           {LINKS.map((link) => {
             const active = pathname === link.href || pathname.startsWith(`${link.href}/`);
             return (
@@ -37,7 +40,9 @@ export function SiteHeader() {
             );
           })}
         </nav>
-        <AuthMenu />
+        <div className="ml-auto md:ml-0">
+          <AuthMenu compact />
+        </div>
       </div>
     </header>
   );

@@ -19,10 +19,10 @@ export default function GamesPage() {
   }, []);
 
   return (
-    <main className="mx-auto grid w-full min-w-0 max-w-3xl gap-4 px-4 py-6">
+    <main className="mx-auto grid w-full min-w-0 max-w-3xl gap-4 px-3 py-5 sm:px-4 sm:py-6">
       <div>
         <p className="text-xs tracking-[0.18em] text-primary">기록</p>
-        <h1 className="font-heading text-4xl">지난 경기</h1>
+        <h1 className="font-heading text-3xl sm:text-4xl">지난 경기</h1>
       </div>
       {error && <p className="text-sm text-destructive">{error}</p>}
       {!games && !error && <p className="text-sm text-muted-foreground">불러오는 중입니다.</p>}

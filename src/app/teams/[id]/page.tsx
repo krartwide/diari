@@ -67,13 +67,13 @@ export default function TeamPage() {
   const closers = (team.closers ?? []).map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
 
   return (
-    <main className="mx-auto grid w-full min-w-0 max-w-6xl gap-6 px-4 py-6">
+    <main className="mx-auto grid w-full min-w-0 max-w-6xl gap-5 px-3 py-5 sm:gap-6 sm:px-4 sm:py-6">
       <header className="flex flex-wrap items-start justify-between gap-4">
-        <div className="flex gap-4">
-          <TeamMark name={team.name} shortName={team.shortName} primary={team.primary} secondary={team.secondary} logo={team.logo} size={84} />
-          <div>
+        <div className="flex min-w-0 gap-3 sm:gap-4">
+          <TeamMark name={team.name} shortName={team.shortName} primary={team.primary} secondary={team.secondary} logo={team.logo} size={72} />
+          <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
-              <h1 className="font-heading text-4xl">{team.name}</h1>
+              <h1 className="font-heading text-3xl leading-tight sm:text-4xl">{team.name}</h1>
               <Badge variant="outline">{team.canonical ? "공개 기록" : team.visibility === "public" ? "공개" : "비공개"}</Badge>
             </div>
             <p className="mt-2 max-w-2xl text-sm leading-6 text-muted-foreground">{team.blurb}</p>
@@ -84,20 +84,20 @@ export default function TeamPage() {
             )}
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          <Button asChild className="h-10 px-4">
+        <div className="grid w-full grid-cols-1 gap-2 sm:flex sm:w-auto sm:flex-wrap">
+          <Button asChild className="h-11 px-4 sm:h-10">
             <Link href={`/play?away=${team.id}`}>이 팀으로 경기</Link>
           </Button>
           {editable && (
-            <Button asChild variant="secondary">
+            <Button asChild variant="secondary" className="h-11 sm:h-10">
               <Link href={`/teams/${team.id}/edit`}>{team.canonical && admin ? "관리자 편집" : "고치기"}</Link>
             </Button>
           )}
-          <Button type="button" variant="secondary" onClick={duplicate} disabled={busy}>
+          <Button type="button" variant="secondary" className="h-11 sm:h-10" onClick={duplicate} disabled={busy}>
             내 팀으로 복제
           </Button>
           {editable && (
-            <Button type="button" variant="ghost" onClick={remove} disabled={busy}>
+            <Button type="button" variant="ghost" className="h-11 sm:h-10" onClick={remove} disabled={busy}>
               {team.canonical ? "수정본 되돌리기" : "삭제"}
             </Button>
           )}
@@ -105,13 +105,13 @@ export default function TeamPage() {
       </header>
       {error && <p className="text-sm text-destructive">{error}</p>}
 
-      <section className="min-w-0 overflow-x-auto">
+      <section className="scroll-fade-x min-w-0 overflow-x-auto [-webkit-overflow-scrolling:touch]">
         <h2 className="mb-2 text-lg font-semibold">타순</h2>
-        <table className="w-full min-w-[980px] text-left text-sm">
+        <table className="w-full min-w-[980px] text-left text-xs sm:text-sm">
           <thead className="text-xs text-muted-foreground">
             <tr>
               {["#", "포지션", "이름", "타격", "경기", "타수", "안타", "2루타", "3루타", "홈런", "타점", "득점", "도루", "볼넷", "삼진", "타율", "출루", "장타", "OPS", "wRC+", "sWAR", "속도"].map((head) => (
-                <th key={head} className="px-2 py-1 font-medium whitespace-nowrap">
+                <th key={head} className={`px-2 py-1 font-medium whitespace-nowrap ${head === "이름" ? "sticky-col" : ""}`}>
                   {head}
                 </th>
               ))}
@@ -122,10 +122,10 @@ export default function TeamPage() {
               const b = player!.batter;
               if (!b) return null;
               return (
-                <tr key={player!.id} className="border-t border-border">
+                <tr key={player!.id} className="border-t border-border bg-background">
                   <td className="px-2 py-1.5">{index + 1}</td>
                   <td className="px-2 py-1.5">{POSITION_LABEL[slot.position]}</td>
-                  <td className="px-2 py-1.5 whitespace-nowrap">{player!.name}</td>
+                  <td className="sticky-col px-2 py-1.5 whitespace-nowrap">{player!.name}</td>
                   <td className="px-2 py-1.5 whitespace-nowrap">{handLabel(player!.bats, player!.throws)}</td>
                   {[b.g, b.ab, b.h, b.doubles, b.triples, b.hr, b.rbi, b.r, b.sb, b.bb, b.so].map((value, cell) => (
                     <td key={cell} className="px-2 py-1.5 tabular-nums">
@@ -164,13 +164,13 @@ export default function TeamPage() {
 
 function PitchTable({ title, players }: { title: string; players: Player[] }) {
   return (
-    <section className="min-w-0 overflow-x-auto">
+    <section className="scroll-fade-x min-w-0 overflow-x-auto [-webkit-overflow-scrolling:touch]">
       <h2 className="mb-2 text-lg font-semibold">{title}</h2>
-      <table className="w-full min-w-[860px] text-left text-sm">
+      <table className="w-full min-w-[860px] text-left text-xs sm:text-sm">
         <thead className="text-xs text-muted-foreground">
           <tr>
             {["이름", "투구", "출장", "승", "패", "세", "홀", "이닝", "ERA", "피안타", "피홈런", "볼넷", "사구", "탈삼진", "WHIP", "sWAR", "최고"].map((head) => (
-              <th key={head} className="px-2 py-1 font-medium whitespace-nowrap">
+              <th key={head} className={`px-2 py-1 font-medium whitespace-nowrap ${head === "이름" ? "sticky-col" : ""}`}>
                 {head}
               </th>
             ))}
@@ -181,8 +181,8 @@ function PitchTable({ title, players }: { title: string; players: Player[] }) {
             const p = player.pitcher;
             if (!p) return null;
             return (
-              <tr key={player.id} className="border-t border-border">
-                <td className="px-2 py-1.5 whitespace-nowrap">{player.name}</td>
+              <tr key={player.id} className="border-t border-border bg-background">
+                <td className="sticky-col px-2 py-1.5 whitespace-nowrap">{player.name}</td>
                 <td className="px-2 py-1.5">{handLabel(player.bats, player.throws)}</td>
                 <td className="px-2 py-1.5 tabular-nums">{p.g}</td>
                 <td className="px-2 py-1.5 tabular-nums">{p.w}</td>
