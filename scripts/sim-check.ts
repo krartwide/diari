@@ -16,6 +16,8 @@ function report(label: string, away: Team, home: Team, n: number) {
   let k = 0;
   let innings = 0;
   let cg = 0;
+  let shutouts = 0;
+  let saves = 0;
   let pitches = 0;
   let mismatches = 0;
   for (let i = 0; i < n; i++) {
@@ -26,6 +28,9 @@ function report(label: string, away: Team, home: Team, n: number) {
     k += [...game.pitching.away, ...game.pitching.home].reduce((sum, row) => sum + row.so, 0);
     pitches += game.plays.reduce((sum, play) => sum + play.pitches.length, 0);
     if (game.completeGame) cg += 1;
+    if (game.completeGame?.shutout) shutouts += 1;
+    else if (game.linescore.awayR === 0 || game.linescore.homeR === 0) shutouts += 1;
+    if (game.decisions.save) saves += 1;
     const batH = [...game.batting.away, ...game.batting.home].reduce((sum, row) => sum + row.h, 0);
     if (batH !== game.linescore.awayH + game.linescore.homeH) mismatches += 1;
     const awayRuns = game.batting.away.reduce((sum, row) => sum + row.r, 0);
@@ -66,6 +71,8 @@ function report(label: string, away: Team, home: Team, n: number) {
     `삼진 ${(k / n).toFixed(1)}`,
     `이닝 ${(innings / n).toFixed(2)}`,
     `완투 ${cg}/${n}`,
+    `영봉 ${shutouts}/${n}`,
+    `세이브 ${saves}/${n}`,
     `투구 ${Math.round(pitches / n)}`,
     `불일치 ${mismatches}`,
   );

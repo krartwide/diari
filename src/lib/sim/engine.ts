@@ -604,9 +604,10 @@ class Sim {
     const p = pitcherOf(player);
     const ipg = p.ip / Math.max(p.g, 1);
     const listedCloser = this.isListedCloser(side, player.id);
+    // Starters top out near a modern pitch count; aces still stretch but rarely cruise past 110–115.
     const limit =
       role === "SP"
-        ? clamp(ipg * 16 + 18 + Math.max(0, p.swar), 78, 155)
+        ? clamp(ipg * 14.5 + 14 + Math.max(0, p.swar) * 0.55, 78, 118)
         : listedCloser
           ? clamp(18 + ipg * 10 + Math.max(0, p.swar), 16, 36)
           : clamp(12 + ipg * 13 + Math.max(0, p.swar), 14, 58);
@@ -774,17 +775,46 @@ class Sim {
     this.plays.push(this.banner(`투수 교체. ${app.name}${eul(app.name)} 내리고 ${player.name}${iga(player.name)} ${why} 마운드에 오른다.`));
   }
 
+  hasLateArms(defense: Side) {
+    return this.pool[defense].some((arm) => !this.used.has(arm.id));
+  }
+
   shouldHook(app: App, defense: Side, inningStart: boolean) {
     if (app.emergency && app.bf < 1) return false;
     const lead = this.leadFor(defense);
     const cruising = app.er <= 2 && app.runsThisInning === 0;
+    const lateArms = this.hasLateArms(defense);
     if (app.role === "SP") {
-      const deep = app.outs >= 18;
-      if (this.inning >= this.regulationInnings && cruising && deep && app.pitches < app.limit + 12 && lead >= 0) return false;
-      if (this.inning >= 8 && cruising && deep && app.pitches < app.limit - 6 && lead >= 0) return false;
       if (app.pitches >= app.limit) return true;
-      if (this.inning >= 6 && app.runsThisInning >= 3 && app.pitches >= 50) return true;
-      if (this.inning >= 7 && app.pitches >= app.limit - 16 && !cruising) return true;
+      if (this.inning >= 5 && app.runsThisInning >= 3) return true;
+      if (this.inning >= 6 && app.runsThisInning >= 2 && app.pitches >= 70) return true;
+      if (this.inning >= 7 && !cruising && app.pitches >= app.limit - 22) return true;
+
+      // Ninth (or regulation) with a lead: hand it to the bullpen most nights.
+      // Rare CG only when the starter is still dominating on a short pitch count.
+      if (inningStart && this.inning >= this.regulationInnings && lateArms) {
+        if (lead <= 0) {
+          if (app.pitches >= 95 || app.er >= 4) return true;
+          return false;
+        }
+        if (app.er === 0 && app.pitches <= 102 && app.outs >= 21 && this.rng() < 0.12) return false;
+        if (cruising && app.pitches <= 95 && app.outs >= 24 && this.rng() < 0.08) return false;
+        return true;
+      }
+
+      // Eighth: usually get a fresh arm when ahead or after a long outing.
+      if (inningStart && this.inning >= Math.max(8, this.regulationInnings - 1) && lateArms) {
+        if (lead > 0 && (app.pitches >= 88 || !cruising)) return true;
+        if (lead > 0 && app.pitches >= 80 && this.rng() < 0.7) return true;
+        if (app.pitches >= 100) return true;
+      }
+
+      if (inningStart && this.inning >= 7 && lateArms) {
+        if (app.pitches >= 105) return true;
+        if (!cruising && app.pitches >= 85) return true;
+        if (lead >= 4 && app.pitches >= 90 && this.rng() < 0.55) return true;
+      }
+
       return false;
     }
     const saveSit = app.isCloser && lead > 0 && lead <= 3 && this.inning >= this.regulationInnings;
@@ -862,13 +892,16 @@ class Sim {
       return;
     }
     const pitcher = this.player(defense, this.current[defense]!.playerId);
-    const rates = this.applyHomeAdvantage(matchup(batterOf(batter), pitcherOf(pitcher), this.yearPair), offense);
+    const app = this.current[defense]!;
+    const rates = this.applyPitcherFatigue(
+      this.applyHomeAdvantage(matchup(batterOf(batter), pitcherOf(pitcher), this.yearPair), offense),
+      app,
+    );
     let result = sampleResult(rates, this.rng);
     if ((result === "GO" || result === "FO" || result === "LO") && this.rng() < (result === "GO" ? 0.028 : 0.006)) {
       result = "E";
     }
     const pitches = this.buildPitches(batter, pitcher, result);
-    const app = this.current[defense]!;
     app.bf += 1;
     app.pitches += pitches.length;
     const resolved = this.resolve(offense, defense, batter, batLine, result, pitches);
@@ -898,6 +931,39 @@ class Sim {
       this.walkOff = true;
       this.over = true;
     }
+  }
+
+  applyPitcherFatigue(rates: Rates, app: App): Rates {
+    if (app.role !== "SP") return rates;
+    const over = Math.max(0, app.pitches - 85);
+    if (over <= 0 && app.outs < 18) return rates;
+    const fatigue = clamp(over / 160 + Math.max(0, app.outs - 18) / 90, 0, 0.24);
+    if (fatigue <= 0) return rates;
+    let k = rates.k * (1 - fatigue * 0.55);
+    let bb = rates.bb * (1 + fatigue * 0.35);
+    let hbp = rates.hbp * (1 + fatigue * 0.2);
+    let hr = rates.hr * (1 + fatigue * 0.45);
+    let single = rates.single * (1 + fatigue * 0.4);
+    let dbl = rates.double * (1 + fatigue * 0.35);
+    let tpl = rates.triple * (1 + fatigue * 0.2);
+    let go = rates.go;
+    let fo = rates.fo;
+    let lo = rates.lo;
+    const sum = k + bb + hbp + hr + single + dbl + tpl + go + fo + lo;
+    if (sum <= 0) return rates;
+    const scale = 1 / sum;
+    return {
+      k: k * scale,
+      bb: bb * scale,
+      hbp: hbp * scale,
+      hr: hr * scale,
+      single: single * scale,
+      double: dbl * scale,
+      triple: tpl * scale,
+      go: go * scale,
+      fo: fo * scale,
+      lo: lo * scale,
+    };
   }
 
   applyHomeAdvantage(rates: Rates, offense: Side): Rates {

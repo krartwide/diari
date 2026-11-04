@@ -43,8 +43,10 @@ next-env.d.ts
 
 # local teams and games
 /data/user-store.json
+/data/user-store.json.bak
 /data/*.db
 /data/*.db-journal
+/data/*.bak
 
 # research dumps
 /agent-tools/
