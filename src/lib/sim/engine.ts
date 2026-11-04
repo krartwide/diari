@@ -785,34 +785,52 @@ class Sim {
     const cruising = app.er <= 2 && app.runsThisInning === 0;
     const lateArms = this.hasLateArms(defense);
     if (app.role === "SP") {
+      // Never create a one-out bullpen cameo by yanking mid-inning after the 7th
+      // unless the inning is already on fire or the starter is far past his limit.
+      if (!inningStart && this.inning >= 7) {
+        if (app.runsThisInning >= 2) return true;
+        if (app.pitches >= app.limit + 12) return true;
+        return false;
+      }
+
       if (app.pitches >= app.limit) return true;
       if (this.inning >= 5 && app.runsThisInning >= 3) return true;
       if (this.inning >= 6 && app.runsThisInning >= 2 && app.pitches >= 70) return true;
       if (this.inning >= 7 && !cruising && app.pitches >= app.limit - 22) return true;
 
-      // Ninth (or regulation) with a lead: hand it to the bullpen most nights.
-      // Rare CG only when the starter is still dominating on a short pitch count.
+      // 9th: decide before the inning starts. Prefer a full closer inning or a clean CG.
       if (inningStart && this.inning >= this.regulationInnings && lateArms) {
         if (lead <= 0) {
-          if (app.pitches >= 95 || app.er >= 4) return true;
+          if (app.pitches >= 100 || app.er >= 4) return true;
           return false;
         }
-        if (app.er === 0 && app.pitches <= 102 && app.outs >= 21 && this.rng() < 0.12) return false;
-        if (cruising && app.pitches <= 95 && app.outs >= 24 && this.rng() < 0.08) return false;
-        return true;
+        // Through 8 and still fresh enough — usually finish; sometimes ask for a save.
+        if (app.outs >= 24 && cruising && app.pitches <= 105) {
+          if (lead <= 3 && app.pitches >= 92 && this.rng() < 0.28) return true;
+          return false;
+        }
+        // Through 7: closer gets a real inning more often than a cameo after 8.
+        if (app.outs >= 21 && app.outs < 24) {
+          if (lead <= 3) return true;
+          if (app.pitches >= 95) return true;
+          return this.rng() < 0.4;
+        }
+        if (app.pitches >= 100 || !cruising) return true;
+        return lead <= 3 ? this.rng() < 0.7 : this.rng() < 0.45;
       }
 
-      // Eighth: usually get a fresh arm when ahead or after a long outing.
+      // Eighth: get a fresh arm when the starter is spent, or set up a clean 9th save.
       if (inningStart && this.inning >= Math.max(8, this.regulationInnings - 1) && lateArms) {
-        if (lead > 0 && (app.pitches >= 88 || !cruising)) return true;
-        if (lead > 0 && app.pitches >= 80 && this.rng() < 0.7) return true;
         if (app.pitches >= 100) return true;
+        if (lead > 0 && !cruising && app.pitches >= 80) return true;
+        if (lead > 0 && lead <= 3 && app.outs >= 21 && app.pitches >= 88 && this.rng() < 0.6) return true;
+        if (lead >= 4 && app.pitches >= 92 && this.rng() < 0.5) return true;
       }
 
       if (inningStart && this.inning >= 7 && lateArms) {
         if (app.pitches >= 105) return true;
-        if (!cruising && app.pitches >= 85) return true;
-        if (lead >= 4 && app.pitches >= 90 && this.rng() < 0.55) return true;
+        if (!cruising && app.pitches >= 88) return true;
+        if (lead >= 5 && app.pitches >= 95 && this.rng() < 0.45) return true;
       }
 
       return false;
@@ -1028,8 +1046,7 @@ class Sim {
       return `${runner.name}${iga(runner.name)} 뛰었다. ${baseName} 도루.`;
     }
     this.bases[target - 1] = null;
-    this.outs += 1;
-    this.ghostOuts += 1;
+    this.addOut();
     const line = this.batting[runner.id];
     if (line) {
       /* caught stealing is not stored separately in the box */
@@ -1046,23 +1063,28 @@ class Sim {
     let strikes = 0;
     const terminalKind: PitchCall =
       result === "K" ? (this.rng() < 0.58 ? "swinging_strike" : "called_strike") : result === "BB" ? "ball" : result === "HBP" ? "hbp" : "in_play";
-    for (let guard = 0; guard < 14; guard++) {
+    // Real ABs average ~3.8 pitches; long foul battles stay uncommon.
+    const maxPitches = result === "K" || result === "BB" ? 9 : 8;
+    for (let guard = 0; guard < maxPitches; guard++) {
+      const inPlay = result !== "K" && result !== "BB" && result !== "HBP";
       const wantEnd =
         (result === "K" && strikes === 2) ||
         (result === "BB" && balls === 3) ||
-        (result === "HBP" && (pitches.length >= 1 ? this.rng() < 0.55 : this.rng() < 0.35)) ||
-        (result !== "K" && result !== "BB" && result !== "HBP" && pitches.length >= 1 && this.rng() < 0.34 + pitches.length * 0.08);
+        (result === "HBP" && (pitches.length >= 1 ? this.rng() < 0.65 : this.rng() < 0.4)) ||
+        (inPlay && pitches.length >= 1 && this.rng() < 0.36 + pitches.length * 0.14) ||
+        (inPlay && pitches.length >= 5 && this.rng() < 0.7) ||
+        pitches.length + 1 >= maxPitches;
       let call: PitchCall;
-      if (wantEnd || guard === 13) call = terminalKind;
-      else if (strikes === 2 && balls < 3) call = this.rng() < 0.72 ? "foul" : "ball";
-      else if (balls === 3 && strikes < 2) call = this.rng() < 0.45 ? "foul" : this.rng() < 0.7 ? "called_strike" : "swinging_strike";
+      if (wantEnd) call = terminalKind;
+      else if (strikes === 2 && balls < 3) call = this.rng() < 0.55 ? "foul" : "ball";
+      else if (balls === 3 && strikes < 2) call = this.rng() < 0.32 ? "foul" : this.rng() < 0.72 ? "called_strike" : "swinging_strike";
       else {
         const roll = this.rng();
-        if (roll < 0.34) call = "ball";
-        else if (roll < 0.55) call = "called_strike";
-        else if (roll < 0.7) call = "swinging_strike";
+        if (roll < 0.36) call = "ball";
+        else if (roll < 0.56) call = "called_strike";
+        else if (roll < 0.72) call = "swinging_strike";
         else call = "foul";
-        if (call === "ball" && balls >= 3) call = "foul";
+        if (call === "ball" && balls >= 3) call = strikes < 2 ? (this.rng() < 0.55 ? "called_strike" : "swinging_strike") : "foul";
         if ((call === "called_strike" || call === "swinging_strike") && strikes >= 2) call = "foul";
       }
       const code = choosePitch(rep, balls, strikes, this.rng);
@@ -1101,7 +1123,7 @@ class Sim {
         };
       }
       pitches.push(pitch);
-      if (wantEnd || guard === 13 || call === "in_play" || call === "hbp" || (result === "K" && strikes >= 3) || (result === "BB" && balls >= 4)) break;
+      if (call === "in_play" || call === "hbp" || (result === "K" && strikes >= 3) || (result === "BB" && balls >= 4)) break;
     }
     return pitches;
   }
