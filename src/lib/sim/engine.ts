@@ -512,6 +512,8 @@ class Sim {
   current: [App | null, App | null] = [null, null];
   used = new Set<string>();
   pool: [Player[], Player[]] = [[], []];
+  /** Unused rotation arms — only for emergency long relief after the bullpen is empty. */
+  longRelief: [Player[], Player[]] = [[], []];
   plays: PlateAppearance[] = [];
   lines: [number[], (number | null)[]] = [[], []];
   halfRuns = 0;
@@ -549,12 +551,13 @@ class Sim {
             : homeStarter!
           : team.rotation[0];
       const closerIds = new Set(team.closers ?? []);
-      const others = [
-        ...team.bullpen.filter((id) => !closerIds.has(id)),
-        ...team.rotation.filter((id) => id !== starterId),
-        ...(team.closers ?? []),
-      ];
-      this.pool[side] = others
+      // Normal pen: listed bullpen + closers only. Other starters stay out unless the pen is empty.
+      const penIds = [...team.bullpen.filter((id) => !closerIds.has(id)), ...(team.closers ?? [])];
+      this.pool[side] = penIds
+        .map((id) => team.players.find((p) => p.id === id))
+        .filter((p): p is Player => Boolean(p && p.kind === "P"));
+      this.longRelief[side] = team.rotation
+        .filter((id) => id !== starterId)
         .map((id) => team.players.find((p) => p.id === id))
         .filter((p): p is Player => Boolean(p && p.kind === "P"));
       const starter = team.players.find((p) => p.id === starterId) ?? team.players.find((p) => p.kind === "P");
@@ -604,13 +607,13 @@ class Sim {
     const p = pitcherOf(player);
     const ipg = p.ip / Math.max(p.g, 1);
     const listedCloser = this.isListedCloser(side, player.id);
-    // Starters top out near a modern pitch count; aces still stretch but rarely cruise past 110–115.
+    // Modern starters rarely cruise past ~100; leave room for the listed pen.
     const limit =
       role === "SP"
-        ? clamp(ipg * 14.5 + 14 + Math.max(0, p.swar) * 0.55, 78, 118)
+        ? clamp(ipg * 13.5 + 12 + Math.max(0, p.swar) * 0.45, 72, 102)
         : listedCloser
           ? clamp(18 + ipg * 10 + Math.max(0, p.swar), 16, 36)
-          : clamp(12 + ipg * 13 + Math.max(0, p.swar), 14, 58);
+          : clamp(12 + ipg * 13 + Math.max(0, p.swar), 14, 45);
     const closer =
       role === "RP" &&
       (listedCloser ||
@@ -775,8 +778,13 @@ class Sim {
     this.plays.push(this.banner(`투수 교체. ${app.name}${eul(app.name)} 내리고 ${player.name}${iga(player.name)} ${why} 마운드에 오른다.`));
   }
 
-  hasLateArms(defense: Side) {
+  hasPenArms(defense: Side) {
     return this.pool[defense].some((arm) => !this.used.has(arm.id));
+  }
+
+  hasLateArms(defense: Side) {
+    if (this.hasPenArms(defense)) return true;
+    return this.longRelief[defense].some((arm) => !this.used.has(arm.id));
   }
 
   shouldHook(app: App, defense: Side, inningStart: boolean) {
@@ -784,54 +792,55 @@ class Sim {
     const lead = this.leadFor(defense);
     const cruising = app.er <= 2 && app.runsThisInning === 0;
     const lateArms = this.hasLateArms(defense);
+    const penArms = this.hasPenArms(defense);
     if (app.role === "SP") {
-      // Never create a one-out bullpen cameo by yanking mid-inning after the 7th
-      // unless the inning is already on fire or the starter is far past his limit.
-      if (!inningStart && this.inning >= 7) {
+      // Avoid tiny late cameos unless the inning is already broken.
+      if (!inningStart && this.inning >= 6) {
         if (app.runsThisInning >= 2) return true;
-        if (app.pitches >= app.limit + 12) return true;
+        if (app.pitches >= app.limit + 8) return true;
         return false;
       }
 
       if (app.pitches >= app.limit) return true;
-      if (this.inning >= 5 && app.runsThisInning >= 3) return true;
-      if (this.inning >= 6 && app.runsThisInning >= 2 && app.pitches >= 70) return true;
-      if (this.inning >= 7 && !cruising && app.pitches >= app.limit - 22) return true;
+      if (this.inning >= 4 && app.runsThisInning >= 3) return true;
+      if (this.inning >= 5 && app.runsThisInning >= 2 && app.pitches >= 60) return true;
+      if (this.inning >= 6 && !cruising && app.pitches >= app.limit - 18) return true;
 
-      // 9th: decide before the inning starts. Prefer a full closer inning or a clean CG.
+      // 9th: with a lead, hand it to the listed pen almost every time.
       if (inningStart && this.inning >= this.regulationInnings && lateArms) {
-        if (lead <= 0) {
-          if (app.pitches >= 100 || app.er >= 4) return true;
-          return false;
-        }
-        // Through 8: finish some strong outings, but prefer a clean closer inning often.
-        if (app.outs >= 24 && cruising && app.pitches <= 105) {
-          if (lead <= 3 && app.pitches >= 88) return this.rng() < 0.62;
-          if (app.pitches <= 95 && app.er === 0) return this.rng() < 0.35;
+        if (lead > 0) {
+          if (penArms) return true;
+          if (app.pitches >= 90 || !cruising) return true;
           return this.rng() < 0.55;
         }
-        // Through 7: closer gets a real inning more often than a cameo after 8.
-        if (app.outs >= 21 && app.outs < 24) {
-          if (lead <= 3) return true;
-          if (app.pitches >= 95) return true;
-          return this.rng() < 0.4;
-        }
-        if (app.pitches >= 100 || !cruising) return true;
-        return lead <= 3 ? this.rng() < 0.7 : this.rng() < 0.45;
+        if (app.pitches >= 95 || app.er >= 4) return true;
+        return false;
       }
 
-      // Eighth: get a fresh arm when the starter is spent, or set up a clean 9th save.
+      // 8th: set up the closer / get a fresh arm.
       if (inningStart && this.inning >= Math.max(8, this.regulationInnings - 1) && lateArms) {
-        if (app.pitches >= 100) return true;
-        if (lead > 0 && !cruising && app.pitches >= 80) return true;
-        if (lead > 0 && lead <= 3 && app.outs >= 21 && app.pitches >= 88 && this.rng() < 0.6) return true;
-        if (lead >= 4 && app.pitches >= 92 && this.rng() < 0.5) return true;
+        if (penArms && lead > 0) return true;
+        if (app.pitches >= 88) return true;
+        if (!cruising && app.pitches >= 70) return true;
+        if (lead >= 4 && app.pitches >= 80) return this.rng() < 0.75;
+        return false;
       }
 
+      // 7th: modern usage — bridge / setup more often than a complete game.
       if (inningStart && this.inning >= 7 && lateArms) {
-        if (app.pitches >= 105) return true;
-        if (!cruising && app.pitches >= 88) return true;
-        if (lead >= 5 && app.pitches >= 95 && this.rng() < 0.45) return true;
+        if (app.pitches >= 85) return true;
+        if (!cruising && app.pitches >= 70) return true;
+        if (penArms && lead > 0 && app.pitches >= 75 && this.rng() < 0.7) return true;
+        if (penArms && lead >= 4 && app.pitches >= 70 && this.rng() < 0.55) return true;
+        return false;
+      }
+
+      // 6th: pull early if the pitch count is climbing or traffic is up.
+      if (inningStart && this.inning >= 6 && lateArms) {
+        if (app.pitches >= 92) return true;
+        if (!cruising && app.pitches >= 78) return true;
+        if (penArms && app.er >= 4 && app.pitches >= 70) return true;
+        return false;
       }
 
       return false;
@@ -854,29 +863,36 @@ class Sim {
       lead <= 3 &&
       (this.inning >= this.regulationInnings || (this.inning >= this.regulationInnings - 1 && runners > 0));
     const blowout = lead <= -4 || lead >= 5;
+    const usingEmergency = available.length === 0;
     const list = available.length ? available : this.emergencyArm(defense);
     if (!list.length) return null;
     const closerIds = new Set(this.teams[defense].closers ?? []);
+    const bullpenIds = new Set(this.teams[defense].bullpen);
     const scoreArm = (arm: Player) => {
       const p = pitcherOf(arm);
       const era = p.era || 4.5;
       const listed = closerIds.has(arm.id);
+      const listedPen = bullpenIds.has(arm.id);
       // Keep dedicated closers for real save spots; do not burn them in the 6th.
       if (listed && saveSit && this.inning >= this.regulationInnings) return 5000 + p.sv * 5 - era;
       if (listed && !saveSit && this.inning < this.regulationInnings) return -4000 - era;
       if (listed && blowout) return -2000;
       if (saveSit && this.inning >= this.regulationInnings && (listed || p.sv >= 5)) return 1000 + p.sv * 5 - era;
-      if (blowout) return -p.ip / Math.max(p.g, 1);
-      if (lead > 0 && this.inning >= 7) return p.hld * 3 + p.sv - era;
-      if (lead === 0 && this.inning >= 6) return p.swar * 4 - era + (p.hld > 0 ? 2 : 0);
-      return p.swar * 2 - era * 0.4 + p.hld;
+      // Prefer true relievers over emergency starters when both somehow appear.
+      const penBonus = listedPen ? 8 : usingEmergency ? 0 : -25;
+      if (blowout) return penBonus - p.ip / Math.max(p.g, 1);
+      if (lead > 0 && this.inning >= 7) return penBonus + p.hld * 4 + p.sv * 0.5 - era;
+      if (lead === 0 && this.inning >= 6) return penBonus + p.hld * 2 - era + (listedPen ? 3 : 0);
+      return penBonus + p.hld * 2 - era * 0.5 + (listedPen ? 2 : 0);
     };
     return [...list].sort((a, b) => scoreArm(b) - scoreArm(a))[0] ?? null;
   }
 
   emergencyArm(defense: Side) {
     const current = this.current[defense]?.playerId;
-    return this.teams[defense].players.filter((p) => p.kind === "P" && p.id !== current);
+    const unusedLong = this.longRelief[defense].filter((arm) => !this.used.has(arm.id) && arm.id !== current);
+    if (unusedLong.length) return unusedLong;
+    return this.teams[defense].players.filter((p) => p.kind === "P" && p.id !== current && !this.used.has(p.id));
   }
 
   plateAppearance(offense: Side, defense: Side) {
