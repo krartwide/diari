@@ -804,10 +804,11 @@ class Sim {
           if (app.pitches >= 100 || app.er >= 4) return true;
           return false;
         }
-        // Through 8 and still fresh enough — usually finish; sometimes ask for a save.
+        // Through 8: finish some strong outings, but prefer a clean closer inning often.
         if (app.outs >= 24 && cruising && app.pitches <= 105) {
-          if (lead <= 3 && app.pitches >= 92 && this.rng() < 0.28) return true;
-          return false;
+          if (lead <= 3 && app.pitches >= 88) return this.rng() < 0.62;
+          if (app.pitches <= 95 && app.er === 0) return this.rng() < 0.35;
+          return this.rng() < 0.55;
         }
         // Through 7: closer gets a real inning more often than a cameo after 8.
         if (app.outs >= 21 && app.outs < 24) {
@@ -882,7 +883,7 @@ class Sim {
     const batterId = this.order[offense][this.index[offense]]!;
     const batter = this.player(offense, batterId);
     const batLine = this.ensureBatter(offense, batterId, this.index[offense]);
-    const beforeOuts = this.outs;
+    const outsBeforeSteal = this.outs;
     const stealNote = this.trySteal(offense, defense);
     if (this.outs >= 3) {
       if (stealNote) {
@@ -890,7 +891,7 @@ class Sim {
           id: nid("pa"),
           inning: this.inning,
           half: this.half,
-          outsBefore: beforeOuts,
+          outsBefore: outsBeforeSteal,
           awayScore: this.score[0],
           homeScore: this.score[1],
           batterId,
@@ -901,7 +902,7 @@ class Sim {
           resultLabel: "도루자",
           rbi: 0,
           pitches: [],
-          text: stealNote,
+          text: `${ordinal(this.half, this.inning)} ${outsBeforeSteal}아웃. ${stealNote}`,
           notes: [],
           awayAfter: this.score[0],
           homeAfter: this.score[1],
@@ -909,6 +910,7 @@ class Sim {
       }
       return;
     }
+    const outsAtPa = this.outs;
     const pitcher = this.player(defense, this.current[defense]!.playerId);
     const app = this.current[defense]!;
     const rates = this.applyPitcherFatigue(
@@ -923,12 +925,12 @@ class Sim {
     app.bf += 1;
     app.pitches += pitches.length;
     const resolved = this.resolve(offense, defense, batter, batLine, result, pitches);
-    const text = [stealNote, this.narrate(batter, pitcher, pitches, resolved.sentence)].filter(Boolean).join(" ");
+    const text = [stealNote, this.narrate(batter, pitcher, pitches, resolved.sentence, outsAtPa)].filter(Boolean).join(" ");
     this.plays.push({
       id: nid("pa"),
       inning: this.inning,
       half: this.half,
-      outsBefore: beforeOuts,
+      outsBefore: outsAtPa,
       awayScore: this.score[0],
       homeScore: this.score[1],
       batterId,
@@ -1063,30 +1065,11 @@ class Sim {
     let strikes = 0;
     const terminalKind: PitchCall =
       result === "K" ? (this.rng() < 0.58 ? "swinging_strike" : "called_strike") : result === "BB" ? "ball" : result === "HBP" ? "hbp" : "in_play";
-    // Real ABs average ~3.8 pitches; long foul battles stay uncommon.
-    const maxPitches = result === "K" || result === "BB" ? 9 : 8;
-    for (let guard = 0; guard < maxPitches; guard++) {
-      const inPlay = result !== "K" && result !== "BB" && result !== "HBP";
-      const wantEnd =
-        (result === "K" && strikes === 2) ||
-        (result === "BB" && balls === 3) ||
-        (result === "HBP" && (pitches.length >= 1 ? this.rng() < 0.65 : this.rng() < 0.4)) ||
-        (inPlay && pitches.length >= 1 && this.rng() < 0.36 + pitches.length * 0.14) ||
-        (inPlay && pitches.length >= 5 && this.rng() < 0.7) ||
-        pitches.length + 1 >= maxPitches;
-      let call: PitchCall;
-      if (wantEnd) call = terminalKind;
-      else if (strikes === 2 && balls < 3) call = this.rng() < 0.55 ? "foul" : "ball";
-      else if (balls === 3 && strikes < 2) call = this.rng() < 0.32 ? "foul" : this.rng() < 0.72 ? "called_strike" : "swinging_strike";
-      else {
-        const roll = this.rng();
-        if (roll < 0.36) call = "ball";
-        else if (roll < 0.56) call = "called_strike";
-        else if (roll < 0.72) call = "swinging_strike";
-        else call = "foul";
-        if (call === "ball" && balls >= 3) call = strikes < 2 ? (this.rng() < 0.55 ? "called_strike" : "swinging_strike") : "foul";
-        if ((call === "called_strike" || call === "swinging_strike") && strikes >= 2) call = "foul";
-      }
+    const inPlay = result !== "K" && result !== "BB" && result !== "HBP";
+    // Keep ABs near ~3.8 pitches; never end a walk/strikeout on an incomplete count.
+    const softCap = result === "K" || result === "BB" ? 8 : 7;
+
+    const pushPitch = (call: PitchCall) => {
       const code = choosePitch(rep, balls, strikes, this.rng);
       const spot = locate(call, batter.bats, this.rng);
       if (call === "ball") balls += 1;
@@ -1123,8 +1106,48 @@ class Sim {
         };
       }
       pitches.push(pitch);
+    };
+
+    for (let guard = 0; guard < 12; guard++) {
+      const finishK = result === "K" && strikes === 2;
+      const finishBB = result === "BB" && balls === 3;
+      const finishHbp = result === "HBP" && (pitches.length >= 1 ? this.rng() < 0.65 : this.rng() < 0.4);
+      const finishInPlay =
+        inPlay &&
+        ((pitches.length >= 1 && this.rng() < 0.36 + pitches.length * 0.14) ||
+          (pitches.length >= 5 && this.rng() < 0.72));
+      let call: PitchCall;
+      if (finishK || finishBB || finishHbp || finishInPlay) {
+        call = terminalKind;
+      } else if (pitches.length + 1 >= softCap) {
+        // Past the soft cap: drive toward the predetermined result without illegal counts.
+        if (result === "BB") call = "ball";
+        else if (result === "K") call = strikes >= 2 ? terminalKind : this.rng() < 0.5 ? "called_strike" : "swinging_strike";
+        else if (result === "HBP") call = "hbp";
+        else call = "in_play";
+      } else if (strikes === 2 && balls < 3) {
+        // With two strikes, walks still need balls — do not foul forever.
+        call = result === "BB" ? (this.rng() < 0.62 ? "ball" : "foul") : this.rng() < 0.55 ? "foul" : "ball";
+      } else if (balls === 3 && strikes < 2) {
+        call = this.rng() < 0.32 ? "foul" : this.rng() < 0.72 ? "called_strike" : "swinging_strike";
+      } else {
+        const roll = this.rng();
+        if (roll < 0.36) call = "ball";
+        else if (roll < 0.56) call = "called_strike";
+        else if (roll < 0.72) call = "swinging_strike";
+        else call = "foul";
+        if (call === "ball" && balls >= 3) call = strikes < 2 ? (this.rng() < 0.55 ? "called_strike" : "swinging_strike") : "foul";
+        if ((call === "called_strike" || call === "swinging_strike") && strikes >= 2) call = "foul";
+      }
+      pushPitch(call);
       if (call === "in_play" || call === "hbp" || (result === "K" && strikes >= 3) || (result === "BB" && balls >= 4)) break;
     }
+
+    // Absolute safety: never leave a walk/K on an incomplete official count.
+    while (result === "BB" && balls < 4) pushPitch("ball");
+    while (result === "K" && strikes < 3) pushPitch(terminalKind === "swinging_strike" ? "swinging_strike" : "called_strike");
+    if (inPlay && !pitches.some((pitch) => pitch.call === "in_play")) pushPitch("in_play");
+    if (result === "HBP" && !pitches.some((pitch) => pitch.call === "hbp")) pushPitch("hbp");
     return pitches;
   }
 
@@ -1202,20 +1225,10 @@ class Sim {
         (runnerSpeed < 62 || (speed < 78 && this.rng() < 0.34));
       if (gidp && this.bases[0] && this.outs < 2) {
         line.ab += 1;
+        // 6-4-3 style: retire runner on first and the batter. Other runners hold.
         this.bases[0] = null;
         this.addOut();
-        if (this.outs < 3) {
-          this.addOut();
-          if (this.bases[2] && this.outs < 3) {
-            /* lead runner from third holds unless forced; first-and-third DP does not score automatically */
-          }
-          if (this.bases[1] && this.outs >= 3) {
-            /* inning over */
-          } else if (this.bases[1] && this.outs < 3) {
-            this.bases[2] = this.bases[1];
-            this.bases[1] = null;
-          }
-        }
+        if (this.outs < 3) this.addOut();
         sentence = "땅볼은 병살로 이어졌다.";
         label = "병살타";
       } else {
@@ -1290,7 +1303,8 @@ class Sim {
       scoreFrom(2);
       scoreFrom(1);
       if (this.bases[0]) {
-        if (this.bases[0].speed >= 58 || this.rng() < 0.72) scoreFrom(0);
+        // First-to-home on a double is common but not automatic for slow runners.
+        if (this.bases[0].speed >= 62 ? this.rng() < 0.88 : this.rng() < 0.62) scoreFrom(0);
         else {
           this.bases[2] = this.bases[0];
           this.bases[0] = null;
@@ -1299,16 +1313,23 @@ class Sim {
       this.bases[1] = batter;
       this.bases[0] = null;
     } else {
+      // Singles: runner on 3rd usually scores; from 2nd only with a strong send.
       if (this.bases[2]) scoreFrom(2);
       if (this.bases[1]) {
-        if ((batter.speed >= 55 && this.rng() < 0.55) || this.rng() < 0.7) scoreFrom(1);
+        const send =
+          this.bases[1]!.speed >= 72
+            ? this.rng() < 0.48
+            : this.bases[1]!.speed >= 60
+              ? this.rng() < 0.28
+              : this.rng() < 0.12;
+        if (send) scoreFrom(1);
         else {
           this.bases[2] = this.bases[1];
           this.bases[1] = null;
         }
       }
       if (this.bases[0]) {
-        const extra = this.bases[0].speed >= 70 && this.rng() < 0.45;
+        const extra = this.bases[0].speed >= 74 && this.rng() < 0.22;
         this.bases[extra ? 2 : 1] = this.bases[0];
         this.bases[0] = null;
       }
@@ -1395,14 +1416,14 @@ class Sim {
     this.ghostOuts += 1;
   }
 
-  narrate(batter: Player, pitcher: Player, pitches: PitchEvent[], sentence: string) {
+  narrate(batter: Player, pitcher: Player, pitches: PitchEvent[], sentence: string, outsAtPa: number) {
     const bits = pitches.map((pitch) => {
       const ball = pitch.batted
         ? `${pitch.number}구 ${pitch.velo}km ${pitch.typeLabel}. ${pitch.batted.direction}${ro(pitch.batted.direction)} 맞았다.`
         : `${pitch.number}구 ${pitch.velo}km ${pitch.typeLabel}, ${pitch.callLabel}. ${pitch.locationLabel}.`;
       return ball;
     });
-    return `${ordinal(this.half, this.inning)} ${this.outs}아웃. ${pitcher.name} 대 ${batter.name}. ${bits.join(" ")} ${sentence}`;
+    return `${ordinal(this.half, this.inning)} ${outsAtPa}아웃. ${pitcher.name} 대 ${batter.name}. ${bits.join(" ")} ${sentence}`;
   }
 
   banner(text: string): PlateAppearance {
@@ -1553,7 +1574,7 @@ class Sim {
 
   boxPitchers(side: Side, winId: string | null, lossId: string | null, saveId: string | null, holds: string[]): BoxPitcher[] {
     return this.apps
-      .filter((app) => app.side === side)
+      .filter((app) => app.side === side && (app.bf > 0 || app.outs > 0 || app.pitches > 0))
       .map((app) => {
         const tags = [
           app.playerId === winId ? "승" : "",
