@@ -1,40 +1,43 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import Link from "next/link";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { TeamMark } from "@/components/team-mark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { api } from "@/lib/client";
+import { deleteLocalTeam, duplicateLocalTeam, findLocalTeam } from "@/lib/browser-data";
+import { teamEditPath } from "@/lib/paths";
 import { displayInnings, fmtAvg, fmtRate, handLabel, playerById, POSITION_LABEL } from "@/lib/stats";
 import type { Player, Team } from "@/lib/types";
 
-export default function TeamPage() {
-  const params = useParams<{ id: string }>();
+function TeamViewInner() {
+  const params = useSearchParams();
+  const id = params.get("id") ?? "";
   const router = useRouter();
   const [team, setTeam] = useState<Team | null>(null);
-  const [editable, setEditable] = useState(false);
-  const [admin, setAdmin] = useState(false);
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    api<{ team: Team; editable: boolean; admin?: boolean }>(`/api/teams/${params.id}`)
-      .then((data) => {
-        setTeam(data.team);
-        setEditable(data.editable);
-        setAdmin(Boolean(data.admin));
+    if (!id) {
+      setError("팀 주소가 올바르지 않습니다.");
+      return;
+    }
+    findLocalTeam(id)
+      .then((found) => {
+        if (!found) setError("팀을 찾지 못했습니다.");
+        else setTeam(found);
       })
       .catch((caught: Error) => setError(caught.message));
-  }, [params.id]);
+  }, [id]);
 
   async function duplicate() {
     if (!team) return;
     setBusy(true);
     try {
-      const result = await api<{ team: Team }>(`/api/teams/${team.id}/duplicate`, { method: "POST" });
-      router.push(`/teams/${result.team.id}/edit`);
+      const copy = await duplicateLocalTeam(team.id);
+      router.push(teamEditPath(copy.id));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "복제하지 못했습니다.");
       setBusy(false);
@@ -42,15 +45,21 @@ export default function TeamPage() {
   }
 
   async function remove() {
-    if (!team || !editable) return;
+    if (!team) return;
     const message = team.canonical
       ? `${team.name} 수정본을 지우고 기본 공개 기록으로 되돌릴까요?`
       : `${team.name}을 지울까요?`;
     if (!window.confirm(message)) return;
     setBusy(true);
     try {
-      await api(`/api/teams/${team.id}`, { method: "DELETE" });
-      router.push(team.canonical ? `/teams/${team.id}` : "/teams");
+      await deleteLocalTeam(team.id);
+      if (team.canonical) {
+        const restored = await findLocalTeam(team.id);
+        setTeam(restored);
+        setBusy(false);
+      } else {
+        router.push("/teams");
+      }
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "지우지 못했습니다.");
       setBusy(false);
@@ -61,10 +70,10 @@ export default function TeamPage() {
   if (!team) return <main className="px-4 py-8 text-sm text-muted-foreground">구단을 불러오는 중입니다.</main>;
 
   const lineup = team.lineup.map((slot, index) => ({ slot, index, player: playerById(team, slot.playerId) })).filter((row) => row.player);
-  const bench = team.bench.map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
-  const rotation = team.rotation.map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
-  const bullpen = team.bullpen.map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
-  const closers = (team.closers ?? []).map((id) => playerById(team, id)).filter((player): player is Player => Boolean(player));
+  const bench = team.bench.map((pid) => playerById(team, pid)).filter((player): player is Player => Boolean(player));
+  const rotation = team.rotation.map((pid) => playerById(team, pid)).filter((player): player is Player => Boolean(player));
+  const bullpen = team.bullpen.map((pid) => playerById(team, pid)).filter((player): player is Player => Boolean(player));
+  const closers = (team.closers ?? []).map((pid) => playerById(team, pid)).filter((player): player is Player => Boolean(player));
 
   return (
     <main className="mx-auto grid w-full min-w-0 max-w-6xl gap-5 px-3 py-5 sm:gap-6 sm:px-4 sm:py-6">
@@ -86,21 +95,17 @@ export default function TeamPage() {
         </div>
         <div className="grid w-full grid-cols-1 gap-2 sm:flex sm:w-auto sm:flex-wrap">
           <Button asChild className="h-11 px-4 sm:h-10">
-            <Link href={`/play?away=${team.id}`}>이 팀으로 경기</Link>
+            <Link href={`/play?away=${encodeURIComponent(team.id)}`}>이 팀으로 경기</Link>
           </Button>
-          {editable && (
-            <Button asChild variant="secondary" className="h-11 sm:h-10">
-              <Link href={`/teams/${team.id}/edit`}>{team.canonical && admin ? "관리자 편집" : "고치기"}</Link>
-            </Button>
-          )}
+          <Button asChild variant="secondary" className="h-11 sm:h-10">
+            <Link href={teamEditPath(team.id)}>{team.canonical ? "이 브라우저에서 고치기" : "고치기"}</Link>
+          </Button>
           <Button type="button" variant="secondary" className="h-11 sm:h-10" onClick={duplicate} disabled={busy}>
             내 팀으로 복제
           </Button>
-          {editable && (
-            <Button type="button" variant="ghost" className="h-11 sm:h-10" onClick={remove} disabled={busy}>
-              {team.canonical ? "수정본 되돌리기" : "삭제"}
-            </Button>
-          )}
+          <Button type="button" variant="ghost" className="h-11 sm:h-10" onClick={remove} disabled={busy}>
+            {team.canonical ? "수정본 되돌리기" : "삭제"}
+          </Button>
         </div>
       </header>
       {error && <p className="text-sm text-destructive">{error}</p>}
@@ -205,5 +210,13 @@ function PitchTable({ title, players }: { title: string; players: Player[] }) {
         </tbody>
       </table>
     </section>
+  );
+}
+
+export default function TeamViewPage() {
+  return (
+    <Suspense fallback={<main className="px-4 py-8 text-sm text-muted-foreground">구단을 불러오는 중입니다.</main>}>
+      <TeamViewInner />
+    </Suspense>
   );
 }

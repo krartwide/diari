@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
-import { api } from "@/lib/client";
+import { saveLocalTeam } from "@/lib/browser-data";
+import { teamPath } from "@/lib/paths";
 import { blankBatter, blankPitcher, playerById, POSITION_LABEL, POSITIONS, rosterIssues } from "@/lib/stats";
 import type { Player, Position, Team } from "@/lib/types";
 
@@ -119,10 +120,8 @@ export function TeamEditor({ initial, admin = false }: { initial: Team; admin?: 
     setSaving(true);
     setError("");
     try {
-      const path = creating ? "/api/teams" : `/api/teams/${team.id}`;
-      const method = creating ? "POST" : "PATCH";
-      const result = await api<{ team: Team }>(path, { method, body: JSON.stringify({ ...team, name: team.name.trim() }) });
-      router.push(`/teams/${result.team.id}`);
+      const result = await saveLocalTeam({ ...team, name: team.name.trim() });
+      router.push(teamPath(result.id));
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "저장하지 못했습니다.");
       setSaving(false);

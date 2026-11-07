@@ -7,8 +7,9 @@ import { TeamMark } from "@/components/team-mark";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
-import { api } from "@/lib/client";
+import { listLocalTeams, playLocalSeries } from "@/lib/browser-data";
 import { defaultVenue, INNING_OPTIONS, SERIES_OPTIONS, seriesMeta, VENUE_OPTIONS } from "@/lib/modes";
+import { gamePath } from "@/lib/paths";
 import { groupHalves, halfLabel } from "@/lib/present";
 import { playerById } from "@/lib/stats";
 import type { GameRecord, SeriesFormat, SeriesRecord, Team, VenueMode } from "@/lib/types";
@@ -29,11 +30,11 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
   const [result, setResult] = useState<{ series: SeriesRecord; gameIndex: number } | null>(null);
 
   useEffect(() => {
-    api<{ teams: Team[] }>("/api/teams")
-      .then((data) => {
-        setTeams(data.teams);
-        setAway((current) => current || data.teams[0]?.id || "");
-        setHome((current) => current || data.teams[1]?.id || data.teams[0]?.id || "");
+    listLocalTeams()
+      .then((items) => {
+        setTeams(items);
+        setAway((current) => current || items[0]?.id || "");
+        setHome((current) => current || items[1]?.id || items[0]?.id || "");
       })
       .catch((caught: Error) => setError(caught.message));
   }, []);
@@ -54,20 +55,17 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
     setError("");
     setResult(null);
     try {
-      const payload = await api<{ series: SeriesRecord; game: GameRecord | null }>("/api/games", {
-        method: "POST",
-        body: JSON.stringify({
-          awayId: away,
-          homeId: home,
-          awayStarterId: awayStarter,
-          homeStarterId: homeStarter,
-          series,
-          innings,
-          homeAdvantage,
-          venue,
-        }),
+      const record = await playLocalSeries({
+        awayId: away,
+        homeId: home,
+        awayStarterId: awayStarter,
+        homeStarterId: homeStarter,
+        series,
+        innings,
+        homeAdvantage,
+        venue,
       });
-      setResult({ series: payload.series, gameIndex: 0 });
+      setResult({ series: record, gameIndex: 0 });
     } catch (caught) {
       setError(caught instanceof Error ? caught.message : "경기를 시작하지 못했습니다.");
     } finally {
@@ -343,14 +341,14 @@ function LiveGame({
               {againLabel}
             </Button>
             <Button asChild variant="secondary" className="min-h-10">
-              <Link href={`/games/${game.id}`}>기록 페이지</Link>
+              <Link href={gamePath(game.id)}>기록 페이지</Link>
             </Button>
           </div>
         )}
         {hideAgain && (
           <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap">
             <Button asChild variant="secondary" className="min-h-10">
-              <Link href={`/games/${game.id}`}>이 경기 기록 페이지</Link>
+              <Link href={gamePath(game.id)}>이 경기 기록 페이지</Link>
             </Button>
           </div>
         )}

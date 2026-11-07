@@ -3,18 +3,17 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { whenLabel } from "@/components/game-view";
-import { api } from "@/lib/client";
+import { listLocalGames } from "@/lib/browser-data";
+import { gamePath } from "@/lib/paths";
 import type { GameRecord } from "@/lib/types";
 
-type GameCard = Omit<GameRecord, "plays"> & { playCount: number };
-
 export default function GamesPage() {
-  const [games, setGames] = useState<GameCard[] | null>(null);
+  const [games, setGames] = useState<GameRecord[] | null>(null);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    api<{ games: GameCard[] }>("/api/games")
-      .then((data) => setGames(data.games))
+    listLocalGames()
+      .then(setGames)
       .catch((caught: Error) => setError(caught.message));
   }, []);
 
@@ -23,6 +22,7 @@ export default function GamesPage() {
       <div>
         <p className="text-xs tracking-[0.18em] text-primary">기록</p>
         <h1 className="font-heading text-3xl sm:text-4xl">지난 경기</h1>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">이 브라우저에 저장된 경기만 보입니다. 서버가 꺼져도 기록은 남습니다.</p>
       </div>
       {error && <p className="text-sm text-destructive">{error}</p>}
       {!games && !error && <p className="text-sm text-muted-foreground">불러오는 중입니다.</p>}
@@ -34,7 +34,7 @@ export default function GamesPage() {
       <ul className="grid gap-2">
         {games?.map((game) => (
           <li key={game.id}>
-            <Link href={`/games/${game.id}`} className="block rounded-2xl border border-border bg-card px-4 py-3 hover:border-primary/50">
+            <Link href={gamePath(game.id)} className="block rounded-2xl border border-border bg-card px-4 py-3 hover:border-primary/50">
               <p className="font-medium">
                 {game.away.shortName} {game.linescore.awayR} : {game.home.shortName} {game.linescore.homeR}
               </p>

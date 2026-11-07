@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { TeamMark } from "@/components/team-mark";
 import { Button } from "@/components/ui/button";
-import { api } from "@/lib/client";
+import { listLocalTeams } from "@/lib/browser-data";
+import { teamPath } from "@/lib/paths";
 import type { Team } from "@/lib/types";
 
 export default function HomePage() {
@@ -12,8 +13,8 @@ export default function HomePage() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    api<{ teams: Team[] }>("/api/teams")
-      .then((data) => setTeams(data.teams.filter((team) => team.canonical)))
+    listLocalTeams()
+      .then((items) => setTeams(items.filter((team) => team.canonical)))
       .catch((caught: Error) => setError(caught.message));
   }, []);
 
@@ -27,7 +28,7 @@ export default function HomePage() {
           글로 남는 야구
         </h1>
         <p className="max-w-xl text-sm leading-7 text-muted-foreground sm:text-base">
-          팀 색깔과 사진을 정하고 선수의 시즌 기록을 넣으면, 그 팀으로 경기를 치를 수 있습니다. 구종, 구속, 스트라이크 판정, 타구 방향과 비거리가 기록지에 남습니다. 로그인 없이 바로 쓰고, 기록은 이 브라우저가 연결된 서버에 남습니다.
+          팀 색깔과 사진을 정하고 선수의 시즌 기록을 넣으면, 그 팀으로 경기를 치를 수 있습니다. 구종, 구속, 스트라이크 판정, 타구 방향과 비거리가 기록지에 남습니다. 로그인 없이 바로 쓰고, 경기·팀 기록은 이 브라우저에 저장됩니다.
         </p>
         <div className="grid grid-cols-1 gap-2 sm:flex sm:flex-wrap">
           <Button asChild className="h-11 px-4 sm:h-10">
@@ -49,7 +50,7 @@ export default function HomePage() {
         {error && <p className="text-sm text-destructive">{error}</p>}
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {teams.map((team) => (
-            <Link key={team.id} href={`/teams/${team.id}`} className="rounded-2xl border border-border bg-card p-3 hover:border-primary/50">
+            <Link key={team.id} href={teamPath(team.id)} className="rounded-2xl border border-border bg-card p-3 hover:border-primary/50">
               <div className="mb-3 h-1.5 rounded-full" style={{ background: `linear-gradient(90deg, ${team.primary}, ${team.secondary})` }} />
               <div className="flex items-center gap-3">
                 <TeamMark shortName={team.shortName} name={team.name} primary={team.primary} secondary={team.secondary} size={48} />

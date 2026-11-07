@@ -6,21 +6,18 @@ import { TeamMark } from "@/components/team-mark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { api } from "@/lib/client";
+import { LOCAL_OWNER_ID, listLocalTeams } from "@/lib/browser-data";
+import { teamPath } from "@/lib/paths";
 import type { Team } from "@/lib/types";
 
 export default function TeamsPage() {
   const [teams, setTeams] = useState<Team[] | null>(null);
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
-  const [userId, setUserId] = useState("");
 
   useEffect(() => {
-    api<{ teams: Team[]; userId: string | null }>("/api/teams")
-      .then((data) => {
-        setTeams(data.teams);
-        setUserId(data.userId ?? "");
-      })
+    listLocalTeams()
+      .then(setTeams)
       .catch((caught: Error) => setError(caught.message));
   }, []);
 
@@ -29,8 +26,7 @@ export default function TeamsPage() {
     return (teams ?? []).filter((team) => !q || team.name.includes(q) || team.shortName.includes(q) || String(team.year ?? "").includes(q));
   }, [teams, query]);
 
-  const mine = filtered.filter((team) => !team.canonical && team.ownerId === userId);
-  const shared = filtered.filter((team) => !team.canonical && team.ownerId !== userId);
+  const mine = filtered.filter((team) => !team.canonical && team.ownerId === LOCAL_OWNER_ID);
   const canon = filtered.filter((team) => team.canonical);
 
   return (
@@ -48,7 +44,6 @@ export default function TeamsPage() {
       {error && <p className="text-sm text-destructive">{error}</p>}
       {!teams && !error && <p className="text-sm text-muted-foreground">불러오는 중입니다.</p>}
       <TeamSection title="내 팀" teams={mine} empty="아직 만든 팀이 없습니다." />
-      {shared.length > 0 && <TeamSection title="다른 사람의 공개 팀" teams={shared} empty="" />}
       <TeamSection
         title="공개 역사 구단"
         note="그 시즌 가을야구에 올릴 수 있는 엔트리입니다. 능력치는 정규시즌 기록입니다."
@@ -69,7 +64,7 @@ function TeamSection({ title, note, teams, empty }: { title: string; note?: stri
       {teams.length === 0 && empty && <p className="text-sm text-muted-foreground">{empty}</p>}
       <div className="grid gap-3 sm:grid-cols-2">
         {teams.map((team) => (
-          <Link key={team.id} href={`/teams/${team.id}`} className="flex gap-3 rounded-2xl border border-border bg-card p-3 hover:border-primary/50">
+          <Link key={team.id} href={teamPath(team.id)} className="flex gap-3 rounded-2xl border border-border bg-card p-3 hover:border-primary/50">
             <TeamMark name={team.name} shortName={team.shortName} primary={team.primary} secondary={team.secondary} logo={team.logo} size={56} />
             <div className="min-w-0">
               <div className="flex flex-wrap items-center gap-2">
