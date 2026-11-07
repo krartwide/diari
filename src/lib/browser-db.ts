@@ -5,11 +5,34 @@ const DB_VERSION = 1;
 
 type StoreName = "games" | "teams" | "achievements" | "meta";
 
+let dbPromise: Promise<IDBDatabase> | null = null;
+
 function openDb(): Promise<IDBDatabase> {
-  return new Promise((resolve, reject) => {
+  if (typeof indexedDB === "undefined") {
+    return Promise.reject(new Error("이 브라우저는 로컬 저장을 지원하지 않습니다."));
+  }
+  if (dbPromise) return dbPromise;
+
+  dbPromise = new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
-    request.onerror = () => reject(request.error ?? new Error("IndexedDB를 열지 못했습니다."));
-    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => {
+      dbPromise = null;
+      reject(request.error ?? new Error("IndexedDB를 열지 못했습니다."));
+    };
+    request.onblocked = () => {
+      // Another tab holds an older version open. Keep waiting; onsuccess still fires later.
+    };
+    request.onsuccess = () => {
+      const db = request.result;
+      db.onclose = () => {
+        dbPromise = null;
+      };
+      db.onversionchange = () => {
+        db.close();
+        dbPromise = null;
+      };
+      resolve(db);
+    };
     request.onupgradeneeded = () => {
       const db = request.result;
       if (!db.objectStoreNames.contains("games")) {
@@ -26,6 +49,8 @@ function openDb(): Promise<IDBDatabase> {
       }
     };
   });
+
+  return dbPromise;
 }
 
 function txDone(tx: IDBTransaction) {

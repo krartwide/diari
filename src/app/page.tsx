@@ -4,18 +4,26 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { TeamMark } from "@/components/team-mark";
 import { Button } from "@/components/ui/button";
-import { listLocalTeams } from "@/lib/browser-data";
+import { listBundledTeams, listLocalTeams } from "@/lib/browser-data";
 import { teamPath } from "@/lib/paths";
 import type { Team } from "@/lib/types";
 
 export default function HomePage() {
-  const [teams, setTeams] = useState<Team[]>([]);
+  const [teams, setTeams] = useState<Team[]>(() => listBundledTeams().filter((team) => team.canonical));
   const [error, setError] = useState("");
 
   useEffect(() => {
+    let cancelled = false;
     listLocalTeams()
-      .then((items) => setTeams(items.filter((team) => team.canonical)))
-      .catch((caught: Error) => setError(caught.message));
+      .then((items) => {
+        if (!cancelled) setTeams(items.filter((team) => team.canonical));
+      })
+      .catch((caught: Error) => {
+        if (!cancelled) setError(caught.message);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   return (

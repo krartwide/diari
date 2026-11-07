@@ -1,19 +1,19 @@
 "use client";
 
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { TeamMark } from "@/components/team-mark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { deleteLocalTeam, duplicateLocalTeam, findLocalTeam } from "@/lib/browser-data";
 import { teamEditPath } from "@/lib/paths";
+import { useQueryParam } from "@/lib/query";
 import { displayInnings, fmtAvg, fmtRate, handLabel, playerById, POSITION_LABEL } from "@/lib/stats";
 import type { Player, Team } from "@/lib/types";
 
-function TeamViewInner() {
-  const params = useSearchParams();
-  const id = params.get("id") ?? "";
+export default function TeamViewPage() {
+  const id = useQueryParam("id");
   const router = useRouter();
   const [team, setTeam] = useState<Team | null>(null);
   const [error, setError] = useState("");
@@ -213,10 +213,3 @@ function PitchTable({ title, players }: { title: string; players: Player[] }) {
   );
 }
 
-export default function TeamViewPage() {
-  return (
-    <Suspense fallback={<main className="px-4 py-8 text-sm text-muted-foreground">구단을 불러오는 중입니다.</main>}>
-      <TeamViewInner />
-    </Suspense>
-  );
-}

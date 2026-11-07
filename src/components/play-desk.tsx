@@ -7,18 +7,29 @@ import { TeamMark } from "@/components/team-mark";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Switch } from "@/components/ui/switch";
-import { listLocalTeams, playLocalSeries } from "@/lib/browser-data";
+import { listBundledTeams, listLocalTeams, playLocalSeries } from "@/lib/browser-data";
 import { defaultVenue, INNING_OPTIONS, SERIES_OPTIONS, seriesMeta, VENUE_OPTIONS } from "@/lib/modes";
 import { gamePath } from "@/lib/paths";
 import { groupHalves, halfLabel } from "@/lib/present";
 import { playerById } from "@/lib/stats";
 import type { GameRecord, SeriesFormat, SeriesRecord, Team, VenueMode } from "@/lib/types";
 
+function readQueryTeam(key: "away" | "home") {
+  if (typeof window === "undefined") return undefined;
+  return new URLSearchParams(window.location.search).get(key) ?? undefined;
+}
+
 export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string }) {
-  const [teams, setTeams] = useState<Team[] | null>(null);
+  const [teams, setTeams] = useState<Team[]>(() => listBundledTeams());
   const [error, setError] = useState("");
-  const [away, setAway] = useState(awayId ?? "");
-  const [home, setHome] = useState(homeId ?? "");
+  const [away, setAway] = useState(() => {
+    const bundled = listBundledTeams();
+    return awayId || bundled[0]?.id || "";
+  });
+  const [home, setHome] = useState(() => {
+    const bundled = listBundledTeams();
+    return homeId || bundled[1]?.id || bundled[0]?.id || "";
+  });
   const [awayStarterPick, setAwayStarterPick] = useState("");
   const [homeStarterPick, setHomeStarterPick] = useState("");
   const [series, setSeries] = useState<SeriesFormat>("single");
@@ -30,13 +41,27 @@ export function PlayDesk({ awayId, homeId }: { awayId?: string; homeId?: string 
   const [result, setResult] = useState<{ series: SeriesRecord; gameIndex: number } | null>(null);
 
   useEffect(() => {
+    const qAway = awayId || readQueryTeam("away");
+    const qHome = homeId || readQueryTeam("home");
+    if (qAway) setAway(qAway);
+    if (qHome) setHome(qHome);
+  }, [awayId, homeId]);
+
+  useEffect(() => {
+    let cancelled = false;
     listLocalTeams()
       .then((items) => {
+        if (cancelled) return;
         setTeams(items);
         setAway((current) => current || items[0]?.id || "");
         setHome((current) => current || items[1]?.id || items[0]?.id || "");
       })
-      .catch((caught: Error) => setError(caught.message));
+      .catch((caught: Error) => {
+        if (!cancelled) setError(caught.message);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   useEffect(() => {

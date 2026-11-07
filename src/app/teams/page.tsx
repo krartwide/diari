@@ -6,19 +6,27 @@ import { TeamMark } from "@/components/team-mark";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { LOCAL_OWNER_ID, listLocalTeams } from "@/lib/browser-data";
+import { LOCAL_OWNER_ID, listBundledTeams, listLocalTeams } from "@/lib/browser-data";
 import { teamPath } from "@/lib/paths";
 import type { Team } from "@/lib/types";
 
 export default function TeamsPage() {
-  const [teams, setTeams] = useState<Team[] | null>(null);
+  const [teams, setTeams] = useState<Team[] | null>(() => listBundledTeams());
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
 
   useEffect(() => {
+    let cancelled = false;
     listLocalTeams()
-      .then(setTeams)
-      .catch((caught: Error) => setError(caught.message));
+      .then((items) => {
+        if (!cancelled) setTeams(items);
+      })
+      .catch((caught: Error) => {
+        if (!cancelled) setError(caught.message);
+      });
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const filtered = useMemo(() => {

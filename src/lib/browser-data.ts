@@ -3,7 +3,6 @@
 import canonicalRaw from "@/data/canonical-teams.json";
 import { ACHIEVEMENT_CATALOG, type AchievementKey } from "@/lib/achievement-catalog";
 import { idbDelete, idbGet, idbGetAll, idbPut } from "@/lib/browser-db";
-import { simulateSeries } from "@/lib/modes";
 import { newId, rosterIssues } from "@/lib/stats";
 import type { GameRecord, SeriesFormat, SeriesRecord, Team, VenueMode } from "@/lib/types";
 
@@ -20,8 +19,7 @@ function withCanonicalFlag(team: Team): Team {
   return { ...team, canonical: true, visibility: "public", ownerId: null };
 }
 
-export async function listLocalTeams(): Promise<Team[]> {
-  const stored = await idbGetAll<Team>("teams");
+function mergeTeams(stored: Team[]): Team[] {
   const byId = new Map(stored.map((team) => [team.id, team]));
   const canon = canonicalTeams.map((team) => {
     const override = byId.get(team.id);
@@ -29,6 +27,21 @@ export async function listLocalTeams(): Promise<Team[]> {
   });
   const custom = stored.filter((team) => !canonicalTeams.some((item) => item.id === team.id));
   return [...canon, ...custom];
+}
+
+/** Bundled clubs only — safe to call during first paint without IndexedDB. */
+export function listBundledTeams(): Team[] {
+  return mergeTeams([]);
+}
+
+export async function listLocalTeams(): Promise<Team[]> {
+  let stored: Team[] = [];
+  try {
+    stored = await idbGetAll<Team>("teams");
+  } catch {
+    // IndexedDB unavailable — still show bundled canonical clubs.
+  }
+  return mergeTeams(stored);
 }
 
 export async function findLocalTeam(id: string): Promise<Team | null> {
@@ -115,6 +128,7 @@ export async function playLocalSeries(input: {
   if (awayIssue || homeIssue) {
     throw new Error(`${awayIssue ? away.name : home.name}: ${awayIssue ?? homeIssue}`);
   }
+  const { simulateSeries } = await import("@/lib/modes");
   const record = simulateSeries(away, home, {
     ownerId: LOCAL_OWNER_ID,
     series: input.series,

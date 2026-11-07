@@ -11,7 +11,10 @@ const nextConfig: NextConfig = {
         images: { unoptimized: true },
         trailingSlash: true,
       }
-    : {}),
+    : {
+        // Headless/local testing hits 127.0.0.1 while the server may see localhost.
+        allowedDevOrigins: ["127.0.0.1", "localhost"],
+      }),
   turbopack: {
     rules: {
       "*.css": {
