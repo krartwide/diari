@@ -91,3 +91,11 @@ model Achievement {
   @@unique([userId, key])
   @@index([userId])
 }
+
+/** Cross-device save vault keyed by a secret sync code (browser copies the code to another device). */
+model SyncVault {
+  code      String   @id
+  payload   String
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}

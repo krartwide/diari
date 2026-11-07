@@ -2,7 +2,7 @@
 
 저장소: https://github.com/krartwide/diari  
 
-로그인은 없습니다. 경기·팀 기록은 **브라우저 IndexedDB**에 남습니다.
+로그인은 없습니다. 경기·팀 기록은 브라우저 IndexedDB에 두고, **저장 코드**로 서버 `SyncVault`에 맞춰 다른 기기와 공유합니다.
 
 ## 추천: GitHub Pages (virtual-uno형)
 
