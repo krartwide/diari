@@ -8,13 +8,9 @@
 
 ## 기록 저장
 
-경기·팀·업적은 먼저 **이 브라우저 IndexedDB**에 남고, **저장 코드**로 클라우드 금고에 맞춰 다른 기기와 공유합니다.
+경기·팀·업적은 **이 브라우저의 IndexedDB**에만 남습니다. 서버 DB·동기화 코드는 쓰지 않습니다.
 
-1. 업적 또는 지난 경기 화면의 **기기 동기화**에서 코드를 복사합니다.
-2. 다른 폰·PC에서 같은 사이트에 들어가 코드를 붙여 넣고 **이 코드로 연결** → **지금 동기화**를 누릅니다.
-3. 이후 경기를 치르면 자동으로 올리려 합니다.
-
-항상 켜진 API가 있는 주소(아래 개발 서버·Railway·Cursor 호스팅)에서는 바로 동기화됩니다. GitHub Pages만 쓸 때는 `NEXT_PUBLIC_SYNC_API`에 API가 있는 서버 주소를 넣어야 합니다.
+같은 사이트 주소·같은 브라우저로 다시 열면 기록이 유지됩니다. 시크릿 창·다른 기기·캐시 삭제 시에는 비워질 수 있습니다.
 
 - Pages: https://krartwide.github.io/diari/
 
@@ -27,26 +23,14 @@
 - **이닝**: 9이닝 또는 7이닝(단축)
 - **구장 배분**: 홈 고정, 교대, 한국시리즈형 2-3-2
 
-## 실행 (개발)
+## 실행
 
 ```bash
-cp .env.example .env
 npm install
-npx prisma migrate deploy
 npm run dev
 ```
 
 브라우저에서 http://127.0.0.1:43123 을 엽니다.
-
-### 환경 변수 (개발 서버용)
-
-개발 서버는 예전 SQLite API도 같이 띄웁니다. 로컬에 서버 기록이 있으면 처음 한 번 IndexedDB로 옮깁니다. 실제 플레이·저장은 브라우저입니다.
-
-```bash
-DATABASE_URL="file:../data/diari.db"
-AUTH_SECRET=아무-문자열이나-있어도-됨
-AUTH_TRUST_HOST=true
-```
 
 ### GitHub Pages 정적 빌드
 
@@ -54,9 +38,7 @@ AUTH_TRUST_HOST=true
 npm run build:pages
 ```
 
-`out/` 이 `/diari` basePath 기준 정적 파일로 내보내집니다. `main` 푸시 시 `.github/workflows/pages.yml`이 https://krartwide.github.io/diari/ 로 배포합니다.
-
-Docker·Railway 서버 배포는 선택 사항이며 [DEPLOY.md](./DEPLOY.md)를 보면 됩니다.
+`main` 푸시 시 `.github/workflows/pages.yml`이 https://krartwide.github.io/diari/ 로 배포합니다.
 
 ## 기록 입력
 

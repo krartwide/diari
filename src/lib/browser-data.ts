@@ -13,7 +13,6 @@ const canonicalTeams = canonicalRaw as Team[];
 const GAME_CAP = 120;
 
 type LocalAchievement = { key: string; earnedAt: string };
-type LocalMeta = { key: string; value: string };
 
 function withCanonicalFlag(team: Team): Team {
   return { ...team, canonical: true, visibility: "public", ownerId: null };
@@ -59,7 +58,6 @@ export async function saveLocalTeam(team: Team) {
   if (team.visibility === "public" && !team.canonical) {
     await grantLocalAchievement("public_team");
   }
-  void import("@/lib/sync-client").then((mod) => mod.syncQuietly());
   return payload;
 }
 
@@ -108,7 +106,6 @@ export async function saveLocalGame(game: GameRecord) {
     for (const old of overflow) await idbDelete("games", old.id);
   }
   await awardLocalGameAchievements(payload);
-  void import("@/lib/sync-client").then((mod) => mod.syncQuietly());
   return payload;
 }
 
@@ -171,50 +168,4 @@ export async function listLocalAchievements() {
     ...item,
     earnedAt: map.get(item.key) ?? null,
   }));
-}
-
-/** One-time copy from the live server API into IndexedDB when local store is empty. */
-export async function hydrateFromServerIfEmpty() {
-  if (typeof window === "undefined") return;
-  const flag = await idbGet<LocalMeta>("meta", "hydrated");
-  if (flag?.value === "1") return;
-  const localGames = await listLocalGames();
-  const localTeams = await idbGetAll<Team>("teams");
-  if (localGames.length > 0 || localTeams.length > 0) {
-    await idbPut("meta", { key: "hydrated", value: "1" });
-    return;
-  }
-  try {
-    const [gamesRes, teamsRes, achRes] = await Promise.all([
-      fetch("/api/games", { credentials: "same-origin", cache: "no-store" }),
-      fetch("/api/teams", { credentials: "same-origin", cache: "no-store" }),
-      fetch("/api/achievements", { credentials: "same-origin", cache: "no-store" }),
-    ]);
-    if (gamesRes.ok) {
-      const data = (await gamesRes.json()) as { games?: { id: string }[] };
-      for (const card of data.games ?? []) {
-        if (!card.id) continue;
-        const full = await fetch(`/api/games/${card.id}`, { credentials: "same-origin", cache: "no-store" });
-        if (full.ok) {
-          const body = (await full.json()) as { game: GameRecord };
-          await idbPut("games", { ...body.game, ownerId: LOCAL_OWNER_ID });
-        }
-      }
-    }
-    if (teamsRes.ok) {
-      const data = (await teamsRes.json()) as { teams?: Team[] };
-      for (const team of data.teams ?? []) {
-        if (!team.canonical) await idbPut("teams", { ...team, ownerId: LOCAL_OWNER_ID });
-      }
-    }
-    if (achRes.ok) {
-      const data = (await achRes.json()) as { achievements?: { key: string; earnedAt: string | null }[] };
-      for (const row of data.achievements ?? []) {
-        if (row.earnedAt) await idbPut("achievements", { key: row.key, earnedAt: row.earnedAt });
-      }
-    }
-  } catch {
-    // Server may be down — local-only mode is fine.
-  }
-  await idbPut("meta", { key: "hydrated", value: "1" });
 }

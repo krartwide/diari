@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { SyncPanel } from "@/components/sync-panel";
 import { listLocalAchievements } from "@/lib/browser-data";
 
 type Row = {
@@ -26,11 +25,8 @@ export default function AchievementsPage() {
       <div>
         <p className="text-xs tracking-[0.18em] text-primary">업적</p>
         <h1 className="font-heading text-3xl sm:text-4xl">내 업적</h1>
-        <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          이 브라우저에 쌓이고, 저장 코드로 다른 기기와 맞출 수 있습니다.
-        </p>
+        <p className="mt-2 text-sm leading-6 text-muted-foreground">이 브라우저에만 쌓입니다.</p>
       </div>
-      <SyncPanel />
       {error && <p className="text-sm text-destructive">{error}</p>}
       {!rows && !error && <p className="text-sm text-muted-foreground">불러오는 중입니다.</p>}
       <ul className="grid gap-2">

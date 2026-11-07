@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { whenLabel } from "@/components/game-view";
-import { SyncPanel } from "@/components/sync-panel";
 import { listLocalGames } from "@/lib/browser-data";
 import { gamePath } from "@/lib/paths";
 import type { GameRecord } from "@/lib/types";
@@ -24,10 +23,9 @@ export default function GamesPage() {
         <p className="text-xs tracking-[0.18em] text-primary">기록</p>
         <h1 className="font-heading text-3xl sm:text-4xl">지난 경기</h1>
         <p className="mt-2 text-sm leading-6 text-muted-foreground">
-          이 브라우저에 저장되고, 업적 화면의 저장 코드로 다른 기기와도 맞출 수 있습니다.
+          이 브라우저에 저장된 경기만 보입니다. 서버가 꺼져도 같은 주소·같은 브라우저면 기록이 남습니다.
         </p>
       </div>
-      <SyncPanel />
       {error && <p className="text-sm text-destructive">{error}</p>}
       {!games && !error && <p className="text-sm text-muted-foreground">불러오는 중입니다.</p>}
       {games && games.length === 0 && (
